@@ -1,0 +1,17 @@
+//
+// Close
+// --------------------------------------------------
+
+
+.close {
+  transition: $close-transition;
+  font-size: $close-font-size;
+  opacity: .7;
+  &:focus { outline: none; }
+  &:not(:disabled):not(.disabled):hover { opacity: 1; }
+}
+
+
+// Alert close
+
+.alert .close { transition: $close-transition, color .15s ease-in-out; }

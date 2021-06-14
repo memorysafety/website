@@ -1,0 +1,216 @@
+//
+// Widgets
+// --------------------------------------------------
+
+
+// General styles
+
+.cs-widget ul { margin-bottom: 0; }
+
+
+// Categories
+
+.cs-widget-categories {
+  .nav {
+    flex-direction: column;
+    li {
+      margin-bottom: .625rem;
+    }
+    .nav {
+      padding-left: 1rem;
+      border-left: $border-width solid $border-color;
+      .nav-link {
+        font-weight: normal;
+      }
+    }
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+
+
+// Searchable data list
+
+.cs-widget-data-list {
+  .form-control {
+    padding-left: .75rem;
+    background-color: $white;
+  }
+  .list-unstyled li {
+    margin-bottom: .5rem;
+  }
+  .custom-control-label {
+    padding-top: .125rem;
+    @include font-size($font-size-sm);
+  }
+}
+
+
+// Range slider
+
+.cs-range-slider-ui {
+  height: $range-slider-height;
+  margin: 3rem 0;
+  border: 0;
+  background-color: $range-slider-bg;
+  box-shadow: none;
+  .noUi-connect {
+    background-color: $range-slider-connect-bg;
+  }
+  .noUi-handle {
+    top: 50%;
+    width: $range-slider-handle-size;
+    height: $range-slider-handle-size;
+    margin-top: -($range-slider-handle-size / 2);
+    border: $range-slider-handle-border;
+    border-radius: 50%;
+    box-shadow: $range-slider-handle-box-shadow;
+    background-color: $primary;
+    &::before, &::after { display: none; }
+    &:focus { outline: none; }
+  }
+  .noUi-pips-horizontal {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+  .noUi-marker-normal { display: none; }
+  .noUi-marker-horizontal {
+    &.noUi-marker {
+      width: $border-width;
+      background-color: darken($border-color, 6%);
+    }
+    &.noUi-marker-large { height: .5rem; }
+  }
+  .noUi-value {
+    padding-top: .125rem;
+    color: $gray-900;
+    font: {
+      size: $font-size-xxs;
+      weight: 700;
+    }
+  }
+  .noUi-tooltip {
+    padding: $tooltip-padding-y $tooltip-padding-x;
+    border: 0;
+    background-color: $range-slider-tooltip-bg;
+    color: $range-slider-tooltip-color;
+    font-size: $range-slider-tooltip-font-size;
+    line-height: 1.2;
+    @include border-radius($tooltip-border-radius);
+  }
+  // Hiding range slider pips
+  &.cs-no-pips {
+    margin-bottom: 1.5rem;
+    .noUi-pips {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+}
+html:not([dir=rtl]) .cs-range-slider-ui.noUi-horizontal .noUi-handle {
+  right: -($range-slider-handle-size / 2);
+}
+
+
+// Media grid
+
+.cs-media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: {
+    right: -$media-grid-item-spacer;
+    left: -$media-grid-item-spacer;
+  }
+}
+.cs-media-grid-item {
+  max-width: 100% / $media-grid-columns;
+  width: 100%;
+  margin-top: -$media-grid-item-spacer;
+  padding: $media-grid-item-spacer;
+}
+.cs-media-grid-inner {
+  display: inline-block;
+  position: relative;
+  border-radius: $media-grid-item-border-radius;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    opacity: 0;
+  }
+  &::before {
+    background-color: $media-grid-item-overlay-bg;
+    border-radius: inherit;
+    transition: opacity .35s;
+    content: '';
+    z-index: 2;
+    @extend %stretch-xy;
+  }
+  &::after {
+    top: 50%;
+    left: 50%;
+    width: $media-grid-item-icon-size;
+    height: $media-grid-item-icon-size;
+    border: $media-grid-item-icon-border;
+    border-radius: 50%;
+    line-height: $media-grid-item-icon-size;
+    font: {
+      family: $icon-font-family;
+      size: $font-size-base;
+    }
+    text-align: center;
+    vertical-align: middle;
+    color: $media-grid-item-icon-color;
+    transform: translateY(-50%) translateX(-50%) scale(.8);
+    transition: opacity .35s, transform .35s;
+    content: '\e904';
+    will-change: transform;
+    z-index: 3;
+  }
+  img {
+    display: block;
+    width: 100%;
+    border-radius: inherit;
+    transition: transform .3s ease-in-out;
+    will-change: transform;
+  }
+  &:hover {
+    &::before,
+    &::after { opacity: 1; }
+    &::after { transform: translateY(-50%) translateX(-50%) scale(1); }
+    img { transform: scale(1.08); }
+  }
+}
+
+
+// Tags
+
+.cs-tag {
+  display: inline-block;
+  padding: $tag-padding-y $tag-padding-x;
+  transition: $tag-transition;
+  border: $tag-border-width solid $tag-border-color;
+  @include border-radius($tag-border-radius);
+  background-color: $tag-bg;
+  color: $tag-color;
+  font: {
+    size: $tag-font-size;
+    weight: $tag-font-weight;
+  }
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $tag-hover-border-color;
+    color: $tag-hover-color;
+    text-decoration: none;
+  }
+  &.cs-tag-pill { border-radius: $tag-pill-border-radius; }
+}

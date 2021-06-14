@@ -1,0 +1,112 @@
+//
+// Dropdown
+// --------------------------------------------------
+
+
+// Caret
+
+.dropdown-toggle {
+  &::after,
+  &::before {
+    display: inline-block;
+    font: {
+      family: $icon-font-family;
+      weight: normal;
+    }
+    vertical-align: middle;
+  }
+  &::after {
+    margin: {
+      top: -.0625rem;
+      left: .375rem;
+    }
+    border: 0;
+    content: '\e916';
+  }
+  &::before { margin-right: .25rem; }
+}
+.dropdown-toggle:not(.dropdown-toggle-split) {
+  &::before { margin-left: -.25rem; }
+  &::after { margin-right: -.25rem; }
+}
+.dropdown .dropdown-toggle,
+.dropup .dropdown-toggle,
+.dropright .dropdown-toggle,
+.dropleft .dropdown-toggle {
+  &::before,
+  &::after {
+    vertical-align: middle;
+    border: 0;
+  }
+}
+.dropdown .dropdown-toggle,
+.dropup .dropdown-toggle,
+.dropright .dropdown-toggle {
+  &::before { display: none; }
+}
+.dropup .dropdown-toggle::after {
+  content: '\e919';
+}
+.dropright .dropdown-toggle::after {
+  content: '\e918';
+  vertical-align: bottom;
+}
+.dropleft .dropdown-toggle {
+  &::before {
+    content: '\e917';
+    vertical-align: bottom;
+  }
+  &::after { display: none; }
+}
+
+
+// Dropdown menu
+
+.dropdown-menu {
+  @include box-shadow($dropdown-box-shadow);
+  li {
+    margin-bottom: 0;
+    &:hover > .dropdown-item {
+      color: $dropdown-link-hover-color;
+    }
+  }
+  .active > .dropdown-item {
+    color: $dropdown-link-active-color;
+  }
+}
+
+
+// Dropdown header
+
+.dropdown-header {
+  margin-bottom: .5rem;
+  padding: {
+    top: $dropdown-item-padding-y;
+    bottom: $dropdown-item-padding-y * 3;
+  }
+  border-bottom: $dropdown-border-width solid $dropdown-divider-bg;
+  @include font-size($dropdown-header-font-size);
+  font-weight: $headings-font-weight;
+}
+
+
+// Dropdown menu animation
+
+.dropdown-menu.show {
+  animation: fade-in .25s ease-in-out;
+}
+
+
+// Split button dropdown fix
+
+.dropdown-toggle-split::after {
+  margin-left: -.0625rem !important;
+}
+
+
+// Dropdown component animations
+
+@keyframes fade-in  {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

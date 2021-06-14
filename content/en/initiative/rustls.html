@@ -1,0 +1,25 @@
+---
+title: Rustls
+slug: rustls
+project_status: TK
+funding_status: TK
+background: e8fcf8
+sponsors: ["Google"]
+image: /images/rustls.png
+blog_posts: ["2021-04-20-preparing-rustls.md"]
+---
+
+<h2>The Story</h2>
+
+<p>The story of our work with <a href="https://github.com/ctz/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety vulnerabilities.</p>
+
+<p>It's important for the security of the Internet that we move away from TLS libraries that aren't memory safe. In our view, however, it's highly unlikely that we can get the OpenSSL project to move away from C. As such, we need to work on a memory safe alternative and get the Internet's critical software infrastructure to make the switch.</p>
+
+<p>Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a <a href="https://github.com/ctz/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> TLS implementation written in Rust, a memory safe language. We believe Rustls represents the future of TLS implementation on the Internet.</p>
+
+<p>We're investing in Rustls in two ways:</p>
+
+<o1>
+  <li>We've contracted with Dirkjan Ochtman to make a number of improvements to the Rustls library.</li>
+  <li>ISRG engineer Jacob Hoffman-Andrews has developed a C API for Rustls that existing C-based projects can use to make their TLS implementation memory safe.</li>
+</o1>

@@ -1,0 +1,72 @@
+{
+  "_from": "mixitup",
+  "_id": "mixitup@3.3.1",
+  "_inBundle": false,
+  "_integrity": "sha512-5WlMzRNSAU5R1N/NlmOvmYxcZVgib3do5I0H+LO6e0ArI7GlNLMPoAANK7XOemuwJFZcJHIGvWDIPMK1jnWEqA==",
+  "_location": "/mixitup",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mixitup",
+    "name": "mixitup",
+    "escapedName": "mixitup",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mixitup/-/mixitup-3.3.1.tgz",
+  "_shasum": "6ca9b6fc3a202d237b8f3ce9c02f48ac976881f6",
+  "_spec": "mixitup",
+  "_where": "/Users/rokaux/Sites/createx",
+  "author": {
+    "name": "KunkaLabs Limited"
+  },
+  "bugs": {
+    "url": "https://github.com/patrickkunka/mixitup/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A high-performance, dependency-free library for animated filtering, sorting and more",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "chai-shallow-deep-equal": "^1.4.0",
+    "coveralls": "^2.11.14",
+    "gulp": "^3.8.8",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^1.8.5",
+    "gulp-livereload": "~2.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "~1.5.1",
+    "istanbul": "^0.4.5",
+    "jsdom": "9.4.2",
+    "jsdom-global": "2.0.0",
+    "jshint-stylish": "~1.0.0",
+    "merge-stream": "^0.1.7",
+    "mixitup-build": "git://github.com/patrickkunka/mixitup-build.git",
+    "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "homepage": "https://www.kunkalabs.com/mixitup/",
+  "license": "SEE LICENSE IN README.md",
+  "main": "./dist/mixitup.js",
+  "name": "mixitup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickkunka/mixitup.git"
+  },
+  "scripts": {
+    "cover": "istanbul cover _mocha ./tests/unit/main.js",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test": "mocha ./tests/unit/main.js"
+  },
+  "title": "MixItUp",
+  "version": "3.3.1"
+}

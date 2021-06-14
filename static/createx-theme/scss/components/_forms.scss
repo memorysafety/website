@@ -1,0 +1,119 @@
+//
+// Forms
+// --------------------------------------------------
+
+
+// Label
+
+.form-label    { @include font-size($label-font-size); }
+.form-label-lg { @include font-size($label-font-size-lg); }
+.form-label-sm { @include font-size($label-font-size-sm); }
+
+
+// Input light skin
+
+.form-control.input-light {
+  background-color: $input-light-bg;
+  color: $input-light-color;
+  border-color: $input-light-border-color;
+  &::placeholder {
+    color: $input-light-placeholder-color;
+  }
+  &:focus {
+    background-color: $input-light-focus-bg;
+    color: $input-light-focus-color;
+    border-color: $input-light-focus-border-color;
+    &::placeholder {
+      color: $input-light-focus-placeholder-color;
+    }
+  }
+  &:disabled {
+    background-color: $input-light-disabled-bg;
+    color: $input-light-disabled-color;
+    &::placeholder {
+      color: $input-light-disabled-placeholder-color;
+    }
+  }
+}
+
+
+// Form validation
+
+.was-validated .form-control:valid,
+.was-validated .form-control.is-valid,
+.form-control.is-valid,
+.was-validated .custom-file-input:valid ~ .custom-file-label {
+  &, &:focus {
+    border-color: $input-border-color;
+  }
+}
+.valid-tooltip,
+.invalid-tooltip {
+  position: static;
+  margin-top: .25rem;
+  padding: .15rem .5rem;
+  font-size: $form-feedback-font-size;
+}
+.was-validated {
+  .form-control:invalid,
+  .form-control.is-invalid,
+  .custom-control-input:invalid,
+  .custom-control-input.is-invalid {
+    &~.invalid-tooltip { display: table; }
+  }
+  .form-control:valid,
+  .form-control.is-valid,
+  .custom-control-input:valid,
+  .custom-control-input.is-valid {
+    &~.valid-tooltip { display: table; }
+  }
+}
+
+.was-validated .custom-control-input:valid ~ .custom-control-label,
+.was-validated .custom-control-input.is-valid ~ .custom-control-label {
+  color: inherit;
+}  
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before, .was-validated .custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  border-color: $custom-control-indicator-checked-bg !important;
+  background-color: $custom-control-indicator-checked-bg;
+}
+.was-validated .custom-control-input:valid ~ .custom-control-label::before,
+.was-validated .custom-control-input.is-valid ~ .custom-control-label::before {
+  border-color: $custom-control-indicator-border-color !important;
+}
+
+.form-control {
+  &.is-valid,
+  &.is-invalid {
+    background-size: $form-feedback-icon-size $form-feedback-icon-size;
+  }
+}
+
+
+// Disabled inputs
+
+.form-control:disabled {
+  cursor: not-allowed;
+}
+
+
+// Subscription form status
+
+.cs-subscribe-status {
+  display: table;
+  @include border-radius($border-radius);
+  font-size: $font-size-sm;
+  &.cs-status-success,
+  &.cs-status-error {
+    margin-top: .5rem;
+    padding: .5rem .75rem;
+  }
+  &.cs-status-success {
+    background-color: rgba($success, .08);
+    color: darken($success, 5%);
+  }
+  &.cs-status-error {
+    background-color: rgba($danger, .08);
+    color: darken($danger, 5%);
+  }
+}

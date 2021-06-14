@@ -1,0 +1,13 @@
+//
+// Progress radial
+// --------------------------------------------------
+
+
+.cs-progress-radial {
+  flex-shrink: 0;
+  .progressbar-text {
+    color: $progress-radial-color !important;
+    font-weight: $progress-radial-font-weight;
+    @include font-size($progress-radial-font-size);
+  }
+}

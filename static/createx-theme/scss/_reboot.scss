@@ -1,0 +1,75 @@
+//
+// Reboot
+// --------------------------------------------------
+
+// Import Google Fonts (Inter)
+@import url($path-to-fonts);
+
+html * {
+  @include font-smoothing;
+}
+
+// Sticky footer
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.cs-page-wrapper {
+  flex: 1 0 auto;
+}
+.cs-footer {
+  flex-shrink: 0;
+}
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+  html, body { height: auto; }
+  body { display: block; }
+}
+
+
+// Links
+a {
+  transition: $link-transition;
+  &:focus { outline: none; }
+}
+
+// Images
+// Responsive images (ensure images don't scale beyond their parents)
+img,
+figure {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+svg { max-width: 100%; }
+
+// Responsive iframes
+iframe {
+  width: 100%;
+  border: 0;
+}
+
+// Text Selection Color
+::selection {
+  background: $user-selection-color;
+}
+::-moz-selection {
+  background: $user-selection-color;
+}
+
+b,
+strong {
+  font-weight: $font-weight-bold;
+}
+
+small { font-weight: inherit; }
+
+cite { font-style: normal; }
+
+// Disable button :focus outline
+button:focus {
+  outline: none;
+}

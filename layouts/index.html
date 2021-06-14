@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" . }}
+    {{ partial "header.html" . }}
+      <section
+        id="home-hero"
+        class="position-relative mb-md-5 pb-1 pt-5"
+        style="
+          background-image: url(assets/img/intro/hero/bg.jpg);
+          background-color: #dce0e9;
+        "
+      >
+        <div
+          class="container-fluid pr-lg-0"
+        >
+          <div class="row no-gutters">
+            <div
+              class="
+                col-md-5
+                align-self-center
+                d-flex
+                justify-content-lg-end justify-content-center
+                mt-xl-n5
+                pt-lg-6
+                text-md-left text-center
+              "
+            >
+              <div class="pb-3 pt-md-3 pb-md-3" style="max-width: 460px">
+                <h1 class="display-4 mb-lg-5">
+                  <span class="text-primary-knockout">Memory safety</span> for the Internet's most critical infrastructure
+                </h1>
+              </div>
+            </div>
+            <div
+              class="
+                col-md-6
+                offset-md-1
+                align-self-center
+                d-flex
+                align-items-center
+                justify-content-lg-center justify-content-center
+                text-md-left text-center
+              "
+            >
+              <div class="pb-3 pt-md-5 pb-md-3 text-center" style="max-width: 460px">
+                  <a href="/docs/memory-safety" class="mb-4 btn btn-large btn-outline-primary"><i class="cxi-info mr-2"></i> What is Memory Safety?</a>
+                  <a href="/about" class="btn btn-large btn-outline-primary"><i class="cxi-chat mr-2"></i> How we work</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="container py-lg-1 py-1" id="initiatives">
+        <h2 class="h1 text-center">Initiatives</h2>
+        {{ partial "home/initiative_list_item.html" (dict "title" "Linux Kernel" "url" "/initiative/linux-kernel" "image" "/images/tux.svg" "description" "Let's make it possible to write memory-safe drivers for the Linux kernel." "backgroundColor" "#e8fcf8") }}
+        {{ partial "home/initiative_list_item.html" (dict "title" "curl" "url" "/initiative/curl" "image" "/images/curl.svg" "description" "Let's make TLS and HTTP networking code in curl memory-safe." "backgroundColor" "#e6e9ee") }}
+        {{ partial "home/initiative_list_item.html" (dict "title" "Rustls" "url" "/initiative/rustls" "image" "/images/rustls.png" "description" "Let's build an excellent memory-safe TLS library intended to replace OpenSSL in many projects." "backgroundColor" "#e8fcf8") }}
+        {{ partial "home/initiative_list_item.html" (dict "title" "mod_tls" "url" "/initiative/mod_tls" "image" "/images/httpd.svg" "description" "Let's make it possible to use memory safe TLS networking in Apache httpd." "backgroundColor" "#e6e9ee") }}
+      </section>
+
+      <section
+        id="blog-promo"
+        class="py-lg-6 py-5 bg-secondary bg-no-repeat bg-size-cover"
+        style="background-image: url(assets/img/intro/bg-shape.jpg)"
+      >
+        <div class="container py-3 pb-lg-0">
+          <h2 class="h1 mb-5 pb-lg-2 text-center">Recent Updates</h2>
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                {{ $posts := where .Site.RegularPages "Type" "in" (slice "post") | first 3 }}
+                {{ range $posts }}
+                  {{ partial "blog/blog_list_item.html" .}}
+                {{ end }}
+            </div>
+
+          </div>
+          </div>
+          <div class="font-size-lg font-weight-bold text-center">
+            <a class="btn btn-primary" href="/blog">View the blog</a>
+          </div>
+        </div>
+      </section>
+  {{ partial "footer.html" . }}
+</html>

@@ -1,0 +1,492 @@
+//
+// Carousel
+// Based on https://github.com/ganlanyuan/tiny-slider
+// --------------------------------------------------
+
+
+// Base style
+
+.cs-carousel {
+  position: relative;
+  .cs-carousel-inner {
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+    user-select: none;
+    opacity: 0;
+    &:active { cursor: grab; }
+    &.tns-slider {
+      display: block;
+      opacity: 1;
+    }
+    > * { backface-visibility: hidden; }
+    &.tns-horizontal:not(.tns-gallery) {
+      display: flex;
+    }
+  }
+  .tns-outer {
+    position: relative;
+  }
+}
+
+// Fix carousel flex display for Microsoft Edge and IE browsers
+@supports (-ms-ime-align: auto) {
+  .cs-carousel .cs-carousel-inner.tns-horizontal:not(.tns-gallery) {
+    display: block;
+  }
+}
+
+
+// Carousel nav (dots)
+
+.tns-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: $carousel-dots-spacing-y;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+
+  [data-nav] {
+    display: inline-block;
+    position: relative;
+    width: $carousel-dot-width;
+    height: $carousel-dot-height;
+    margin: 0 ($carousel-dot-spacing-x / 2);
+    padding: 0;
+    background-color: $carousel-dot-bg;
+    border: 0;
+    border-radius: $carousel-dot-border-radius;
+    transition: $carousel-dot-transition;
+    pointer-events: initial;
+  
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 100%;
+      transform: translateX(-50%);
+      background-color: $carousel-dot-active-bg;
+      border-radius: inherit;
+      opacity: 0;
+      transition: $carousel-dot-transition;
+      content: '';
+    }
+  
+    &.tns-nav-active,
+    &.active {
+      &::before {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+    &:focus { outline: initial; }
+  }  
+
+  @include media-breakpoint-down(sm) {
+    padding-bottom: $carousel-dots-spacing-y / 1.5;
+  }
+}
+
+
+// Nav inverse colors
+.cs-nav-inverse,
+.cs-nav-outside {
+  [data-nav] {
+    background-color: $carousel-dot-inverse-bg;
+    &::before { background-color: $carousel-dot-inverse-active-bg; }
+  }
+}
+.cs-nav-outside.cs-nav-inverse {
+  [data-nav] {
+    background-color: $carousel-dot-bg;
+    &::before { background-color: $carousel-dot-active-bg; }
+  }
+}
+
+// Nav outside carousel content
+.cs-nav-outside {
+  .tns-outer {
+    margin-bottom: $carousel-dots-spacing-y * 2;
+  }
+  .tns-nav {
+    top: 100%;
+    bottom: initial;
+    padding: {
+      top: $carousel-dots-spacing-y;
+      bottom: initial;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .tns-outer {
+      margin-bottom: $carousel-dots-spacing-y * 1.5;
+    }
+    .tns-nav {
+      padding-top: $carousel-dots-spacing-y / 2;
+    }
+  }
+}
+
+
+// Carousel controls (prev/next buttons)
+
+.tns-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding: {
+    right: $carousel-controls-spacing-x;
+    left: $carousel-controls-spacing-x;
+  }
+  transform: translateY(-50%);
+  z-index: 3;
+  pointer-events: none;
+
+  &:focus { outline: initial; }
+
+  @include media-breakpoint-down(sm) {
+    padding: {
+      right: $carousel-controls-spacing-x / 2;
+      left: $carousel-controls-spacing-x / 2;
+    }
+  }
+}
+
+// Control item
+[data-controls] {
+  display: inline-block;
+  position: relative;
+  width: $carousel-control-size;
+  height: $carousel-control-size;
+  line-height: $carousel-control-size;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0;
+  border: 0;
+  background-color: $carousel-control-bg;
+  color: $carousel-control-color;
+  transition: $carousel-control-transition;
+  pointer-events: auto;
+  @include border-radius($carousel-control-border-radius);
+  @include font-size($carousel-control-font-size);
+
+  [class^='cxi-'],
+  [class*=' cxi-'] {
+    line-height: inherit;
+  }
+  &[disabled] {
+    transform: $carousel-control-disabled-transform;
+    opacity: $carousel-control-disabled-opacity;
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: $carousel-control-hover-bg;
+    color: $carousel-control-hover-color;
+  }
+
+  @include media-breakpoint-down(sm) {
+    width: $carousel-control-size * .75;
+    height: $carousel-control-size * .75;
+    line-height: $carousel-control-size * .75;
+    @include font-size($carousel-control-font-size * .9);
+  }
+}
+
+// Controls on-hover
+.cs-controls-onhover {
+  [data-controls] {
+    transform: $carousel-control-disabled-transform;
+    opacity: $carousel-control-disabled-opacity;
+  }
+  &:hover [data-controls]:not([disabled]) {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+// Controls inverse colors
+.cs-controls-inverse,
+.cs-controls-outside {
+  [data-controls] {
+    background-color: $carousel-control-inverse-bg;
+    color: $carousel-control-inverse-color;
+    &:hover {
+      background-color: $carousel-control-inverse-hover-bg;
+      color: $carousel-control-inverse-hover-color;
+    }
+  }
+}
+.cs-controls-outside.cs-controls-inverse {
+  [data-controls] {
+    background-color: $carousel-control-bg;
+    color: $carousel-control-color;
+    &:hover {
+      background-color: $carousel-control-hover-bg;
+      color: $carousel-control-hover-color;
+    }
+  }
+}
+
+// Controls outside carousel content
+.cs-controls-outside {
+  .tns-outer {
+    margin: {
+      right: $carousel-controls-outside-spacing-x;
+      left: $carousel-controls-outside-spacing-x;
+    }
+  }
+  .tns-controls {
+    width: calc(100% + (#{$carousel-controls-outside-spacing-x} * 2));
+    left: -$carousel-controls-outside-spacing-x;
+    padding: 0;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .tns-outer {
+      margin: {
+        right: 0;
+        left: 0;
+      }
+    }
+    .tns-controls {
+      width: 100%;
+      left: 0;
+      padding: {
+        right: $carousel-controls-spacing-x / 2;
+        left: $carousel-controls-spacing-x / 2;
+      }
+    }
+    [data-controls] {
+      background-color: $carousel-control-bg;
+      color: $carousel-control-color;
+      &:hover {
+        background-color: $carousel-control-hover-bg;
+        color: $carousel-control-hover-color;
+      }
+    }
+  }
+}
+
+
+// Custom controls
+
+.tns-custom-controls {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  margin: {
+    right: -(($carousel-control-size - $carousel-control-font-size) / 2 - .0625rem);
+    left: -(($carousel-control-size - $carousel-control-font-size) / 2 - .0625rem);
+  }
+  z-index: 9;
+
+  &:focus { outline: initial; }
+
+  @include media-breakpoint-down(sm) {
+    margin: {
+      right: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) / 2 - .0625rem);
+      left: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) / 2 - .0625rem);
+    }
+  }
+}
+
+
+// Custom pager
+
+.cs-pager {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  [data-nav] {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-right: $carousel-pager-spacing-x;
+    padding: {
+      top: 0;
+      right: 0;
+      bottom: $carousel-pager-spacing-y;
+      left: 0;
+    }
+    border: 0;
+    background-color: transparent;
+    transition: color .3s ease-in-out;
+    color: $carousel-pager-label-color;
+    text-align: left;
+    font-weight: $carousel-pager-label-font-weight;
+    @include font-size($carousel-pager-label-font-size);
+
+    &:last-child { margin-right: initial; }
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: $carousel-pager-dash-height;
+      content: '';
+    }
+    &::before {
+      width: 100%;
+      background-color: $carousel-pager-label-color;
+      z-index: 2;
+    }
+    &::after {
+      width: 0;
+      background-color: $carousel-pager-label-active-color;
+      transition: width .3s ease-in-out;
+      will-change: width;
+      z-index: 3;
+    }
+    &:hover {
+      color: $carousel-pager-label-hover-color;
+    }
+    &.tns-nav-active {
+      color: $carousel-pager-label-active-color;
+      &::after { width: 100%; }
+    }
+  }
+
+  // Pager inverse colors
+  &.cs-pager-inverse [data-nav] {
+    color: $carousel-pager-inverse-label-color;
+    &::before { background-color: $carousel-pager-inverse-label-color; }
+    &::after { background-color: $carousel-pager-inverse-label-active-color; }
+    &:hover { color: $carousel-pager-inverse-label-hover-color; }
+    &.tns-nav-active { color: $carousel-pager-inverse-label-active-color; }
+  }
+
+  @include media-breakpoint-down(sm) {
+    [data-nav] {
+      padding-bottom: $carousel-pager-spacing-y / 2;
+      @include font-size($carousel-pager-label-font-size / 1.5);
+    }
+  }
+}
+
+
+// Custom thumbnails
+
+.cs-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  margin: {
+    top: $thumbnails-spacing;
+    right: -($thumbnails-spacing / 2);
+    left: -($thumbnails-spacing / 2);
+  }
+
+  [data-nav] {
+    display: block;
+    max-width: $thumbnail-width;
+    margin: {
+      right: $thumbnails-spacing / 2;
+      bottom: $thumbnails-spacing;
+      left: $thumbnails-spacing / 2;
+    }
+    padding: 0;
+    border: $thumbnail-border;
+    border-radius: $thumbnail-border-radius;
+    background-color: transparent;
+    opacity: .6;
+    transition: opacity .3s ease-in-out, border-color .3s ease-in-out;
+    overflow: hidden;
+
+    &:last-child { margin-right: initial; }
+
+    &.tns-nav-active {
+      border-color: $thumbnail-active-border-color;
+      opacity: 1;
+    }
+
+    &.video-indicator {
+      position: relative;
+      &::before {
+        display: block;
+        position: absolute;
+        background-color: $thumbnail-indicator-bg;
+        color: $thumbnail-indicator-color;
+        font-family: $icon-font-family;
+        line-height: $thumbnail-width;
+        text-align: center;
+        opacity: .6;
+        content: '\e954';
+        @extend %stretch-xy;
+        @include font-size($thumbnail-indicator-font-size);
+      }
+    }
+
+    &:hover { opacity: 1; }
+  }
+
+  @include media-breakpoint-down(sm) {
+    margin: {
+      top: $thumbnails-spacing / 2;
+      right: -($thumbnails-spacing / 4);
+      left: -($thumbnails-spacing / 4);
+    }
+
+    [data-nav] {
+      max-width: $thumbnail-width / 2;
+      margin: {
+        right: $thumbnails-spacing / 4;
+        bottom: $thumbnails-spacing / 2;
+        left: $thumbnails-spacing / 4;
+      }
+      &.video-indicator::before {
+        line-height: $thumbnail-width / 2;
+      }
+    }
+  }
+}
+
+
+// Carousel inside Promo bar
+
+.cs-promo-bar .cs-carousel {
+  width: auto;
+
+  .tns-controls { padding: 0; }
+
+  [data-controls] {
+    width: $carousel-control-size / 1.5;
+    height: $carousel-control-size / 1.5;
+    margin-top: .0625rem;
+    font-size: $carousel-control-font-size / 1.25;
+    line-height: $carousel-control-size / 1.5;
+    background: none;
+    
+    .cxi-arrow-left::before { content: '\e917'; }
+    .cxi-arrow-right::before { content: '\e918'; }
+  }
+
+  [data-controls="prev"] { margin-left: -.5rem; }
+  [data-controls="next"] { margin-right: -.5rem; }
+
+  .tns-nav { display: none !important; }
+
+  .tns-outer {
+    padding: {
+      right: $spacer !important;
+      left: $spacer !important;
+    }
+  }
+
+  &.cs-controls-inverse [data-controls] {
+    color: $white;
+  }
+}

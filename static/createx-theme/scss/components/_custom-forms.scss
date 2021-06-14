@@ -1,0 +1,373 @@
+//
+// Custom forms
+// --------------------------------------------------
+// 
+// Checkboxes and radios
+
+.custom-control { min-height: $font-size-base; }
+
+
+// Checkboxes
+
+.custom-checkbox {
+  .custom-control-label::after {
+    // adding some cute animation
+    transition: transform $custom-control-transition-duration;
+    transform: translateY(-100%);
+  }
+  .custom-control-input:checked ~ .custom-control-label {
+    &::after {
+      transform: translateY(0);
+    }
+  }
+}
+
+
+// Radios
+
+.custom-radio,
+.was-validated .custom-radio { // overriding validation color highlight
+  .custom-control-label::after {
+    // adding some cute animation
+    transition: transform $custom-control-transition-duration;
+    transform: scale(0);
+  }
+  .custom-control-input {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-radio-indicator-bg;
+    }
+    &:checked ~ .custom-control-label::after {
+      transform: scale(1.3);
+    }
+  }
+}
+
+
+// Select
+
+.custom-select.input-light {
+  background-image: escape-svg($custom-select-light-indicator);
+  &:focus {
+    background-image: escape-svg($custom-select-light-focus-indicator);
+  }
+}
+
+
+// File
+
+.custom-file-label {
+  @include font-size($custom-file-label-font-size);
+  &::after {
+    padding: {
+      right: $custom-file-button-padding-x;
+      left: $custom-file-button-padding-x;
+    }
+    font-weight: $custom-file-button-font-weight;
+  }
+}
+
+
+// Custom switch
+
+.custom-switch {
+  .custom-control-label {
+    &::before {
+      background-color: $custom-switch-bg;
+    }
+    &::after {
+      background-color: $custom-switch-indicator-bg;
+    }
+  }
+  .custom-control-input:checked ~ .custom-control-label {
+    &::before {
+      box-shadow: $custom-switch-checked-box-shadow;
+    }
+  }
+  .custom-control-input:disabled ~ .custom-control-label {
+    &::before {
+      background-color: $custom-switch-disabled-bg;
+    }
+  }
+}
+
+
+// Custom file input drop area
+
+.cs-file-drop-area {
+  position: relative;
+  padding: ($spacer * 1.5) $spacer;
+  transition: $input-transition;
+  border: ($input-border-width * 2) dashed $input-border-color;
+  @include border-radius($border-radius-lg);
+  text-align: center;
+  cursor: pointer;
+
+  .cs-file-drop-input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    opacity: 0;
+    outline: none;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .cs-file-drop-icon {
+    display: block;
+    margin-bottom: ($spacer * .75);
+    color: $gray-900;
+    font-size: $h4-font-size;
+  }
+
+  .cs-file-drop-preview {
+    display: block;
+    max-width: $file-drop-area-preview-width;
+    margin: {
+      right: auto;
+      bottom: .75rem;
+      left: auto;
+    }
+  }
+
+  .cs-file-drop-message {
+    display: block;
+    @include font-size($font-size-sm);
+    margin-bottom: 1.25rem;
+  }
+
+  .btn {
+    position: relative;
+    z-index: 3;
+  }
+
+  &:hover {
+    border-color: darken($input-border-color, 7%);
+  }
+}
+
+
+// Custom switch alternate
+
+.cs-switch {position: relative;}
+.cs-switch-label {
+  display: flex;
+  position: relative;
+  background-color: $switch-alt-bg;
+  border: $switch-alt-border-width solid $switch-alt-border-color;
+  border-radius: $switch-alt-border-radius;
+  text-align: center;
+  user-select: none;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: $switch-alt-indicator-bg;
+    border-radius: $switch-alt-border-radius;
+    transition: transform $switch-alt-transition-duration $switch-alt-transition-timing-function;
+    content: '';
+    will-change: transform;
+    z-index: 1;
+  }
+}
+
+.cs-switch-label-item {
+  display: block;
+  position: relative;
+  width: 50%;
+  padding: {
+    top: $switch-alt-padding-y;
+    bottom: $switch-alt-padding-y;
+  }
+  font-weight: bold;
+  transition: color .25s ease-in-out;
+  will-change: color;
+  z-index: 2;
+
+  &:first-child { color: $switch-alt-bg; }
+  &:last-child { color: $switch-alt-indicator-bg; }
+}
+
+.cs-switch-input:checked ~ .cs-switch-label {
+  &::before {
+    transform: translateX(100%);
+  }
+  .cs-switch-label-item {
+    &:first-child { color: $switch-alt-indicator-bg; }
+    &:last-child { color: $switch-alt-bg; }
+  }
+}
+
+
+// Password visibility toggle
+
+.cs-password-toggle-btn {
+  .cs-password-toggle-indicator {
+    &::before {
+      font-family: $icon-font-family;
+      content: '\e92b';
+    }
+  }
+  .custom-control-input:checked ~ .cs-password-toggle-indicator::before {
+    content: '\e92c';
+  }
+}
+.was-validated .cs-password-toggle .form-control:invalid,
+.was-validated .cs-password-toggle .form-control.is-invalid,
+.was-validated .cs-password-toggle .form-control:valid,
+.was-validated .cs-password-toggle .form-control.is-valid {
+  padding-right: 4rem;
+  & + .input-group-append-overlay { right: 1.25rem; }
+}
+
+
+// Custom size / color (radios)
+
+.cs-custom-size-option,
+.cs-custom-color-option {
+  padding-left: 0;
+  &.custom-control-inline {
+    margin-right: ($spacer / 4);
+  }
+}
+.cs-custom-option-label {
+  position: relative;
+  margin-bottom: 0;
+  transition: $custom-option-transition;
+}
+.cs-custom-size-option {
+  .cs-custom-option-label {
+    width: $custom-size-option-size;
+    height: $custom-size-option-size;
+    border: $border-width solid $custom-size-option-border-color;
+    @include border-radius($border-radius);
+    background-color: transparent;
+    color: $custom-size-option-color;
+    font-size: $custom-size-option-font-size;
+    text-align: center;
+    line-height: ($custom-size-option-size - .25rem);
+    cursor: pointer;
+    &:hover {
+      border-color: $custom-size-option-hover-border-color;
+      color: $custom-size-option-hover-color;
+    }
+  }
+  .custom-control-input:checked ~ .cs-custom-option-label {
+    border-color: $custom-size-option-active-border-color;
+    background-color: $custom-size-option-active-bg;
+    color: $custom-size-option-active-color;
+    box-shadow: $custom-size-option-active-box-shadow;
+    cursor: default;
+  }
+  .custom-control-input:disabled ~ .cs-custom-option-label {
+    border-color: $custom-size-option-disabled-border-color;
+    background-color: $custom-size-option-disabled-bg;
+    color: $custom-size-option-disabled-color;
+    cursor: not-allowed;
+  }
+
+  // Sizing-sm
+  &.cs-custom-size-option-sm {
+    .cs-custom-option-label {
+      width: $custom-size-option-sm-size;
+      height: $custom-size-option-sm-size;
+      font-size: $custom-size-option-sm-font-size;
+      line-height: ($custom-size-option-sm-size - .125rem);
+    }
+  }
+}
+.cs-custom-color-option {
+  flex-direction: column;
+  align-items: center;
+  .cs-custom-option-label {
+    width: $custom-color-option-outer-size;
+    height: $custom-color-option-outer-size;
+    padding: ($custom-color-option-outer-size - $custom-color-option-inner-size) / 2;
+    border: $border-width solid $custom-color-option-border-color;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .cs-color-swatch {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .cs-custom-color-option-description {
+    display: block;
+    margin-top: $custom-color-option-description-margin-y;
+    font-size: $custom-color-option-description-font-size;
+    color: $custom-color-option-description-color;
+    transition: $custom-option-transition;
+  }
+  .custom-control-input:checked ~ .cs-custom-option-label {
+    border-color: $custom-color-option-active-border-color;
+    cursor: default;
+  }
+  .custom-control-input:checked ~ .cs-custom-color-option-description {
+    color: $custom-color-option-active-description-color;
+  }
+  .custom-control-input:disabled ~ .cs-custom-option-label {
+    border-color: $custom-color-option-disabled-border-color;
+    cursor: not-allowed;
+  }
+  .custom-control-input:disabled ~ .cs-custom-color-option-description {
+    color: $custom-color-option-disabled-description-color;
+  }
+
+  // Sizing-sm
+  &.cs-custom-color-option-sm {
+    .cs-custom-option-label {
+      width: $custom-color-option-sm-outer-size;
+      height: $custom-color-option-sm-outer-size;
+      padding: ($custom-color-option-sm-outer-size - $custom-color-option-sm-inner-size) / 2;
+    }
+  }
+
+  &:hover {
+    .cs-custom-option-label { border-color: $custom-color-option-hover-border-color; }
+    .cs-custom-color-option-description { color: $custom-color-option-description-hover-color; }
+  }
+}
+
+
+// Custom control button (checkboxes)
+
+.cs-btn-control {
+  margin-right: .625rem;
+  .cs-btn-control-label {
+    display: inline-block;
+    padding: $btn-control-padding-y $btn-control-padding-x;
+    font: {
+      size: $btn-control-font-size;
+      weight: 700;
+    }
+    border: $border-width solid $btn-control-border-color;
+    border-radius: $border-radius;
+    background-color: $btn-control-bg;
+    color: $btn-control-color;
+    transition: $btn-control-transition;
+    cursor: pointer;
+    &:hover {
+      border-color: $btn-control-hover-border-color;
+      color: $btn-control-hover-color;
+    }
+  }
+  .custom-control-input:checked ~ .cs-btn-control-label {
+    border-color: $btn-control-active-border-color;
+    background-color: $btn-control-active-bg;
+    color: $btn-control-active-color;
+  }
+  .custom-control-input:disabled ~ .cs-btn-control-label {
+    border-color: $btn-control-disabled-border-color;
+    color: $btn-control-disabled-color;
+    cursor: not-allowed;
+  }
+}

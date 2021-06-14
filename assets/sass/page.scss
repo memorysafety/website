@@ -1,0 +1,36 @@
+@import "_variables";
+
+.tpl-page {
+  .cs-page-wrapper {
+    margin-top: 100px;
+  }
+
+  h1 {
+    text-align: center;
+    color: $primary_color;
+  }
+}
+
+.footnotes {
+  padding-top: 10px;
+
+  hr {
+    margin-bottom: 10px;
+  }
+
+  ol {
+    padding-left: 17px;
+  }
+}
+
+.sponsor-logos {
+  display: flex;
+
+  .sponsor {
+    margin-bottom: 40px;
+    margin-right: 40px;
+    img {
+      max-height: 100px;
+    }
+  }
+}

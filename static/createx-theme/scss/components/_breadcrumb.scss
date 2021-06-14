@@ -1,0 +1,44 @@
+//
+// Breadcrumb
+// --------------------------------------------------
+
+
+// Dark version
+
+.breadcrumb-item {
+  > a {
+    color: $breadcrumb-dark-item-link-color;
+    text-decoration: none;
+    &:hover {
+      color: $breadcrumb-dark-item-link-hover-color;
+      text-decoration: none;
+    }
+  }
+}
+
+
+// Light version
+
+.breadcrumb-alt.breadcrumb-light .breadcrumb-item,
+.breadcrumb-light .breadcrumb-item {
+  > a {
+    color: $breadcrumb-light-item-link-color;
+    &:hover {
+      color: $breadcrumb-light-item-link-hover-color;
+    }
+  }
+  &.active { color: $breadcrumb-light-active-color; }
+}
+
+
+// Alternate breadcrumb style
+
+.breadcrumb-alt {
+  .breadcrumb-item + .breadcrumb-item {
+    &::before {
+      margin-top: .0625rem;
+      font-family: $icon-font-family;
+      content: escape-svg($breadcrumb-alt-divider);
+    }
+  }
+}

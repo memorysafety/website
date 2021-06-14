@@ -1,0 +1,39 @@
+//
+// Badge
+// --------------------------------------------------
+
+
+.badge-secondary,
+.badge-light {
+  color: $body-color;
+}
+
+.badge-warning {
+  color: $white;
+}
+
+
+// Badge link
+
+a.badge {
+  text-decoration: none;
+  &.badge-warning:hover { color: $white; }
+}
+
+
+// Badge floating (absolute position)
+
+.badge {
+  &.badge-floating {
+    position: absolute;
+    top: $badge-floating-offset-y;
+    left: $badge-floating-offset-x;
+    z-index: 2;
+    
+    // Alignment
+    &.badge-floating-right {
+      left: auto;
+      right: $badge-floating-offset-x;
+    }
+  }
+}

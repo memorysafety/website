@@ -1,0 +1,293 @@
+//
+// Steps
+// --------------------------------------------------
+
+
+// Horizontal
+
+.cs-step {
+  .cs-step-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cs-step-indicator {
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+    width: $step-indicator-size;
+    height: $step-indicator-size;
+    margin-right: $step-indicator-margin-x;
+    line-height: $step-indicator-size;
+    text-align: center;
+    color: $step-indicator-color;
+    font-weight: 900;
+    transition: color .3s ease-in-out;
+    z-index: 3;
+    @include font-size($step-indicator-font-size);
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translateY(-50%) translateX(-50%) scale(0);
+      opacity: 0;
+      content: '';
+      will-change: transform;
+      z-index: 2;
+    }
+    &::before {
+      width: ($step-indicator-size * 1.4);
+      height: ($step-indicator-size * 1.4);
+      background-color: rgba($primary, .12);
+      transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    }
+    &::after {
+      width: ($step-indicator-size * 1.95);
+      height: ($step-indicator-size * 1.95);
+      background-color: rgba($primary, .06);
+      transition: transform .3s ease .1s, opacity .3s ease .1s;
+    }
+  }
+  .cs-step-line {
+    position: relative;
+    width: 100%;
+    height: .0625rem;
+    background-image: $step-line-gradient;
+    background-size: $step-line-gradient-size .0625rem;
+    z-index: 2;
+  }
+  &:hover {
+    .cs-step-indicator {
+      color: $primary;
+      &::before,
+      &::after {
+        transform: translateY(-50%) translateX(-50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .cs-step-indicator {
+      color: $primary;
+      &::before {
+        width: ($step-indicator-size * 1.2);
+        height: ($step-indicator-size * 1.2);
+        transform: translateY(-50%) translateX(-50%) scale(1);
+        opacity: 1;
+      }
+      &::after { display: none; }
+    }
+  }
+}
+
+
+// Vertical
+
+.cs-step-vertical {
+  display: flex;
+  max-width: calc(50% + (#{$step-vertical-line-width} / 2));
+  margin-left: auto;
+
+  .cs-step-line {
+    position: relative;
+    flex: 0 0 $step-vertical-line-width;
+    width: $step-vertical-line-width;
+    margin-top: ($step-vertical-line-margin-y + $step-vertical-line-bullet-size);
+    background-color: $step-vertical-line-color;
+    color: $step-vertical-dot-color;
+    z-index: 2;
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      content: '';
+      z-index: 3;
+    }
+    &::before {
+      top: -($step-vertical-line-margin-y / 2 + $step-vertical-line-bullet-size);
+      left: 50%;
+      width: $step-vertical-line-bullet-size;
+      height: $step-vertical-line-bullet-size;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      transition: transform .3s ease-in-out;
+      will-change: transform;
+      background-color: currentColor;
+    }
+    &::after {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      transition: height .3s ease-in-out;
+      will-change: height;
+      background-color: $step-vertical-active-color;
+    }
+  }
+  .cs-step-body {
+    padding: {
+      right: $step-vertical-body-padding-x;
+      left: $step-vertical-body-padding-x;
+    }
+  }
+  &:nth-child(2n) {
+    margin-left: 0;
+    text-align: right;
+    .cs-step-line { order: 2; }
+    .cs-step-body { order: 1; }
+  }
+  &.active,
+  &.tns-nav-active {
+    .cs-step-line {
+      &::before {
+        background-color: $step-vertical-active-color;
+      }
+      &::after {
+        height: 100%;
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    max-width: none;
+    margin-left: 0;
+    .cs-step-body {
+      padding: {
+        right: $step-vertical-body-padding-x / 1.5;
+        bottom: $step-vertical-body-padding-y;
+        left: $step-vertical-body-padding-x / 1.5;
+      }
+    }
+    &:nth-child(2n) {
+      text-align: left;
+      .cs-step-line { order: 1; }
+      .cs-step-body { order: 2; }
+    }
+  }
+}
+
+// Vertical alignment base
+.cs-steps-vertical-right,
+.cs-steps-vertical-left,
+.table {
+  .cs-step-vertical {
+    max-width: none;
+    margin-left: 0;
+    .cs-step-body {
+      padding-bottom: $step-vertical-body-padding-y;
+    }
+    &:last-child .cs-step-body {
+      padding-bottom: 0;
+    }
+  }
+}
+
+// Vertical alignment right
+.cs-steps-vertical-right {
+  padding-right: $step-vertical-line-bullet-size / 2;
+  .cs-step-vertical {
+    text-align: right;
+    .cs-step-line { order: 2; }
+    .cs-step-body { order: 1; }
+  }
+}
+
+// Vertical alignment left
+.cs-steps-vertical-left {
+  padding-left: $step-vertical-line-bullet-size / 2;
+  .cs-step-vertical {
+    text-align: left;
+    &:nth-child(2n) {
+      .cs-step-line { order: 1; }
+      .cs-step-body { order: 2; }
+    }
+  }
+}
+
+
+// Vertical inside table
+
+.table .cs-step-vertical {
+  display: table-row;
+  text-align: left;
+  white-space: nowrap;
+  color: $step-vertical-table-color;
+  .cs-step-line {
+    position: absolute;
+    top: calc(50% + (#{$step-vertical-line-bullet-size} * 1.5));
+    left: 50%;
+    margin-top: 0;
+    height: calc(100% - (#{$step-vertical-line-bullet-size} * 2.5));
+    transform: translateX(-50%);
+  }
+  &:last-child {
+    .cs-step-line { height: 0; }
+  }
+  &.active {
+    color: $step-vertical-table-active-color;
+  }
+
+  // IE 11 fix
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    .cs-step-line {
+      top: 40px;
+      height: 100%;
+    }
+  }
+}
+
+
+// Vertical nav
+
+.cs-step-vertical.cs-step-vertical-nav {
+  text-decoration: none;
+  cursor: pointer;
+  .cs-step-line {
+    margin-top: 0;
+    &::before,
+    &::after {
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+    }
+    &::before {
+      transition: background-color .25s ease-in-out;
+      z-index: 3;
+    }
+    &::after {
+      left: 50%;
+      width: ($step-vertical-line-bullet-size * 2);
+      height: ($step-vertical-line-bullet-size * 2);
+      border-radius: 50%;
+      background-color: $gray-200;
+      z-index: 2;
+    }
+  }
+  .cs-step-body {
+    width: 100%;
+    padding: $step-vertical-nav-body-padding-y / 2 $step-vertical-nav-body-padding-x;
+  }
+  .cs-step-label {
+    color: $step-vertical-label-color;
+    transition: color .25s ease-in-out;
+  }
+  &.active,
+  &.tns-nav-active {
+    .cs-step-label { color: $step-vertical-active-label-color; }
+  }
+  &:hover {
+    .cs-step-line::before {
+      background-color: $step-vertical-active-color;
+    }
+    .cs-step-label {
+      color: $step-vertical-active-label-color;
+    }
+  }
+  &:last-child {
+    .cs-step-body { padding-bottom: $step-vertical-nav-body-padding-y / 2; }
+  }
+}

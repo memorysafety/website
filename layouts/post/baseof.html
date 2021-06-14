@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html class="tpl-post">
+  {{ partial "head.html" . }} {{ partial "header.html" . }}
+  <main>
+    <div class="container-fluid pb-6">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">{{ partial "hero.html" . }}{{ block "main" . }}{{ end }}</div>
+      </div>
+    </div>
+  </main>
+  {{ partial "footer.html" . }}
+</html>

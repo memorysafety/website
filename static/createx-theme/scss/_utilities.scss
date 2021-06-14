@@ -1,0 +1,507 @@
+//
+// Utilities
+// Extends default Bootstrap utility classes
+// Classes with a purpose to reduce the frequency of 
+// highly repetitive declarations
+// --------------------------------------------------
+
+
+// Disabled background of the element
+.bg-0 {
+  background: none !important;
+}
+.bg-image-0 {
+  background-image: none !important;
+}
+
+
+// Faded background color
+@each $color, $value in $theme-colors {
+  .bg-faded-#{$color} {
+    background-color: rgba($value, .08) !important;
+  }
+}
+
+// Background image specific utilities
+
+.bg-size-cover {
+  background-size: cover !important;
+}
+.bg-no-repeat {
+  background-repeat: no-repeat !important;
+}
+.bg-repeat-x {
+  background-repeat: repeat-x !important;
+}
+.bg-repeat-y {
+  background-repeat: repeat-y !important;
+}
+.bg-fixed {
+  background-attachment: fixed !important;
+}
+
+
+// Background-position classes
+@each $bg-position, $value in $bg-position {
+  @include background-position-variant($bg-position, $value);
+}
+
+
+// Background transition for links
+
+a[class^='bg-'],
+a[class*='bg-'] {
+  transition: background-color .25s ease;
+}
+
+
+// Overlay
+
+.bg-overlay {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $gray-900;
+  opacity: .5;
+  z-index: 1;
+}
+.bg-overlay-content {
+  display: block;
+  position: relative;
+  z-index: 5;
+}
+
+// Body font size variants: .font-size-{lg}
+@each $size, $value in $font-sizes {
+  @include font-size-variant('.font-size-#{$size}', $value);
+}
+.lead {
+  font-size: $lead-font-size !important;
+}
+
+// Font weight black
+.font-weight-black {
+  font-weight: 900 !important;
+}
+
+// Text shadow
+.text-shadow {
+  text-shadow: $text-shadow !important;
+}
+
+// Box shadow
+.box-shadow {
+  @include box-shadow($box-shadow !important);
+}
+.box-shadow-sm {
+  @include box-shadow($box-shadow-sm !important);
+}
+.box-shadow-lg {
+  @include box-shadow($box-shadow-lg !important);
+}
+
+// Border-light color
+.border-light {
+  border-color: $border-light-color !important;
+}
+
+// Add additional rounded corner sizes
+.rounded-lg {
+  border-radius: $border-radius-lg;
+}
+.rounded-sm {
+  border-radius: $border-radius-sm;
+}
+
+// Disable border-radius
+.rounded-top-0 {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.rounded-bottom-0 {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.rounded-right-0 {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.rounded-left-0 {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+// Disable box-shadow for specific component
+.box-shadow-0 {
+  box-shadow: none !important;
+}
+
+// Disable text decoration
+.text-decoration-0 {
+  text-decoration: none !important;
+}
+
+// Opacity classes
+@each $opacity, $value in $opacity {
+  @include opacity-variant($opacity, $value);
+}
+
+// Apply base line height
+.line-height-base {
+  line-height: $line-height-base !important;
+}
+
+// Table layout fixed
+.table-fixed { table-layout: fixed !important; }
+
+// Disable animation
+.animation-0 { animation: none !important; }
+
+// Override dark text color
+.text-dark { color: $gray-900 !important; }
+
+// Override secondary background color
+.bg-secondary { background-color: $gray-200 !important; }
+
+// Override dark background color
+.bg-dark { background-color: $gray-900 !important; }
+
+// Gradient background
+.bg-gradient { @include gradient-background; }
+
+// Text-uppercase + letter-spacing
+.text-uppercase { letter-spacing: $letter-spacing !important; }
+
+// For textual dividers (pipes)
+.text-border {
+  color: darken($border-color, 5%) !important;
+}
+
+// For overriding links color
+.text-color-inherit { color: inherit !important; }
+
+// Overflow-x hidden
+.overflow-x-hidden { overflow-x: hidden !important; }
+
+// Overflow-y hidden
+.overflow-y-hidden { overflow-y: hidden !important; }
+
+
+// Image scale on hover
+
+.cs-image-scale {
+  .cs-image-inner {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    img {
+      display: block;
+      width: 100%;
+      transition: transform .3s ease-in-out;
+      will-change: transform;
+    }
+  }
+  &:hover .cs-image-inner img { transform: scale(1.08); }
+  &.media:hover .cs-image-inner img { transform: scale(1.14); }
+  &.card-hover:hover { transform: translateY(0); }
+}
+
+
+// Image fade on hover
+
+.cs-image-fade {
+  position: relative;
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    top: -.125rem;
+    left: -.125rem;
+    width: calc(100% + .25rem);
+    height: calc(100% + .25rem);
+    background-color: $white;
+    border-radius: inherit;
+    transition: background-color .3s ease-in-out;
+    content: '';
+    will-change: background-color;
+    z-index: 2;
+  }
+  .cs-image-inner {
+    position: relative;
+    z-index: 3;
+    hr { transition: opacity .3s ease-in-out; }
+  }
+  .cs-inner-text {
+    transition: color .3s ease-in-out;
+  }
+  img[src*='.svg'].cs-inner-img {
+    transition: filter .3s ease-in-out;
+    will-change: filter;
+  }
+  &:hover {
+    &::before {
+      background-color: rgba($gray-900, .6);
+    }
+    .cs-image-inner {
+      hr { opacity: .4; }
+    }
+    .cs-inner-text {
+      color: $white;
+      &.nav-link:hover { color: rgba($white, .8); }
+    }
+    img[src*='.svg'].cs-inner-img {
+      filter: brightness(0) invert(1);
+    }
+  }
+  &.card::before {
+    border-radius: $card-inner-border-radius;
+  }
+
+  @include media-breakpoint-down(sm) {
+    &::before {
+      background-color: rgba($gray-900, .6);
+    }
+    .cs-image-inner {
+      hr { opacity: .4; }
+    }
+    .cs-inner-text {
+      color: $white;
+      &.nav-link:hover { color: rgba($white, .8); }
+    }
+    img[src*='.svg'].cs-inner-img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+a.cs-image-fade {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+// For card/nav styled links
+
+.cs-heading-highlight {
+  text-decoration: none;
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    transition: color .25s;
+  }
+  &:hover {
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      color: $primary;
+    }
+  }
+}
+
+// Swap image
+
+.cs-swap-image {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+
+  .cs-swap-from,
+  .cs-swap-to {
+    display: block;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .cs-swap-to {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  &:hover, &.active {
+    .cs-swap-from { opacity: 0; }
+    .cs-swap-to { opacity: 1; }
+  }
+}
+.card.card-hover:hover .cs-swap-image,
+.card.card-active .cs-swap-image {
+  .cs-swap-from,
+  .cs-swap-to { transition-duration: .25s; }
+  .cs-swap-from { opacity: 0; }
+  .cs-swap-to { opacity: 1; }
+}
+
+
+// Faded icon dropdown
+
+.icon-dropdown {
+  position: relative;
+  > .social-btn { margin-bottom: .5rem; }
+  &:hover {
+    .icon-drop-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+    .icon-drop-item {
+      transform: scale(1);
+      opacity: 1;
+      @include multi-easing(3, .15, .1, ease-in);
+    }
+  }
+}
+.icon-drop-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: -.5rem;
+  margin: 0;
+  padding: .25rem;
+  list-style: none;
+  border-radius: $border-radius;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease-in-out;
+  z-index: 3;
+  will-change: opacity;
+}
+.icon-drop-item {
+  padding: .25rem;
+  transform: scale(.7);
+  opacity: 0;
+  will-change: transform;
+}
+
+// Faded icon drop directions
+
+.icon-dropleft {
+  > .social-btn {
+    margin-bottom: initial;
+    margin-left: .5rem;
+  }
+  .icon-drop-menu {
+    top: -.5rem;
+    right: 100%;
+    left: initial;
+    flex-direction: row-reverse;
+  }
+}
+.icon-dropright {
+  > .social-btn {
+    margin-bottom: initial;
+    margin-right: .5rem;
+  }
+  .icon-drop-menu {
+    top: -.5rem;
+    right: initial;
+    left: 100%;
+    flex-direction: row;
+  }
+}
+.icon-dropup {
+  > .social-btn {
+    margin-bottom: initial;
+    margin-top: .5rem;
+  }
+  .icon-drop-menu {
+    top: initial;
+    left: -.5rem;
+    bottom: 100%;
+    flex-direction: column-reverse;
+  }
+}
+
+
+// Binded content
+
+.cs-binded-content {
+  position: relative;
+}
+.cs-binded-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: opacity, transform;
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+  transform: scale(.95);
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+  &.active {
+    position: relative;
+    transform: none;
+    opacity: 1;
+    z-index: 5;
+    cursor: initial;
+    pointer-events: initial;
+  }
+}
+
+
+// Custom collapse toggler
+
+.cs-collapse-toggler {
+  position: relative;
+  padding-right: 1.75rem;
+
+  &[aria-expanded=false],
+  &.collapsed {
+    &::before {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+    }
+    &::after {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .cs-collapse-toggler-indicator {
+      transform: rotate(0);
+    }
+  }
+  &::before,
+  &::after {
+    top: 0;
+    left: 0;
+    transition: opacity .25s ease-in-out;
+  }
+  &::before {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    content: attr(data-collapsed);
+  }
+  &::after {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    content: attr(data-expanded);
+  }
+  .cs-collapse-toggler-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    vertical-align: middle;
+    transform: rotate(180deg);
+  }
+}
+
+
+// Switch visibility of an element
+
+.cs-view {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}

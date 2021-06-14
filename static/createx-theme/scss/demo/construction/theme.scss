@@ -1,0 +1,18 @@
+// Construction demo overrides
+
+// Demo specific overrides
+$primary:                 #ff5a30;
+$path-to-fonts:          'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap' !default;
+$font-family-sans-serif: 'Ubuntu', sans-serif !default;
+
+// Gradient
+$gradient-from-color:   $primary;
+$gradient-to-color:    #ff9330;
+
+// Path to font icons
+$path-to-icons:         url('../../../fonts/createx-icons.ttf?h4y910') format('truetype'),
+                        url('../../../fonts/createx-icons.woff?h4y910') format('woff'),
+                        url('../../../fonts/createx-icons.svg?h4y910#createx-icons') format('svg') !default;
+
+// Import core theme styles
+@import '../../theme.scss';

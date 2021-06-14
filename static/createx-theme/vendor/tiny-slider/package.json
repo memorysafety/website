@@ -1,0 +1,88 @@
+{
+  "_args": [
+    [
+      "tiny-slider@2.9.3",
+      "/Users/rokaux/Sites/createx"
+    ]
+  ],
+  "_from": "tiny-slider@2.9.3",
+  "_id": "tiny-slider@2.9.3",
+  "_inBundle": false,
+  "_integrity": "sha512-KZY45m+t3fb3Kwlqsic0PIos1lgTNXBEC5N/AhI3aNEcryrd0nXohZMbVPMkcNYdbLjY1IUJAXWYAO6/RGJnKw==",
+  "_location": "/tiny-slider",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "tiny-slider@2.9.3",
+    "name": "tiny-slider",
+    "escapedName": "tiny-slider",
+    "rawSpec": "2.9.3",
+    "saveSpec": null,
+    "fetchSpec": "2.9.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/tiny-slider/-/tiny-slider-2.9.3.tgz",
+  "_spec": "2.9.3",
+  "_where": "/Users/rokaux/Sites/createx",
+  "author": {
+    "name": "ganlanyuan",
+    "email": "ganlanyuan@gmail.com"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env"
+          ]
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/ganlanyuan/tiny-slider/issues"
+  },
+  "description": "Vanilla javascript slider for all purposes, inspired by Owl Carousel.",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nightwatch": "^1.3.5",
+    "nodemon": "^2.0.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "homepage": "https://github.com/ganlanyuan/tiny-slider#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "dist/tiny-slider.js",
+  "name": "tiny-slider",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganlanyuan/tiny-slider.git"
+  },
+  "scripts": {
+    "chrome": "nightwatch -c browserstack.conf.js -e chrome",
+    "compile": "npx babel test/js/tests-async.js -o test/js/tests-async-es5.js",
+    "edge": "nightwatch -c browserstack.conf.js -e edge",
+    "firefox": "nightwatch -c browserstack.conf.js -e firefox",
+    "ie": "nightwatch -c browserstack.conf.js -e ie",
+    "ngrok": "~/ngrok http 3000",
+    "opera": "nightwatch -c browserstack.conf.js -e opera",
+    "safari": "nightwatch -c browserstack.conf.js -e safari",
+    "start": "nodemon --watch test/js/tests-async.js --exec npm run compile",
+    "test": "nightwatch -c browserstack.conf.js -e chrome,firefox,ie,edge,safari,opera"
+  },
+  "types": "src/tiny-slider.d.ts",
+  "version": "2.9.3"
+}

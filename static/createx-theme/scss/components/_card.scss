@@ -1,0 +1,343 @@
+//
+// Card
+// --------------------------------------------------
+
+
+// Card title
+
+.card-title { margin-bottom: $card-spacer-y * .6; }
+
+
+// Card link
+
+a.card:hover,
+a.card-body:hover { text-decoration: none; }
+
+
+// Card hover / active state
+
+.card-hover { transition: $card-transition; }
+.card {
+  &.card-hover:hover,
+  &.card-active {
+    @include box-shadow($card-active-box-shadow !important);
+  }
+  &.box-shadow {
+    @include box-shadow($box-shadow-sm !important);
+    &.card-hover:hover,
+    &.card-active {
+      @include box-shadow($card-active-box-shadow-hover !important);
+    }
+  }
+}
+
+
+// Horizontal card
+
+.card-horizontal {
+  
+  .card-img-top,
+  .card-img-bottom {
+    min-height: 15rem;
+    background: {
+      position: center;
+      repeat: no-repeat;
+      size: cover;
+    }
+  }
+  
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+
+    .card-body {
+      padding: $card-spacer-x * 1.325;
+    }
+
+    .card-img-top,
+    .card-img-bottom {
+      width: $card-horizontal-image-width;
+    }
+    
+    .card-img-top {
+      border-radius: 0;
+      @include border-left-radius($card-inner-border-radius); 
+    }
+
+    .card-img-top.order-sm-2 {
+      border-radius: 0;
+      @include border-right-radius($card-inner-border-radius); 
+    }
+  }
+}
+
+
+// Header navs
+
+.card-header-tabs,
+.card-header-pills {
+  margin: {
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+
+// Card theme border colors
+
+.card {
+  &.border-primary,
+   .border-primary { border-color: rgba($primary, .4) !important; }
+  &.border-success,
+   .border-success { border-color: rgba($success, .4) !important; }
+  &.border-danger,
+   .border-danger  { border-color: rgba($danger,  .4) !important; }
+  &.border-warning,
+   .border-warning { border-color: rgba($warning, .4) !important; }
+  &.border-info,
+   .border-info    { border-color: rgba($info,    .4) !important; }
+  &.border-dark,
+   .border-dark    { border-color: rgba($dark,    .4) !important; }
+}
+
+
+// Accordion base
+
+[class^='accordion'],
+[class*=' accordion'] {
+  > .card {
+    border: 0;
+  }
+  .card-header {
+    padding: {
+      right: 0;
+      left: 0;
+    }
+    background-color: transparent;
+    border: 0;
+  }
+  .card-body {
+    padding: {
+      top: 0;
+      right: 0;
+    }
+  }
+  .accordion-heading {
+    margin-bottom: 0;
+    > a {
+      display: flex;
+      position: relative;
+      align-items: center;
+      color: $accordion-heading-color;
+      text-decoration: none;
+      &:hover { color: $accordion-heading-hover-color; }
+    }
+  }
+  .accordion-indicator {
+    display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+    width: $accordion-indicator-size;
+    height: $accordion-indicator-size * $line-height-sm;
+    align-self: flex-start;
+    font: {
+      family: $icon-font-family;
+      weight: 400;
+    }
+    color: $accordion-indicator-color;
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      transition: opacity .2s ease-in-out, visibility .2s ease-in-out;
+    }
+    &::before {
+      opacity: 1;
+      visibility: visible;
+      content: '\e914';
+    }
+    &::after {
+      opacity: 0;
+      visibility: hidden;
+      content: '\e915';
+    }
+  }
+  .collapsed .accordion-indicator {
+    &::before {
+      opacity: 0;
+      visibility: hidden;
+    }
+    &::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+
+// Accordion main
+
+.accordion {
+  .card-header {
+    padding: {
+      top: ($card-spacer-y * .75);
+      bottom: ($card-spacer-y * .75);
+    }
+  }
+  .card-body {
+    padding: {
+      bottom: ($card-spacer-y * .75);
+      left: ($accordion-indicator-size + $accordion-indicator-offset-x);
+    }
+  }
+  .accordion-indicator {
+    margin: {
+      top: .25rem;
+      right: $accordion-indicator-offset-x;
+    }
+    font-size: $accordion-indicator-size;
+  }
+}
+
+
+// Accordion alternative
+
+.accordion-alt {
+  > .card { border-radius: 0; }
+  .card-header {
+    padding: {
+      top: $spacer * 1.25;
+      bottom: $spacer * 1.25;
+    }
+  }
+  .card-body {
+    margin-top: -.25rem;
+    padding: {
+      bottom: $spacer * 1.75;
+      left: 0;
+    }
+  }
+  .accordion-heading {
+    > a { justify-content: space-between; }
+  }
+}
+
+
+// Card columns
+
+.card-columns {
+  @include media-breakpoint-down(sm) {
+    column-count: 2;
+  }
+  @include media-breakpoint-down(xs) {
+    column-count: 1;
+  }
+}
+
+
+// Team card
+// 
+// Base
+
+[class^='cs-team'],
+[class*=' cs-team'] {
+  border: 0;
+  .card-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-floating-links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: {
+      right: $team-card-floating-links-padding-x;
+      left: $team-card-floating-links-padding-x;
+    }
+    z-index: 3;
+  }
+}
+
+// Team card
+
+.cs-team {
+  .card-img {
+    &:before {
+      display: block;
+      position: absolute;
+      @extend %stretch-xy;
+      background: $team-card-img-bg;
+      transition: opacity
+                  $team-card-floating-links-transition-duration;
+      opacity: 0;
+      content: '';
+      z-index: 2;
+    }
+  }
+  .card-floating-links {
+    padding: {
+      top: $team-card-floating-links-padding-y;
+      bottom: $team-card-floating-links-padding-y;
+    }
+    opacity: 0;
+    transition: opacity
+                $team-card-floating-links-transition-duration
+                ease-in-out;
+  }
+  &:hover {
+    .card-img::before,
+    .card-floating-links { opacity: 1; }
+  }
+}
+
+
+// Team card alternate
+
+.cs-team-alt {
+  .card-floating-links {
+    padding: {
+      top: $team-card-alt-floating-links-padding-y;
+      bottom: $team-card-alt-floating-links-padding-y;
+    }
+    background-color: $team-card-alt-floating-links-bg;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform
+                $team-card-alt-floating-links-transition-duration,
+                opacity
+                $team-card-alt-floating-links-transition-duration;
+    > * {
+      transform: translateY(30%);
+      opacity: 0;
+      transition: transform
+                  $team-card-alt-floating-links-transition-duration -
+                  $team-card-alt-floating-links-transition-delay
+                  ease-in-out
+                  $team-card-alt-floating-links-transition-delay,
+                  opacity
+                  $team-card-alt-floating-links-transition-duration
+                  ease-in-out
+                  $team-card-alt-floating-links-transition-delay;
+    }
+  }
+  &:hover {
+    .card-floating-links {
+      &, > * {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+// IE 11 Fix
+// Core Bootstrap issue https://github.com/twbs/bootstrap/issues/21885
+.card *,
+.flex-column * { min-height: .01px; }
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .card .card { display: block; }
+}

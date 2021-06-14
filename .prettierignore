@@ -1,0 +1,2 @@
+# Ignore some template partials, because prettier adds closing HTML tags
+layouts/partials/header.html

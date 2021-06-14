@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="tpl-initiative">
+  {{ partial "head.html" . }} {{ partial "header.html" . }}
+  <span></span>
+  {{ partial "initiative/initiative_hero.html" .}}
+  <span></span>
+
+  <div class="container pb-5">
+    <div class="row">
+      <div class="offset-md-2 col-md-8 initiative-description">
+        <div class="logo-container float-right ml-4 mb-2">
+          <img src="{{ .Params.image }}" alt="{{ .Params.title }} logo" />
+        </div>
+        {{ if eq .File.Ext "md" }}{{ partial "md-top-context.html" . }}{{ end }}
+        <span></span>
+        {{ block "main" .}}{{ end }}
+        <span></span>
+        {{ if eq .File.Ext "md" }}{{ partial "md-bot-context.html" . }}{{ end }}
+      </div>
+    </div>
+
+    {{if isset .Params "blog_posts"}}
+    <div class="row">
+      <div class="offset-md-2 col-md-8">
+        <div class="initiative-posts mt-1">
+          <h2>From our Blog</h2>
+          {{ range .Params.blog_posts }}
+          <div>{{ range where $.Site.Pages "File.LogicalName" . }} {{ partial "blog/blog_list_item.html" .}}{{ end }}</div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{end}} {{if isset .Params "sponsors"}}
+    <div class="row">
+      <div class="offset-md-2 col-md-8">
+        <div class="initiative-sponsors mt-1">
+          <h2>Sponsors</h2>
+          <div class="sponsor-logos">
+            {{ range .Params.sponsors }}
+            <div class="sponsor">
+              <img src="/images/sponsors/small/{{ lower . }}-logo.png" alt="{{ . }}" />
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{end}}
+  </div>
+
+  <span></span>
+  {{ partial "footer.html" . }}
+</html>

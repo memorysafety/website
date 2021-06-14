@@ -1,0 +1,88 @@
+//
+// Social buttons
+// --------------------------------------------------
+
+
+// Base styles
+
+.social-btn {
+  display: inline-block;
+  width: $social-btn-basic-size;
+  height: $social-btn-basic-size;
+  padding: initial;
+  border: $social-btn-border-width solid transparent;
+  color: $social-btn-dark-color;
+  transition: $social-btn-transition;
+  @include font-size($social-btn-basic-font-size);
+  text: {
+    align: center;
+    decoration: none;
+  }
+
+  &:hover { color: $social-btn-dark-hover-color; }
+  &:focus { outline: none; }
+  &:active {
+    transition: none;
+    box-shadow: none;
+  }
+
+  &:not(.sb-round) {
+    @include border-radius($social-btn-border-radius);
+  }
+
+  &.sb-light {
+    color: $social-btn-basic-color;
+    &:hover { color: $social-btn-basic-hover-color; }
+  }
+
+  &.sb-solid,
+  &.sb-outline {
+    width: $social-btn-size;
+    height: $social-btn-size;
+    @include font-size($social-btn-font-size);
+    > i { line-height: $social-btn-size - .125rem; }
+  }
+
+
+  // Solid variant
+
+  &.sb-solid {
+    background-color: $social-btn-dark-bg;
+    &:hover { background-color: $social-btn-dark-hover-bg; }
+
+    &.sb-light {
+      background-color: $social-btn-solid-light-bg;
+      color: $social-btn-solid-light-color;
+      &:hover {
+        background-color: $social-btn-solid-light-hover-bg;
+        color: $social-btn-solid-light-hover-color;
+      }
+    }
+  }
+
+
+  // Outline variant
+
+  &.sb-outline {
+    border-color: $social-btn-dark-border-color;
+    background-color: transparent;
+    &:hover { border-color: $primary; }
+
+    &.sb-light {
+      border-color: $social-btn-outline-light-border-color;
+      background-color: $social-btn-outline-light-bg;
+      color: $social-btn-outline-light-color;
+      &:hover {
+        border-color: $social-btn-outline-light-hover-border-color;
+        color: $social-btn-outline-light-hover-color;
+      }
+    }
+  }
+}
+
+
+// Round shape
+
+.sb-round {
+  @include border-radius(50%);
+}

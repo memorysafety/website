@@ -1,0 +1,87 @@
+//
+// Gallery
+// based on https://github.com/sachinchoolur/lightgallery.js
+// ----------------------------------------------------------
+
+
+.cs-gallery-item {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: escape-svg($gallery-cursor), pointer;
+
+  > img {
+    display: block;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+  }
+
+  &::before {
+    display: block;
+    position: absolute;
+    background-color: $gallery-overlay-bg;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    z-index: 3;
+    content: '';
+    @extend %stretch-xy;
+  }
+
+  .cs-gallery-caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $spacer ($spacer / 2);
+    transform: translateY($spacer);
+    transition: transform .35s ease-in-out, opacity .35s ease-in-out;
+    opacity: 0;
+    color: $gallery-caption-color;
+    font-weight: $gallery-caption-font-weight;
+    text-align: center;
+    will-change: transform;
+    z-index: 4;
+    @include font-size($gallery-caption-font-size);
+  }
+
+  // Video-item indicator
+  &.video-item::after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $video-btn-size;
+    height: $video-btn-size;
+    padding-left: .25rem;
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: $video-btn-bg;
+    color: $video-btn-color;
+    font-family: $icon-font-family;
+    line-height: $video-btn-size;
+    text-align: center;
+    content: '\e93f';
+    z-index: 4;
+    @include font-size($video-btn-font-size);
+  }
+
+  &:hover {
+    &::before { opacity: 1; }
+    .cs-gallery-caption {
+      transform: initial;
+      opacity: 1;
+    }
+  }
+
+  &:active { cursor: grab; }
+}
+
+
+// Gallery backdrop
+.lg-backdrop { z-index: $zindex-gallery-backdrop; }
+
+// Gallery full-width scrollbar disable
+.lg-on { overflow: hidden; }

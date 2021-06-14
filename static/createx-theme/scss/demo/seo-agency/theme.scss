@@ -1,0 +1,17 @@
+// SEO & Marketing Agency demo overrides
+
+// Demo specific overrides
+$primary: #7772f1;
+
+// Gradient
+$gradient-from-color:   $primary;
+$gradient-to-color:     #70a9ff;
+
+
+$path-to-icons:         url('../../../fonts/createx-icons.ttf?h4y910') format('truetype'),
+                        url('../../../fonts/createx-icons.woff?h4y910') format('woff'),
+                        url('../../../fonts/createx-icons.svg?h4y910#createx-icons') format('svg') !default;
+
+
+// Import core theme styles
+@import '../../theme.scss';

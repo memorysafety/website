@@ -1,0 +1,171 @@
+// 
+// Portfolio (components related to portfolio)
+// --------------------------------------------------
+
+
+// General styles
+
+$portfolio-card-slide-body-offset: ($btn-font-size * $btn-line-height) + ($btn-padding-y * 2) + ($spacer * 1.5) + .125rem + .0625rem !default;
+
+.cs-portfolio-card-img {
+  position: relative;
+  @include border-radius($portfolio-card-border-radius);
+  overflow: hidden;
+  z-index: 1;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+  > img {
+    display: block;
+    width: 100%;
+    transition: transform .3s ease-in-out;
+  }
+}
+
+.cs-portfolio-card-body {
+  position: relative;
+  padding: $portfolio-card-body-padding-y $portfolio-card-body-padding-x;
+  z-index: 2;
+}
+
+.cs-portfolio-card-title {
+  margin-bottom: $spacer * .25;
+  font-weight: $portfolio-card-title-font-weight;
+  transition: color .3s ease-in-out;
+  color: $portfolio-card-title-color;
+  @include font-size($portfolio-card-title-font-size);
+}
+
+
+// Card variants
+// --------------------------------------------------
+
+
+// Scale effect
+
+.cs-portfolio-card-scale {
+  display: block;
+  position: relative;
+  text-decoration: none;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: -($grid-gutter-width / 2);
+    left: -($grid-gutter-width / 2);
+    width: calc(100% + #{$grid-gutter-width});
+    height: calc(100% + #{$grid-gutter-width / 2});
+    background-color: $portfolio-card-bg;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+    transition: opacity .3s ease-in-out;
+    opacity: 0;
+    content: '';
+  }
+
+  .cs-portfolio-card-img > img { will-change: transform; }
+
+  .cs-portfolio-card-body {
+    padding: {
+      right: 0;
+      bottom: ($portfolio-card-body-padding-y * 1.25);
+      left: 0;
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+    &::before { opacity: 1; }
+
+    .cs-portfolio-card-img > img { transform: scale(1.08); }
+    .cs-portfolio-card-title { color: $portfolio-card-title-hover-color; }
+  }
+}
+
+.cs-carousel {
+  .cs-portfolio-card-scale::before { box-shadow: none; }
+}
+
+
+// Slide effect
+
+.cs-portfolio-card-slide {
+  display: block;
+  position: relative;
+  box-shadow: $box-shadow-sm;
+  text-decoration: none;
+  transition: box-shadow .25s ease-in-out;
+  overflow: hidden;
+
+  .cs-portfolio-card-img > img {
+    transition: transform .25s ease-in-out;
+    will-change: transform;
+  }
+
+  .cs-portfolio-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: ($portfolio-card-body-padding-y * 1.5);
+    background-color: $portfolio-card-bg;
+    text-align: center;
+    transform: translateY($portfolio-card-slide-body-offset);
+    transition: transform .25s ease-in-out;
+    will-change: transform;
+    .btn { margin-top: ($spacer * 1.5); }
+  }
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: $box-shadow;
+
+    .cs-portfolio-card-img > img { transform: scale(1.06) translateY(-2rem); }
+    .cs-portfolio-card-body { transform: translateY(0); }
+    
+    &.cs-portfolio-card-video {
+      .cs-video-btn { top: calc(50% - #{$portfolio-card-slide-body-offset}); }
+    }
+  }
+
+  &.cs-portfolio-card-video {
+    .cs-video-btn {
+      top: calc(50% - (#{$portfolio-card-slide-body-offset} / 2));
+      transition: $video-btn-transition, top .25s ease-in-out;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    text-decoration: none;
+    box-shadow: $box-shadow;
+
+    .cs-portfolio-card-img > img { transform: scale(1.06) translateY(-2rem); }
+    .cs-portfolio-card-body { transform: translateY(0); }
+    
+    &.cs-portfolio-card-video {
+      .cs-video-btn { top: calc(50% - #{$portfolio-card-slide-body-offset}); }
+    }
+  }
+}
+
+
+// Card with video
+
+.cs-portfolio-card-video {
+  @include border-radius($portfolio-card-border-radius);
+
+  .cs-portfolio-card-img::after {
+    display: block;
+    position: absolute;
+    background-color: rgba($gray-900, .2);
+    content: '';
+    @extend %stretch-xy;
+  }
+
+  .cs-video-btn {
+    position: absolute;
+    z-index: 3;
+    will-change: top;
+    @extend %center-xy;
+    &:hover { box-shadow: none; }
+  }
+}

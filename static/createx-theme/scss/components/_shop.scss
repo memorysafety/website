@@ -1,0 +1,228 @@
+//
+// Shop specific styles
+// --------------------------------------------------
+
+
+// Product card
+//
+// Basic
+.card-product {
+  max-width: $product-card-max-width;
+  margin: {
+    right: auto;
+    left: auto;
+  }
+  border: 0;
+  box-shadow: none;
+  background-color: transparent;
+
+  .card-body,
+  .card-footer {
+    padding: $product-card-spacing;
+    border: 0;
+    background-color: inherit;
+  }
+  .card-footer {
+    display: none;
+    padding-top: .25rem;
+  }
+
+  // Card footer fading animation
+  @include media-breakpoint-up(lg) {
+    .card-footer {
+      position: absolute;
+      display: none;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      box-shadow: $box-shadow;
+      z-index: 3;
+    }
+    &:hover {
+      box-shadow: $box-shadow;
+      transition: box-shadow .25s;
+      .card-body,
+      .card-footer {
+        background-color: $card-bg;
+      }
+      .card-body {
+        transition: background-color .25s;
+      }
+      .card-footer {
+        display: block;
+        background-color: $card-bg;
+        box-shadow: $box-shadow;
+        animation: card-footer-show .15s;
+        // transition: opacity .15s,
+        //             background-color .15s,
+        //             box-shadow .25s ease .05s;
+      }
+    }
+  }
+
+  // Carousel controls inside card
+  .tns-controls {
+    height: 100%;
+    padding: {
+      right: 0;
+      left: 0;
+    }
+  }
+  [data-controls] {
+    height: 100%;
+    background-color: transparent;
+    border-radius: 0;
+    &:hover { background-color: transparent; }
+  }
+}
+@keyframes card-footer-show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+// Image & widgets wrapper
+.card-product-img {
+  position: relative;
+  > a {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+// Card title
+.card-product-title {
+  font-weight: $product-card-title-font-weight;
+  color: $product-card-title-color;
+  @include font-size($product-card-title-font-size);
+}
+
+// Cards carousel: disable footer
+.cs-carousel {
+  .card-product {
+    background-color: transparent;
+    .card-footer { display: none; }
+    &:hover { box-shadow: none; }
+  }
+}
+
+
+// Optional widgets (badge, rating, btn)
+// 
+// Basic
+.card-product-widgets-top,
+.card-product-widgets-bottom {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  width: 100%;
+  padding: {
+    right: $product-card-widgets-spacing;
+    left: $product-card-widgets-spacing;
+  }
+  z-index: 1;
+}
+.card-product-widgets-top {
+  top: 0;
+  padding-top: $product-card-widgets-spacing;
+}
+.card-product-widgets-bottom {
+  bottom: 0;
+  padding-bottom: $product-card-widgets-spacing;
+}
+
+// Badge
+.product-badge {
+  padding: $product-badge-padding;
+  font-size: $product-badge-font-size;
+  font-weight: $product-badge-font-weight;
+}
+
+// Star rating
+.star-rating {
+  font-size: $star-size;
+  color: $star-color;
+  .active { color: $star-active-color; }
+}
+
+// Wishlist button with tooltip
+.btn-wishlist {
+  display: inline-block;
+  position: relative;
+  width: $btn-wishlist-size;
+  height: $btn-wishlist-size;
+  line-height: $btn-wishlist-size;
+  background-color: $btn-wishlist-bg;
+  color: $btn-wishlist-color;
+  transition: background-color .3s, color .3s;
+  text: {
+    decoration: none;
+    align: center;
+  }
+  @include font-size($btn-wishlist-font-size);
+  @include border-radius($btn-wishlist-border-radius);
+
+  &::before {
+    font: {
+      family: $icon-font-family;
+      size: $font-size-base;
+    }
+    content: '\e91f';
+  }
+  &.active {
+    color: $btn-wishlist-active-color;
+    &::before { content: '\e972'; }
+    &:hover { color: $btn-wishlist-active-hover-color; }
+  }
+  &:hover {
+    color: $btn-wishlist-hover-color;
+  }
+}
+
+
+// Product gallery
+
+.cs-product-gallery {
+  .cs-gallery-item.video-item::after {
+    width: $video-btn-size-lg;
+    height: $video-btn-size-lg;
+    line-height: $video-btn-size-lg;
+    @include font-size($video-btn-font-size-lg);
+  }
+}
+
+
+// Active filters
+
+.active-filter {
+  display: inline-block;
+  padding: $active-filter-padding-y $active-filter-padding-x;
+  transition: $active-filter-transition;
+  color: $active-filter-color;
+  white-space: nowrap;
+  font: {
+    size: $active-filter-font-size;
+    weight: $active-filter-font-weight;
+  }
+  text-decoration: none;
+
+  &:hover {
+    color: $active-filter-hover-color;
+    text-decoration: none;
+  }
+
+  &::before {
+    display: inline-block;
+    margin: {
+      top: -.25rem;
+      right: .5rem;
+    }
+    font: {
+      family: $icon-font-family;
+      size: 1.2em;
+    }
+    vertical-align: middle;
+    content: '\e913';
+  }
+}

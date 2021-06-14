@@ -1,0 +1,16 @@
+//
+// Sticky sidebar
+// Based on https://github.com/abouolia/sticky-sidebar
+// Also requirs https://github.com/marcj/css-element-queries/blob/master/src/ResizeSensor.js
+// --------------------------------------------------
+
+
+.sidebar-sticky {
+  will-change: min-height;
+}
+
+.sidebar-sticky-inner {
+  transform: translate(0, 0); /* For browsers don't support translate3d. */
+  transform: translate3d(0, 0, 0);
+  will-change: position, transform;
+}

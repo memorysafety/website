@@ -1,0 +1,20 @@
+<div class="initiative-hero container-fluid mb-3 position-relative mb-md-5 pt-md-8 pt-8 pb-md-4" style="background: #{{ .Params.background }};">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <h1>{{ .Params.Title}}</h1>
+      <div class="mb-2" style="font-size: 14px; letter-spacing: 0.5px; font-weight: 900; text-transform: uppercase">Prossimo Initiative</div>
+      <div class="initiative-status">
+        {{ if .Params.project_status }}
+        <div>Project Status: {{ .Params.project_status }}</div>
+        {{ end }} {{ if .Params.funding_status }}
+        <div>Funding Status: {{ .Params.funding_status }}</div>
+        {{ end }}
+      </div>
+    </div>
+    <!-- <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="logo-container">
+        <img src="{{ .Params.image }}" alt="{{ .Params.title }} logo" />
+      </div>
+    </div> -->
+  </div>
+</div>

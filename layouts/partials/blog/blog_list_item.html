@@ -1,0 +1,8 @@
+<div class="blog mb-4 pb-3">
+  <div class="blog-body">
+    <div>{{.Date.Format "January 2, 2006"}}</div>
+    <h3 class="mb-1 font-size-lg">{{ .Title }}</h3>
+    <p class="mb-0 font-size-sm text-muted">{{ with .Params.excerpt }} {{ . | markdownify }} {{ else }} {{ .Summary }} {{ end }}</p>
+    <a href="{{ .Permalink }}" class="link font-weight-bold" data-link="1">{{ i18n "read_more" }}</a>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+/* Keep styles here that are specific to overriding the theme */
+
+@import "_variables";
+
+//
+a {
+  color: $primary_color !important;
+}
+
+.btn-primary {
+  background-color: $primary_color !important;
+  border-color: $primary_color !important;
+}
+
+.btn-outline-primary {
+  border-color: $primary_color !important;
+  color: $primary_color !important;
+
+  &:hover {
+    background-color: $primary_color !important;
+    color: #fff !important;
+  }
+}
+
+.text-primary {
+  color: $primary_color !important;
+}
+
+.btn-scroll-top {
+  background-color: $primary_color !important;
+
+  i {
+    color: #fff;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-item:hover > .nav-link,
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: $primary_color !important;
+}
+
+.btn-mint {
+  background-color: $brand_mint;
+  color: $brand_dark_blue !important;
+  border-color: $brand_mint;
+  &:hover {
+    border-color: $brand_dark_blue;
+  }
+  // @todo Hover color for mint buttons
+}
+
+footer {
+  a {
+    color: #fff !important;
+  }
+}
+
+:root {
+  --font-family-sans-serif: "Open Sans", sans-serif;
+}
+
+body,
+.tooltip,
+.popover {
+  font-family: "Open Sans", sans-serif;
+}
+
+.bg-dark {
+  background-color: #051735 !important;
+}
+
+.pt-md-8 {
+  padding-top: 8rem !important;
+}

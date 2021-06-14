@@ -1,0 +1,631 @@
+//
+// Navbar
+// --------------------------------------------------
+
+
+// Global navbar styles (for all screen sizes)
+//---------------------------------------------------
+
+// Navbar Base
+
+.cs-header {
+  position: relative;
+  z-index: $zindex-fixed;
+}
+
+.navbar-box-shadow {
+  box-shadow: $navbar-box-shadow;
+}
+
+.navbar-collapse {
+  margin: {
+    right: -($spacer);
+    left: -($spacer);
+  }
+  padding-top: $navbar-padding-y;
+}
+
+.navbar-brand {
+  font: {
+    size: $navbar-brand-font-size;
+    weight: $navbar-brand-font-weight;
+  }
+  vertical-align: middle;
+  text: {
+    transform: uppercase;
+    decoration: none;
+  }
+  letter-spacing: $letter-spacing;
+  > img {
+    display: block;
+  }
+}
+
+
+// Floating navbar
+
+.navbar-floating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+// Sticky navbar
+
+.navbar-sticky {
+  &.navbar-stuck {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: navbar-show .25s;
+    background-color: $navbar-stuck-bg;
+    box-shadow: $navbar-stuck-box-shadow;
+    z-index: $zindex-fixed;
+  
+    .navbar-brand-static { display: none !important; }
+    .navbar-brand-floating { display: block !important; }
+  
+    &.right-15 {
+      right: 15px;
+      width: calc(100% - 15px);
+    }
+  }
+
+  .navbar-nav {
+    max-height: $navbar-sticky-nav-mobile-max-height;
+    overflow-y: auto;
+  }
+}
+
+.fixed-top.right-15,
+.fixed-bottom.right-15 { right: 15px; }
+
+@keyframes navbar-show {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Navbar logo switch
+.navbar-brand-floating { display: none !important; }
+
+
+// Navbar nav
+
+.navbar-nav {
+  .nav-item {
+    margin-bottom: 0;
+    border-top: $border-width solid $border-color;
+    > .dropdown-menu {
+      padding: {
+        top: 0;
+        bottom: ($navbar-padding-y * .75);
+      }
+    }
+  }
+  .nav-link {
+    padding: ($navbar-padding-y * .75) $navbar-padding-x;
+  }
+  .dropdown-menu {
+    min-width: $navbar-dropdown-min-width;
+    margin-top: -($spacer * .5);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    .dropdown-menu {
+      padding: {
+        right: $spacer;
+        left: $spacer;
+      }
+    }
+    .dropdown-item {
+      padding: {
+        right: $spacer;
+        left: $spacer;
+      }
+      @include font-size($font-size-base);
+    }
+  }
+  .dropdown-divider { display: none; }
+}
+
+
+// Navbar mega dropdown
+
+.mega-dropdown {
+  .dropdown-menu {
+    border-radius: 0;
+    &::before {
+      display: block;
+      top: 0;
+      width: 100%;
+      height: 1.25rem;
+      margin-top: -1.25rem;
+      content: '';
+    }
+  }
+  .container, .container-xl,
+  .container-fluid {
+    display: block;
+    width: 100%;
+  }
+  .dropdown-item {
+    padding: {
+      right: 0 !important;
+      left: 0 !important;
+    }
+  }
+}
+
+
+// Navbar media tool
+
+.media-tool {
+  align-items: center;
+  margin-left: $navbar-media-tool-spacing * .65;
+  text-decoration: none;
+  .media-body {
+    display: none;
+    white-space: nowrap;
+  }
+}
+.media-tool-icon {
+  @include font-size($navbar-media-tool-icon-font-size * .65);
+}
+.media-tool-title {
+  margin-bottom: 0;
+  transition: $navbar-tool-transition;
+  color: $navbar-media-tool-title-color;
+  @include font-size($navbar-media-tool-title-font-size);
+}
+.media-tool-label {
+  color: $navbar-media-tool-label-color;
+  @include font-size($navbar-media-tool-label-font-size);
+}
+
+
+// Navbar nav tool
+
+.nav-tool {
+  padding: {
+    right: $navbar-nav-tool-spacing * .8;
+    left: $navbar-nav-tool-spacing * .8;
+  }
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-tool-icon {
+  margin-top: -.25rem;
+  font-size: $navbar-nav-tool-icon-font-size;
+  vertical-align: middle;
+}
+.nav-tool-label { display: none; }
+
+
+// Navbar Themes
+//---------------------------------------------------
+
+// Navbar Theme Light
+
+.navbar-light {
+
+  // nav
+  .navbar-nav {
+    background-color: $navbar-light-nav-bg;
+    .nav-item {
+      border-color: rgba($white, .1);
+      &:hover > .nav-link { color: $navbar-light-hover-color; }
+      &.active > .nav-link { color: $navbar-light-active-color; }
+      .nav-link.disabled { color: $navbar-light-disabled-color; }
+    }
+    .dropdown-menu {
+      .dropdown:hover > .dropdown-item {
+        color: $navbar-light-color;
+      }
+    }
+  }
+
+  // media tool
+  .media-tool-icon { color: $navbar-light-expand-tool-icon-color; }
+  .media-tool-title { color: $navbar-light-tool-color; }
+  .media-tool-label { color: $navbar-light-tool-text-small-color; }
+  .media-tool:hover .media-tool-title { color: $navbar-light-tool-hover-color; }
+
+  // nav tool
+  .nav-tool-icon { color: $navbar-light-expand-tool-icon-color; }
+  .nav-tool-label { color: $navbar-light-tool-text-small-color; }
+
+  // toggler
+  .navbar-toggler-icon {
+    &,
+    &::before,
+    &::after {
+      background-color: $navbar-light-toggler-bar-color;
+    }
+  }
+}
+
+
+// Navbar Theme Dark
+
+.navbar-dark {
+  
+  // nav
+  .navbar-nav {
+    background-color: $navbar-dark-nav-bg;
+    .nav-item {
+      border-color: rgba($white, .1);
+      &:hover > .nav-link { color: $navbar-dark-hover-color; }
+      &.active > .nav-link { color: $navbar-dark-active-color; }
+      .nav-link.disabled { color: $navbar-dark-disabled-color; }
+    }
+    .dropdown-menu {
+      .dropdown:hover > .dropdown-item {
+        color: $navbar-dark-color;
+      }
+    }
+    .dropdown-item {
+      color: $navbar-dark-color;
+      &:hover { color: $navbar-dark-hover-color; }
+      &.active { color: $navbar-dark-active-color; }
+      &.disabled { color: $navbar-dark-disabled-color; }
+    }
+  }
+
+  // media tool
+  .media-tool-icon { color: $navbar-dark-expand-tool-icon-color; }
+  .media-tool-title { color: $navbar-dark-tool-color; }
+  .media-tool-label { color: $navbar-dark-tool-text-small-color; }
+  .media-tool:hover .media-tool-title { color: $navbar-dark-tool-hover-color; }
+
+  // nav tool
+  .nav-tool-icon { color: $navbar-dark-expand-tool-icon-color; }
+  .nav-tool-label { color: $navbar-dark-tool-text-small-color; }
+
+  // toggler
+  .navbar-toggler-icon {
+    &,
+    &::before,
+    &::after {
+      background-color: $navbar-dark-toggler-bar-color;
+    }
+  }
+}
+
+
+// Styles for expanded navbar only
+//---------------------------------------------------
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+
+
+        // Navbar Base
+
+        &.navbar {
+          padding: {
+            right: $navbar-padding-x;
+            left: $navbar-padding-x;
+          }
+        }
+        .navbar-collapse {
+          padding-top: 0;
+        }
+        
+
+        // Navbar Nav
+
+        .navbar-nav {
+          background-color: transparent;
+          .nav-item {
+            border-top: 0;
+            > .dropdown-menu {
+              padding-top: $dropdown-padding-y;
+              padding-bottom: $dropdown-padding-y;
+            }
+          }
+          .nav-link {
+            padding-top: $navbar-nav-link-padding-y;
+            padding-bottom: $navbar-nav-link-padding-y;
+          }
+          > .dropdown > .dropdown-toggle::after {
+            right: 0;
+            content: '\e916';
+          }
+          .dropdown-menu {
+            .dropdown-item {
+              padding: {
+                right: $dropdown-item-padding-x;
+                left: $dropdown-item-padding-x;
+              }
+              @include font-size($font-size-sm);
+            }
+          }
+        }
+        &.navbar-sticky .navbar-nav {
+          max-height: none;
+          overflow-y: visible;
+        }
+
+
+        // Navbar Dropdown
+
+        .dropdown-menu {
+          @include box-shadow($dropdown-box-shadow);
+          border-color: $dropdown-border-color;
+          background-color: $dropdown-bg;
+          &.show { display: none; }
+          .dropdown-menu {
+            top: 0;
+            right: auto;
+            left: calc(100% - .3125rem);
+            width: auto;
+            margin: {
+              top: -$dropdown-padding-y;
+              right: 0;
+              left: -.25rem;
+            }
+            padding: {
+              right: 0;
+              left: 0;
+            }
+          }
+          .dropdown-toggle {
+            position: relative;
+            padding-right: $dropdown-item-padding-x * 1.25;
+            &::after {
+              position: absolute;
+              top: 50%;
+              right: $dropdown-item-padding-x + .3125rem;
+              margin-top: .0625rem;
+              transform: translateY(-50%);
+              content: '\e918';
+            }
+          }
+        }
+        .dropdown-divider { display: list-item; }
+        .dropdown:hover > .dropdown-menu {
+          display: block;
+          animation: dropdown-show .2s;
+        }
+
+
+        // Navbar Mega dropdown
+
+        .mega-dropdown {
+          position: static;
+          .dropdown-menu { width: 100%; }
+        }
+
+
+        // Navbar media tool
+
+        .media-tool {
+          margin-left: $navbar-media-tool-spacing;
+          .media-body { display: block; }
+        }
+        .media-tool-icon {
+          color: $navbar-media-tool-icon-color;
+          @include font-size($navbar-media-tool-icon-font-size);
+        }
+
+
+        // Navbar Nav Tool
+
+        .nav-tool-label {
+          display: inline-block;
+          margin-left: .5rem;
+        }
+
+
+        // Navbar Theme Light
+
+        &.navbar-light {
+
+          // nav
+          .navbar-nav {
+            .dropdown-menu {
+              .dropdown:hover > .dropdown-item {
+                color: $navbar-light-hover-color;
+              }
+            }
+          }
+        }
+
+
+        // Navbar Theme Dark
+        
+        &.navbar-dark {
+
+          // nav
+          .navbar-nav {
+            .dropdown-menu {
+              .dropdown:hover > .dropdown-item {
+                color: $navbar-light-hover-color;
+              }
+            }
+            .dropdown-item {
+              color: $navbar-light-color;
+              &:hover { color: $navbar-light-hover-color; }
+              &.active { color: $navbar-light-active-color; }
+              &.disabled { color: $navbar-light-disabled-color; }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Navbar Toggler Hamburger
+// --------------------------------------------------
+// Based on https://github.com/jonsuh/hamburgers
+
+// Base styles 
+
+.navbar-toggler {
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  display: inline-block;
+  position: relative;
+  width: $navbar-toggler-bar-width + $navbar-toggler-padding-x * 2;
+  height: $navbar-toggler-bar-height * 3 + $navbar-toggler-bar-spacing * 2 + $navbar-toggler-padding-y * 2;
+  cursor: pointer;
+
+  transition-property: opacity, filter;
+  transition-duration: .15s;
+  transition-timing-function: linear;
+
+  // Normalize (<button>)
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.navbar-toggler-icon {
+  display: block;
+  top: 50%;
+  margin-top: $navbar-toggler-bar-height / -2;
+
+  &,
+  &::before,
+  &::after {
+    width: $navbar-toggler-bar-width;
+    height: $navbar-toggler-bar-height;
+    border-radius: $navbar-toggler-border-radius;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: .15s;
+    transition-timing-function: ease;
+  }
+
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+  }
+
+  &::before {
+    top: ($navbar-toggler-bar-spacing + $navbar-toggler-bar-height) * -1;
+  }
+
+  &::after {
+    bottom: ($navbar-toggler-bar-spacing + $navbar-toggler-bar-height) * -1;
+  }
+}
+
+
+// Navbar toggler animation
+
+.navbar-toggler {
+  .navbar-toggler-icon {
+    transition-duration: 0.075s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    &::before {
+      transition: top 0.075s 0.12s ease,
+                  opacity 0.075s ease;
+    }
+
+    &::after {
+      transition: bottom 0.075s 0.12s ease,
+                  transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+  }
+
+  &[aria-expanded=true] {
+    .navbar-toggler-icon {
+      transform: rotate(45deg);
+      transition-delay: 0.12s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      &::before {
+        top: 0;
+        opacity: 0;
+        transition: top 0.075s ease,
+                    opacity 0.075s 0.12s ease;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 0.075s ease,
+                    transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+  }
+}
+
+
+// Topbar
+//---------------------------------------------------
+
+.topbar {
+  position: relative;
+  padding: $topbar-padding-y $topbar-padding-x;
+  color: $topbar-dark-color;
+  @include font-size($topbar-font-size);
+}
+.topbar-link {
+  display: inline-block;
+  padding: .25rem 0;
+  transition: $nav-link-transition;
+  color: $topbar-light-color;
+  font-weight: $topbar-font-weight;
+  text-decoration: none;
+  &:hover {
+    color: $topbar-light-hover-color;
+    text-decoration: none;
+  }
+  &.active {
+    color: $topbar-light-active-color;
+    user-select: none;
+    cursor: default;
+  }
+}
+.dropdown.show > .topbar-link {
+  color: $topbar-light-hover-color;
+}
+.topbar-dark {
+  color: $topbar-dark-color;
+
+  .topbar-link {
+    color: $topbar-dark-color;
+    &:hover { color: $topbar-dark-hover-color; }
+    &.active { color: $topbar-dark-active-color; }
+  }
+  .dropdown.show > .topbar-link {
+    color: $topbar-dark-hover-color;
+  }
+}
+
+
+// Navbar Animations
+// --------------------------------------------------
+
+// Dropdown animation
+@keyframes dropdown-show {
+  from {
+    transform: scale(.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

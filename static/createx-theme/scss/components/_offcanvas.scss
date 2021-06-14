@@ -1,0 +1,194 @@
+//
+// Off-canvas
+// --------------------------------------------------
+
+
+// Off-canvas base styles
+
+.cs-offcanvas {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: $offcanvas-width;
+  height: 100%;
+  will-change: transform, box-shadow;
+  transform: translateX(-100%);
+  transition: transform .4s cubic-bezier(.165, .84, .44, 1), box-shadow .3s ease;
+  background-color: $offcanvas-bg;
+  z-index: $zindex-offcanvas;
+  
+  // Off-canvas on the right
+  &.cs-offcanvas-right {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+
+  // Off-canvas show
+  &.show {
+    transform: none;
+    box-shadow: $offcanvas-box-shadow;
+  }
+}
+
+
+// Off-canvas caps: Header and/or Footer
+
+.cs-offcanvas-cap {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
+
+  .bg-dark & {
+    background-color: rgba($white, .05);
+  }
+}
+
+
+// Off-canvas body (content holder)
+
+.cs-offcanvas-body {
+  height: 100%;
+  padding: 0 $offcanvas-padding-x;
+  overflow-y: auto;
+
+  // Nav inside off-canvas
+  .nav {
+    flex-direction: column;
+    > li { margin-bottom: 0; }
+  }
+  .nav-link {
+    padding: {
+      top: .25rem;
+      bottom: .25rem;
+    }
+    // font-weight: initial;
+    &.active {
+      position: relative;
+      &::before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .125rem;
+        height: 100%;
+        content: '';
+      }
+    }
+  }
+  .nav-dark .nav-link.active::before {
+    background-color: $nav-link-dark-active-color;
+  }
+  .nav-light .nav-link.active::before {
+    background-color: $nav-link-light-active-color;
+  }
+
+  // Custom scrollbar inside off-canvas
+  .simplebar-vertical { margin-right: .1875rem; }
+
+  // Fix .media-body inside offcanvas body
+  .media-body {
+    flex: 1;
+  }
+}
+.cs-offcanvas-expand .cs-offcanvas-body .nav-link {
+  font-weight: normal;
+}
+
+
+// Backdrop
+
+.cs-offcanvas-backdrop {
+  @extend .modal-backdrop;
+  transition: opacity .2s ease;
+  opacity: 0;
+
+  &.show {
+    opacity: .5;
+  }
+}
+
+
+// Kill the body scroll when offcanvas is open
+
+.cs-offcanvas-open { overflow: hidden; }
+
+
+// Sidebar toggle btn
+
+.cs-sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+  z-index: $zindex-btn-scroll-top;
+
+  &.right-15 {
+    right: 15px;
+    width: calc(100% - 15px);
+  }
+}
+
+
+// Adding extra bottom spacing to accomodate sidebar toggle
+
+.cs-is-sidebar {
+  @include media-breakpoint-down(md) {
+    .cs-footer { padding-bottom: 2.25rem; }
+    .cs-sidebar-toggle { display: block; }
+    .btn-scroll-top { bottom: $spacer + 2.25rem; }  
+  }
+}
+
+
+// Control the breakpoint at which off-canvas expands or collapses
+@include media-breakpoint-up(lg) {
+
+  // Expand off-canvas from lg breakpoint
+  .cs-offcanvas-expand {
+    transform: none;
+    &.cs-offcanvas-right { transform: none; }
+  }
+
+  // Collapse off-canvas from lg breakpoint
+  .cs-offcanvas-collapse {
+    display: block;
+    position: static;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+    height: auto;
+    transform: none;
+    background-color: transparent;
+
+    &.cs-offcanvas-right {
+      right: auto;
+      transform: none;
+    }
+
+    .cs-offcanvas-cap { display: none; }
+
+    .cs-offcanvas-body {
+      padding: 0;
+      overflow-x: hidden;
+    }
+  }
+
+  // Off-canvas enabled container (for layouts with fixed side navigation)
+  .cs-offcanvas-enabled {
+    padding-left: $offcanvas-width + 1.5rem;
+
+    &.cs-offcanvas-right {
+      padding: {
+        right: $offcanvas-width + 1.5rem;
+        left: 0;
+      }
+    }
+  }
+}

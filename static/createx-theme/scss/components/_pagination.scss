@@ -1,0 +1,88 @@
+//
+// Pagination
+// --------------------------------------------------
+
+
+// Base styles
+
+.page-link {
+  font-weight: 700;
+  i {
+    display: inline-block;
+    margin-top: -.125rem;
+    vertical-align: middle;
+    @include font-size(1.5em);
+  }
+  .active & { cursor: default; }
+}
+
+
+// Light version
+
+.pagination-light {
+
+  .page-item {
+    &.active .page-link {
+      background-color: $pagination-light-active-bg;
+      color: $pagination-light-active-color;
+      border-color: $pagination-light-active-border-color;
+    }
+
+    &.disabled .page-link {
+      background-color: $pagination-light-disabled-bg;
+      color: $pagination-light-disabled-color;
+      border-color: $pagination-light-disabled-border-color;
+    }
+  }
+  .page-link {
+    background-color: $pagination-light-bg;
+    color: $pagination-light-color;
+    border-color: $pagination-light-border-color;
+
+    &:focus {
+      box-shadow: $pagination-light-focus-box-shadow;
+    }
+
+    &:hover {
+      background-color: $pagination-light-hover-bg;
+      color: $pagination-light-hover-color;
+      border-color: $pagination-light-hover-border-color;
+    }
+  }
+}
+
+
+// Entry navigation
+// 
+// only for 2 items
+
+.cs-entry-nav {
+  display: block;
+  width: 100%;
+  max-width: $entry-nav-max-width;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    .nav-heading { color: $primary; }
+  }
+  .nav-heading { transition: color .25s; }
+}
+
+.cs-entry-nav-heading {
+  i {
+    display: inline-block;
+    margin-top: -.1875rem;
+    vertical-align: middle;
+    @include font-size(1.75rem);
+  }
+}
+
+.cs-entry-nav-thumb {
+  width: $entry-nav-thumb-width;
+  flex-shrink: 0;
+  > img {
+    display: block;
+    width: 100%;
+    @include border-radius($border-radius);
+  }
+}

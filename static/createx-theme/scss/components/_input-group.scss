@@ -1,0 +1,156 @@
+//
+// Input group
+// --------------------------------------------------
+
+
+// Overriding custom control offset for checkbox & radio
+
+.input-group-text .custom-control {
+  margin: {
+    top: -.1875rem;
+    right: -.625rem;
+  }
+}
+
+
+// Textual addons icon sizings
+
+.input-group {
+  .input-group-text {
+    [class^="cxi-"] {
+      @include font-size($input-group-addon-icon-size);
+    }
+  }
+}
+.input-group-sm {
+  .input-group-text {
+    [class^="cxi-"] {
+      @include font-size($input-group-addon-icon-size-sm);
+    }
+  }
+}
+.input-group-lg {
+  .input-group-text {
+    [class^="cxi-"] {
+      @include font-size($input-group-addon-icon-size-lg);
+    }
+  }
+}
+
+
+// Solid overlay input-group
+// 
+// only supports icons & chars
+
+.input-group-append-overlay,
+.input-group-prepend-overlay {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
+
+  .input-group-text {
+    border: 0;
+    background-color: transparent;
+    &.btn { &:hover { color: $primary; } }
+  }
+  z-index: 5;
+}
+
+.input-group-append-overlay {
+  right: 0;
+  .form-control,
+  .custom-select {
+    border-top-left-radius: initial;
+    border-bottom-left-radius: initial;
+  }
+}
+
+.input-group-prepend-overlay {
+  .form-control,
+  .custom-select {
+    border-top-right-radius: initial;
+    border-bottom-right-radius: initial;
+  }
+}
+
+.input-group-overlay {
+  position: relative;
+  width: 100%;
+
+  .prepended-form-control:not(.rounded-left-0),
+  .appended-form-control:not(.rounded-right-0) {
+    border-radius: $input-border-radius;
+  }
+  .prepended-form-control:not(.rounded-left-0) {
+    padding-left: (($input-padding-x * 2) + $input-group-addon-icon-size);
+  }
+  .appended-form-control:not(.rounded-right-0) {
+    padding-right: (($input-padding-x * 2) + $input-group-addon-icon-size);
+  }
+
+  &.input-group-sm {
+    .input-group-text {
+      padding: $input-padding-y-sm $input-padding-x-sm;
+    }
+    .prepended-form-control {
+      padding-left: (($input-padding-x-sm * 2) + $input-group-addon-icon-size-sm);
+    }
+    .appended-form-control {
+      padding-right: (($input-padding-x-sm * 2) + $input-group-addon-icon-size-sm);
+    }
+  }
+
+  &.input-group-lg {
+    .input-group-text {
+      padding: $input-padding-y-lg $input-padding-x-lg;
+    }
+    .prepended-form-control {
+      padding-left: (($input-padding-x-lg * 2) + $input-group-addon-icon-size-lg);
+    }
+    .appended-form-control {
+      padding-right: (($input-padding-x-lg * 2) + $input-group-addon-icon-size-lg);
+    }
+  }
+}
+
+
+// Input-group light skin
+// 
+// General
+[class^='input-group'].input-group-light {
+  .form-control { @extend .input-light; }
+}
+// Input group light
+.input-group.input-group-light {
+  .input-group-prepend {
+    .input-group-text { border-right-color: transparent; }
+  }
+  .input-group-append {
+    .input-group-text { border-left-color: transparent; }
+  }
+
+  .input-group-text {
+    border-color: $input-light-border-color;
+    background-color: $input-group-light-addon-bg;
+    color: $input-group-light-addon-color;
+  }
+}
+// Input group overlay light
+.input-group-overlay.input-group-light {
+  .input-group-prepend-overlay,
+  .input-group-append-overlay {
+    .input-group-text,
+    .btn {
+      color: $input-group-light-addon-color;
+      transition: color .3s;
+    }
+  }
+  .form-control:focus ~ .input-group-prepend-overlay,
+  .form-control:focus ~ .input-group-append-overlay {
+    .input-group-text,
+    .btn {
+      color: $input-group-light-focus-addon-color;
+    }
+  }
+}
