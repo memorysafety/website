@@ -72,6 +72,25 @@ body,
   background-color: #051735 !important;
 }
 
-.pt-md-8 {
+@media (min-width: 768px) {
+  .pt-md-8 {
+    padding-top: 8rem !important;
+  }
+}
+
+.pt-10 {
+  padding-top: 1;
+}
+
+.pt-7 {
+  padding-top: 7rem !important;
+}
+.pt-8 {
   padding-top: 8rem !important;
+}
+.pt-9 {
+  padding-top: 9rem !important;
+}
+.pt-10 {
+  padding-top: 10rem !important;
 }

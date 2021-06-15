@@ -3,9 +3,6 @@ title: About Prossimo
 slug: about
 ---
 
-<section class="slice slice-sm">
-<div class="container">
-
 <h2>Who We Are</h2>
 
 <p>Prossimo is an <a href="https://www.abetterinternet.org/">Internet Security Research Group project (ISRG)</a> project.</p>
@@ -14,15 +11,33 @@ slug: about
 
 <h2>Goals</h2>
 
-<p>Our first goal is to move the Internet's security-sensitive software infrastructure to <a href="/docs/memory-safety/">memory safe</a> code. Many of the most critical software vulnerabilities are memory safety issues in C and C++ code. While there are ways to reduce the risk, including fuzzing and static analysis, such mitigations do not eliminate the risk and they consume a lot of resource on an ongoing basis. Using memory safe languages eliminates the entire class of issues. We recognize the amount of work it will take to move significant portions of the Internet’s C and C++ software infrastructure to memory safe code, but the Internet will be around for a long time. There is time for ambitious efforts to pay off. By being smart about our initial investments, focusing on the most critical components, we can start seeing significant returns within 1-2 years.</p>
+<p>
+  Our first goal is to move the Internet's security-sensitive software infrastructure to <a href="/docs/memory-safety/">memory safe</a> code. Many of the most
+  critical software vulnerabilities are memory safety issues in C and C++ code. While there are ways to reduce the risk, including fuzzing and static analysis,
+  such mitigations do not eliminate the risk and they consume a lot of resource on an ongoing basis. Using memory safe languages eliminates the entire class of
+  issues. We recognize the amount of work it will take to move significant portions of the Internet’s C and C++ software infrastructure to memory safe code, but
+  the Internet will be around for a long time. There is time for ambitious efforts to pay off. By being smart about our initial investments, focusing on the
+  most critical components, we can start seeing significant returns within 1-2 years.
+</p>
 
-<p>Our second goal is to change the way people think about memory safety. Today it’s considered perfectly normal and acceptable to deploy software written in languages that aren't memory safe, like C and C++, on a network edge, despite the overwhelming evidence for how dangerous this is. Our hope is that we can get people to fully recognize the risk and view memory safety as a requirement for software in security-sensitive roles.</p>
+<p>
+  Our second goal is to change the way people think about memory safety. Today it’s considered perfectly normal and acceptable to deploy software written in
+  languages that aren't memory safe, like C and C++, on a network edge, despite the overwhelming evidence for how dangerous this is. Our hope is that we can get
+  people to fully recognize the risk and view memory safety as a requirement for software in security-sensitive roles.
+</p>
 
 <h2>Prossimo's Role</h2>
 
-<p>We view ISRG's role as providing strategic planning, facilitation, and communication. We identify high impact projects, build and maintain relationships with maintainers and funders, help develop plans, and coordinate the work. This includes raising the necessary funds and getting them to the right people (often maintainers). We communicate with the public regarding progress and momentum in order to build support for the project and the ideas behind it.</p>
+<p>
+  We view ISRG's role as providing strategic planning, facilitation, and communication. We identify high impact projects, build and maintain relationships with
+  maintainers and funders, help develop plans, and coordinate the work. This includes raising the necessary funds and getting them to the right people (often
+  maintainers). We communicate with the public regarding progress and momentum in order to build support for the project and the ideas behind it.
+</p>
 
-<p>We believe we have a strong competency in identifying work that is both high impact and efficiently achievable. Our aim is for funding entrusted to us to provide a strong return on investment in terms of making the Internet’s software infrastructure safer for everyone.</p>
+<p>
+  We believe we have a strong competency in identifying work that is both high impact and efficiently achievable. Our aim is for funding entrusted to us to
+  provide a strong return on investment in terms of making the Internet’s software infrastructure safer for everyone.
+</p>
 
 <h2>Development Model</h2>
 
@@ -34,22 +49,44 @@ slug: about
 
 <h3>2. Work with maintainers whenever possible</h3>
 
-<p>Maintainers have valuable knowledge and the ability to ship memory safety updates to their existing users. Building competing software and getting users to switch is much more difficult. By working with maintainers, and funding them when it makes sense, we can get safer software into the hands of users more quickly.</p>
+<p>
+  Maintainers have valuable knowledge and the ability to ship memory safety updates to their existing users. Building competing software and getting users to
+  switch is much more difficult. By working with maintainers, and funding them when it makes sense, we can get safer software into the hands of users more
+  quickly.
+</p>
 
 <p>Funding maintainers for the work helps to create buy-in and alleviates resource concerns.</p>
 
 <h3>3. Prefer a modular approach</h3>
 
-<p>We encourage projects to replace libraries or modular functionality with memory safe libraries, rather than embark upon ground-up rewrites. This allows us to break up the work into manageable pieces and deliver value incrementally.</p>
+<p>
+  We encourage projects to replace libraries or modular functionality with memory safe libraries, rather than embark upon ground-up rewrites. This allows us to
+  break up the work into manageable pieces and deliver value incrementally.
+</p>
 
-<p>It also allows for build-time configuration to select implementations when existing users need the ability to opt-in to the older unsafe versions, either because their environment does not support the new language or because there is a functionality difference. This addresses the concern many maintainers have about abandoning certain specialized users.</p>
+<p>
+  It also allows for build-time configuration to select implementations when existing users need the ability to opt-in to the older unsafe versions, either
+  because their environment does not support the new language or because there is a functionality difference. This addresses the concern many maintainers have
+  about abandoning certain specialized users.
+</p>
 
-<p>Since many projects will end up using the same memory safe libraries, this approach also allows us to invest and build confidence in a particular set of libraries. Investments in a library for one project will add value across multiple projects. For example - the curl project will use the Hyper and Rustls libraries. The work we do to build excellent C API wrappers and improve the integration experience will help with many projects that will use the libraries in the future.</p>
+<p>
+  Since many projects will end up using the same memory safe libraries, this approach also allows us to invest and build confidence in a particular set of
+  libraries. Investments in a library for one project will add value across multiple projects. For example - the curl project will use the Hyper and Rustls
+  libraries. The work we do to build excellent C API wrappers and improve the integration experience will help with many projects that will use the libraries in
+  the future.
+</p>
 
 <h3>4. Build trust by providing additional success stories over time</h3>
 
-<p>Some maintainers are understandably hesitant to make fundamental changes to how their projects work, such as adding a new language or replacing important libraries with new ones. It’s on us to make the case, and we will do that by building up a corpus of success stories and continuing to engage with maintainers about how their concerns can be addressed.</p>
+<p>
+  Some maintainers are understandably hesitant to make fundamental changes to how their projects work, such as adding a new language or replacing important
+  libraries with new ones. It’s on us to make the case, and we will do that by building up a corpus of success stories and continuing to engage with maintainers
+  about how their concerns can be addressed.
+</p>
 
-<p>We will start by working with more progressive maintainers that need less convincing. As those projects succeed and get positive feedback, other maintainers will come to trust the model that we advocate. Our hope is that over time we can convince more conservative maintainers that moving to memory safe code, with our support, is a worthwhile endeavor.</p>
-</div>
-</section>
+<p>
+  We will start by working with more progressive maintainers that need less convincing. As those projects succeed and get positive feedback, other maintainers
+  will come to trust the model that we advocate. Our hope is that over time we can convince more conservative maintainers that moving to memory safe code, with
+  our support, is a worthwhile endeavor.
+</p>

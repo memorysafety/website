@@ -1,2 +1,3 @@
 # Ignore some template partials, because prettier adds closing HTML tags
 layouts/partials/header.html
+layouts/partials/md-top-context.html

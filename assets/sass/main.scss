@@ -34,3 +34,24 @@ body {
   transform: rotate(-1deg);
   display: inline-block;
 }
+
+.initiative_list_item {
+  .initiative-status {
+    text-align: center;
+  }
+  &__meta {
+    .initiative-status {
+      padding-top: 20px;
+    }
+  }
+
+  &__blogLanding {
+    margin-bottom: 20px;
+  }
+}
+
+.initiative-description {
+  ol {
+    padding-left: 17px;
+  }
+}
