@@ -86,10 +86,14 @@ body {
   color: magenta;
 }
 
-.key-value-table {
+.brokerage_info {
   th {
     text-align: right;
     padding-right: 5px;
+  }
+
+  & + p {
+    margin-top: 24px;
   }
 }
 
@@ -103,5 +107,21 @@ body {
       left: 18px;
       top: 16px;
     }
+  }
+}
+
+.highlight {
+  background: #e8fcf8;
+  text-align: center;
+  padding: 20px 10px 10px;
+  margin: 10px 0 20px;
+
+  h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  p {
+    font-size: 20px;
   }
 }
