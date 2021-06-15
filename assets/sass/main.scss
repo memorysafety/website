@@ -40,9 +40,6 @@ body {
     text-align: center;
   }
   &__meta {
-    .initiative-status {
-      padding-top: 20px;
-    }
   }
 
   &__blogLanding {
@@ -53,5 +50,22 @@ body {
 .initiative-description {
   ol {
     padding-left: 17px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .initiative_list_item__meta {
+    display: flex;
+  }
+  .initiative_list_item .initiative-status {
+    padding-left: 25px;
+    line-height: 21px;
+    text-align: left !important;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .initiative-status {
+    padding-top: 20px;
   }
 }
