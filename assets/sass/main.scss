@@ -31,7 +31,6 @@ body {
   color: $brand_mint;
   background: $brand_dark_blue;
   padding: 5px;
-  transform: rotate(-1deg);
   display: inline-block;
 }
 
@@ -85,5 +84,18 @@ body {
   th {
     text-align: right;
     padding-right: 5px;
+  }
+}
+
+#home-hero {
+  .btn {
+    width: 320px;
+    position: relative;
+
+    i {
+      position: absolute;
+      left: 18px;
+      top: 16px;
+    }
   }
 }
