@@ -32,11 +32,16 @@ body {
   background: $brand_dark_blue;
   padding: 5px;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .initiative_list_item {
   .initiative-status {
     text-align: center;
+
+    &__item {
+      white-space: nowrap;
+    }
   }
   &__meta {
   }

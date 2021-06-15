@@ -6,9 +6,9 @@
       <a href="{{.url}}" class="btn btn-outline-primary">View initiative</a>
       <div class="initiative-status">
         {{ if .project_status }}
-        <div>Project Status: {{ .project_status }}</div>
+        <div class="initiative-status__item">Project Status: {{ .project_status }}</div>
         {{ end }} {{ if .funding_status }}
-        <div>Funding Status: {{ .funding_status }}</div>
+        <div class="initiative-status__item">Funding Status: {{ .funding_status }}</div>
         {{ end }}
       </div>
     </div>
