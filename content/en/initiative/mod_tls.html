@@ -3,7 +3,7 @@ title: mod_tls
 slug: mod_tls
 project_status: TK
 funding_status: TK
-background: e6e9ee
+background: e8fcf8
 sponsors: ["Google"]
 image: /images/httpd.svg
 blog_posts: ["2021-02-02-memory-safe-tls-apache.md"]
@@ -11,8 +11,21 @@ blog_posts: ["2021-02-02-memory-safe-tls-apache.md"]
 
 <h2>The Story</h2>
 
-<p>The <a href="https://httpd.apache.org/">Apache httpd server</a> is an incrediby popular HTTP server. Server software like httpd is security critical because its primary job is to handle network requests and perform complex processing. It's a difficult job to perform securely even without having to worry about managing memory.</p>
+<p>
+  The <a href="https://httpd.apache.org/">Apache httpd server</a> is an incrediby popular HTTP server. Server software like httpd is security critical because
+  its primary job is to handle network requests and perform complex processing. It's a difficult job to perform securely even without having to worry about
+  managing memory.
+</p>
 
-<p>Unfortunately, Apache httpd is written in C, so manual memory management is a major concern. Like almost every other HTTP server written in C, it has a long history of memory safety vulnerabilities. The Internet is not going to provide the level of security that we need until the most popular HTTP servers are written in memory safe code.</p>
+<p>
+  Unfortunately, Apache httpd is written in C, so manual memory management is a major concern. Like almost every other HTTP server written in C, it has a long
+  history of memory safety vulnerabilities. The Internet is not going to provide the level of security that we need until the most popular HTTP servers are
+  written in memory safe code.
+</p>
 
-<p>That's why we've contracted with Stefan Eissing of Greenbytes to write mod_tls, a new TLS module for Apache that is intended to replace the existing mod_ssl some day. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd. If we can show that this works well enough, we hope to bring memory safety to additional httpd modules and get them included into official httpd packages.</p>
+<p>
+  That's why we've contracted with Stefan Eissing of Greenbytes to write mod_tls, a new TLS module for Apache that is intended to replace the existing mod_ssl
+  some day. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater
+  degree of security to a critical component of httpd. If we can show that this works well enough, we hope to bring memory safety to additional httpd modules
+  and get them included into official httpd packages.
+</p>

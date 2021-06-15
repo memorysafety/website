@@ -3,17 +3,33 @@ title: curl
 slug: curl
 project_status: TK
 funding_status: TK
-background: e6e9ee
+background: e8fcf8
 sponsors: ["Google", "AWS"]
 image: /images/curl.svg
 blog_posts: ["2020-10-09-memory-safe-curl.md"]
 ---
 
 <h2>The Story</h2>
-<p><a href="https://curl.se/">Curl</a> is a ubiquitous network transfer utility. It's on desktops, laptops, servers, vehicles, and appliances. Securing curl is important because its primary job is to handle data coming in from a network. Unfortunately, all of the networking code in curl is written in C, which is not memory safe.</p>
+<p>
+  <a href="https://curl.se/">Curl</a> is a ubiquitous network transfer utility. It's on desktops, laptops, servers, vehicles, and appliances. Securing curl is
+  important because its primary job is to handle data coming in from a network. Unfortunately, all of the networking code in curl is written in C, which is not
+  memory safe.
+</p>
 
-<p>We got in touch with curl's maintainer, Daniel Stenberg, to talk about how we might help protect curl's core HTTP and TLS networking code from memory safety vulnerabilities. Daniel had a lot of great questions about what we had in mind, and he patiently answered a lot our questions. We quickly realized we were talking to a thoughtful, cautiously progressive maintainer. He was willing to hear us out and consider significant changes, but he would need a plan that was not overly disruptive to existing users.</p>
+<p>
+  We got in touch with curl's maintainer, Daniel Stenberg, to talk about how we might help protect curl's core HTTP and TLS networking code from memory safety
+  vulnerabilities. Daniel had a lot of great questions about what we had in mind, and he patiently answered a lot our questions. We quickly realized we were
+  talking to a thoughtful, cautiously progressive maintainer. He was willing to hear us out and consider significant changes, but he would need a plan that was
+  not overly disruptive to existing users.
+</p>
 
-<p>Together, we came up with a plan to add options to build curl with memory-safe HTTP and TLS libraries. For HTTP we chose the <a href="https://github.com/hyperium/hyper">Hyper</a> library. For TLS we chose the <a href="https://github.com/ctz/rustls">Rustls</a> library. We contracted with Daniel to work on the Hyper library integration, while ISRG engineer Jacob Hoffman-Andrew worked on the Rustls integration.</p>
+<p>
+  Together, we came up with a plan to add options to build curl with memory-safe HTTP and TLS libraries. For HTTP we chose the
+  <a href="https://github.com/hyperium/hyper">Hyper</a> library. For TLS we chose the <a href="https://github.com/ctz/rustls">Rustls</a> library. We contracted
+  with Daniel to work on the Hyper library integration, while ISRG engineer Jacob Hoffman-Andrew worked on the Rustls integration.
+</p>
 
-<p>Today curl users can choose to build curl with Hyper and Rustls. Work is being done to make sure full testing is in place to set these new options up for stability and success over the long run.</p>
+<p>
+  Today curl users can choose to build curl with Hyper and Rustls. Work is being done to make sure full testing is in place to set these new options up for
+  stability and success over the long run.
+</p>
