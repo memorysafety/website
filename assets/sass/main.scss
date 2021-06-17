@@ -138,3 +138,26 @@ body {
     display: block;
   }
 }
+
+#copyright-line {
+  background-color: #292c37;
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $brand_mint;
+    }
+  }
+}
+
+.back-to-top-btn {
+  &:hover {
+    .btn-scroll-top {
+      background-color: $brand_mint !important;
+      & > .btn-scroll-top-icon {
+        color: $brand_dark_blue !important;
+      }
+    }
+  }
+}
