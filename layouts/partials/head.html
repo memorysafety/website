@@ -1,26 +1,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>{{ if ne .Title .Site.Title }}{{ .Title }} - {{ end }} {{ .Site.Title }}</title>
+  <title>{{ if ne .Title .Site.Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
 
-  <meta name="description" content="{{ .Site.Params.Description }}" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="{{ .Site.Params.meta_description }}" />
   <meta name="author" content="Internet Security Research Group" />
   {{ template "_internal/opengraph.html" . }}
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
   <meta name="msapplication-TileColor" content="#082659" />
   <meta name="theme-color" content="#082659" />
-
-  <!-- @todo <link rel="manifest" href="/createx-theme/img/site.webmanifest" />
-    <link
-      rel="mask-icon"
-      color="#5bbad5"
-      href="/createx-theme/img/safari-pinned-tab.svg"
-    />
-  -->
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
