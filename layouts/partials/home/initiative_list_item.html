@@ -16,7 +16,13 @@
 
   <div class="col-md-6 d-flex align-items-center justify-content-center py-2">
     <div class="logo-container">
-      <img src="{{.image}}" alt="Logo for {{.title}}" />
+      {{ if .logo_link }}
+      <a href="{{.logo_link}}" target="_blank">
+        {{end}}
+        <img src="{{.image}}" alt="Logo for {{.title}}" />
+        {{ if .logo_link }}
+      </a>
+      {{end}}
     </div>
   </div>
 </article>
