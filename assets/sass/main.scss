@@ -161,3 +161,9 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 525px) {
+  #see-if-organization-matches {
+    white-space: normal !important;
+  }
+}
