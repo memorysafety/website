@@ -69,7 +69,7 @@
           <div class="row">
             <div class="col-md-8 offset-md-2">
 
-                {{ $posts := where .Site.RegularPages "Type" "in" (slice "post") | first 3 }}
+                {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") | first 3 }}
                 {{ range $posts }}
                   {{ partial "blog/blog_list_item.html" .}}
                 {{ end }}
