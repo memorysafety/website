@@ -90,10 +90,16 @@ body {
   th {
     text-align: right;
     padding-right: 5px;
+    white-space: nowrap;
+    vertical-align: top;
   }
 
   & + p {
     margin-top: 24px;
+  }
+
+  td {
+    vertical-align: top;
   }
 }
 
@@ -159,6 +165,12 @@ body {
         color: $brand_dark_blue !important;
       }
     }
+  }
+}
+
+label.checkbox {
+  input[type="checkbox"] + span {
+    margin-left: 10px;
   }
 }
 
