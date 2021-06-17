@@ -1,5 +1,9 @@
-.gpdr-notes {
+footer {
   color: #fff;
+
+  input[type="radio"] + label {
+    padding-left: 10px;
+  }
 
   label.checkbox {
     margin-left: 8px;
@@ -10,11 +14,52 @@
   }
 
   .font-small {
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    line-height: 1.14;
+    color: rgba(255, 255, 255, 0.6) !important;
 
     a {
       color: rgba(255, 255, 255, 0.6) !important;
     }
   }
 }
+
+#mc_embed_signup {
+  // background: #fff;
+  clear: left;
+  color: white;
+  font: 14px Helvetica, Arial, sans-serif;
+}
+
+#mc-embedded-subscribe-form input[type="checkbox"] {
+  display: inline;
+  width: auto;
+  margin-right: 10px;
+}
+#mergeRow-gdpr {
+  margin-top: 5px;
+}
+#mergeRow-gdpr fieldset label {
+  font-weight: normal;
+}
+#mc-embedded-subscribe-form .mc_fieldset {
+  border: none;
+  min-height: 0px;
+  padding-bottom: 0px;
+}
+
+#mc_embed_signup form {
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+}
+
+// #mc_embed_signup .button {
+//   background-color: $brand_mint;
+//   border: 1px solid transparent;
+//   color: $brand_dark_blue;
+
+//   &:hover {
+//     border-color: $brand_dark_blue;
+//     background-color: $brand_mint;
+//   }
+// }
