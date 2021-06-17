@@ -1,4 +1,4 @@
-baseURL = "https://memorysafety.org/"
+baseURL = "https://www.memorysafety.org/"
 languageCode = "en-us"
 
 contentDir = "content/en"
