@@ -22,3 +22,75 @@
   #  publish = "dist" # Folder with the static content for _redirect file
 
   ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/
+
+[[redirects]]
+  from = "https://memorysafety.dev/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.memorysafety.dev/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://memorysafety.com/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.memorysafety.com/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://memorysafety.net/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.memorysafety.net/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://goprossimo.com/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.goprossimo.com/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://goprossimo.net/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.goprossimo.net/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://goprossimo.org/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.goprossimo.org/*"
+  to = "https://www.memorysafety.org/:splat"
+  status = 301
+  force = true

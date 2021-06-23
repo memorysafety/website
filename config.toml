@@ -1,4 +1,4 @@
-baseURL = "https://prossimo-alpha.netlify.app/"
+baseURL = "https://www.memorysafety.org/"
 languageCode = "en-us"
 
 contentDir = "content/en"
@@ -10,8 +10,8 @@ copyrighthtml = "&copy; 2021 Internet Security Research Group. All rights reserv
 address = "548 Market St, PMB 57274, San Francisco, California 94104-5401"
 address_line_1 = "548 Market St, PMB 57274"
 address_line_2 = "San Francisco, California 94104-5401"
-images = ["images/isrg-opengraph.png"]
-description = "Prossimo is lorem ispum dolor sit."
+images = ["images/ProssimoSocialShare.png"]
+meta_description = "ISRG's Prossimo is committed to moving the Internet's security-sensitive software to memory safe code and to encouraging people to prioritize memory safety."
 
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
@@ -36,6 +36,4 @@ title = "Prossimo"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
-description = """
-  ISRG&rsquo;s mission is to reduce financial, technological, and educational barriers to secure communication over the Internet.
-"""
+description = "ISRG's Prossimo is moving critical software to memory safe code."

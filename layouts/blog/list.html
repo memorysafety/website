@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div>
-  {{ $posts := where .Site.RegularPages "Type" "in" (slice "post") }} {{ range $posts }}
+  {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") }} {{ range $posts }}
   <div class="initiative_list_item__blogLanding">
     {{ .Date.Format $.Site.Params.time_format_default }}
     <h2>{{ .Title }}</h2>
