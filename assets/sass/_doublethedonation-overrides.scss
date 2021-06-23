@@ -59,3 +59,34 @@
   border: 0 !important;
   padding: 10px 32px !important;
 }
+
+#dd-container body,
+.dtd-plugin body,
+#dd-container,
+.dtd-plugin,
+#dd-container h1,
+#dd-container .h1,
+#dd-container h2,
+#dd-container .h2,
+#dd-container h3,
+#dd-container .h3,
+#dd-container h4,
+#dd-container .h4,
+#dd-container h5,
+#dd-container .h5,
+#dd-container h6,
+#dd-container .h6,
+.dtd-plugin h1,
+.dtd-plugin .h1,
+.dtd-plugin h2,
+.dtd-plugin .h2,
+.dtd-plugin h3,
+.dtd-plugin .h3,
+.dtd-plugin h4,
+.dtd-plugin .h4,
+.dtd-plugin h5,
+.dtd-plugin .h5,
+.dtd-plugin h6,
+.dtd-plugin .h6 {
+  font-family: "Open Sans", sans-serif !important;
+}
