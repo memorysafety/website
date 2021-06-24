@@ -19,6 +19,7 @@
   />
   <link rel="stylesheet" media="screen" href="/createx-theme/vendor/simplebar/dist/simplebar.min.css" />
   <link rel="stylesheet" media="screen" href="/createx-theme/css/theme.min.css" />
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
   {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}?v={{ now}}" />
 </head>

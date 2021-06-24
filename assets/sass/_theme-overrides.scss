@@ -50,11 +50,14 @@ a {
 }
 
 .btn-mint {
-  background-color: $brand_mint;
+  background-color: $brand_mint !important;
   color: $brand_dark_blue !important;
   border-color: $brand_mint;
+  font-weight: bold !important;
+  font-family: "Open Sans";
+  border: 1px solid transparent;
   &:hover {
-    border-color: $brand_dark_blue;
+    border-color: $brand_dark_blue !important;
   }
   // @todo Hover color for mint buttons
 }
