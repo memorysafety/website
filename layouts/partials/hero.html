@@ -2,8 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 py-4">
+        {{if ne .Params.hide_h1 true}}
         <h1 class="display-4">{{ .Params.Title }}</h1>
-        {{ if .Params.subtitle }}
+        {{ end }} {{ if .Params.subtitle }}
         <h5 class="mb-4">{{ .Params.Subtitle }}</h5>
         {{ end }}
       </div>
