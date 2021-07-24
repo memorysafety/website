@@ -43,6 +43,8 @@ body {
 .initiative_list_item {
   .initiative-status {
     text-align: center;
+    display: flex;
+    align-items: center;
 
     &__item {
       white-space: nowrap;

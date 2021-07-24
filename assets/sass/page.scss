@@ -32,5 +32,9 @@
     img {
       max-height: 100px;
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
