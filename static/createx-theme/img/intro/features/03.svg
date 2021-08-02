@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" xmlns:v="https://vecta.io/nano"><path d="M56 46.667C56 51.8 51.8 56 46.667 56H9.333C4.2 56 0 51.8 0 46.667V9.333C0 4.2 4.2 0 9.333 0h37.333C51.8 0 56 4.2 56 9.333v37.333z" fill="#563d7c"/><path d="M15.217 12.168h15.876c2.928 0 5.28.668 7.046 2.013s2.654 3.367 2.654 6.085c0 1.647-.403 3.056-1.208 4.228s-1.958 2.086-3.46 2.727v.09c2.013.43 3.54 1.382 4.575 2.855 1.034 1.482 1.556 3.33 1.556 5.563 0 1.28-.23 2.48-.686 3.587-.458 1.116-1.17 2.077-2.15 2.882s-2.224 1.446-3.752 1.922-3.34.714-5.445.714H15.217V12.168zm5.72 13.68h9.333c1.372 0 2.516-.384 3.43-1.17s1.373-1.903 1.373-3.367c0-1.647-.412-2.81-1.235-3.477s-2.013-1.006-3.57-1.006h-9.333v9.022zm0 14.32h10.11c1.738 0 3.093-.448 4.044-1.354.96-.897 1.446-2.178 1.446-3.825 0-1.62-.476-2.855-1.446-3.733s-2.306-1.3-4.044-1.3h-10.11v10.212z" fill="#fff"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 56 56" style="enable-background:new 0 0 56 56;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);stroke:#FFFFFF;}
+</style>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="5.6386" y1="47.7521" x2="54.5731" y2="8.9079" gradientTransform="matrix(1 0 0 -1 0 58)">
+	<stop  offset="0" style="stop-color:#9013FE"/>
+	<stop  offset="1" style="stop-color:#6610F2"/>
+</linearGradient>
+<path class="st0" d="M6.2,11.5c-0.1-3,2.3-5.8,5.5-5.8h32.7c3.2,0,5.6,2.8,5.5,5.8c-0.1,2.9,0,6.7,1,9.8c1,3.1,2.6,5,5.2,5.3v2.8
+	c-2.6,0.3-4.2,2.2-5.2,5.3c-1,3.1-1.1,6.9-1,9.8c0.1,3-2.3,5.8-5.5,5.8H11.6c-3.2,0-5.6-2.8-5.5-5.8c0.1-2.9,0-6.7-1-9.8
+	c-1-3.1-2.6-5-5.2-5.3v-2.8c2.6-0.3,4.2-2.2,5.2-5.3C6.1,18.2,6.3,14.4,6.2,11.5z"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="20.688" y1="40.0277" x2="31.6261" y2="21.5288" gradientTransform="matrix(1 0 0 -1 0 58)">
+	<stop  offset="0" style="stop-color:#FFFFFF"/>
+	<stop  offset="1" style="stop-color:#F1E5FC"/>
+</linearGradient>
+<path class="st1" d="M29.2,39.9c5.2,0,8.3-2.5,8.3-6.7c0-3.2-2.2-5.4-5.5-5.8v-0.1c2.4-0.4,4.3-2.6,4.3-5.2c0-3.6-2.8-5.9-7.1-5.9
+	h-9.7v23.7H29.2z M23.2,19.1h5c2.7,0,4.3,1.2,4.3,3.4c0,2.4-1.8,3.7-5.1,3.7h-4.2C23.2,26.2,23.2,19.1,23.2,19.1z M23.2,36.9V29h5
+	c3.6,0,5.4,1.3,5.4,3.9c0,2.6-1.8,3.9-5.2,3.9H23.2z"/>
+</svg>

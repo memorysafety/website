@@ -1,0 +1,78 @@
+//
+// Accordion
+// --------------------------------------------------
+
+
+// General
+
+.accordion-button {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: inherit;
+  font: {
+    size: inherit;
+    weight: inherit;
+  }
+
+  &::after {
+    margin: {
+      top: .25em;
+      right: $accordion-icon-width * .75;
+      left: 0;
+    }
+  }
+}
+
+.accordion-body {
+  padding: {
+    top: 0;
+    left: $accordion-icon-width * 1.75;
+  }
+}
+
+
+// Accordion alt
+
+.accordion-alt {
+
+  .accordion-item {
+    border: {
+      bottom: $border-width solid $border-color;
+      radius: 0;
+    }
+  }
+
+  .accordion-button {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: {
+      top: $accordion-alt-padding-y;
+      bottom: $accordion-alt-padding-y;
+    }
+
+    &::after {
+      width: $accordion-alt-icon-width;
+      height: $accordion-alt-icon-width;
+      margin: {
+        right: 0;
+        left: auto;
+      }
+      background-size: $accordion-alt-icon-width;
+    }
+  }
+
+  .accordion-body {
+    padding: {
+      top: 0;
+      left: $accordion-body-padding-x;
+    }
+  }
+}
+
+
+// Disabling accordion indicator
+
+.accordion-button.accordion-button-indicator-0 {
+  &::after { display: none; }
+}

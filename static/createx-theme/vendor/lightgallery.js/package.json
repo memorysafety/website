@@ -1,39 +1,42 @@
 {
-  "name": "lightgallery.js",
-  "version": "1.4.0",
-  "description": "Full featured lightbox gallery. Zero dependencies",
-  "keywords": [
-    "gallery",
-    "lightbox",
-    "image",
-    "youtube",
-    "vimeo",
-    "dailymotion",
-    "html5 videos",
-    "thumbnails",
-    "zoom",
-    "fullscreen",
-    "responsive",
-    "touch",
-    "drag"
+  "_args": [
+    [
+      "lightgallery.js@1.4.0",
+      "/Users/rokaux/Sites/createx"
+    ]
   ],
-  "homepage": "http://sachinchoolur.github.io/lightgallery.js/",
-  "bugs": {
-    "url": "https://github.com/sachinchoolur/lightgallery.js/issues"
+  "_from": "lightgallery.js@1.4.0",
+  "_id": "lightgallery.js@1.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-TK7auNMSz0sPjotq/VtKH/fe8GPkVRlmFf8F3zVsbFccLJL4r3U1VON+IggyE8Wy04QwbFQxTIIMqL7blibGSA==",
+  "_location": "/lightgallery.js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "lightgallery.js@1.4.0",
+    "name": "lightgallery.js",
+    "escapedName": "lightgallery.js",
+    "rawSpec": "1.4.0",
+    "saveSpec": null,
+    "fetchSpec": "1.4.0"
   },
-  "license": "GPLv3",
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/lightgallery.js/-/lightgallery.js-1.4.0.tgz",
+  "_spec": "1.4.0",
+  "_where": "/Users/rokaux/Sites/createx",
   "author": {
     "name": "Sachin N",
     "email": "sachi77n@gmail.com",
     "url": "https://github.com/sachinchoolur"
   },
-  "main": "lib/js/lightgallery.js",
-  "style": "dist/css/lightgallery.css",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sachinchoolur/lightgallery.js.git"
+  "bugs": {
+    "url": "https://github.com/sachinchoolur/lightgallery.js/issues"
   },
   "dependencies": {},
+  "description": "Full featured lightbox gallery. Zero dependencies",
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.2",
@@ -51,15 +54,40 @@
     "uglify-js": "^2.4.24",
     "watchify": "^3.11.1"
   },
+  "homepage": "http://sachinchoolur.github.io/lightgallery.js/",
+  "keywords": [
+    "gallery",
+    "lightbox",
+    "image",
+    "youtube",
+    "vimeo",
+    "dailymotion",
+    "html5 videos",
+    "thumbnails",
+    "zoom",
+    "fullscreen",
+    "responsive",
+    "touch",
+    "drag"
+  ],
+  "license": "GPLv3",
+  "main": "lib/js/lightgallery.js",
+  "name": "lightgallery.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachinchoolur/lightgallery.js.git"
+  },
   "scripts": {
     "build": "npm run copyfiles && npm run css && npm run build-debug && npm run build-min",
     "build-debug": "browserify src/js/lightgallery.js -s Lightgallery -t [babelify] -p [bannerify --file .banner ] -o dist/js/lightgallery.js",
     "build-min": "uglifyjs dist/js/lightgallery.js --comments '/!/' -m screw_ie8=true -c screw_ie8=true,unused=false -o dist/js/lightgallery.min.js",
-    "watch": "watchify src/js/lightgallery.js -s Lightgallery -t [babelify] -o dist/js/lightgallery.js -v",
-    "dev": "watchify src/js/lightgallery.js -s Lightgallery -t [babelify] -o /Users/sachin/workspace/lightgallery-js/gh-pages/lightgallery.js/lightgallery/js/lightgallery.js -v",
-    "css": "cleancss -o dist/css/lightgallery.min.css dist/css/lightgallery.css && cleancss -o dist/css/lg-fb-comment-box.min.css dist/css/lg-fb-comment-box.css && cleancss -o dist/css/lg-transitions.min.css dist/css/lg-transitions.css",
     "copyfiles": "copyfiles -u 1 ./src/fonts/** dist && copyfiles -u 1 ./src/img/** dist && copyfiles -u 1 ./src/css/** dist",
+    "css": "cleancss -o dist/css/lightgallery.min.css dist/css/lightgallery.css && cleancss -o dist/css/lg-fb-comment-box.min.css dist/css/lg-fb-comment-box.css && cleancss -o dist/css/lg-transitions.min.css dist/css/lg-transitions.css",
+    "dev": "watchify src/js/lightgallery.js -s Lightgallery -t [babelify] -o /Users/sachin/workspace/lightgallery-js/gh-pages/lightgallery.js/lightgallery/js/lightgallery.js -v",
     "lint": "jshint src",
-    "prepublish": "babel src --out-dir lib --loose all"
-  }
+    "prepublish": "babel src --out-dir lib --loose all",
+    "watch": "watchify src/js/lightgallery.js -s Lightgallery -t [babelify] -o dist/js/lightgallery.js -v"
+  },
+  "style": "dist/css/lightgallery.css",
+  "version": "1.4.0"
 }

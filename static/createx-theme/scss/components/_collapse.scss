@@ -1,0 +1,59 @@
+//
+// Collapse custom effects
+// --------------------------------------------------
+//
+// Custom collapse toggler
+
+.collapse-toggler {
+  position: relative;
+  padding-right: $spacer * 1.75;
+
+  &[aria-expanded=false],
+  &.collapsed {
+    &::before {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &::after {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .collapse-toggler-indicator {
+      transform: rotate(0);
+    }
+  }
+
+  &::before,
+  &::after {
+    top: 0;
+    left: 0;
+    transition: opacity .25s ease-in-out;
+  }
+
+  &::before {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    content: attr(data-collapsed);
+  }
+
+  &::after {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    content: attr(data-expanded);
+  }
+
+  .collapse-toggler-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: $font-size-base * 1.25;
+    vertical-align: middle;
+    transform: rotate(180deg);
+  }
+}

@@ -5,25 +5,28 @@
 
 // General styles
 
-.cs-widget ul { margin-bottom: 0; }
+.widget ul { margin-bottom: 0; }
 
 
 // Categories
 
-.cs-widget-categories {
+.widget-categories {
   .nav {
     flex-direction: column;
+
     li {
-      margin-bottom: .625rem;
+      margin-bottom: $spacer * .625;
     }
+
     .nav {
-      padding-left: 1rem;
+      padding-left: $spacer;
       border-left: $border-width solid $border-color;
       .nav-link {
         font-weight: normal;
       }
     }
   }
+
   .nav-link {
     display: flex;
     align-items: center;
@@ -35,16 +38,18 @@
 
 // Searchable data list
 
-.cs-widget-data-list {
+.widget-data-list {
   .form-control {
-    padding-left: .75rem;
+    padding-left: $spacer * .75;
     background-color: $white;
   }
+
   .list-unstyled li {
-    margin-bottom: .5rem;
+    margin-bottom: $spacer * .5;
   }
+
   .custom-control-label {
-    padding-top: .125rem;
+    padding-top: $spacer * .125;
     @include font-size($font-size-sm);
   }
 }
@@ -52,31 +57,35 @@
 
 // Range slider
 
-.cs-range-slider-ui {
+.range-slider-ui {
   height: $range-slider-height;
-  margin: 3rem 0;
+  margin: ($spacer * 3) 0;
   border: 0;
   background-color: $range-slider-bg;
   box-shadow: none;
+
   .noUi-connect {
     background-color: $range-slider-connect-bg;
   }
+
   .noUi-handle {
     top: 50%;
     width: $range-slider-handle-size;
     height: $range-slider-handle-size;
-    margin-top: -($range-slider-handle-size / 2);
+    margin-top: -($range-slider-handle-size * .5);
     border: $range-slider-handle-border;
-    border-radius: 50%;
-    box-shadow: $range-slider-handle-box-shadow;
+    @include border-radius(50%);
+    @include box-shadow($range-slider-handle-box-shadow);
     background-color: $primary;
     &::before, &::after { display: none; }
     &:focus { outline: none; }
   }
+
   .noUi-pips-horizontal {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: $spacer * .5;
+    padding-bottom: $spacer * .5;
   }
+
   .noUi-marker-normal { display: none; }
   .noUi-marker-horizontal {
     &.noUi-marker {
@@ -85,14 +94,16 @@
     }
     &.noUi-marker-large { height: .5rem; }
   }
+
   .noUi-value {
-    padding-top: .125rem;
+    padding-top: $spacer * .125;
     color: $gray-900;
     font: {
       size: $font-size-xxs;
-      weight: 700;
+      weight: $font-weight-bold;
     }
   }
+
   .noUi-tooltip {
     padding: $tooltip-padding-y $tooltip-padding-x;
     border: 0;
@@ -102,9 +113,10 @@
     line-height: 1.2;
     @include border-radius($tooltip-border-radius);
   }
+
   // Hiding range slider pips
-  &.cs-no-pips {
-    margin-bottom: 1.5rem;
+  &.no-pips {
+    margin-bottom: $spacer * 1.5;
     .noUi-pips {
       display: none;
       visibility: hidden;
@@ -112,31 +124,32 @@
     }
   }
 }
-html:not([dir=rtl]) .cs-range-slider-ui.noUi-horizontal .noUi-handle {
-  right: -($range-slider-handle-size / 2);
+
+html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
+  right: -($range-slider-handle-size * .5);
 }
 
 
 // Media grid
 
-.cs-media-grid {
+.media-grid {
   display: flex;
   flex-wrap: wrap;
+}
+
+.media-grid-item {
+  max-width: calc(33.33% - #{$media-grid-item-spacer});
+  width: 100%;
   margin: {
-    right: -$media-grid-item-spacer;
-    left: -$media-grid-item-spacer;
+    right: $media-grid-item-spacer;
+    bottom: $media-grid-item-spacer;
   }
 }
-.cs-media-grid-item {
-  max-width: 100% / $media-grid-columns;
-  width: 100%;
-  margin-top: -$media-grid-item-spacer;
-  padding: $media-grid-item-spacer;
-}
-.cs-media-grid-inner {
-  display: inline-block;
+
+.media-grid-inner {
+  display: block;
   position: relative;
-  border-radius: $media-grid-item-border-radius;
+  @include border-radius($media-grid-item-border-radius);
   overflow: hidden;
 
   &::before,
@@ -146,23 +159,29 @@ html:not([dir=rtl]) .cs-range-slider-ui.noUi-horizontal .noUi-handle {
     opacity: 0;
   }
   &::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: $media-grid-item-overlay-bg;
     border-radius: inherit;
     transition: opacity .35s;
     content: '';
     z-index: 2;
-    @extend %stretch-xy;
   }
+
   &::after {
     top: 50%;
     left: 50%;
     width: $media-grid-item-icon-size;
     height: $media-grid-item-icon-size;
     border: $media-grid-item-icon-border;
-    border-radius: 50%;
+    @include border-radius(50%);
     line-height: $media-grid-item-icon-size;
     font: {
-      family: $icon-font-family;
+      family: $icons-font-family;
       size: $font-size-base;
     }
     text-align: center;
@@ -170,7 +189,7 @@ html:not([dir=rtl]) .cs-range-slider-ui.noUi-horizontal .noUi-handle {
     color: $media-grid-item-icon-color;
     transform: translateY(-50%) translateX(-50%) scale(.8);
     transition: opacity .35s, transform .35s;
-    content: '\e904';
+    content: $ci-arrow-right;
     will-change: transform;
     z-index: 3;
   }
@@ -192,25 +211,24 @@ html:not([dir=rtl]) .cs-range-slider-ui.noUi-horizontal .noUi-handle {
 
 // Tags
 
-.cs-tag {
+.btn-tag {
   display: inline-block;
-  padding: $tag-padding-y $tag-padding-x;
-  transition: $tag-transition;
-  border: $tag-border-width solid $tag-border-color;
-  @include border-radius($tag-border-radius);
-  background-color: $tag-bg;
-  color: $tag-color;
+  padding: $btn-tag-padding-y $btn-tag-padding-x;
+  transition: $btn-tag-transition;
+  border: $btn-tag-border-width solid $btn-tag-border-color;
+  @include border-radius($btn-tag-border-radius);
+  background-color: $btn-tag-bg;
+  color: $btn-tag-color;
   font: {
-    size: $tag-font-size;
-    weight: $tag-font-weight;
+    size: $btn-tag-font-size;
+    weight: $btn-tag-font-weight;
   }
   text-decoration: none;
   white-space: nowrap;
 
   &:hover {
-    border-color: $tag-hover-border-color;
-    color: $tag-hover-color;
+    border-color: $btn-tag-hover-border-color;
+    color: $btn-tag-hover-color;
     text-decoration: none;
   }
-  &.cs-tag-pill { border-radius: $tag-pill-border-radius; }
 }

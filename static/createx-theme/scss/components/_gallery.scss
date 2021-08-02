@@ -4,7 +4,7 @@
 // ----------------------------------------------------------
 
 
-.cs-gallery-item {
+.gallery-item {
   display: block;
   position: relative;
   text-decoration: none;
@@ -21,21 +21,26 @@
   &::before {
     display: block;
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: $gallery-overlay-bg;
     opacity: 0;
     transition: opacity .3s ease-in-out;
     z-index: 3;
     content: '';
-    @extend %stretch-xy;
   }
 
-  .cs-gallery-caption {
+  .gallery-caption {
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: $spacer ($spacer / 2);
+    padding: $spacer ($spacer * .5);
     transform: translateY($spacer);
     transition: transform .35s ease-in-out, opacity .35s ease-in-out;
     opacity: 0;
@@ -53,24 +58,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: $video-btn-size;
-    height: $video-btn-size;
+    width: $btn-video-size;
+    height: $btn-video-size;
     padding-left: .25rem;
     border-radius: 50%;
     transform: translateY(-50%) translateX(-50%);
-    background-color: $video-btn-bg;
-    color: $video-btn-color;
-    font-family: $icon-font-family;
-    line-height: $video-btn-size;
+    background-color: $btn-video-bg;
+    color: $btn-video-color;
+    font-family: $icons-font-family;
+    line-height: $btn-video-size;
     text-align: center;
-    content: '\e93f';
+    content: $ci-play;
     z-index: 4;
-    @include font-size($video-btn-font-size);
+    @include font-size($btn-video-font-size);
   }
 
   &:hover {
     &::before { opacity: 1; }
-    .cs-gallery-caption {
+    .gallery-caption {
       transform: initial;
       opacity: 1;
     }
@@ -78,7 +83,6 @@
 
   &:active { cursor: grab; }
 }
-
 
 // Gallery backdrop
 .lg-backdrop { z-index: $zindex-gallery-backdrop; }

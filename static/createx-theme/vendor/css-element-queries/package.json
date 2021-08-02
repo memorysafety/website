@@ -1,27 +1,57 @@
 {
-  "name": "css-element-queries",
-  "version": "1.2.3",
+  "_args": [
+    [
+      "css-element-queries@1.2.3",
+      "/Users/rokaux/Sites/createx"
+    ]
+  ],
+  "_from": "css-element-queries@1.2.3",
+  "_id": "css-element-queries@1.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-QK9uovYmKTsV2GXWQiMOByVNrLn2qz6m3P7vWpOR4IdD6I3iXoDw5qtgJEN3Xq7gIbdHVKvzHjdAtcl+4Arc4Q==",
+  "_location": "/css-element-queries",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "css-element-queries@1.2.3",
+    "name": "css-element-queries",
+    "escapedName": "css-element-queries",
+    "rawSpec": "1.2.3",
+    "saveSpec": null,
+    "fetchSpec": "1.2.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/css-element-queries/-/css-element-queries-1.2.3.tgz",
+  "_spec": "1.2.3",
+  "_where": "/Users/rokaux/Sites/createx",
+  "author": {
+    "name": "Marc J. Schmidt"
+  },
+  "bugs": {
+    "url": "https://github.com/marcj/css-element-queries/issues"
+  },
   "description": "CSS-Element-Queries Polyfill. Proof-of-concept for high-speed element dimension/media queries in valid css.",
-  "main": "index.js",
-  "typings": "css-element-queries.d.ts",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.3.1"
+  },
   "directories": {
     "test": "test"
+  },
+  "homepage": "https://github.com/marcj/css-element-queries",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "css-element-queries",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marcj/css-element-queries.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:marcj/css-element-queries.git"
-  },
-  "author": "Marc J. Schmidt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marcj/css-element-queries/issues"
-  },
-  "homepage": "https://github.com/marcj/css-element-queries",
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bump": "^0.3.1"
-  }
+  "typings": "css-element-queries.d.ts",
+  "version": "1.2.3"
 }
