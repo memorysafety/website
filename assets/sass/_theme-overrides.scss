@@ -14,6 +14,12 @@ a {
   }
 }
 
+.btn {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .btn-primary {
   background-color: $primary_color !important;
   border-color: $primary_color !important;
@@ -106,10 +112,21 @@ body,
   padding-top: 10rem !important;
 }
 
-[class^="accordion"] .accordion-indicator::before,
-[class^="accordion"] .accordion-indicator::after,
-[class*=" accordion"] .accordion-indicator::before,
-[class*=" accordion"] .accordion-indicator::after {
-  top: 21px;
-  color: $brand_mint;
+.accordion-button {
+  color: #082659 !important;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3e%3cpath fill-rule='evenodd' d='M7.999.667c.368 0 .667.298.667.667v6h6c.368 0 .667.298.667.667s-.299.667-.667.667h-6v6c0 .368-.298.667-.667.667s-.667-.299-.667-.667v-6h-6C.964 8.667.666 8.369.666 8s.298-.667.667-.667h6v-6c0-.368.298-.667.667-.667z' fill='%2314dfb4'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3e%3cpath fill-rule='evenodd' d='M.666 8c0-.368.298-.667.667-.667v1.333C.964 8.666.666 8.368.666 8zm14 0v.667H1.333V7.333h13.333V8zm0 0v.667c.368 0 .667-.298.667-.667s-.299-.667-.667-.667V8z' fill='%2314dfb4'/%3e%3c/svg%3e") !important;
+}
+
+.btn > [class^="ci-"],
+.btn > [class*=" ci-"] {
+  font-size: 1em;
 }

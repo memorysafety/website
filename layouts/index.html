@@ -90,17 +90,15 @@
             <h2 class="h1 text-center">Get Involved</h2>
 
             <div class="accordion" id="accordionQuestions">
-              <div class="card">
-                <div class="card-header pt-0" id="questionsHeadingOne">
-                  <h5 class="accordion-heading">
-                    <a href="#questionsCollapseOne" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="questionsCollapseOne" class="">
-                      <span class="accordion-indicator mt-n1"></span>
-                      Donate
-                    </a>
-                  </h5>
-                </div>
-                <div class="collapse show" id="questionsCollapseOne" aria-labelledby="questionsHeadingOne" data-parent="#accordionQuestions" style="">
-                  <div class="card-body">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingOne">
+                  <button class="accordion-button border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Donate
+                  </button>
+                </h3>
+                <div class="accordion-collapse border-0 collapse show" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionQuestions">
+                  <div class="accordion-body">
                     <p>Being part of ambitious work like Prossimo is easier than you might think: 100% of our funding comes from charitable donations from companies and people like you. </p>
                     <p>When you support Prossimo, you’re helping to create a future for the Web that is more memory safe and more secure - and <em>that</em> benefits everyone using it!</p>
                     <a class="btn btn-mint" href="https://abetterinternet.org/donate">Donate</a>
@@ -108,17 +106,15 @@
                 </div>
               </div>
 
-              <div class="card">
-                <div class="card-header" id="questionsHeadingTwo">
-                  <h5 class="accordion-heading">
-                    <a href="#questionsCollapseTwo" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="questionsHeadingTwo" class="collapsed">
-                      <span class="accordion-indicator mt-n1"></span>
-                      In your Workplace
-                    </a>
-                  </h5>
-                </div>
-                <div class="collapse" id="questionsCollapseTwo" aria-labelledby="questionsHeadingTwo" data-parent="#accordionQuestions">
-                  <div class="card-body">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo">
+                    In your Workplace
+                  </button>
+                </h3>
+                <div class="accordion-collapse border-0 collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordionQuestions">
+                  <div class="accordion-body">
                     <p>Bring greater security to your organization by advocating for memory safe code in your organization!</p>
                     <p>Many organizations match donations to nonprofits made by employees. Check if your organization has a matching program and double your impact!</p>
                     <a class="btn btn-mint" id="see-if-organization-matches" href="/sponsor#double-donation">See if your organization has a matching program</a>
@@ -126,18 +122,15 @@
                 </div>
               </div>
 
-              <!-- Card -->
-              <div class="card">
-                <div class="card-header" id="questionsHeadingThree">
-                  <h5 class="accordion-heading">
-                    <a href="#questionsCollapseThree" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="questionsCollapseThree" class="collapsed">
-                      <span class="accordion-indicator mt-n1"></span>
-                      Sponsorship
-                    </a>
-                  </h5>
-                </div>
-                <div class="collapse" id="questionsCollapseThree" aria-labelledby="questionsHeadingThree" data-parent="#accordionQuestions">
-                  <div class="card-body">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button class="accordion-button border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-controls="collapseThree">
+                    Sponsorship
+                  </button>
+                </h3>
+                <div class="accordion-collapse border-0 collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionQuestions">
+                  <div class="accordion-body">
                     <p>Prossimo works to connect maintainers behind the Internet's most critical pieces of software with the people and organizations who want to see Internet security move forward by adopting memory safe languages. Here's the simple framework of how Prossimo works: </p>
 
                     <ol>
@@ -155,18 +148,15 @@
                 </div>
               </div>
 
-              <!-- Card -->
-              <div class="card">
-                <div class="card-header" id="questionsHeadingFour">
-                  <h5 class="accordion-heading">
-                    <a href="#questionsCollapseFour" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="questionsCollapseFour" class="collapsed">
-                      <span class="accordion-indicator mt-n1"></span>
-                      Other Ways to Give
-                    </a>
-                  </h5>
-                </div>
-                <div class="collapse" id="questionsCollapseFour" aria-labelledby="questionsHeadingFour" data-parent="#accordionQuestions">
-                  <div class="card-body">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingFour">
+                  <button class="accordion-button border-0 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-controls="collapseFour">
+                    Other Ways to Give
+                  </button>
+                </h3>
+                <div class="accordion-collapse border-0 collapse" id="collapseFour" aria-labelledby="headingFour" data-bs-parent="#accordionQuestions">
+                  <div class="accordion-body">
                     <strong>Donations of Stock</strong><br />
                     <p>Appreciated securities or mutual fund shares that you’ve owned for more than one year can be excellent charitable gifts.</p>
                     {{partial "brokerage_info.html" . }}
@@ -178,9 +168,14 @@
 
                     <strong>Donor Advised Funds</strong><br />
                     <p>Recommend a donation to Internet Security Research Group (our parent org) from your gift fund. 100% of your donation will go to support a secure and privacy-respecting Internet.</p>
+
                   </div>
                 </div>
               </div>
+
+
+
+
             </div>
           </div>
         </div>
