@@ -130,3 +130,8 @@ body,
 .btn > [class*=" ci-"] {
   font-size: 1em;
 }
+
+.cs-page-wrapper {
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
