@@ -48,6 +48,7 @@ body {
 
     &__item {
       white-space: nowrap;
+      width: 100%;
     }
   }
   &__meta {
@@ -184,4 +185,8 @@ label.checkbox {
   #see-if-organization-matches {
     white-space: normal !important;
   }
+}
+
+.navbar-floating {
+  z-index: 1030;
 }

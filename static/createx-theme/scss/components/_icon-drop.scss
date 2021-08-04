@@ -1,0 +1,92 @@
+//
+// Custom ease icons dropdown
+// --------------------------------------------------
+//
+// General
+
+.icon-dropdown {
+  position: relative;
+  > .btn-social { margin-bottom: $spacer * .5; }
+
+  &:hover {
+    .icon-drop-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .icon-drop-item {
+      transform: scale(1);
+      opacity: 1;
+      @include multi-easing(3, .15, .1, ease-in);
+    }
+  }
+}
+
+.icon-drop-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: -($spacer * .5);
+  margin: 0;
+  padding: $spacer * .25;
+  list-style: none;
+  border-radius: $border-radius;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease-in-out;
+  z-index: 3;
+  will-change: opacity;
+}
+
+.icon-drop-item {
+  padding: $spacer * .25;
+  transform: scale(.7);
+  opacity: 0;
+  will-change: transform;
+}
+
+
+// Directions
+
+.icon-dropstart {
+  > .btn-social {
+    margin-bottom: initial;
+    margin-left: $spacer * .5;
+  }
+
+  .icon-drop-menu {
+    top: -($spacer * .5);
+    right: 100%;
+    left: initial;
+    flex-direction: row-reverse;
+  }
+}
+
+.icon-dropend {
+  > .btn-social {
+    margin-bottom: initial;
+    margin-right: $spacer * .5;
+  }
+
+  .icon-drop-menu {
+    top: -($spacer * .5);
+    right: initial;
+    left: 100%;
+    flex-direction: row;
+  }
+}
+
+.icon-dropup {
+  > .btn-social {
+    margin-bottom: initial;
+    margin-top: $spacer * .5;
+  }
+
+  .icon-drop-menu {
+    top: initial;
+    left: -($spacer * .5);
+    bottom: 100%;
+    flex-direction: column-reverse;
+  }
+}

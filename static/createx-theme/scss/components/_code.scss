@@ -26,8 +26,8 @@ pre {
     padding-top: $spacer * 2;
   }
 }
-code[class*="language-"],
-pre[class*="language-"],
+code[class*='language-'],
+pre[class*='language-'],
 pre {
   color: $pre-color;
 }
@@ -60,6 +60,14 @@ div.code-toolbar > .toolbar {
     &:hover {
       background-color: $primary;
       color: $white !important;
+    }
+    > span {
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
+      color: inherit;
+      font-size: $font-size-base * .8125;
+      box-shadow: none;
     }
   }
 }

@@ -6,19 +6,22 @@
 
 // Base style
 
-.cs-carousel {
+.tns-carousel-wrapper {
   position: relative;
-  .cs-carousel-inner {
+
+  .tns-carousel-inner {
     position: relative;
     overflow: hidden;
     touch-action: manipulation;
     user-select: none;
     opacity: 0;
+
     &:active { cursor: grab; }
     &.tns-slider {
       display: block;
       opacity: 1;
     }
+
     > * { backface-visibility: hidden; }
     &.tns-horizontal:not(.tns-gallery) {
       display: flex;
@@ -31,7 +34,7 @@
 
 // Fix carousel flex display for Microsoft Edge and IE browsers
 @supports (-ms-ime-align: auto) {
-  .cs-carousel .cs-carousel-inner.tns-horizontal:not(.tns-gallery) {
+  .tns-carousel-wrapper .tns-carousel-inner.tns-horizontal:not(.tns-gallery) {
     display: block;
   }
 }
@@ -54,14 +57,14 @@
     position: relative;
     width: $carousel-dot-width;
     height: $carousel-dot-height;
-    margin: 0 ($carousel-dot-spacing-x / 2);
+    margin: 0 ($carousel-dot-spacing-x * .5);
     padding: 0;
     background-color: $carousel-dot-bg;
     border: 0;
     border-radius: $carousel-dot-border-radius;
     transition: $carousel-dot-transition;
     pointer-events: initial;
-  
+
     &::before {
       display: block;
       position: absolute;
@@ -76,7 +79,7 @@
       transition: $carousel-dot-transition;
       content: '';
     }
-  
+
     &.tns-nav-active,
     &.active {
       &::before {
@@ -85,23 +88,23 @@
       }
     }
     &:focus { outline: initial; }
-  }  
+  }
 
   @include media-breakpoint-down(sm) {
-    padding-bottom: $carousel-dots-spacing-y / 1.5;
+    padding-bottom: $carousel-dots-spacing-y * .667;
   }
 }
 
 
 // Nav inverse colors
-.cs-nav-inverse,
-.cs-nav-outside {
+.tns-nav-inverse,
+.tns-nav-outside {
   [data-nav] {
     background-color: $carousel-dot-inverse-bg;
     &::before { background-color: $carousel-dot-inverse-active-bg; }
   }
 }
-.cs-nav-outside.cs-nav-inverse {
+.tns-nav-outside.tns-nav-inverse {
   [data-nav] {
     background-color: $carousel-dot-bg;
     &::before { background-color: $carousel-dot-active-bg; }
@@ -109,10 +112,11 @@
 }
 
 // Nav outside carousel content
-.cs-nav-outside {
+.tns-nav-outside {
   .tns-outer {
     margin-bottom: $carousel-dots-spacing-y * 2;
   }
+
   .tns-nav {
     top: 100%;
     bottom: initial;
@@ -126,8 +130,9 @@
     .tns-outer {
       margin-bottom: $carousel-dots-spacing-y * 1.5;
     }
+
     .tns-nav {
-      padding-top: $carousel-dots-spacing-y / 2;
+      padding-top: $carousel-dots-spacing-y * .5;
     }
   }
 }
@@ -155,8 +160,8 @@
 
   @include media-breakpoint-down(sm) {
     padding: {
-      right: $carousel-controls-spacing-x / 2;
-      left: $carousel-controls-spacing-x / 2;
+      right: $carousel-controls-spacing-x * .5;
+      left: $carousel-controls-spacing-x * .5;
     }
   }
 }
@@ -179,8 +184,8 @@
   @include border-radius($carousel-control-border-radius);
   @include font-size($carousel-control-font-size);
 
-  [class^='cxi-'],
-  [class*=' cxi-'] {
+  [class^='ci-'],
+  [class*=' ci-'] {
     line-height: inherit;
   }
   &[disabled] {
@@ -202,7 +207,7 @@
 }
 
 // Controls on-hover
-.cs-controls-onhover {
+.tns-controls-onhover {
   [data-controls] {
     transform: $carousel-control-disabled-transform;
     opacity: $carousel-control-disabled-opacity;
@@ -214,8 +219,8 @@
 }
 
 // Controls inverse colors
-.cs-controls-inverse,
-.cs-controls-outside {
+.tns-controls-inverse,
+.tns-controls-outside {
   [data-controls] {
     background-color: $carousel-control-inverse-bg;
     color: $carousel-control-inverse-color;
@@ -225,7 +230,7 @@
     }
   }
 }
-.cs-controls-outside.cs-controls-inverse {
+.tns-controls-outside.tns-controls-inverse {
   [data-controls] {
     background-color: $carousel-control-bg;
     color: $carousel-control-color;
@@ -237,7 +242,7 @@
 }
 
 // Controls outside carousel content
-.cs-controls-outside {
+.tns-controls-outside {
   .tns-outer {
     margin: {
       right: $carousel-controls-outside-spacing-x;
@@ -261,8 +266,8 @@
       width: 100%;
       left: 0;
       padding: {
-        right: $carousel-controls-spacing-x / 2;
-        left: $carousel-controls-spacing-x / 2;
+        right: $carousel-controls-spacing-x * .5;
+        left: $carousel-controls-spacing-x * .5;
       }
     }
     [data-controls] {
@@ -285,8 +290,8 @@
   align-items: center;
   justify-content: flex-end;
   margin: {
-    right: -(($carousel-control-size - $carousel-control-font-size) / 2 - .0625rem);
-    left: -(($carousel-control-size - $carousel-control-font-size) / 2 - .0625rem);
+    right: -(($carousel-control-size - $carousel-control-font-size) * .5 - .0625rem);
+    left: -(($carousel-control-size - $carousel-control-font-size) * .5 - .0625rem);
   }
   z-index: 9;
 
@@ -294,8 +299,8 @@
 
   @include media-breakpoint-down(sm) {
     margin: {
-      right: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) / 2 - .0625rem);
-      left: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) / 2 - .0625rem);
+      right: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) * .5 - .0625rem);
+      left: -((($carousel-control-size * .75) - ($carousel-control-font-size * .9)) * .5 - .0625rem);
     }
   }
 }
@@ -303,7 +308,7 @@
 
 // Custom pager
 
-.cs-pager {
+.tns-pager {
   display: flex;
   position: absolute;
   bottom: 0;
@@ -314,20 +319,20 @@
     display: block;
     position: relative;
     width: 100%;
-    margin-right: $carousel-pager-spacing-x;
+    margin-right: $pager-spacing-x;
     padding: {
       top: 0;
       right: 0;
-      bottom: $carousel-pager-spacing-y;
+      bottom: $pager-spacing-y;
       left: 0;
     }
     border: 0;
     background-color: transparent;
     transition: color .3s ease-in-out;
-    color: $carousel-pager-label-color;
+    color: $pager-label-color;
     text-align: left;
-    font-weight: $carousel-pager-label-font-weight;
-    @include font-size($carousel-pager-label-font-size);
+    font-weight: $pager-label-font-weight;
+    @include font-size($pager-label-font-size);
 
     &:last-child { margin-right: initial; }
 
@@ -337,43 +342,43 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: $carousel-pager-dash-height;
+      height: $pager-dash-height;
       content: '';
     }
     &::before {
       width: 100%;
-      background-color: $carousel-pager-label-color;
+      background-color: $pager-label-color;
       z-index: 2;
     }
     &::after {
       width: 0;
-      background-color: $carousel-pager-label-active-color;
+      background-color: $pager-label-active-color;
       transition: width .3s ease-in-out;
       will-change: width;
       z-index: 3;
     }
     &:hover {
-      color: $carousel-pager-label-hover-color;
+      color: $pager-label-hover-color;
     }
     &.tns-nav-active {
-      color: $carousel-pager-label-active-color;
+      color: $pager-label-active-color;
       &::after { width: 100%; }
     }
   }
 
   // Pager inverse colors
-  &.cs-pager-inverse [data-nav] {
-    color: $carousel-pager-inverse-label-color;
-    &::before { background-color: $carousel-pager-inverse-label-color; }
-    &::after { background-color: $carousel-pager-inverse-label-active-color; }
-    &:hover { color: $carousel-pager-inverse-label-hover-color; }
-    &.tns-nav-active { color: $carousel-pager-inverse-label-active-color; }
+  &.tns-pager-inverse [data-nav] {
+    color: $pager-inverse-label-color;
+    &::before { background-color: $pager-inverse-label-color; }
+    &::after { background-color: $pager-inverse-label-active-color; }
+    &:hover { color: $pager-inverse-label-hover-color; }
+    &.tns-nav-active { color: $pager-inverse-label-active-color; }
   }
 
   @include media-breakpoint-down(sm) {
     [data-nav] {
-      padding-bottom: $carousel-pager-spacing-y / 2;
-      @include font-size($carousel-pager-label-font-size / 1.5);
+      padding-bottom: $pager-spacing-y * .5;
+      @include font-size($pager-label-font-size * .667);
     }
   }
 }
@@ -381,22 +386,22 @@
 
 // Custom thumbnails
 
-.cs-thumbnails {
+.tns-thumbnails {
   display: flex;
   flex-wrap: wrap;
   margin: {
     top: $thumbnails-spacing;
-    right: -($thumbnails-spacing / 2);
-    left: -($thumbnails-spacing / 2);
+    right: -($thumbnails-spacing * .5);
+    left: -($thumbnails-spacing * .5);
   }
 
   [data-nav] {
     display: block;
     max-width: $thumbnail-width;
     margin: {
-      right: $thumbnails-spacing / 2;
+      right: $thumbnails-spacing * .5;
       bottom: $thumbnails-spacing;
-      left: $thumbnails-spacing / 2;
+      left: $thumbnails-spacing * .5;
     }
     padding: 0;
     border: $thumbnail-border;
@@ -418,14 +423,19 @@
       &::before {
         display: block;
         position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         background-color: $thumbnail-indicator-bg;
         color: $thumbnail-indicator-color;
-        font-family: $icon-font-family;
+        font-family: $icons-font-family;
         line-height: $thumbnail-width;
         text-align: center;
         opacity: .6;
-        content: '\e954';
-        @extend %stretch-xy;
+        content: $ci-play-outline;
         @include font-size($thumbnail-indicator-font-size);
       }
     }
@@ -435,20 +445,20 @@
 
   @include media-breakpoint-down(sm) {
     margin: {
-      top: $thumbnails-spacing / 2;
-      right: -($thumbnails-spacing / 4);
-      left: -($thumbnails-spacing / 4);
+      top: $thumbnails-spacing * .5;
+      right: -($thumbnails-spacing * .25);
+      left: -($thumbnails-spacing * .25);
     }
 
     [data-nav] {
-      max-width: $thumbnail-width / 2;
+      max-width: $thumbnail-width * .5;
       margin: {
-        right: $thumbnails-spacing / 4;
-        bottom: $thumbnails-spacing / 2;
-        left: $thumbnails-spacing / 4;
+        right: $thumbnails-spacing * .25;
+        bottom: $thumbnails-spacing * .5;
+        left: $thumbnails-spacing * .25;
       }
       &.video-indicator::before {
-        line-height: $thumbnail-width / 2;
+        line-height: $thumbnail-width * .5;
       }
     }
   }
@@ -457,25 +467,25 @@
 
 // Carousel inside Promo bar
 
-.cs-promo-bar .cs-carousel {
+.tns-promo-bar .tns-carousel-wrapper {
   width: auto;
 
   .tns-controls { padding: 0; }
 
   [data-controls] {
-    width: $carousel-control-size / 1.5;
-    height: $carousel-control-size / 1.5;
+    width: $carousel-control-size * .667;
+    height: $carousel-control-size .667;
     margin-top: .0625rem;
-    font-size: $carousel-control-font-size / 1.25;
-    line-height: $carousel-control-size / 1.5;
+    font-size: $carousel-control-font-size * .8;
+    line-height: $carousel-control-size * .667;
     background: none;
-    
-    .cxi-arrow-left::before { content: '\e917'; }
-    .cxi-arrow-right::before { content: '\e918'; }
+
+    .ci-arrow-left::before { content: $ci-angle-left; }
+    .ci-arrow-right::before { content: $ci-angle-right; }
   }
 
-  [data-controls="prev"] { margin-left: -.5rem; }
-  [data-controls="next"] { margin-right: -.5rem; }
+  [data-controls='prev'] { margin-left: -.5rem; }
+  [data-controls='next'] { margin-right: -.5rem; }
 
   .tns-nav { display: none !important; }
 
@@ -486,7 +496,7 @@
     }
   }
 
-  &.cs-controls-inverse [data-controls] {
+  &.tns-controls-inverse [data-controls] {
     color: $white;
   }
 }

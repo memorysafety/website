@@ -8,16 +8,18 @@
 
 // Navbar Base
 
-.cs-header {
+.header {
   position: relative;
   z-index: $zindex-fixed;
 }
 
-.navbar-box-shadow {
+.navbar-shadow {
   box-shadow: $navbar-box-shadow;
 }
 
 .navbar-collapse {
+  flex-grow: 1;
+  flex-basis: 100%;
   margin: {
     right: -($spacer);
     left: -($spacer);
@@ -26,6 +28,8 @@
 }
 
 .navbar-brand {
+  display: inline-block;
+  flex-shrink: 0;
   font: {
     size: $navbar-brand-font-size;
     weight: $navbar-brand-font-weight;
@@ -64,10 +68,10 @@
     background-color: $navbar-stuck-bg;
     box-shadow: $navbar-stuck-box-shadow;
     z-index: $zindex-fixed;
-  
+
     .navbar-brand-static { display: none !important; }
     .navbar-brand-floating { display: block !important; }
-  
+
     &.right-15 {
       right: 15px;
       width: calc(100% - 15px);
@@ -107,6 +111,7 @@
         top: 0;
         bottom: ($navbar-padding-y * .75);
       }
+      .dropdown-menu { display: block; }
     }
   }
   .nav-link {
@@ -140,6 +145,7 @@
 
 .mega-dropdown {
   .dropdown-menu {
+    left: 0;
     border-radius: 0;
     &::before {
       display: block;
@@ -164,29 +170,29 @@
 }
 
 
-// Navbar media tool
+// Navbar tool
 
-.media-tool {
+.navbar-tool {
   align-items: center;
-  margin-left: $navbar-media-tool-spacing * .65;
+  margin-left: $navbar-tool-spacing * .65;
   text-decoration: none;
-  .media-body {
+  > div {
     display: none;
     white-space: nowrap;
   }
 }
-.media-tool-icon {
-  @include font-size($navbar-media-tool-icon-font-size * .65);
+.navbar-tool-icon {
+  @include font-size($navbar-tool-icon-font-size * .65);
 }
-.media-tool-title {
+.navbar-tool-title {
   margin-bottom: 0;
   transition: $navbar-tool-transition;
-  color: $navbar-media-tool-title-color;
-  @include font-size($navbar-media-tool-title-font-size);
+  color: $navbar-tool-title-color;
+  @include font-size($navbar-tool-title-font-size);
 }
-.media-tool-label {
-  color: $navbar-media-tool-label-color;
-  @include font-size($navbar-media-tool-label-font-size);
+.navbar-tool-label {
+  color: $navbar-tool-label-color;
+  @include font-size($navbar-tool-label-font-size);
 }
 
 
@@ -232,10 +238,10 @@
   }
 
   // media tool
-  .media-tool-icon { color: $navbar-light-expand-tool-icon-color; }
-  .media-tool-title { color: $navbar-light-tool-color; }
-  .media-tool-label { color: $navbar-light-tool-text-small-color; }
-  .media-tool:hover .media-tool-title { color: $navbar-light-tool-hover-color; }
+  .navbar-tool-icon { color: $navbar-light-expand-tool-icon-color; }
+  .navbar-tool-title { color: $navbar-light-tool-color; }
+  .navbar-tool-label { color: $navbar-light-tool-text-small-color; }
+  .navbar-tool:hover .navbar-tool-title { color: $navbar-light-tool-hover-color; }
 
   // nav tool
   .nav-tool-icon { color: $navbar-light-expand-tool-icon-color; }
@@ -255,7 +261,7 @@
 // Navbar Theme Dark
 
 .navbar-dark {
-  
+
   // nav
   .navbar-nav {
     background-color: $navbar-dark-nav-bg;
@@ -279,10 +285,10 @@
   }
 
   // media tool
-  .media-tool-icon { color: $navbar-dark-expand-tool-icon-color; }
-  .media-tool-title { color: $navbar-dark-tool-color; }
-  .media-tool-label { color: $navbar-dark-tool-text-small-color; }
-  .media-tool:hover .media-tool-title { color: $navbar-dark-tool-hover-color; }
+  .navbar-tool-icon { color: $navbar-dark-expand-tool-icon-color; }
+  .navbar-tool-title { color: $navbar-dark-tool-color; }
+  .navbar-tool-label { color: $navbar-dark-tool-text-small-color; }
+  .navbar-tool:hover .navbar-tool-title { color: $navbar-dark-tool-hover-color; }
 
   // nav tool
   .nav-tool-icon { color: $navbar-dark-expand-tool-icon-color; }
@@ -322,7 +328,7 @@
         .navbar-collapse {
           padding-top: 0;
         }
-        
+
 
         // Navbar Nav
 
@@ -333,6 +339,11 @@
             > .dropdown-menu {
               padding-top: $dropdown-padding-y;
               padding-bottom: $dropdown-padding-y;
+              .dropdown-menu { display: none; }
+              .dropdown:hover > .dropdown-menu {
+                display: block;
+                animation: dropdown-show .25s cubic-bezier(.68, -.55, .265, 1.55);
+              }
             }
           }
           .nav-link {
@@ -341,7 +352,7 @@
           }
           > .dropdown > .dropdown-toggle::after {
             right: 0;
-            content: '\e916';
+            content: $ci-angle-down;
           }
           .dropdown-menu {
             .dropdown-item {
@@ -390,7 +401,7 @@
               right: $dropdown-item-padding-x + .3125rem;
               margin-top: .0625rem;
               transform: translateY(-50%);
-              content: '\e918';
+              content: $ci-angle-right;
             }
           }
         }
@@ -409,15 +420,15 @@
         }
 
 
-        // Navbar media tool
+        // Navbar tool
 
-        .media-tool {
-          margin-left: $navbar-media-tool-spacing;
-          .media-body { display: block; }
+        .navbar-tool {
+          margin-left: $navbar-tool-spacing;
+          > div { display: block; }
         }
-        .media-tool-icon {
-          color: $navbar-media-tool-icon-color;
-          @include font-size($navbar-media-tool-icon-font-size);
+        .navbar-tool-icon {
+          color: $navbar-tool-icon-color;
+          @include font-size($navbar-tool-icon-font-size);
         }
 
 
@@ -445,7 +456,7 @@
 
 
         // Navbar Theme Dark
-        
+
         &.navbar-dark {
 
           // nav
@@ -469,11 +480,11 @@
 }
 
 
-// Navbar Toggler Hamburger
+// Navbar Toggler: Hamburger
 // --------------------------------------------------
 // Based on https://github.com/jonsuh/hamburgers
 
-// Base styles 
+// Base styles
 
 .navbar-toggler {
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
@@ -500,7 +511,7 @@
 .navbar-toggler-icon {
   display: block;
   top: 50%;
-  margin-top: $navbar-toggler-bar-height / -2;
+  margin-top: $navbar-toggler-bar-height * -.5;
 
   &,
   &::before,

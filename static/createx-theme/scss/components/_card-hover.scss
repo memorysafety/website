@@ -1,0 +1,116 @@
+//
+// Cards custom on-hover effects
+// --------------------------------------------------
+
+
+// Image scale
+
+.image-scale {
+  .image-inner {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+    img {
+      display: block;
+      width: 100%;
+      transition: transform .3s ease-in-out;
+      will-change: transform;
+    }
+  }
+
+  &:hover .image-inner img { transform: scale(1.08); }
+  &.media:hover .image-inner img { transform: scale(1.14); }
+  &.card-hover:hover { transform: translateY(0); }
+}
+
+
+// Image fade
+
+.image-fade {
+  position: relative;
+  background: {
+    size: cover;
+    position: center;
+    repeat: no-repeat;
+  }
+  border: none;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: -.125rem;
+    left: -.125rem;
+    width: calc(100% + .25rem);
+    height: calc(100% + .25rem);
+    background-color: $white;
+    border-radius: inherit;
+    transition: background-color .3s ease-in-out;
+    content: '';
+    will-change: background-color;
+    z-index: 2;
+  }
+
+  .image-inner {
+    position: relative;
+    z-index: 3;
+    hr { transition: opacity .3s ease-in-out; }
+  }
+
+  .inner-text {
+    transition: color .3s ease-in-out;
+  }
+
+  img[src*='.svg'].inner-img {
+    transition: filter .3s ease-in-out;
+    will-change: filter;
+  }
+
+  &:hover {
+    &::before {
+      background-color: rgba($gray-900, .6);
+    }
+
+    .image-inner {
+      hr { opacity: .4; }
+    }
+
+    .inner-text {
+      color: $white;
+      &.nav-link:hover { color: rgba($white, .8); }
+    }
+
+    img[src*='.svg'].inner-img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &.card::before {
+    @include border-radius($card-inner-border-radius);
+  }
+
+  @include media-breakpoint-down(sm) {
+    &::before {
+      background-color: rgba($gray-900, .6);
+    }
+
+    .image-inner {
+      hr { opacity: .4; }
+    }
+
+    .inner-text {
+      color: $white;
+      &.nav-link:hover { color: rgba($white, .8); }
+    }
+
+    img[src*='.svg'].inner-img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+a.image-fade {
+  text-decoration: none;
+  color: inherit;
+}

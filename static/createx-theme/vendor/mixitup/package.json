@@ -1,27 +1,31 @@
 {
-  "_from": "mixitup",
+  "_args": [
+    [
+      "mixitup@3.3.1",
+      "/Users/rokaux/Sites/createx"
+    ]
+  ],
+  "_from": "mixitup@3.3.1",
   "_id": "mixitup@3.3.1",
   "_inBundle": false,
   "_integrity": "sha512-5WlMzRNSAU5R1N/NlmOvmYxcZVgib3do5I0H+LO6e0ArI7GlNLMPoAANK7XOemuwJFZcJHIGvWDIPMK1jnWEqA==",
   "_location": "/mixitup",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "mixitup",
+    "raw": "mixitup@3.3.1",
     "name": "mixitup",
     "escapedName": "mixitup",
-    "rawSpec": "",
+    "rawSpec": "3.3.1",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "3.3.1"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/mixitup/-/mixitup-3.3.1.tgz",
-  "_shasum": "6ca9b6fc3a202d237b8f3ce9c02f48ac976881f6",
-  "_spec": "mixitup",
+  "_spec": "3.3.1",
   "_where": "/Users/rokaux/Sites/createx",
   "author": {
     "name": "KunkaLabs Limited"
@@ -29,8 +33,6 @@
   "bugs": {
     "url": "https://github.com/patrickkunka/mixitup/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
   "description": "A high-performance, dependency-free library for animated filtering, sorting and more",
   "devDependencies": {
     "chai": "^3.5.0",

@@ -1,0 +1,96 @@
+//
+// Team card
+// --------------------------------------------------
+
+
+// General
+
+[class^='team'],
+[class*=' team'] {
+  border: 0;
+
+  .card-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-floating-links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: {
+      right: $team-card-floating-links-padding-x;
+      left: $team-card-floating-links-padding-x;
+    }
+    z-index: 3;
+  }
+}
+
+// Team card
+
+.team {
+  .card-img {
+    &:before {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $team-card-img-bg;
+      transition: opacity .4s;
+      opacity: 0;
+      content: '';
+      z-index: 2;
+    }
+  }
+
+  .card-floating-links {
+    padding: {
+      top: $team-card-floating-links-padding-y;
+      bottom: $team-card-floating-links-padding-y;
+    }
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+  }
+
+  &:hover {
+    .card-img::before,
+    .card-floating-links { opacity: 1; }
+  }
+}
+
+
+// Team card alternative
+
+.team-alt {
+  .card-floating-links {
+    padding: {
+      top: $team-card-alt-floating-links-padding-y;
+      bottom: $team-card-alt-floating-links-padding-y;
+    }
+    background-color: $team-card-alt-floating-links-bg;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform .45s, opacity .45s;
+
+    > * {
+      transform: translateY(30%);
+      opacity: 0;
+      transition: transform .3s ease-in-out .15s,
+                  opacity .45s ease-in-out .15s;
+    }
+  }
+
+  &:hover {
+    .card-floating-links {
+      &, > * {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+}
