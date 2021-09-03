@@ -8,10 +8,20 @@
               <img src="/images/Prossimo Brand Assets/ISRG-Logo-White.png" id="footer-logo" alt="Prossimo logo">
             </a>
             <p class="mb-sm-4 mb-3 pb-lg-3 fs-xs text-light opacity-60">{{ .Site.Params.address_line_1}}<br />{{ .Site.Params.address_line_2}}</p>
+            <p class="mb-sm-4 mb-3 pb-lg-3 fs-xs text-light opacity-60">
+              <p>{{ i18n "footer_mailing" }}</p>
+              <span itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">PO Box 18666</span>,
+                <span itemprop="addressLocality">Minneapolis</span>,
+                <span itemprop="addressRegion">MN</span>
+                <span itemprop="postalCode">55418-0666</span>,
+                <span itemprop="addressCountry">USA</span>
+              </span>
+            </p>
           </div>
           <div class="col-lg-2 offset-lg-2 col-sm-12 order-lg-2 order-sm-4 order-1 mb-lg-0 mb-4">
             <h3 class="h6 mb-2 pb-1 text-uppercase text-light">Resources</h3>
-            <ul class="nav nav-light flex-lg-column flex-sm-row flex-column">
+            <ul class="nav nav- light flex-lg-column flex-sm-row flex-column">
               <li class="nav-item mb-2">
                 <a class="nav-link me-lg-0 me-sm-4 p-0 fw-normal" href="https://www.abetterinternet.org/privacy-policy" target="_isrg-privacy">Privacy Policy <i class="ci-external-link mt-n1 ms-2"></i></a>
               </li>
