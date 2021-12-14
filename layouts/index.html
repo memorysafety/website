@@ -53,10 +53,10 @@
 
       <section class="container py-lg-1 py-1" id="initiatives">
         <h2 class="h1 text-center">Initiatives</h2>
+        {{ partial "home/initiative_list_item.html" (dict "title" "Rustls" "project_status" "In progress" "funding_status" "100% funded" "url" "/initiative/rustls" "image" "/images/rustls.png" "description" "Let's get the Rustls TLS library ready to replace OpenSSL in as many projects as possible." "backgroundColor" "#ffffff") }}
         {{ partial "home/initiative_list_item.html" (dict "title" "NTP" "project_status" "Pending funding" "funding_status" "Raising funds" "url" "/initiative/ntp" "image" "/images/ntp.png" "description" "Let's create a memory safe NTP implementation." "backgroundColor" "#ffffff") }}
         {{ partial "home/initiative_list_item.html" (dict "title" "Linux Kernel" "project_status" "In progress" "funding_status" "100% funded" "url" "/initiative/linux-kernel" "image" "/images/tux.svg" "description" "Let's make it possible to write memory-safe drivers for the Linux kernel." "backgroundColor" "#ffffff") }}
         {{ partial "home/initiative_list_item.html" (dict "title" "curl" "project_status" "In progress" "funding_status" "100% funded" "url" "/initiative/curl" "image" "/images/curl.svg" "description" "Let's make TLS and HTTP networking code in curl memory-safe." "backgroundColor" "#ffffff") }}
-        {{ partial "home/initiative_list_item.html" (dict "title" "Rustls" "project_status" "In progress" "funding_status" "100% funded" "url" "/initiative/rustls" "image" "/images/rustls.png" "description" "Let's get the Rustls TLS library ready to replace OpenSSL in as many projects as possible." "backgroundColor" "#ffffff") }}
         {{ partial "home/initiative_list_item.html" (dict "title" "mod_tls" "logo_link" "https://httpd.apache.org" "project_status" "In progress" "funding_status" "100% funded" "url" "/initiative/mod_tls" "image" "/images/httpd.svg" "description" "Let's make it possible to use memory safe TLS networking in Apache httpd." "backgroundColor" "#ffffff") }}
       </section>
 
