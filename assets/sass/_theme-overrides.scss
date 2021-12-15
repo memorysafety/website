@@ -6,12 +6,18 @@
 a {
   color: $primary_color !important;
 
-  text-decoration-color: $brand_mint;
+  text-decoration-color: $brand_dark_blue;
+  text-decoration-thickness: 2px;
 
   &:hover {
     text-decoration: underline;
     text-decoration-color: $brand_dark_blue;
+    text-decoration-thickness: 2px;
   }
+}
+
+a.nav-link:hover {
+  text-decoration: none;
 }
 
 .btn {
