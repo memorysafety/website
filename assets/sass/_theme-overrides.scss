@@ -16,6 +16,10 @@ a {
   }
 }
 
+a.nav-link:hover {
+  text-decoration: none;
+}
+
 .btn {
   &:hover {
     text-decoration: none;
