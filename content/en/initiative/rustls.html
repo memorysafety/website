@@ -1,8 +1,6 @@
 ---
 title: Rustls
 slug: rustls
-project_status: In progress
-funding_status: 20% funded
 background: dce0e9
 sponsors: ["Google"]
 image: /images/rustls.png
@@ -12,24 +10,18 @@ blog_posts: ["2021-04-20-preparing-rustls.md"]
 <h2>The Story</h2>
 
 <p>
-  The story of our work with <a href="https://github.com/ctz/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS
-  library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety
-  vulnerabilities.
+  The story of our work with <a href="https://github.com/ctz/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety vulnerabilities.
 </p>
 
 <p>
-  It's important for the security of the Internet that we move away from TLS libraries that aren't memory safe. In our view, however, it's highly unlikely that
-  we can get the OpenSSL project to move away from C. As such, we need to work on a memory safe alternative and get the Internet's critical software
-  infrastructure to make the switch.
+  It's important for the security of the Internet that we move away from TLS libraries that aren't memory safe. It's highly unlikely that we can get the OpenSSL project to move away from C so we need to work on a memory safe alternative and get the Internet's critical software infrastructure to make the switch.
 </p>
 
 <p>
-  Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a
-  <a href="https://github.com/ctz/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> TLS implementation written in Rust, a memory safe language. We
-  believe Rustls represents the future of TLS implementation on the Internet.
+  Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a <a href="https://github.com/ctz/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> TLS implementation written in Rust, a memory safe language. We believe Rustls represents the future of TLS implementation on the Internet.
 </p>
 
-<p>We have invested in Rustls in two ways:</p>
+<h2>What We've Done</h2>
 
 <ol>
   <li>We contracted with Dirkjan Ochtman to make a number of improvements to the Rustls library. This contract is complete.</li>
@@ -37,12 +29,14 @@ blog_posts: ["2021-04-20-preparing-rustls.md"]
   </li>
 </ol>
 
-<p>We are currently raising funds to make <a href="http://localhost:1313/initiative/rustls/rustls-work-plan/">further improvements to Rustls</a>.</p>
+<h2>What's Next</h2>
+
+<p>We are currently raising funds to make <a href="/initiative/rustls/rustls-work-plan/">further improvements</a> to Rustls.</p>
 
 <h2>Links</h2>
 
 <ul>
-<li><a href="http://localhost:1313/initiative/rustls/rustls-work-plan/">Prossimo Priorities for Rustls Development</a></li>
+<li><a href="/initiative/rustls/rustls-work-plan/">Prossimo Priorities for Rustls Development</a></li>
 <li><a href="https://github.com/ctz/rustls">Rustls on GitHub</a></li>
 <li><a href="https://github.com/rustls/rustls-ffi">C API for Rustls on GitHub</a></li>
 <li><a href="https://github.com/ctz/rustls/blob/main/audit/TLS-01-report.pdf">Rustls May 2020 Audit Report</a></li>
