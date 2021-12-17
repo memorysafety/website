@@ -21,13 +21,32 @@ blog_posts: ["2020-10-09-memory-safe-curl.md"]
   not overly disruptive to existing users.
 </p>
 
+<h2>What We've Done</h2>
+
 <p>
-  Together, we came up with a plan to add options to build curl with memory-safe HTTP and TLS libraries. For HTTP we chose the
-  <a href="https://github.com/hyperium/hyper">Hyper</a> library. For TLS we chose the <a href="https://github.com/ctz/rustls">Rustls</a> library. We contracted
-  with Daniel to work on the Hyper library integration, while ISRG engineer Jacob Hoffman-Andrew worked on the Rustls integration.
+  Together with Daniel Stenberg, we came up with a plan to add options to build curl with memory-safe HTTP and TLS libraries. For HTTP we chose the
+  <a href="https://github.com/hyperium/hyper">Hyper</a> library. For TLS we chose the <a href="https://github.com/ctz/rustls">Rustls</a> library.
 </p>
 
 <p>
-  Today curl users can choose to build curl with Hyper and Rustls. Work is being done to make sure full testing is in place to set these new options up for
-  stability and success over the long run.
+  We contracted with Daniel integrate the Hyper HTTP library into curl. ISRG engineer Jacob Hoffman-Andrew integrated the Rustls TLS library into curl.
 </p>
+
+<p>
+  Today curl users can choose to build curl with Hyper and Rustls.
+</p>
+
+<h2>What's Next</h2>
+
+<p>
+  Collecting feedback from people using the Hyper an Rustls back-ends is our priority as we work to convince organizations distributing curl to switch to the safer back-ends.
+</p>
+
+<h2>Links</h2>
+
+<ul>
+<li><a href="https://daniel.haxx.se/blog/2021/05/28/taking-hyper-curl-further/">Daniel Stenberg: Taking Hyper-curl Further</a></li>
+<li><a href="https://daniel.haxx.se/blog/2021/02/04/webinar-curl-hyper-and-rust/">Webinar: curl, Hyper and Rust</a></li>
+<li><a href="https://curl.se/">The curl Project</a></li>
+<li><a href="https://github.com/curl/curl">curl on GitHub</a></li>
+</ul>

@@ -22,11 +22,21 @@ logo_link: "https://httpd.apache.org"
   written in memory safe code.
 </p>
 
+<h2>What We've Done</h2>
+
 <p>
-  That's why we've contracted with Stefan Eissing of Greenbytes to write <a href="https://github.com/abetterinternet/mod_tls">mod_tls</a>, a new TLS module for Apache that is intended to replace the existing mod_ssl some day. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd. If we can show that this works well enough, we hope to bring memory safety to additional httpd modules and get them included into official httpd packages.
+  We contracted with Stefan Eissing to write <a href="https://github.com/abetterinternet/mod_tls">mod_tls</a>, a new TLS module for Apache httpd that is intended to replace the existing mod_ssl some day. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd.
 </p>
 
-<p>The mod_tls module is ready for wider testing. Give it a shot if you're running httpd! We hope to have it committed as an experimental module in httpd itself soon.</p>
+<h2>What's Next</h2>
+
+<p>
+  The mod_tls module is ready for wider testing. Give it a shot if you're running httpd! We hope to have it committed as an experimental module in httpd itself soon.
+</p>
+
+<p>
+  If we can show that mod_tls works well we hope to bring memory safety to additional httpd modules and get them included in official httpd releases.
+</p>
 
 <h2>Links</h2>
 
