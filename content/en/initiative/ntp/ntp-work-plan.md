@@ -20,7 +20,7 @@ Implement an NTP client for Linux aiming for \~1ms precision.
 * Some hardware for a limited test lab
 
 Estimated timeline: 3 months  
-Cost: $120,000
+Cost: $136,000
 
 **Milestone 2: NTP server + NTS for Linux**
 
@@ -32,7 +32,7 @@ Implement server-side functionality and add support for the NTS protocol.
 * Extended testing & test infrastructure
 
 Estimated timeline: 3 months  
-Cost: $140,000
+Cost: $161,000
 
 **Milestone 3: Additional OS support, peer connections, security audit**
 
@@ -44,14 +44,14 @@ Extend support to other operating systems and larger deployments.
 * Security audit
 
 Estimated timeline: 3 months  
-Cost: $110,000
+Cost: $124,000
 
 **Milestone 4: Hardware device support**
 
 Implement support for one representative hardware clock device.
 
 Estimated timeline: 1 month  
-Cost: $40,000
+Cost: $44,000
 
 **Milestone 5: Communications and Adoption Work**
 
