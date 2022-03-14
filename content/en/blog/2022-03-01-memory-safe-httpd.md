@@ -52,7 +52,7 @@ The mod_tls documentation offers a [feature table](https://github.com/abetterint
 The Cost
 --------
 
-I spent approximately six months building mod_tls and making it possible to load multiple TLS modules at the same time in httpd.
+I spent approximately six months building mod_tls and making it possible to load multiple TLS modules at the same time in httpd. This was made possible through Google's generous support of Prossimo and its mission to improve memory safety (thank you!).
 
 Compared to the impact this work can have, it was not a big investment. Making it possible to swap memory safe modules into existing C programs for critical functionality is a strategy that ISRG's Prossimo project is particularly interested in. It means they can invest in a small set of important libraries and then use them in critical software infrastructure with minimal effort. As much as I would like to learn Rust in the future, I was able to bring a Rust-based TLS module into httpd without having to know any Rust at all!
 
