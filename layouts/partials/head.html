@@ -6,6 +6,8 @@
   <meta name="description" content="{{ .Site.Params.meta_description }}" />
   <meta name="author" content="Internet Security Research Group" />
   {{ template "_internal/opengraph.html" . }}
+  <meta name="twitter:card" content="summary"/>
+	<meta name="twitter:image:src" content="{{ .Permalink }}{{ .Site.Params.social_share_twitter_square}}"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
@@ -21,5 +23,5 @@
   <link rel="stylesheet" media="screen" href="/createx-theme/css/theme.min.css" />
   <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
   {{ $style := resources.Get "/sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}?v={{ now}}" />
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}?v={{ now}}" />
 </head>
