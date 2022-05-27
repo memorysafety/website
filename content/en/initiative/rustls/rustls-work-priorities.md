@@ -43,22 +43,18 @@ Support for a TLS extension that substantially shrinks certificates (one of the 
 
 Early data allows clients to submit data before the TLS handshake is complete in some cases (idempotent requests, data where replay is not a risk), improving latency in the cases of, for example, HTTP requests by submitting the request in parallel with the TLS handshake.
 
-**10. Don’t Re-Encode Messages for Transcript Hashing**
-
-Potential for security issues if round-tripping is implemented incorrectly, plus the performance penalty from re-encoding parsed messages. ([Ticket](https://github.com/rustls/rustls/issues/603))
-
-**11. Enforce Confidentiality / Integrity Limits**
+**10. Enforce Confidentiality / Integrity Limits**
 
 The QUIC use of TLS mandates limited usage of AEAD keys. While TLS 1.3 and 1.2 do not require this, the same kinds of issues can apply here, and we should consider implementing limits for TLS over TCP as well. ([Ticket](https://github.com/rustls/rustls/issues/755))
 
-**12. Verify DoS Resilience**
+**11. Verify DoS Resilience**
 
 Peers might send very large or very small messages, tying up resources in order to starve well-behaved connections.
 
-**13. Support no_std**
+**12. Support no_std**
 
 Enables use of rustls in more memory-constrained environments. ([Ticket](https://github.com/rustls/rustls/issues/283))
 
-**14. FIPS Certification**
+**13. FIPS Certification**
 
 Many organizations deploying TLS libraries required FIPS certification. RusTLS cannot be deployed at many organizations until it is FIPS certified.
