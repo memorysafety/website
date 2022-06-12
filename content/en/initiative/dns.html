@@ -8,29 +8,27 @@ image: /images/dns.png
 <h2>The Story</h2>
 
 <p>
-  DNS is as critical as Internet systems get. Just about every client and server depends on making frequent DNS lookups. DNS implementations need to be secure.
+DNS is as critical as Internet infrastructure gets. DNS translates domain names into IP addresses, so just about every client and server depends on making frequent DNS lookups. DNS implementations need to be secure.
 </p>
-
 <p>
-  While there are many DNS implementations out there, including some memory safe ones, there are no open source, high performance, memory safe, fully recursive DNS resolvers. Until that exists, many DNS operators will continue to deploy DNS software written in languages that are not memory safe, putting critical Internet infrastructure at risk.
+While there are many DNS implementations out there, including some memory safe ones, there are no open source, high performance, memory safe, fully recursive DNS resolvers. Until that exists, many DNS operators will continue to deploy DNS software written in languages that are not memory safe, putting critical Internet infrastructure at risk.
 </p>
-
 <p>
-  We believe there is strong demand for such an implementation, and ISRG's <a href="https://letsencrypt.org/">Let's Encrypt</a> certificate authority will be amongst the first to deploy it.
+ISRG's Let's Encrypt certificate authority would be amongst the first to deploy it. Making many recursive requests per second, Let’s Encrypt can help prove Trust-DNS’s performance at scale. Meanwhile, Trust-DNS will harden a critical part of the Let’s Encrypt infrastructure stack thanks to its use of a memory safe language.
 </p>
 
 <h2>What's Next</h2>
 
 <p>
-  We are working with several potential partners who are interested in building an open source, high performance, memory safe, fully recursive DNS resolver. We hope to publish a development plan shortly.
+<a href="https://github.com/bluejekyll/trust-dns">Trust-DNS</a> is one of the most promising memory safe resolver projects out there. It’s an open-source project started in 2015 by <a href="https://github.com/bluejekyll">Benjamin Fry</a> as an exploration of a memory safe DNS implementation in the Rust programming language. Trust-DNS has become a useful piece of software in production environments for stub resolution, simple authority use cases, and cache warming for DNS providers.
 </p>
-
 <p>
-  If you care about DNS and memory safety, consider <a href="/sponsor/">supporting this work</a>.
+We will be investing in it per our <a href="/initiative/dns/dns-work-plan/">work plan</a>.
 </p>
 
 <h2>Links</h2>
 
 <ul>
-  <li><a href="https://en.wikipedia.org/wiki/Domain_Name_System">Wikipedia: Domain Name System</a></li>
+  <li><a href="/initiative/dns/dns-work-plan/">Work Plan</a></li>
+  <li><a href="https://github.com/bluejekyll/trust-dns">Trust-DNS on GitHub</a></li>
 </ul>
