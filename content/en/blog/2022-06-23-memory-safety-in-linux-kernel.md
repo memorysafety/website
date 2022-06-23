@@ -3,7 +3,7 @@ author: Miguel Ojeda
 slug: memory-safety-in-linux-kernel
 date: 2022-06-23T00:00:00Z
 title: "Memory Safety for the World’s Largest Software Project"
-excerpt: "An update from guest author Miguel Ojeda on his contributions in the Rust for Linux initiative"
+excerpt: "An update from guest author Miguel Ojeda on his contributions in the Rust for Linux initiative."
 ---
 
 
