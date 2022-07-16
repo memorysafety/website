@@ -200,3 +200,34 @@ code {
   color: #082659;
   font-weight: bold;
 }
+
+
+/* Autoanchors */
+
+a.autoanchor {
+  text-decoration: none;
+  color: grey;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+}
+
+html[dir="rtl"] a.autoanchor {
+  margin-right: 0.5em;
+  margin-left: 0;
+}
+
+.page-content {
+  h1,
+  h2,
+  h3 {
+    //same selector as js for anchors
+    .autoanchor {
+      display: none;
+    }
+    &:hover {
+      .autoanchor {
+        display: inline;
+      }
+    }
+  }
+}
