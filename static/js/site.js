@@ -19,12 +19,13 @@ function setupAutoanchors() {
                     id += "-" + i;
                 }
                 el.id = id;
+                el.classList.add("scroll-offset-for-sticky-nav");
             }
             if (el.id) {
                 var icon = document.createElement("a");
                 icon.className = "autoanchor fas fa-link";
                 icon.href = "#"+el.id;
-                icon.innerText = "#"
+                icon.innerHTML = "&nbsp;"
                 el.appendChild(icon);
             }
         });
