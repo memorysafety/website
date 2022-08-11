@@ -7,7 +7,7 @@ image: /images/ntp.png
 
 <h2>Work Plan</h2>
 
-**Milestone 1: Basic NTP client for Linux**
+**Milestone 1: NTP Client**
 
 Implement an NTP client for Linux aiming for \~1ms precision.
 
@@ -22,30 +22,37 @@ Implement an NTP client for Linux aiming for \~1ms precision.
 Estimated timeline: 3 months  
 Cost: $135,000
 
-**Milestone 2: NTP server + NTS for Linux**
+**Milestone 2: NTP Server**
 
-Implement server-side functionality and add support for the NTS protocol.
+Implement server-side functionality.
 
-* NTS protocol support
 * Complete client/server connection state management
 * Extend configuration & status interface
+* Additional testing and documentation
 
-Estimated timeline: 3 months  
-Cost: $161,000
+Estimated timeline: 2.5 months  
+Cost: $48,000
 
-**Milestone 3: Additional OS support, peer connections, security audit**
+**Milestone 3: Network Time Security (NTS) Support and Third Party Audit**
 
-Extend support to other operating systems and larger deployments.
+Add support for Network Time Security (NTS) to both the server and client and undergo thorough third party security audit.
 
-* Support for macOS and FreeBSD
-* Peer connection management
-* Detailed clock control for Linux
-* Security audit
+* NTS client
+  * NTS-KE client
+  * NNTS Extension fields
+  * NNTS Cookie management
+* NTS Server
+  * Master key management library
+  * NTS-KE server
+* Additional configuration
+* Additional testing
+* Additional documentation
+* Third party audit
 
-Estimated timeline: 3 months  
-Cost: $124,000
+Estimated timeline: 4 months  
+Cost: $137,000
 
-**Milestone 4: Hardware device support**
+**Milestone 4: Hardware Device Support**
 
 Implement support for one representative hardware clock device.
 
