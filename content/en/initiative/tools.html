@@ -16,10 +16,23 @@ image: /images/tools.png
 
 <ol>
   <li>We contracted with Rémy Rakic to spend six months improving Rust compile times, from January to September of 2022.</li>
-  <li>We have signed a six-month contract with Ferrous Systems to make various improvements to the <a href="https://github.com/rust-lang/rust-bindgen">bindgen</a> tool. Work will begin within the next few months.</li>
+  <li>We contracted with Ferrous Systems to for six months of engineering time to make various improvements to the <a href="https://github.com/rust-lang/rust-bindgen">bindgen</a> tool. Work started in August of 2022. So far progress has been made on the following items:</li>
+      <ul>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/2167">allowlist entries like allowlist_function show no warning when they don't match anything</a> (fix merged)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/1743">sort all items emitted based on their item type</a> (fix merged)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/2094">Support _Noreturn, [[noreturn]], __attribute__((noreturn))</a> (partial fixed merge, PRs for the rest open)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/1090">Generate C code to export static inline functions</a> (work in progress)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/564">Is it always necessary to put every function definition in a separate extern block?</a> (work in progress)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/issues/2227">Multiple definitions when a pointer gets typedef’d to the same name as a struct</a> (work starting soon)</li>
+        <li><a href="https://github.com/rust-lang/rust-bindgen/pull/1740">Rewrite Clang interface to use C++ libtooling API instead of libclang</a> (work starting soon)</li>
+      </ul>
 </ol>
 
 <h2>What's Next</h2>
+
+<p>
+  Both Rémy and Ferrous Systems continue to make progress in their work.
+</p>
 
 <p>
   We plan to extend Rémy Rakic's contract to improve Rust compile times by an additional six months.
