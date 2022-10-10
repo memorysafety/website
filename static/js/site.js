@@ -7,7 +7,6 @@ function setupAutoanchors() {
     if (page) {
         var selector = "h1,h2,h3"; //
         page.querySelectorAll(selector).forEach(function(el){
-            console.log(el,el.classList)
             if (el.classList.contains("no-autoanchor"))  { return false }
             if (!el.id) {
                 // Create an ID for the element
@@ -21,7 +20,6 @@ function setupAutoanchors() {
                     id += "-" + i;
                 }
                 el.id = id;
-
             }
             if (el.id) {
                 var icon = document.createElement("a");
