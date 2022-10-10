@@ -7,6 +7,8 @@ function setupAutoanchors() {
     if (page) {
         var selector = "h1,h2,h3"; //
         page.querySelectorAll(selector).forEach(function(el){
+            console.log(el,el.classList)
+            if (el.classList.contains("no-autoanchor"))  { return false }
             if (!el.id) {
                 // Create an ID for the element
                 var id = el.innerText.toLowerCase().replace(/\s/g, "-");
@@ -19,15 +21,16 @@ function setupAutoanchors() {
                     id += "-" + i;
                 }
                 el.id = id;
-                el.classList.add("scroll-offset-for-sticky-nav");
+
             }
             if (el.id) {
                 var icon = document.createElement("a");
                 icon.className = "autoanchor fas fa-link";
                 icon.href = "#"+el.id;
                 icon.innerHTML = "&nbsp;"
-                el.appendChild(icon);
             }
+            el.appendChild(icon);
+            el.classList.add("scroll-offset-for-sticky-nav");
         });
     }
 }
