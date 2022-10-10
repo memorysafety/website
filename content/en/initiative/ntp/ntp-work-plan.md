@@ -19,7 +19,7 @@ Implement an NTP client for Linux aiming for \~1ms precision.
 * Extended testing & test infrastructure
 * Support Let’s Encrypt in transition to the new NTP implementation
 
-Status: Complete
+Status: Complete  
 Cost: $138,000
 
 **Milestone 2: NTP Server**
@@ -30,7 +30,7 @@ Implement server-side functionality.
 * Extend configuration & status interface
 * Additional testing and documentation
 
-Status: Complete
+Status: Complete  
 Cost: $48,000
 
 **Milestone 3: Network Time Security (NTS) Support**
@@ -55,7 +55,7 @@ Cost: $93,600
 
 A third party security audit will be performed by [Radically Open Security](https://www.radicallyopensecurity.com/).
 
-Estimated timeline: 1 month
+Estimated timeline: 1 month  
 Cost: Funded by [NLNet Foundation](https://nlnet.nl/)
 
 **Milestone 5: Communications and Adoption Work**
