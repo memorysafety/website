@@ -2,7 +2,7 @@
 author: Folkert de Vries
 slug: memory-safe-ntp
 date: 2022-10-11T00:00:00Z
-title: "A memory safe implementation of the Network Time Protocol"
+title: "A Memory Safe Implementation of the Network Time Protocol"
 excerpt: "NTP is critical to the Internet’s functioning and we’ve collaborated with Tweede golf to build a high-performance, memory safe implementation. "
 ---
 
