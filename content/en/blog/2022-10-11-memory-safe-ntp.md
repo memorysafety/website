@@ -21,7 +21,7 @@ excerpt: "NTP is critical to the Internet’s functioning and we’ve collaborat
 </div>
 
 
-For the last couple of months we at Tweede golf have been working on implementing a Network Time Protocol (NTP) client in rust.
+For the last few months we at Tweede golf have been working on implementing a [Network Time Protocol (NTP) client and server in rust](https://github.com/memorysafety/ntpd-rs).
 
 The project is a [Prossimo](https://www.memorysafety.org/) initiative and is supported by their sponsors, Cisco and AWS. Our first short-term goal is to deploy our implementation at [Let's Encrypt](https://letsencrypt.org). The long-term goal is to develop an alternative fully-featured NTP implementation that can be widely used.
 
@@ -121,7 +121,7 @@ With Prossimo's support we aim to build a complete NTP implementation that provi
 
 **NTP server**
 
-Our current implementation is just an NTP client. The development of the server is in full flow and is expected to be finished Nov 2022.
+Development of the NTP server is nearly complete, expected to be finished Nov 2022.
 
 **NTS support**
 
