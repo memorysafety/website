@@ -6,6 +6,21 @@ title: "A memory safe implementation of the Network Time Protocol"
 excerpt: "NTP is critical to the Internet’s functioning and we’ve collaborated with Tweede golf to build a high-performance, memory safe implementation. "
 ---
 
+
+
+<div class="card border-0 pic-quote-right mb-4">
+    <div class="pt-4">
+        <blockquote class="blockquote">
+            <span class="quote"></span>
+            <div class="quote-text">
+                <p class="font-italic lh-170">Folkert and the team at <a href="https://tweedegolf.nl/en" target="_blank" rel="noopener noreferer">Tweede golf</a> are helping us to build a memory safe NTP implementation. We asked them to share their experience in this blog post. Thank you for your partnership and contributions, Tweede golf team!</p>
+                <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG’s Prossimo project</cite></footer>
+            </div>
+        </blockquote>
+    </div>
+</div>
+
+
 For the last couple of months we at Tweede golf have been working on implementing a Network Time Protocol (NTP) client in rust.
 
 The project is a [Prossimo](https://www.memorysafety.org/) initiative and is supported by their sponsors, Cisco and AWS. Our first short-term goal is to deploy our implementation at [Let's Encrypt](https://letsencrypt.org). The long-term goal is to develop an alternative fully-featured NTP implementation that can be widely used.
