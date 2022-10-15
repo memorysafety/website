@@ -9,7 +9,7 @@ image: /images/rustls.png
 
 **1. Support IP Address Certificates**
 
-There are some popular use cases where applications want TLS certificates for services that don’t have their own host name, relying on the IP address directly instead. I’ve heard from one customer that this is common in Kubernetes deployments. ([Ticket](https://github.com/briansmith/webpki/issues/54))
+There are some popular use cases where applications want TLS certificates for services that don’t have their own host name, relying on the IP address directly instead. This seems to be common in Kubernetes deployments. ([Ticket](https://github.com/briansmith/webpki/issues/54))
 
 **2. Implement RFC 8446 Appendix C.4 in session cache**
 
@@ -57,4 +57,4 @@ Enables use of rustls in more memory-constrained environments. ([Ticket](https:/
 
 **13. FIPS Certification**
 
-Many organizations deploying TLS libraries required FIPS certification. RusTLS cannot be deployed at many organizations until it is FIPS certified.
+Many organizations deploying TLS libraries required FIPS certification. Rustls cannot be deployed at many organizations until it is FIPS certified.
