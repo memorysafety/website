@@ -1,7 +1,7 @@
 ---
 author: Josh Aas
-slug: rust-in-linux-just-the-beginning
 date: 2022-10-18T00:00:00Z
+slug: rust-in-linux-just-the-beginning
 title: "Rust in the Linux Kernel: Just the Beginning"
 excerpt: "The next steps to bring memory safety into the Linux Kernel."
 ---
