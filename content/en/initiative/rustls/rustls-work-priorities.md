@@ -7,11 +7,11 @@ image: /images/rustls.png
 
 <h2>Work Priorities</h2>
 
-**1. Support IP Address Certificates**
+**1. Support IP Address Certificates (Contracted)**
 
 There are some popular use cases where applications want TLS certificates for services that don’t have their own host name, relying on the IP address directly instead. This seems to be common in Kubernetes deployments. ([Ticket](https://github.com/briansmith/webpki/issues/54))
 
-**2. Implement RFC 8446 Appendix C.4 in session cache**
+**2. Implement RFC 8446 Appendix C.4 in session cache (Contracted)**
 
 TLS clients should use session tickets at most once for resumption. Without this, TLS clients may be tracked across connections through reuse of session tickets. Requires changes of the internal APIs to the session caching infrastructure. ([Ticket](https://github.com/rustls/rustls/issues/466))
 
@@ -23,9 +23,9 @@ Rustls and webpki currently do not provide access to client information supplied
 
 While we currently have a way to trust certificates stored in the platform trust store, platform trust stores can have other ways of restricting how/when roots that they expose are trusted. In order to rely on these (on Darwin and Windows) we should rely on the platform verifier directly. Given that platform verifiers may require blocking I/O, some API changes are required. ([Ticket](https://github.com/rustls/rustls-native-certs/issues/25))
 
-**5. Reduce Memory Usage**
+**5. Release Handshake Memory Earlier**
 
-Rustls currently keeps substantial handshake state around even after it is no longer needed for the exchange of application data, limiting scalability. ([Ticket](https://github.com/rustls/rustls/issues/794))
+Rustls currently keeps substantial handshake state around even after it is no longer needed for the exchange of application data. ([Ticket](https://github.com/rustls/rustls/issues/794))
 
 **6. Add No-Allocation / Write-Through API**
 
