@@ -55,6 +55,10 @@ Peers might send very large or very small messages, tying up resources in order 
 
 Enables use of rustls in more memory-constrained environments. ([Ticket](https://github.com/rustls/rustls/issues/283))
 
-**13. FIPS Certification**
+**13. Enable Pluggable Cryptographic Back-ends**
 
-Many organizations deploying TLS libraries required FIPS certification. Rustls cannot be deployed at many organizations until it is FIPS certified.
+Allow Rustls consumers to plug in cryptographic back-end alternatives to *ring*.
+
+**14. FIPS Certification for Default Cryptographic Library**
+
+Many organizations deploying TLS libraries require FIPS certification. We should get the default cryptographic back-end for Rustls FIPS certified.
