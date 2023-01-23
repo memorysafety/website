@@ -20,4 +20,6 @@ In 2023, Prossimo will continue to make headway on improving memory safety in cr
 
 I'd like to thank Yael Grauer for organizing this panel, and my fellow panelists, Amira Dhalla and Alex Gaynor for the energizing conversation. Thank you to the USENIX Enigma conference and its organizers for giving us the opportunity to discuss and get the word out about this important topic.
 
+If you're interested in learning more about memory safety, check out this [new report ](https://advocacy.consumerreports.org/research/report-future-of-memory-safety/)from Consumer Reports.
+
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](/sponsor/).
