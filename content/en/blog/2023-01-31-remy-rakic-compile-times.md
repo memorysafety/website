@@ -42,7 +42,7 @@ Nonetheless, compile times have received a lot more attention recently and have 
 
 - These summaries are used to notify the compiler team in their weekly meeting of the recent progress, as well as the community, via This Week in Rust.
 
-## Work
+## Priorities
 
 I worked with Prossimo on the following priorities:
 
@@ -111,5 +111,7 @@ This was a quick look at some of the work achieved in 2022, and other members of
 The compiler performance working group has completed many if not all of the items in the roadmap, but performance work is never really done, and continues as we speak. Explorations and plans are being drafted for 2023, for example reviving the effort dedicated to making better use of parallelism in the compiler, and more.
 
 I'd also like to thank Felix Klock and Wesley Wiser for their ideas, time, and guidance, the other members of the working group Ryan Levick, Mark Rousskov, Jakub Beránek and Nick Nethercote for their help, talent and the great work they did, and Prossimo for giving me the opportunity to contribute to that effort.
+
+## About Us
 
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](/getinvolved/), [donating](/donate/), or encouraging your company to [become a sponsor](https://www.memorysafety.org/sponsor/).
