@@ -13,14 +13,7 @@
 }
 
 
-.tpl-post {
-  .slice,.page-content {
-    max-width: 910px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-.tpl-page {
+.tpl-post, .tpl-page {
   .slice,.page-content {
     max-width: 768px;
     margin-left: auto;
