@@ -1,6 +1,6 @@
 ---
 author: Rémy Rakic
-date: 2023-01-25T12:00:00Z
+date: 2023-01-31T12:00:00Z
 slug: remy-rakic-compile-times
 title: "Improving Rust compile times to enable adoption of memory safety"
 excerpt: "Guest author Rémy Rakic discusses his work to improve Rust compiler performance. "
