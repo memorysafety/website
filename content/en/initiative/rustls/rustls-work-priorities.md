@@ -19,13 +19,13 @@ TLS clients should use session tickets at most once for resumption. Without this
 
 Rustls and webpki currently do not provide access to client information supplied as part of the certificate, and there’s no infrastructure to deal with revocation checks. ([Ticket](https://github.com/rustls/rustls-ffi/issues/87))
 
-**4. Add OS Trust Verifier Implementation**
+**4. Enable Pluggable Cryptographic Back-ends**
+
+Allow Rustls consumers to plug in cryptographic back-end alternatives to *ring*.
+
+**5. Add OS Trust Verifier Implementation**
 
 While we currently have a way to trust certificates stored in the platform trust store, platform trust stores can have other ways of restricting how/when roots that they expose are trusted. In order to rely on these (on Darwin and Windows) we should rely on the platform verifier directly. Given that platform verifiers may require blocking I/O, some API changes are required. ([Ticket](https://github.com/rustls/rustls-native-certs/issues/25))
-
-**5. Release Handshake Memory Earlier**
-
-Rustls currently keeps substantial handshake state around even after it is no longer needed for the exchange of application data. ([Ticket](https://github.com/rustls/rustls/issues/794))
 
 **6. Add No-Allocation / Write-Through API**
 
@@ -47,22 +47,18 @@ Early data allows clients to submit data before the TLS handshake is complete in
 
 The QUIC use of TLS mandates limited usage of AEAD keys. While TLS 1.3 and 1.2 do not require this, the same kinds of issues can apply here, and we should consider implementing limits for TLS over TCP as well. ([Ticket](https://github.com/rustls/rustls/issues/755))
 
-**11. Verify DoS Resilience**
-
-Peers might send very large or very small messages, tying up resources in order to starve well-behaved connections.
-
-**12. Support no_std**
-
-Enables use of rustls in more memory-constrained environments. ([Ticket](https://github.com/rustls/rustls/issues/283))
-
-**13. OpenSSL API Compatibility Layer**
+**11. OpenSSL API Compatibility Layer**
 
 Add an OpenSSL C API compatibility layer for adoption purposes.
 
-**14. Enable Pluggable Cryptographic Back-ends**
+**12. FIPS Certification for Default Cryptographic Library**
 
-Allow Rustls consumers to plug in cryptographic back-end alternatives to *ring*.
+Either change the default cryptographic library to a FIPS certified library or get the default cryptographic library FIPS certified.
 
-**15. FIPS Certification for Default Cryptographic Library**
+**13. Verify DoS Resilience**
 
-Many organizations deploying TLS libraries require FIPS certification. We should get the default cryptographic back-end for Rustls FIPS certified.
+Peers might send very large or very small messages, tying up resources in order to starve well-behaved connections.
+
+**14. Support no_std**
+
+Enables use of rustls in more memory-constrained environments. ([Ticket](https://github.com/rustls/rustls/issues/283))
