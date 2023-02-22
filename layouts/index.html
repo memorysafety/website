@@ -43,6 +43,20 @@
             {{ partial "home/initiative_list_item.html" (dict "title" "curl" "url" "/initiative/curl" "image" "/images/curl.svg" "description" "Let's make TLS and HTTP networking code in curl memory safe." "backgroundColor" "#ffffff") }}
             {{ partial "home/initiative_list_item.html" (dict "title" "Tools" "url" "/initiative/tools" "image" "/images/tools.png" "description" "Let's improve the tools we use to bring memory safe software to the world." "backgroundColor" "#ffffff") }}
           </section>
+
+          <section class="col-md-6" id="home-col-2">
+            <div id="funders">
+              <h2><a href="/funder">Funders</a></h2>
+              [logos go here]
+            </div>
+            <div id="blog">
+              <h2><a href="/blog">From our blog</a></h2>
+              {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") | first 3 }}
+                {{ range $posts }}
+                  {{ partial "blog/blog_list_item.html" .}}
+                {{ end }}
+            </div>
+          </section>
         </div>
       </div>
 
@@ -58,10 +72,6 @@
           <div class="row">
             <div class="col-md-8 offset-md-2">
 
-                {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") | first 3 }}
-                {{ range $posts }}
-                  {{ partial "blog/blog_list_item.html" .}}
-                {{ end }}
             </div>
 
           </div>
