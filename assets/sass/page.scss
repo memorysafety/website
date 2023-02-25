@@ -29,6 +29,11 @@
   .funder {
     margin-bottom: 40px;
     margin-right: 40px;
+
+    #funders-home & {
+      margin-bottom: 0;
+    }
+
     img {
       max-height: 100px;
     }
