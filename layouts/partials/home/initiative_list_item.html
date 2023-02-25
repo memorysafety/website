@@ -1,9 +1,9 @@
 <article class="initiative_list_item mb-5 row no-gutters" style="background-color: {{.backgroundColor}}">
   <div class="col-8 text-start">
-    <h3 class="home-h3 mb-2">{{.title}}</h3>
+    <h3 class="home-h3 mb-2"><a class="blog-title-link" href="{{.url}}" target="_blank">{{.title}}</a></h3>
     <p class="pb-2 mb-3">{{.description}}</p>
     <div class="initiative_list_item__meta">
-      <a href="{{.url}}" class="btn btn-outline-primary">View initiative</a>
+      <a href="{{.url}}" class="btn btn-outline-primary" title="{{.title}}">View initiative</a>
       <div class="initiative-status">
         {{ if .project_status }}
         <div class="initiative-status__item">Project Status: {{ .project_status }}</div>

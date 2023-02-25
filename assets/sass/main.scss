@@ -250,7 +250,27 @@ html[dir="rtl"] a.autoanchor {
  a {
   text-decoration: none;
   color: #000 !important;
+
+  &:hover {
+    color: $brand_dark_blue !important;
+  }
  }
+}
+
+.blog-title-link {
+    text-decoration: none;
+    color: #000 !important;
+
+    &:hover {
+      color: $brand_dark_blue !important;
+    }
+}
+.read-more-link {
+    color: #000 !important;
+
+    &:hover {
+      color: $brand_dark_blue !important;
+    }
 }
 
 .home-h3 {

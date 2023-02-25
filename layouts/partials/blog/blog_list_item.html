@@ -1,8 +1,8 @@
 <div class="blog mb-4 pb-3">
   <div class="blog-body">
     <div>{{.Date.Format "January 2, 2006"}}</div>
-    <h3 class="home-h3 mt-1 mb-2">{{ .Title }}</h3>
-    <p class="mb-3">{{ with .Params.excerpt }} {{ . | markdownify }} {{ else }} {{ .Summary }} {{ end }}</p>
-    <a href="{{ .Permalink }}" class="link fw-bold" data-link="1">{{ i18n "read_more" }}</a>
+    <h3 class="home-h3 mt-1 mb-2"><a href="{{ .Permalink }}" class="blog-title-link">{{ .Title }}</a></h3>
+    <p class="mb-2">{{ with .Params.excerpt }} {{ . | markdownify }} {{ else }} {{ .Summary }} {{ end }}</p>
+    <a href="{{ .Permalink }}" title="{{ .Title }}" class="read-more-link link fw-bold">{{ i18n "read_more" }}</a>
   </div>
 </div>

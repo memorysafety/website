@@ -119,4 +119,4 @@ If all this happens, it may turn out to be an even more exciting year than the f
 About Prossimo
 --------------
 
-ISRG is the 501(c)(3) nonprofit organization behind Prossimo and [Let's Encrypt](https://letsencrypt.org/). We are 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider getting involved, [donating](https://www.abetterinternet.org/donate/), or encouraging your company to become a [funder](https://www.abetterinternet.org/sponsor/).
+ISRG is the 501(c)(3) nonprofit organization behind Prossimo and [Let's Encrypt](https://letsencrypt.org/). We are 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider getting involved, [donating](https://www.abetterinternet.org/donate/), or encouraging your company to become a [funder](https://www./become-a-funder/).
