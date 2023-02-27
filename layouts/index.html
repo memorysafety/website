@@ -33,7 +33,8 @@
 
       <div class="container mt-4">
         <div class="row">
-          <section class="col-md-6" id="initiatives">
+          <section class="col-md-6 pr-2" id="initiatives">
+            <div class="pr-md-2">
             <h2 class="home-headline">Initiatives</h2>
             {{ partial "home/initiative_list_item.html" (dict "title" "Rustls" "url" "/initiative/rustls" "image" "/images/rustls.png" "description" "Let's get the Rustls TLS library ready to replace OpenSSL in as many projects as possible." "backgroundColor" "#ffffff") }}
             {{ partial "home/initiative_list_item.html" (dict "title" "Linux Kernel" "url" "/initiative/linux-kernel" "image" "/images/tux.svg" "description" "Let's make it possible to write memory safe drivers for the Linux kernel." "backgroundColor" "#ffffff") }}
@@ -42,29 +43,32 @@
             {{ partial "home/initiative_list_item.html" (dict "title" "DNS" "url" "/initiative/dns" "image" "/images/dns.png" "description" "Let's create a memory safe, high performance, fully recursive DNS resolver." "backgroundColor" "#ffffff") }}
             {{ partial "home/initiative_list_item.html" (dict "title" "curl" "url" "/initiative/curl" "image" "/images/curl.svg" "description" "Let's make TLS and HTTP networking code in curl memory safe." "backgroundColor" "#ffffff") }}
             {{ partial "home/initiative_list_item.html" (dict "title" "Tools" "url" "/initiative/tools" "image" "/images/tools.png" "description" "Let's improve the tools we use to bring memory safe software to the world." "backgroundColor" "#ffffff") }}
+          </div>
           </section>
 
           <section class="col-md-6" id="home-col-2">
-            <div id="funders-home" class="mb-5">
-              <h2 class="home-headline"><a href="/funder">Funders</a></h2>
-              <div class="funder-logos">
-                <div class="funder">
-                  <img src="/images/sponsors/small/google-logo.png" alt="Google" />
-                </div>
-                <div class="funder">
-                  <img src="/images/sponsors/small/aws-logo.png" alt="Amazon Web Services" />
-                </div>
-                <div class="funder">
-                  <img src="/images/sponsors/small/flyio-logo.png" alt="Fly.io" />
+            <div class="pl-md-2">
+              <div id="funders-home" class="mb-5">
+                <h2 class="home-headline"><a href="/funder">Funders</a></h2>
+                <div class="funder-logos">
+                  <div class="funder">
+                    <img src="/images/sponsors/small/google-logo.png" alt="Google" />
+                  </div>
+                  <div class="funder">
+                    <img src="/images/sponsors/small/aws-logo.png" alt="Amazon Web Services" />
+                  </div>
+                  <div class="funder">
+                    <img src="/images/sponsors/small/flyio-logo.png" alt="Fly.io" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div id="blog">
-              <h2 class="home-headline"><a href="/blog">From our blog</a></h2>
-              {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") | first 5 }}
-                {{ range $posts }}
-                  {{ partial "blog/blog_list_item.html" .}}
-                {{ end }}
+              <div id="blog">
+                <h2 class="home-headline"><a href="/blog">From our blog</a></h2>
+                {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") | first 5 }}
+                  {{ range $posts }}
+                    {{ partial "blog/blog_list_item.html" .}}
+                  {{ end }}
+              </div>
             </div>
           </section>
         </div>

@@ -246,6 +246,7 @@ html[dir="rtl"] a.autoanchor {
 
 
 .home-headline {
+  font-size: 33px;
   border-bottom: 1px solid #000;
  a {
   text-decoration: none;
@@ -258,6 +259,7 @@ html[dir="rtl"] a.autoanchor {
 }
 
 .blog-title-link {
+  font-size: 24px;
     text-decoration: none;
     color: #000 !important;
 
@@ -276,4 +278,19 @@ html[dir="rtl"] a.autoanchor {
 .home-h3 {
   font-weight: 900;
 
+}
+
+@media (min-width: 768px) {
+  .pr-md-1 {
+    padding-right: 0.25rem !important;
+  }
+  .pl-md-1 {
+    padding-left: 0.25rem !important;
+  }
+  .pr-md-2 {
+    padding-right: 0.5rem !important;
+  }
+  .pl-md-2 {
+    padding-left: 0.5rem !important;
+  }
 }
