@@ -23,12 +23,19 @@
   }
 }
 
-.sponsor-logos {
-  display: flex;
+.funder-logos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: center;
 
-  .sponsor {
-    margin-bottom: 40px;
-    margin-right: 40px;
+  .funder {
+    flex-basis: calc(33% - 6.67px);
+
+    #funders-home & {
+      margin-bottom: 0;
+    }
+
     img {
       max-height: 100px;
     }
@@ -36,5 +43,15 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+
+.no-br {
+  white-space: nowrap;
+}
+@media screen and (min-width: 992px) {
+  .pt-lg-55 {
+    padding-top: 5rem !important;
   }
 }

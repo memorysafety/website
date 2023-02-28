@@ -37,14 +37,14 @@
         </div>
       </div>
     </div>
-    {{end}} {{if isset .Params "sponsors"}}
+    {{end}} {{if isset .Params "funders"}}
     <div class="row">
       <div class="offset-md-2 col-md-8">
-        <div class="initiative-sponsors mt-1">
-          <h2>Sponsors</h2>
-          <div class="sponsor-logos">
-            {{ range .Params.sponsors }}
-            <div class="sponsor">
+        <div class="initiative-funders mt-1">
+          <h2>Funders</h2>
+          <div class="funder-logos">
+            {{ range .Params.funders }}
+            <div class="funder">
               <img src="/images/sponsors/small/{{ lower . }}-logo.png" alt="{{ . }}" />
             </div>
             {{ end }}
