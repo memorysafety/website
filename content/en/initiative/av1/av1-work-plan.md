@@ -5,6 +5,8 @@ background: dce0e9
 image: /images/av1.png
 ---
 
+Instead of starting from scratch, we are going to transpile the C code from the [dav1d](https://code.videolan.org/videolan/dav1d) project to Rust, then work on improving the resulting Rust code to the point that it performs as well or better than dav1d.
+
 # Work Plan
 
 1. Initial translation
