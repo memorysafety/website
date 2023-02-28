@@ -32,6 +32,12 @@ body {
   }
 }
 
+.home-initiatives {
+  .logo-image {
+    max-height: 120px;
+  }
+}
+
 .text-primary-knockout {
   color: $brand_mint;
   background: $brand_dark_blue;
@@ -43,6 +49,7 @@ body {
 }
 
 .initiative_list_item {
+  align-items: center;
   .initiative-status {
     text-align: center;
     display: flex;
@@ -249,6 +256,7 @@ html[dir="rtl"] a.autoanchor {
 .home-headline {
   font-size: 33px;
   border-bottom: 1px solid #000;
+  margin-bottom: 30px;
  a {
   text-decoration: none;
   color: #000 !important;
@@ -293,5 +301,17 @@ html[dir="rtl"] a.autoanchor {
   }
   .pl-md-2 {
     padding-left: 0.5rem !important;
+  }
+  .pr-md-3 {
+    padding-right: 1rem !important;
+  }
+  .pr-md-4 {
+    padding-right: 1.5rem !important;
+  }
+  .pl-md-3 {
+    padding-left: 1rem !important;
+  }
+  .pl-md-4 {
+    padding-left: 1.5rem !important;
   }
 }

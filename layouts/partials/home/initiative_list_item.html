@@ -1,5 +1,5 @@
 <article class="initiative_list_item mb-5 row no-gutters" style="background-color: {{.backgroundColor}}">
-  <div class="col-8 text-start">
+  <div class="col-9 text-start">
     <h3 class="home-h3 mb-2"><a class="blog-title-link" href="{{.url}}" target="_blank">{{.title}}</a></h3>
     <p class="pb-2 mb-3">{{.description}}</p>
     <div class="initiative_list_item__meta">
@@ -12,12 +12,12 @@
     </div>
   </div>
 
-  <div class="col-4">
+  <div class="col-3">
     <div class="logo-container">
       {{ if .logo_link }}
-      <a href="{{.logo_link}}" target="_blank">
+      <a class="logo-link-anchor" href="{{.logo_link}}" target="_blank">
         {{end}}
-        <img src="{{.image}}" alt="Logo for {{.title}}" />
+        <img class="logo-image" src="{{.image}}" alt="Logo for {{.title}}" />
         {{ if .logo_link }}
       </a>
       {{end}}
