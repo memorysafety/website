@@ -45,3 +45,13 @@
     }
   }
 }
+
+
+.no-br {
+  white-space: nowrap;
+}
+@media screen and (min-width: 992px) {
+  .pt-lg-55 {
+    padding-top: 5rem !important;
+  }
+}
