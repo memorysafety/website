@@ -24,11 +24,13 @@
 }
 
 .funder-logos {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  align-items: center;
 
   .funder {
-    margin-bottom: 40px;
-    margin-right: 40px;
+    flex-basis: calc(33% - 6.67px);
 
     #funders-home & {
       margin-bottom: 0;
