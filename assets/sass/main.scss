@@ -267,10 +267,51 @@ html[dir="rtl"] a.autoanchor {
  }
 }
 
+.home-eyebrow {
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  // border-bottom: 1px solid #000;
+  margin-bottom: 30px;
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: $brand_mint;
+    display: block;
+    position: relative;
+    top: -10px;
+    z-index: 1;
+  }
+
+ a, span {
+  text-decoration: none;
+  color: #000 !important;
+  color: $brand_dark_blue !important;
+  display: inline-block;
+  background: #fff;
+  padding: 0 10px 0 0;
+  z-index: 2;
+  letter-spacing: .75px;
+  position: relative;
+ }
+ a:hover {
+  color: $brand_dark_blue !important;
+  text-decoration: underline;
+  }
+}
+
+#initiatives .home-eyebrow span {
+
+
+}
+
 .blog-title-link {
   font-size: 24px;
     text-decoration: none;
     color: #000 !important;
+
 
     &:hover {
       color: $brand_dark_blue !important;
@@ -282,6 +323,19 @@ html[dir="rtl"] a.autoanchor {
     &:hover {
       color: $brand_dark_blue !important;
     }
+}
+
+#blog {
+  .blog-title-link {
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 1.4!important;
+    display: block;
+  }
+}
+
+.blog-date {
+  color: #888;
 }
 
 .home-h3 {
