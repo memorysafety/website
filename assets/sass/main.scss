@@ -133,7 +133,7 @@ body {
   }
 }
 
-.highlight {
+.sponsor-highlight {
   background: #e8fcf8;
   text-align: center;
   padding: 20px 10px 10px;
@@ -146,6 +146,13 @@ body {
   }
   p {
     font-size: 20px;
+  }
+}
+.highlight {
+  margin: 10px 0 20px;
+  .chroma {
+    border-radius: 10px;
+    background: rgb(238,238,238);
   }
 }
 

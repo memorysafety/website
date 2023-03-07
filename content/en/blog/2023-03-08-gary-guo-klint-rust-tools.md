@@ -29,14 +29,6 @@ One obvious example of atomic context is interrupt handlers. Apart from interrup
 
 Sleeping inside an atomic context is bad -- if you acquire a spinlock and then go to sleep, and another piece of code tries to acquire the same spinlock, it is very likely that the system will be locked up.
 
-<pre>
-<code>spin_lock(&lock);</code>
-...
-<code>mutex_lock(&mutex);</code>  // BAD
-...
-<code>spin_unlock(&lock);</code>
-</pre><br />
-
 {{< highlight rust >}}
 spin_lock(&lock);
 ...
@@ -58,18 +50,6 @@ You might ask, how is memory safety related here? If you are familiar with Rust,
 This would be true if spinlocks were the only source of atomic contexts. However, the kernel very widely employs RCU (read-copy-update). Details of RCU can be found in [the kernel documentation](https://www.kernel.org/doc/html/v6.1/RCU/whatisRCU.html), but in a nutshell, RCU is a synchronisation mechanism to provide efficient read access to shared data structures. It allows multiple readers to access shared data structures without locking. A data structure accessible from an RCU read-side critical section will stay alive and will not be deallocated until all read-side critical sections that may access it have been completed.
 
 In the kernel, an RCU read-side critical section starts with `rcu_read_lock()` and ends with `rcu_read_unlock()`. To drop a data structure unpublished from RCU, one would do `synchronize_rcu()` before dropping it:
-
-<pre>
-/* CPU 0 */                 /* CPU 1 */
-<code>rcu_read_lock();</code>
-<code>ptr = rcu_dereference(v);</code>   <code>old_ptr = rcu_dereference(v);</code>
-/* use ptr */               <code>rcu_assign_pointer(v, new_ptr);</code>
-                            <code>synchronize_rcu();</code>
-                            /* waiting for RCU read to finish */
-<code>rcu_read_unlock();</code>
-                            /* synchronize_rcu() returns */
-                            /* destruct and free old_ptr */
-</pre><br  />
 
 {{< highlight rust >}}
 /* CPU 0 */                 /* CPU 1 */
@@ -93,34 +73,6 @@ RCU Abstractions in Rust
 Rust code, unlike C, usually does not use separate `lock` and `unlock` calls for synchronisation primitives -- instead, [RAII](https://doc.rust-lang.org/rust-by-example/scope/raii.html) is used, and `lock` primitives are typically implemented by having a lock function that returns a `Guard`, and unlocking happens when the `Guard` is dropped.
 
 For example, RCU read-side critical section could be implemented like this:
-
-<pre>
-<code>struct RcuReadGuard {
-    _not_send: PhantomData<*mut ()>,
-}
-
-pub fn rcu_read_lock() -> RcuReadGuard {
-    rcu_read_lock();
-    RcuReadGuard { _not_send: PhantomData }
-}
-
-impl Drop for RcuReadGuard {
-    fn drop(&mut self) {
-        rcu_read_unlock();
-    }
-}</code>
-
-// Usage
-<code>{
-    let guard = rcu_read_lock();</code>
-
-    /* Code inside RCU read-side critical section here */
-
-    // `guard` is dropped automatically when it goes out of scope,
-    // or can be dropped manually by `drop(guard)`.
-<code>}</code>
-</pre><br  />
-
 
 {{< highlight rust >}}
 struct RcuReadGuard {
@@ -149,39 +101,7 @@ impl Drop for RcuReadGuard {
 }
 {{< / highlight >}}
 
-
 If we disregard the memory safety issues discussed above just for a second, Rust lifetimes can model RCU fairly well:
-
-<pre>
-<code>struct RcuProtectedBox&lt;T&gt; {
-    write_mutex: Mutex<()>,
-    ptr: UnsafeCell<*const T>,
-}
-
-impl&lt;T&gt; RcuProtectedBox&lt;T&gt; {
-    fn read<'a>(&'a self, guard: &'a RcuReadGuard) -> &'a T {</code>
-        // SAFETY: We can deref because `guard` ensures we are protected by RCU read lock
-        <code>let ptr = unsafe { rcu_dereference!(*self.ptr.get()) };</code>
-        // SAFETY: The lifetime is the shorter of `self` and `guard`, so it can only be used until RCU read unlock.
-        <code>unsafe { &*ptr }
-    }
-
-    fn write(&self, p: Box&lt;T&gt;) -> Box&lt;T&gt; {
-        let g = self.write_mutex.lock();
-        let old_ptr;</code>
-        // SAFETY: We can deref and assign because we are the only writer.
-        <code>unsafe {
-            old_ptr = rcu_dereference!(*self.ptr.get());
-            rcu_assign_pointer!(*self.ptr.get(), Box::into_raw(p));
-        }
-        drop(g);
-        synchronize_rcu();</code>
-        // SAFETY: We now have exclusive ownership of this pointer as `synchronize_rcu` ensures that all reader that can read this pointer has ended.
-        <code>unsafe { Box::from_raw(old_ptr) }
-    }
-}</code>
-</pre><br  />
-
 
 {{< highlight rust >}}
 struct RcuProtectedBox<T> {
@@ -217,19 +137,6 @@ impl<T> RcuProtectedBox<T> {
 Note that in `read`, the returned lifetime `'a` is tied to both `self` and `RcuReadGuard`. That is, the `RcuReadGuard` must outlive the returned reference -- leaving RCU read-side critical section by dropping `RcuReadGuard` will ensure that references obtained through the `read` method will no longer be readable.
 
 However, such an abstraction is not sound, due to the sleep-in-atomic-context issue that we have described above.
-
-<pre><code>
-fn foo(b: &RcuProtectedBox<Foo>) {        fn bar(b: &RcuProtectedBox<Foo>) {
-    let guard = rcu_read_lock();
-    let p = b.read(&guard);
-                                              let old = b.write(Box::new(Foo { ... }));
-    sleep();                                  </code>// `synchronize_rcu()` returns<code>
-                                              drop(old);</code>
-    // Rust allows us to use `p` here
-    // but it is already freed!
-<code>}
-</code></pre><br  />
-
 
 {{< highlight rust >}}
 fn foo(b: &RcuProtectedBox<Foo>) {        fn bar(b: &RcuProtectedBox<Foo>) {
@@ -278,15 +185,6 @@ As you can see, sleepable functions (like `synchronize_rcu` and `mutex_lock`) ar
 
 `klint` provides a `#[klint::preempt_count]` attribute that can be applied to functions to annotate their properties. There is also a `#[klint::drop_preempt_count]` that can be used to annotate behaviour when a struct/enum is dropped. For example, the `RcuReadGuard` (and similarly, `SpinLock`) above could be annotated like this:
 
-<pre>
-#[klint::drop_preempt_count(adjust = -1, expect = 1.., unchecked)]
-<code>struct RcuReadGuard { /* ... */ }</code>
-
-#[klint::preempt_count(adjust = 1, expect = 0.., unchecked)]
-<code>pub fn rcu_read_lock() -> RcuReadGuard {</code> /* ... */ <code}</code>
-</pre><br />
-
-
 {{< highlight rust >}}
 #[klint::drop_preempt_count(adjust = -1, expect = 1.., unchecked)]
 struct RcuReadGuard { /* ... */ }
@@ -298,12 +196,6 @@ pub fn rcu_read_lock() -> RcuReadGuard { /* ... */ }
 
 and sleep function could look like this:
 
-<pre>
-#[klint::preempt_count(adjust = 0, expect = 0, unchecked)]
-<code>pub fn coarse_sleep(duration: Duration) {</code> /* ... */ <code>}</code>
-</pre><br />
-
-
 {{< highlight rust >}}
 #[klint::preempt_count(adjust = 0, expect = 0, unchecked)]
 pub fn coarse_sleep(duration: Duration) { /* ... */ }
@@ -312,16 +204,6 @@ pub fn coarse_sleep(duration: Duration) { /* ... */ }
 
 
 `klint` will analyse all functions, inferring possible preemption count values at each function call site, and will raise errors if the annotated expectation is violated. For example, if some code calls `coarse_sleep` with spinlock or RCU read lock held, then `klint` will give an error:
-
-<pre><code>error: this call expects the preemption count to be 0</code>
-  --> samples/rust/rust_sync.rs:76:17
-   |
-76 |  <code>kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));</code>
-   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
-   = <b>note</b>: but the possible preemption count at this point is 1
-</pre><br  />
-
 
 {{< highlight rust >}}
 error: this call expects the preemption count to be 0
@@ -336,12 +218,6 @@ error: this call expects the preemption count to be 0
 
 `klint` will also perform inference on annotated functions, to check that your annotation is correct, unless the `unchecked` option is supplied:
 
-<pre>#[klint::preempt_count(expect = 0..)]
-<code>pub fn callable_from_atomic_context() {
-    kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
-}</code></pre><br  />
-
-
 {{< highlight rust >}}
 #[klint::preempt_count(expect = 0..)]
 pub fn callable_from_atomic_context() {
@@ -349,23 +225,7 @@ pub fn callable_from_atomic_context() {
 }
 {{< / highlight >}}
 
-
 will give
-
-<pre><code>error: function annotated to have preemption count expectation of 0..</code>
-  --> samples/rust/rust_sync.rs:97:1
-   |
-97 | <code>pub fn callable_from_atomic_context() {</code>
-   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
-   = <b>note</b>: but the expectation inferred is 0
-note: which may call this function with preemption count 0..
-  --> samples/rust/rust_sync.rs:98:5
-   |
-98 |     <code>kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));</code>
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   = <b>note</b>: but this function expects preemption count 0</code></pre><br  />
-
 
 {{< highlight rust >}}
 error: function annotated to have preemption count expectation of 0..
@@ -400,22 +260,6 @@ Generic functions are tricky because it is impossible for us to assign a single 
 
 For trait objects, by default `klint` will similarly assume these functions are sleepable and make no adjustment. Unlike function pointers though, trait methods can be annotated. Those annotations will be used on virtual function calls, and they will be checked against their implementations. For example, here's how the `ArcWake` trait is annotated in the `kasync` module:
 
-<pre>/// A waker that is wrapped in [`Arc`] for its reference counting.
-///
-/// Types that implement this trait can get a [`Waker`] by calling [`ref_waker`].
-<code>pub trait ArcWake: Send + Sync {</code>
-    /// Wakes a task up.
-    #[klint::preempt_count(expect = 0..)]
-    <code>fn wake_by_ref(self: ArcBorrow<'_, Self>);</code>
-
-    /// Wakes a task up and consumes a reference.
-    #[klint::preempt_count(expect = 0..)] // Functions callable from `wake_up` must not sleep
-    <code>fn wake(self: Arc&lt;Self&gt;) {
-        self.as_arc_borrow().wake_by_ref();
-    }
-}</code></pre><br  />
-
-
 {{< highlight rust >}}
 /// A waker that is wrapped in [`Arc`] for its reference counting.
 ///
@@ -443,59 +287,6 @@ These annotations and inferred results are absent in `rustc`'s metadata so `klin
 
 If the `FIXME` line in `rust/kernel/kasync/executor/workqueue.rs` is commented out, compiling the "Rust" branch (note that this is the branch with experimental code and is not the branch for upstreaming) with `klint` will fail with the following error:
 
-<pre>
-<code>error: trait method annotated to have preemption count expectation of 0..</code>
-   --&gt; rust/kernel/kasync/executor/workqueue.rs:147:5
-    |
-147 |     fn wake(self: Arc&lt;Self&gt;) {
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^
-    |
-    = <b>note</b>: but the expectation of this implementing function is 0
-<b>note</b>: the trait method is defined here
-   --&gt; rust/kernel/kasync/executor.rs:73:5
-    |
-73  |     fn wake(self: Arc&lt;Self&gt;) {
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^
-<b>note</b>: which may drop type `kernel::sync::Arc&lt;kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;&gt;` with preemption count 0..
-   --&gt; rust/kernel/kasync/executor/workqueue.rs:149:5
-    |
-147 |     fn wake(self: Arc&lt;Self&gt;) {
-    |             ---- value being dropped is here
-148 |         Self::wake_by_ref(self.as_arc_borrow());
-149 |     }
-    |     ^
-<b>note</b>: which may call this function with preemption count 0..
-   --&gt; rust/kernel/sync/arc.rs:236:5
-    |
-236 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-<b>note</b>: which may drop type `kernel::sync::arc::ArcInner&lt;kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;&gt;` with preemption count 0..
-   --&gt; rust/kernel/sync/arc.rs:255:22
-    |
-255 |             unsafe { core::ptr::drop_in_place(inner) };
-    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    = <b>note</b>: which may drop type `kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;` with preemption count 0..
-    = <b>note</b>: which may drop type `kernel::sync::Arc&lt;kernel::kasync::executor::workqueue::Executor&gt;` with preemption count 0..
-<b>note</b>: which may call this function with preemption count 0..
-   --&gt; rust/kernel/sync/arc.rs:236:5
-    |
-236 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-<b>note</b>: which may drop type `kernel::sync::arc::ArcInner&lt;kernel::kasync::executor::workqueue::Executor&gt;` with preemption count 0..
-   --&gt; rust/kernel/sync/arc.rs:255:22
-    |
-255 |             unsafe { core::ptr::drop_in_place(inner) };
-    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    = <b>note</b>: which may drop type `kernel::kasync::executor::workqueue::Executor` with preemption count 0..
-    = <b>note</b>: which may drop type `kernel::Either&lt;kernel::workqueue::BoxedQueue, &kernel::workqueue::Queue&gt;` with preemption count 0..
-    = <b>note</b>: which may drop type `kernel::workqueue::BoxedQueue` with preemption count 0..
-<b>note</b>: which may call this function with preemption count 0..
-   --&gt; rust/kernel/workqueue.rs:433:5
-    |
-433 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-    = <b>note</b>: but this function expects preemption count 0
-</pre><br />
 
 
 {{< highlight rust >}}
@@ -560,11 +351,6 @@ Limitation
 
 Currently, `klint` does not have a way to represent a `try_lock`-like function for spinlocks (`try_lock` for mutexes is fine as it doesn't change the preemption count).
 
-<pre><code>impl&lt;T&gt; SpinLock&lt;T&gt; {</code>
-    // Preemption count adjustment of this function is 0 or 1 depending on the variant of the return value.
-<code>    fn try_lock(&self) -&gt; Option&lt;Guard&lt;'_, Self, WriteLock&gt;&gt; { ... }
-}</code></pre><br  />
-
 {{< highlight rust >}}
 impl<T> SpinLock<T> {
     // Preemption count adjustment of this function is 0 or 1 depending on the variant of the return value.
@@ -574,11 +360,6 @@ impl<T> SpinLock<T> {
 
 
 Although it's possible to rewrite the `try_lock` function to take a callback to avoid this limitation:
-
-<pre><code>impl&lt;T&gt; SpinLock&lt;T&gt; {</code>
-    // Preemption count adjustment of this function is 0!
-    <code>fn try_lock&lt;T, F: FnOnce(Option&lt;Guard&lt;'_, Self, WriteLock&gt;&gt;) -&gt; T&gt;(&self) -&gt; T { ... }
-}</code></pre><br  />
 
 {{< highlight rust >}}
 impl<T> SpinLock<T> {
@@ -592,16 +373,6 @@ this is not as easy to use as a simple `try_lock` function that returns an `Opti
 
 Similarly, this pattern is not yet supported by `klint`:
 
-<pre><code>fn foo(take_lock: bool) {
-    if take_lock {
-        spin_lock(...);
-    }
-    ...
-    if take_lock {
-        spin_unlock(...);
-    }
-}</code></pre><br  />
-
 {{< highlight rust >}}
 fn foo(take_lock: bool) {
     if take_lock {
@@ -612,22 +383,10 @@ fn foo(take_lock: bool) {
         spin_unlock(...);
     }
 }
-
-
 {{< / highlight >}}
-
 
 The anticipation is that this pattern is less likely to be observed in Rust code due to RAII guards, but similar patterns can still arise from implicit drop flags introduced by the compiler:
 
-<pre><code>fn foo(take_lock: bool) {
-    let guard;</code>
-    // An implicit bool will be introduced here by the compiler to track if `guard` is initialised
-    <code>if take_lock {
-        guard = SPINLOCK.lock();
-    }
-    ...</code>
-    // An implicit branch will be introduced here by the compiler to drop `guard` only if it has been initialised
-<code>}</code></pre><br  />
 
 {{< highlight rust >}}
 fn foo(take_lock: bool) {
