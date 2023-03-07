@@ -327,8 +327,8 @@ pub fn coarse_sleep(duration: Duration) { /* ... */ }
 error: this call expects the preemption count to be 0
   --> samples/rust/rust_sync.rs:76:17
    |
-76 |                 kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
-   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+76 |  kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    |
    = note: but the possible preemption count at this point is 1
 {{< / highlight >}}
