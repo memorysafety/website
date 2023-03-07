@@ -263,7 +263,7 @@ For trait objects, by default `klint` will similarly assume these functions are 
     }
 }</code></pre><br  />
 
-These annotations and inferred results are absent in `rustc`'s metadata so `klint` will persist these data in a separate metadata file. Similar to `clippy`, `klint` is implemented with a custom rustc driver, so to use it, simply replace `rustc` invocations with `klint` calls.
+These annotations and inferred results are absent in `rustc`'s metadata so `klint` will persist these data in a separate metadata file. Similar to `clippy`, `klint` is implemented with a custom `rustc` driver, so to use it, simply replace `rustc` invocations with `klint` calls.
 
 `klint` in Action
 ---------------
