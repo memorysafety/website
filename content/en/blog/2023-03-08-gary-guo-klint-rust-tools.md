@@ -1,6 +1,6 @@
 ---
 author: Gary Guo
-date: 2023-03-08T12:00:00Z
+date: 2023-03-07T12:00:00Z
 slug: gary-guo-klint-rust-tools
 title: "Klint: Compile-time Detection of Atomic Context Violations for Kernel Rust Code"
 excerpt: "Improvements to the klint tool will help facilitate adoption of Rust in the Linux kernel."
