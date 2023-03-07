@@ -26,8 +26,9 @@
 .funder-logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 50px;
   align-items: center;
+  justify-items: center;
 
   .funder {
     flex-basis: calc(33% - 6.67px);
@@ -37,7 +38,7 @@
     }
 
     img {
-      max-height: 100px;
+      max-height: 44px;
     }
 
     &:last-child {
