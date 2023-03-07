@@ -37,6 +37,14 @@ Sleeping inside an atomic context is bad -- if you acquire a spinlock and then g
 <code>spin_unlock(&lock);</code>
 </pre><br />
 
+{{< highlight rust >}}
+spin_lock(&lock);
+...
+mutex_lock(&mutex); // BAD
+...
+spin_unlock(&lock);
+{{< / highlight >}}
+
 These kinds of mistakes are easy to make and hard to debug, especially when the sleepable call is deeply nested. To debug this, kernel C code has `might_sleep()` annotations all around the place (e.g. inside the `mutex_lock` function). If you have `DEBUG_ATOMIC_SLEEP` config enabled, then the kernel will track the preemption count. This counter is incremented whenever you enter an atomic section (e.g. by acquiring a spinlock) and decremented on exit. If the counter is non-zero, then it means that the kernel is inside an atomic context -- calling `might_sleep()` in this case will produce a warning to aid debugging.
 
 
@@ -62,6 +70,18 @@ In the kernel, an RCU read-side critical section starts with `rcu_read_lock()` a
                             /* synchronize_rcu() returns */
                             /* destruct and free old_ptr */
 </pre><br  />
+
+{{< highlight rust >}}
+/* CPU 0 */                 /* CPU 1 */
+rcu_read_lock();
+ptr = rcu_dereference(v);   old_ptr = rcu_dereference(v);
+/* use ptr */               rcu_assign_pointer(v, new_ptr);
+                            synchronize_rcu();
+                            /* waiting for RCU read to finish */
+rcu_read_unlock();
+                            /* synchronize_rcu() returns */
+                            /* destruct and free old_ptr */
+{{< / highlight >}}
 
 If you look at the implementation detail of `rcu_read_lock()`, however, you will see that it compiles down to a single compiler barrier &mdash; `asm volatile("":::"memory")`, if all the debugging facilities are off. Yes, there are absolutely no instructions generated for `rcu_read_lock()` and `rcu_read_unlock()`! Linux kernel plays a trick here -- it implements `synchronize_rcu()` in a way such that it returns after all CPU cores experience context switches at least once. The kernel considers an RCU read-side critical section to be an atomic context, so no code inside it may sleep and thus cause a context switch. With this reasoning, if all CPU cores have gone through context switches, then all live read critical sections must have been completed. **The soundness of `synchronize_rcu()` relies on the fact that code cannot sleep inside RCU read-side critical sections!** If such sleep indeed happens, it can cause `synchronize_rcu()` to return early and thus cause memory to be freed before `rcu_read_unlock()`, leading to use-after-free.
 
@@ -101,6 +121,35 @@ impl Drop for RcuReadGuard {
 <code>}</code>
 </pre><br  />
 
+
+{{< highlight rust >}}
+struct RcuReadGuard {
+    _not_send: PhantomData<*mut ()>,
+}
+
+pub fn rcu_read_lock() -> RcuReadGuard {
+    rcu_read_lock();
+    RcuReadGuard { _not_send: PhantomData }
+}
+
+impl Drop for RcuReadGuard {
+    fn drop(&mut self) {
+        rcu_read_unlock();
+    }
+}
+
+// Usage
+{
+    let guard = rcu_read_lock();
+
+    /* Code inside RCU read-side critical section here */
+
+    // `guard` is dropped automatically when it goes out of scope,
+    // or can be dropped manually by `drop(guard)`.
+}
+{{< / highlight >}}
+
+
 If we disregard the memory safety issues discussed above just for a second, Rust lifetimes can model RCU fairly well:
 
 <pre>
@@ -133,6 +182,38 @@ impl&lt;T&gt; RcuProtectedBox&lt;T&gt; {
 }</code>
 </pre><br  />
 
+
+{{< highlight rust >}}
+struct RcuProtectedBox<T> {
+    write_mutex: Mutex<()>,
+    ptr: UnsafeCell<*const T>,
+}
+
+impl<T> RcuProtectedBox<T> {
+    fn read<'a>(&'a self, guard: &'a RcuReadGuard) -> &'a T {
+        // SAFETY: We can deref because `guard` ensures we are protected by RCU read lock
+        let ptr = unsafe { rcu_dereference!(*self.ptr.get()) };
+        // SAFETY: The lifetime is the shorter of `self` and `guard`, so it can only be used until RCU read unlock.
+        unsafe { &*ptr }
+    }
+
+    fn write(&self, p: Box<T>) -> Box<T> {
+        let g = self.write_mutex.lock();
+        let old_ptr;
+        // SAFETY: We can deref and assign because we are the only writer.
+        unsafe {
+            old_ptr = rcu_dereference!(*self.ptr.get());
+            rcu_assign_pointer!(*self.ptr.get(), Box::into_raw(p));
+        }
+        drop(g);
+        synchronize_rcu();
+        // SAFETY: We now have exclusive ownership of this pointer as `synchronize_rcu` ensures that all reader that can read this pointer has ended.
+        unsafe { Box::from_raw(old_ptr) }
+    }
+}
+{{< / highlight >}}
+
+
 Note that in `read`, the returned lifetime `'a` is tied to both `self` and `RcuReadGuard`. That is, the `RcuReadGuard` must outlive the returned reference -- leaving RCU read-side critical section by dropping `RcuReadGuard` will ensure that references obtained through the `read` method will no longer be readable.
 
 However, such an abstraction is not sound, due to the sleep-in-atomic-context issue that we have described above.
@@ -148,6 +229,20 @@ fn foo(b: &RcuProtectedBox<Foo>) {        fn bar(b: &RcuProtectedBox<Foo>) {
     // but it is already freed!
 <code>}
 </code></pre><br  />
+
+
+{{< highlight rust >}}
+fn foo(b: &RcuProtectedBox<Foo>) {        fn bar(b: &RcuProtectedBox<Foo>) {
+    let guard = rcu_read_lock();
+    let p = b.read(&guard);
+                                              let old = b.write(Box::new(Foo { ... }));
+    sleep();                                  // `synchronize_rcu()` returns
+                                              drop(old);
+    // Rust allows us to use `p` here
+    // but it is already freed!
+}
+{{< / highlight >}}
+
 
 There were discussions about how we can provide abstractions of RCU in a sound way in the past two years. One approach is to make all RCU abstractions unsafe -- this is bad from a usability point of view, and wouldn't solve the issue when a Rust callback is called from C code inside RCU read critical sections. We can force preemption count and atomic context checking to be enabled, but this would introduce overhead to all kernel code that makes use of RCU and spinlocks. In fact, this approach was [proposed](https://lore.kernel.org/rust-for-linux/Yyh3kFUvt2aMh4nq@wedsonaf-dev/) by Wedson Almeida Filho and faced [some rather significant pushbacks](https://lore.kernel.org/rust-for-linux/CAHk-=whm5Ujw-yroDPZWRsHK76XxZWF1E9806jNOicVTcQC6jw@mail.gmail.com/) from Linus Torvalds.
 
@@ -191,12 +286,29 @@ As you can see, sleepable functions (like `synchronize_rcu` and `mutex_lock`) ar
 <code>pub fn rcu_read_lock() -> RcuReadGuard {</code> /* ... */ <code}</code>
 </pre><br />
 
+
+{{< highlight rust >}}
+#[klint::drop_preempt_count(adjust = -1, expect = 1.., unchecked)]
+struct RcuReadGuard { /* ... */ }
+
+#[klint::preempt_count(adjust = 1, expect = 0.., unchecked)]
+pub fn rcu_read_lock() -> RcuReadGuard { /* ... */ }
+{{< / highlight >}}
+
+
 and sleep function could look like this:
 
 <pre>
 #[klint::preempt_count(adjust = 0, expect = 0, unchecked)]
 <code>pub fn coarse_sleep(duration: Duration) {</code> /* ... */ <code>}</code>
 </pre><br />
+
+
+{{< highlight rust >}}
+#[klint::preempt_count(adjust = 0, expect = 0, unchecked)]
+pub fn coarse_sleep(duration: Duration) { /* ... */ }
+{{< / highlight >}}
+
 
 
 `klint` will analyse all functions, inferring possible preemption count values at each function call site, and will raise errors if the annotated expectation is violated. For example, if some code calls `coarse_sleep` with spinlock or RCU read lock held, then `klint` will give an error:
@@ -210,12 +322,34 @@ and sleep function could look like this:
    = <b>note</b>: but the possible preemption count at this point is 1
 </pre><br  />
 
+
+{{< highlight rust >}}
+error: this call expects the preemption count to be 0
+  --> samples/rust/rust_sync.rs:76:17
+   |
+76 |                 kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: but the possible preemption count at this point is 1
+{{< / highlight >}}
+
+
 `klint` will also perform inference on annotated functions, to check that your annotation is correct, unless the `unchecked` option is supplied:
 
 <pre>#[klint::preempt_count(expect = 0..)]
 <code>pub fn callable_from_atomic_context() {
     kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
 }</code></pre><br  />
+
+
+{{< highlight rust >}}
+#[klint::preempt_count(expect = 0..)]
+pub fn callable_from_atomic_context() {
+    kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+}
+{{< / highlight >}}
+
+
 will give
 
 <pre><code>error: function annotated to have preemption count expectation of 0..</code>
@@ -231,6 +365,24 @@ note: which may call this function with preemption count 0..
 98 |     <code>kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));</code>
    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    = <b>note</b>: but this function expects preemption count 0</code></pre><br  />
+
+
+{{< highlight rust >}}
+error: function annotated to have preemption count expectation of 0..
+  --> samples/rust/rust_sync.rs:97:1
+   |
+97 | pub fn callable_from_atomic_context() {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: but the expectation inferred is 0
+note: which may call this function with preemption count 0..
+  --> samples/rust/rust_sync.rs:98:5
+   |
+98 |     kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = note: but this function expects preemption count 0
+{{< / highlight >}}
+
 
 In an ideal world, apart from FFI functions that need to be annotated, all other functions can have these properties inferred. But in reality there are additional difficulties from:
 
@@ -262,6 +414,25 @@ For trait objects, by default `klint` will similarly assume these functions are 
         self.as_arc_borrow().wake_by_ref();
     }
 }</code></pre><br  />
+
+
+{{< highlight rust >}}
+/// A waker that is wrapped in [`Arc`] for its reference counting.
+///
+/// Types that implement this trait can get a [`Waker`] by calling [`ref_waker`].
+pub trait ArcWake: Send + Sync {
+    /// Wakes a task up.
+    #[klint::preempt_count(expect = 0..)]
+    fn wake_by_ref(self: ArcBorrow<'_, Self>);
+
+    /// Wakes a task up and consumes a reference.
+    #[klint::preempt_count(expect = 0..)] // Functions callable from `wake_up` must not sleep
+    fn wake(self: Arc<Self>) {
+        self.as_arc_borrow().wake_by_ref();
+    }
+}
+{{< / highlight >}}
+
 
 These annotations and inferred results are absent in `rustc`'s metadata so `klint` will persist these data in a separate metadata file. Similar to `clippy`, `klint` is implemented with a custom `rustc` driver, so to use it, simply replace `rustc` invocations with `klint` calls.
 
@@ -326,6 +497,62 @@ If the `FIXME` line in `rust/kernel/kasync/executor/workqueue.rs` is commented o
     = <b>note</b>: but this function expects preemption count 0
 </pre><br />
 
+
+{{< highlight rust >}}
+error: trait method annotated to have preemption count expectation of 0..
+   --> rust/kernel/kasync/executor/workqueue.rs:147:5
+    |
+147 |     fn wake(self: Arc<Self>) {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: but the expectation of this implementing function is 0
+note: the trait method is defined here
+   --> rust/kernel/kasync/executor.rs:73:5
+    |
+73  |     fn wake(self: Arc<Self>) {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^
+note: which may drop type `kernel::sync::Arc<kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>>` with preemption count 0..
+   --> rust/kernel/kasync/executor/workqueue.rs:149:5
+    |
+147 |     fn wake(self: Arc<Self>) {
+    |             ---- value being dropped is here
+148 |         Self::wake_by_ref(self.as_arc_borrow());
+149 |     }
+    |     ^
+note: which may call this function with preemption count 0..
+   --> rust/kernel/sync/arc.rs:236:5
+    |
+236 |     fn drop(&mut self) {
+    |     ^^^^^^^^^^^^^^^^^^
+note: which may drop type `kernel::sync::arc::ArcInner<kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>>` with preemption count 0..
+   --> rust/kernel/sync/arc.rs:255:22
+    |
+255 |             unsafe { core::ptr::drop_in_place(inner) };
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: which may drop type `kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>` with preemption count 0..
+    = note: which may drop type `kernel::sync::Arc<kernel::kasync::executor::workqueue::Executor>` with preemption count 0..
+note: which may call this function with preemption count 0..
+   --> rust/kernel/sync/arc.rs:236:5
+    |
+236 |     fn drop(&mut self) {
+    |     ^^^^^^^^^^^^^^^^^^
+note: which may drop type `kernel::sync::arc::ArcInner<kernel::kasync::executor::workqueue::Executor>` with preemption count 0..
+   --> rust/kernel/sync/arc.rs:255:22
+    |
+255 |             unsafe { core::ptr::drop_in_place(inner) };
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: which may drop type `kernel::kasync::executor::workqueue::Executor` with preemption count 0..
+    = note: which may drop type `kernel::Either<kernel::workqueue::BoxedQueue, &kernel::workqueue::Queue>` with preemption count 0..
+    = note: which may drop type `kernel::workqueue::BoxedQueue` with preemption count 0..
+note: which may call this function with preemption count 0..
+   --> rust/kernel/workqueue.rs:433:5
+    |
+433 |     fn drop(&mut self) {
+    |     ^^^^^^^^^^^^^^^^^^
+    = note: but this function expects preemption count 0
+{{< / highlight >}}
+
+
 The problematic call trace that `klint` supplies ends on the `BoxedQueue::drop`. If we navigate to that function, we will see that it ends with a call to `destroy_workqueue`, which indeed might sleep. This can happen if the `Waker` is called after the executor is dropped and the tasks cancelled.
 
 Limitation
@@ -338,12 +565,28 @@ Currently, `klint` does not have a way to represent a `try_lock`-like function f
 <code>    fn try_lock(&self) -&gt; Option&lt;Guard&lt;'_, Self, WriteLock&gt;&gt; { ... }
 }</code></pre><br  />
 
+{{< highlight rust >}}
+impl<T> SpinLock<T> {
+    // Preemption count adjustment of this function is 0 or 1 depending on the variant of the return value.
+    fn try_lock(&self) -> Option<Guard<'_, Self, WriteLock>> { ... }
+}
+{{< / highlight >}}
+
+
 Although it's possible to rewrite the `try_lock` function to take a callback to avoid this limitation:
 
 <pre><code>impl&lt;T&gt; SpinLock&lt;T&gt; {</code>
     // Preemption count adjustment of this function is 0!
     <code>fn try_lock&lt;T, F: FnOnce(Option&lt;Guard&lt;'_, Self, WriteLock&gt;&gt;) -&gt; T&gt;(&self) -&gt; T { ... }
 }</code></pre><br  />
+
+{{< highlight rust >}}
+impl<T> SpinLock<T> {
+    // Preemption count adjustment of this function is 0!
+    fn try_lock<T, F: FnOnce(Option<Guard<'_, Self, WriteLock>>) -> T>(&self) -> T { ... }
+}
+{{< / highlight >}}
+
 
 this is not as easy to use as a simple `try_lock` function that returns an `Option`.
 
@@ -359,6 +602,21 @@ Similarly, this pattern is not yet supported by `klint`:
     }
 }</code></pre><br  />
 
+{{< highlight rust >}}
+fn foo(take_lock: bool) {
+    if take_lock {
+        spin_lock(...);
+    }
+    ...
+    if take_lock {
+        spin_unlock(...);
+    }
+}
+
+
+{{< / highlight >}}
+
+
 The anticipation is that this pattern is less likely to be observed in Rust code due to RAII guards, but similar patterns can still arise from implicit drop flags introduced by the compiler:
 
 <pre><code>fn foo(take_lock: bool) {
@@ -370,6 +628,19 @@ The anticipation is that this pattern is less likely to be observed in Rust code
     ...</code>
     // An implicit branch will be introduced here by the compiler to drop `guard` only if it has been initialised
 <code>}</code></pre><br  />
+
+{{< highlight rust >}}
+fn foo(take_lock: bool) {
+    let guard;
+    // An implicit bool will be introduced here by the compiler to track if `guard` is initialised
+    if take_lock {
+        guard = SPINLOCK.lock();
+    }
+    ...
+    // An implicit branch will be introduced here by the compiler to drop `guard` only if it has been initialised
+}
+{{< / highlight >}}
+
 
 Future Work
 -----------
