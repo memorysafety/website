@@ -29,7 +29,7 @@
     {{if isset .Params "blog_posts"}}
     <div class="row">
       <div class="offset-md-2 col-md-8">
-        <div class="initiative-posts mt-1">
+        <div id="blog" class="initiative-posts mt-1">
           <h2>From our Blog</h2>
           {{ range .Params.blog_posts }}
           <div>{{ range where $.Site.Pages "File.LogicalName" . }} {{ partial "blog/blog_list_item.html" .}}{{ end }}</div>
