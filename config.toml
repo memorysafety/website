@@ -31,6 +31,9 @@ unsafe = true
 # To keep § ids identical after the migration from blackfriday to goldmark
 autoHeadingIDType = "blackfriday"
 
+[markup.highlight]
+noclasses = false
+
 [languages]
 [languages.en]
 title = "Prossimo"
