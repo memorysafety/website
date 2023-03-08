@@ -23,6 +23,17 @@
   }
 }
 
+.initiative-funders {
+  .funder-logos {
+    justify-items: start;
+    gap: 10px;
+
+    .funder img {
+      max-height: 60px;
+    }
+  }
+}
+
 .funder-logos {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
