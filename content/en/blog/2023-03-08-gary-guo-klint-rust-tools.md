@@ -10,7 +10,7 @@ excerpt: "Improvements to the klint tool will help facilitate adoption of Rust i
   <blockquote class="blockquote">
     <span class="quote"></span>
     <div class="quote-text">
-      <p class="font-italic lh-170">Gary Guo helping our efforts to bring <a href="/initiative/linux-kernel">Rust into the Linux kernel</a> with improvements to a tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
+      <p class="font-italic lh-170">Gary Guo is helping our efforts to bring <a href="/initiative/linux-kernel">Rust into the Linux kernel</a> with improvements to a tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
       <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG's Prossimo project</cite></footer>
     </div>
   </blockquote>
