@@ -148,6 +148,12 @@ body {
     font-size: 20px;
   }
 }
+
+pre.code-block {
+  margin: 10px 0 20px;
+  border-radius: 10px;
+  background: rgb(238,238,238);
+}
 .highlight {
   margin: 10px 0 20px;
   .chroma {
@@ -386,4 +392,20 @@ html[dir="rtl"] a.autoanchor {
   .pl-md-4 {
     padding-left: 1.5rem !important;
   }
+}
+
+.code-block {
+  color: rgb(60,60,60);
+}
+
+.code-red {
+  color: rgb(254,16,22);
+}
+
+.code-blue {
+  color: rgb(18,75,192);
+}
+
+.code-green {
+  color: rgb(96,158,76);
 }

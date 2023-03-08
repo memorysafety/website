@@ -205,15 +205,15 @@ pub fn coarse_sleep(duration: Duration) { /* ... */ }
 
 `klint` will analyse all functions, inferring possible preemption count values at each function call site, and will raise errors if the annotated expectation is violated. For example, if some code calls `coarse_sleep` with spinlock or RCU read lock held, then `klint` will give an error:
 
-{{< highlight rust >}}
-error: this call expects the preemption count to be 0
-  --> samples/rust/rust_sync.rs:76:17
-   |
-76 |  kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
-   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
-   = note: but the possible preemption count at this point is 1
-{{< / highlight >}}
+<pre class="code-block">
+<b><span class="code-red">error</span>: this call expects the preemption count to be 0</b>
+  <span class="code-blue">--&gt;</span> samples/rust/rust_sync.rs:76:17
+   <span class="code-blue">|</span>
+<span class="code-blue">76 |</span>  kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+   <span class="code-blue">|</span>  <span class="code-red">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+   <span class="code-blue">|</span>
+   <span class="code-blue">=</span> <b>note</b>: but the possible preemption count at this point is 1
+</pre>
 
 
 `klint` will also perform inference on annotated functions, to check that your annotation is correct, unless the `unchecked` option is supplied:
@@ -227,21 +227,21 @@ pub fn callable_from_atomic_context() {
 
 will give
 
-{{< highlight rust >}}
-error: function annotated to have preemption count expectation of 0..
-  --> samples/rust/rust_sync.rs:97:1
-   |
-97 | pub fn callable_from_atomic_context() {
-   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
-   = note: but the expectation inferred is 0
-note: which may call this function with preemption count 0..
-  --> samples/rust/rust_sync.rs:98:5
-   |
-98 |     kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   = note: but this function expects preemption count 0
-{{< / highlight >}}
+<pre class="code-block">
+<b><span class="code-red">error</span>: function annotated to have preemption count expectation of 0..</b>
+  <span class="code-blue">--&gt;</span> samples/rust/rust_sync.rs:97:1
+   <span class="code-blue">|</span>
+<span class="code-blue">97 |</span> pub fn callable_from_atomic_context() {
+   <span class="code-blue">|</span> <span class="code-red">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+   <span class="code-blue">|</span>
+   <span class="code-blue">=</span> <b>note</b>: but the expectation inferred is 0
+<span class="code-green">note</span>: which may call this function with preemption count 0..
+  <span class="code-blue">--&gt;</span> samples/rust/rust_sync.rs:98:5
+   <span class="code-blue">|</span>
+<span class="code-blue">98 |</span>       kernel::delay::coarse_sleep(core::time::Duration::from_secs(1));
+   <span class="code-blue">|</span>       <span class="code-green">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+   <span class="code-blue">=</span> <b>note</b>: but this function expects preemption count 0
+</pre>
 
 
 In an ideal world, apart from FFI functions that need to be annotated, all other functions can have these properties inferred. But in reality there are additional difficulties from:
@@ -250,7 +250,7 @@ In an ideal world, apart from FFI functions that need to be annotated, all other
 
 -   Indirect function calls (trait objects, function pointers)
 
--   Recursion`
+-   Recursion
 
 For recursive functions, `klint` will simply assume a default property, and if the result is different, it will give an error, asking for an explicit annotation.
 
@@ -289,59 +289,59 @@ If the `FIXME` line in `rust/kernel/kasync/executor/workqueue.rs` is commented o
 
 
 
-{{< highlight rust >}}
-error: trait method annotated to have preemption count expectation of 0..
-   --> rust/kernel/kasync/executor/workqueue.rs:147:5
-    |
-147 |     fn wake(self: Arc<Self>) {
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^
-    |
-    = note: but the expectation of this implementing function is 0
-note: the trait method is defined here
-   --> rust/kernel/kasync/executor.rs:73:5
-    |
-73  |     fn wake(self: Arc<Self>) {
-    |     ^^^^^^^^^^^^^^^^^^^^^^^^
-note: which may drop type `kernel::sync::Arc<kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>>` with preemption count 0..
-   --> rust/kernel/kasync/executor/workqueue.rs:149:5
-    |
-147 |     fn wake(self: Arc<Self>) {
-    |             ---- value being dropped is here
-148 |         Self::wake_by_ref(self.as_arc_borrow());
-149 |     }
-    |     ^
-note: which may call this function with preemption count 0..
-   --> rust/kernel/sync/arc.rs:236:5
-    |
-236 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-note: which may drop type `kernel::sync::arc::ArcInner<kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>>` with preemption count 0..
-   --> rust/kernel/sync/arc.rs:255:22
-    |
-255 |             unsafe { core::ptr::drop_in_place(inner) };
-    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    = note: which may drop type `kernel::kasync::executor::workqueue::Task<core::future::from_generator::GenFuture<[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]>>` with preemption count 0..
-    = note: which may drop type `kernel::sync::Arc<kernel::kasync::executor::workqueue::Executor>` with preemption count 0..
-note: which may call this function with preemption count 0..
-   --> rust/kernel/sync/arc.rs:236:5
-    |
-236 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-note: which may drop type `kernel::sync::arc::ArcInner<kernel::kasync::executor::workqueue::Executor>` with preemption count 0..
-   --> rust/kernel/sync/arc.rs:255:22
-    |
-255 |             unsafe { core::ptr::drop_in_place(inner) };
-    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    = note: which may drop type `kernel::kasync::executor::workqueue::Executor` with preemption count 0..
-    = note: which may drop type `kernel::Either<kernel::workqueue::BoxedQueue, &kernel::workqueue::Queue>` with preemption count 0..
-    = note: which may drop type `kernel::workqueue::BoxedQueue` with preemption count 0..
-note: which may call this function with preemption count 0..
-   --> rust/kernel/workqueue.rs:433:5
-    |
-433 |     fn drop(&mut self) {
-    |     ^^^^^^^^^^^^^^^^^^
-    = note: but this function expects preemption count 0
-{{< / highlight >}}
+<pre class="code-block">
+<b><span class="code-red">error</span>: trait method annotated to have preemption count expectation of 0..</b>
+   <span class="code-blue">--&gt;</span> rust/kernel/kasync/executor/workqueue.rs:147:5
+    <span class="code-blue">|</span>
+<span class="code-blue">147 |</span>     fn wake(self: Arc&lt;Self&gt;) {
+    <span class="code-blue">|</span>     <span class="code-red">^^^^^^^^^^^^^^^^^^^^^^^^</span>
+    <span class="code-blue">|</span>
+    <span class="code-blue">=</span> <b>note</b>: but the expectation of this implementing function is 0
+<span class="code-green">note</span>: the trait method is defined here
+   <span class="code-blue">--&gt;</span> rust/kernel/kasync/executor.rs:73:5
+    <span class="code-blue">|</span>
+<span class="code-blue">73  |</span>     fn wake(self: Arc&lt;Self&gt;) {
+    <span class="code-blue">|</span>     <span class="code-green">^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="code-green">note</span>: which may drop type `kernel::sync::Arc&lt;kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;&gt;` with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/kasync/executor/workqueue.rs:149:5
+    <span class="code-blue">|</span>
+<span class="code-blue">147 |</span>     fn wake(self: Arc&lt;Self&gt;) {
+    <span class="code-blue">|</span>             <span class="code-blue">---- value being dropped is here</span>
+<span class="code-blue">148 |</span>         Self::wake_by_ref(self.as_arc_borrow());
+<span class="code-blue">149 |</span>     }
+    <span class="code-blue">|</span>     <span class="code-green">^</span>
+<span class="code-green">note</span>: which may call this function with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/sync/arc.rs:236:5
+    <span class="code-blue">|</span>
+<span class="code-blue">236 |</span>     fn drop(&mut self) {
+    <span class="code-blue">|</span>     <span class="code-green">^^^^^^^^^^^^^^^^^^</span>
+<span class="code-green">note</span>: which may drop type `kernel::sync::arc::ArcInner&lt;kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;&gt;` with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/sync/arc.rs:255:22
+    <span class="code-blue">|</span>
+<span class="code-blue">255 |</span>             unsafe { core::ptr::drop_in_place(inner) };
+    <span class="code-blue">|</span>                      <span class="code-green">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+    <span class="code-blue">=</span> <b>note</b>: which may drop type `kernel::kasync::executor::workqueue::Task&lt;core::future::from_generator::GenFuture&lt;[static generator@samples/rust/rust_echo_server.rs:25:75: 31:2]&gt;&gt;` with preemption count 0..
+    <span class="code-blue">=</span> <b>note</b>: which may drop type `kernel::sync::Arc&lt;kernel::kasync::executor::workqueue::Executor&gt;` with preemption count 0..
+<span class="code-green">note</span>: which may call this function with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/sync/arc.rs:236:5
+    <span class="code-blue">|</span>
+<span class="code-blue">236 |</span>     fn drop(&mut self) {
+    <span class="code-blue">|</span>     <span class="code-green">^^^^^^^^^^^^^^^^^^</span>
+<span class="code-green">note</span>: which may drop type `kernel::sync::arc::ArcInner&lt;kernel::kasync::executor::workqueue::Executor&gt;` with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/sync/arc.rs:255:22
+    <span class="code-blue">|</span>
+<span class="code-blue">255 |</span>             unsafe { core::ptr::drop_in_place(inner) };
+    <span class="code-blue">|</span>                      <span class="code-green">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+    <span class="code-blue">=</span> <b>note</b>: which may drop type `kernel::kasync::executor::workqueue::Executor` with preemption count 0..
+    <span class="code-blue">=</span> <b>note</b>: which may drop type `kernel::Either&lt;kernel::workqueue::BoxedQueue, &kernel::workqueue::Queue&gt;` with preemption count 0..
+    <span class="code-blue">=</span> <b>note</b>: which may drop type `kernel::workqueue::BoxedQueue` with preemption count 0..
+<span class="code-green">note</span>: which may call this function with preemption count 0..
+   <span class="code-blue">--&gt;</span> rust/kernel/workqueue.rs:433:5
+    <span class="code-blue">|</span>
+<span class="code-blue">433 |</span>     fn drop(&mut self) {
+    <span class="code-blue">|</span>     <span class="code-green">^^^^^^^^^^^^^^^^^^</span>
+    <span class="code-blue">=</span> <b>note</b>: but this function expects preemption count 0
+</pre>
 
 
 The problematic call trace that `klint` supplies ends on the `BoxedQueue::drop`. If we navigate to that function, we will see that it ends with a call to `destroy_workqueue`, which indeed might sleep. This can happen if the `Waker` is called after the executor is dropped and the tasks cancelled.
