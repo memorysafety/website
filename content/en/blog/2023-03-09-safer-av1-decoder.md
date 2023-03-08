@@ -8,7 +8,7 @@ excerpt: "Memory safety for a major source of exploitable vulnerabilities."
 
 Prossimo is excited to announce that we are working on an [AV1 decoder](/initiative/av1/) called [rav1d](https://github.com/memorysafety/rav1d), which can be used for both video and images. Our strategy is to move the C code in the [dav1d](https://code.videolan.org/videolan/dav1d) decoder to Rust, while retaining the high performance assembly code.
 
-Image and video decoders have historically been a major source of exploitable vulnerabilities because they often process data from networks in complex ways. Improving memory safety for media decoders is important if we want to reduce the number of exploitable vulnerabilities people are exposed to on the Internet.
+Image and video decoders have historically been a major source of exploitable [memory safety vulnerabilities](/docs/memory-safety/#types-of-memory-safety-bugs) because they often process data from networks in complex ways. Improving memory safety for media decoders is important if we want to reduce the number of exploitable vulnerabilities people are exposed to on the Internet.
 
 [AV1](https://en.wikipedia.org/wiki/AV1) is a relatively new, open, royalty-free video coding format. AV1 compression can be used for both video and images (the image format is called AVIF). AV1 is rapidly gaining popularity, and we expect that many applications will need to select an AV1 decoder soon. We want to make sure everyone has a safe option to choose.
 
