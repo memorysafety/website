@@ -1,6 +1,6 @@
 ---
 author: Gary Guo
-date: 2023-03-07T12:00:00Z
+date: 2023-03-08T12:00:00Z
 slug: gary-guo-klint-rust-tools
 title: "Klint: Compile-time Detection of Atomic Context Violations for Kernel Rust Code"
 excerpt: "Improvements to the klint tool will help facilitate adoption of Rust in the Linux kernel."
@@ -10,7 +10,7 @@ excerpt: "Improvements to the klint tool will help facilitate adoption of Rust i
   <blockquote class="blockquote">
     <span class="quote"></span>
     <div class="quote-text">
-      <p class="font-italic lh-170">Gary Guo is helping us enable the adoption of memory safe software through work to improve a Rust tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
+      <p class="font-italic lh-170">Gary Guo helping our efforts to bring <a href="/initiative/linux-kernel">Rust into the Linux kernel</a> with improvements to a tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
       <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG's Prossimo project</cite></footer>
     </div>
   </blockquote>
@@ -45,7 +45,7 @@ Memory Safety Aspects of Atomic Context
 
 The Rust for Linux project tries hard to ensure that it can provide safe abstractions of the kernel C API and empower drivers to be written in safe Rust code. We already have a [list of synchronisation primitives](https://rust-for-linux.github.io/docs/kernel/sync/index.html) implemented, and this includes spinlocks and mutexes. Therefore, the concept of atomic context is as relevant in Rust code as in C code.
 
-You might ask, how is memory safety related here? If you are familiar with Rust, there's a chance that you are aware of what "memory safety" in Rust means. Safe code in Rust should not be able to cause use-after-free or data races, but causing a deadlock is memory safe. If a Rust kernel driver sleeps while inside an atomic context, it might cause a deadlock, which is bad and should be avoided, but it should be memory safe regardless, right?
+You might ask, how is [memory safety](/docs/memory-safety/) related here? If you are familiar with Rust, there's a chance that you are aware of what "memory safety" in Rust means. Safe code in Rust should not be able to cause use-after-free or data races, but causing a deadlock is memory safe. If a Rust kernel driver sleeps while inside an atomic context, it might cause a deadlock, which is bad and should be avoided, but it should be memory safe regardless, right?
 
 This would be true if spinlocks were the only source of atomic contexts. However, the kernel very widely employs RCU (read-copy-update). Details of RCU can be found in [the kernel documentation](https://www.kernel.org/doc/html/v6.1/RCU/whatisRCU.html), but in a nutshell, RCU is a synchronisation mechanism to provide efficient read access to shared data structures. It allows multiple readers to access shared data structures without locking. A data structure accessible from an RCU read-side critical section will stay alive and will not be deallocated until all read-side critical sections that may access it have been completed.
 
@@ -400,6 +400,7 @@ fn foo(take_lock: bool) {
 }
 {{< / highlight >}}
 
+We’d like to thank Futurewei for generously funding the work covered in this blog post!
 
 Future Work
 -----------
@@ -419,4 +420,4 @@ While `klint` is already proven to be useful, to date it is largely a prototype 
 About Us
 --------
 
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](/getinvolved/), [donating](/donate/), or encouraging your company to [become a funder](/become-a-funder/).
+ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).
