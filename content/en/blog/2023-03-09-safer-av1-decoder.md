@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2023-03-09T12:00:00Z
+date: 2023-03-09T00:00:00Z
 slug: safer-av1-decoder
 title: "A Safer High Performance AV1 Decoder"
 excerpt: "Memory safety for a major source of exploitable vulnerabilities."
