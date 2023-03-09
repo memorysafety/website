@@ -8,6 +8,7 @@ function setupAutoanchors() {
         var selector = "h1,h2,h3"; //
         page.querySelectorAll(selector).forEach(function(el){
             if (el.classList.contains("no-autoanchor"))  { return false }
+            if (el.classList.contains("home-h3"))  { return false }
             if (!el.id) {
                 // Create an ID for the element
                 var id = el.innerText.toLowerCase().replace(/\s/g, "-");
