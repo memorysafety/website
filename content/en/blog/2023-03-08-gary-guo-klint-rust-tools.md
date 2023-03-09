@@ -3,14 +3,14 @@ author: Gary Guo
 date: 2023-03-08T12:00:00Z
 slug: gary-guo-klint-rust-tools
 title: "Klint: Compile-time Detection of Atomic Context Violations for Kernel Rust Code"
-excerpt: "Improvements to the klint tool will help facilitate adoption of Rust in the Linux kernel."
+excerpt: "The klint tool will help facilitate adoption of Rust in the Linux kernel."
 ---
 
 <div class="">
   <blockquote class="blockquote">
     <span class="quote"></span>
     <div class="quote-text">
-      <p class="font-italic lh-170">Gary Guo is helping our efforts to bring <a href="/initiative/linux-kernel">Rust into the Linux kernel</a> with improvements to a tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
+      <p class="font-italic lh-170">Gary Guo is helping our efforts to bring <a href="/initiative/linux-kernel">Rust into the Linux kernel</a> by building a tool called <code>klint</code>. We asked him to provide his perspective on the work in this blog post. Thank you for your partnership and contributions, Gary!</p>
       <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG's Prossimo project</cite></footer>
     </div>
   </blockquote>
