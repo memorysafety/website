@@ -26,7 +26,7 @@ This work is being done by a joint team from [Ferrous Systems](https://ferrous-s
 
 If you'd like to support Prossimo's work to [improve](/about/)  [memory safety](/docs/memory-safety/), please consider [contributing](/sponsor/).
 
-About Us[ ](/blog/safer-av1-decoder/#about-us)
+About Us
 --------------------------------------------------------------------------
 
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).
