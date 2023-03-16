@@ -21,7 +21,7 @@ Rustls and webpki currently do not provide access to client information supplied
 
 **4. Enable Pluggable Cryptographic Back-ends**
 
-Allow Rustls consumers to plug in cryptographic back-end alternatives to *ring*.
+Allow Rustls consumers to plug in cryptographic back-end alternatives to *ring*. ([Ticket](https://github.com/rustls/rustls/pull/1184)).
 
 **5. Comprehensive performance benchmarking**
 
