@@ -16,7 +16,7 @@ Version 0.21.0 also contains a number of other improvements. Rustls gets contrib
 
 ISRG, via our [Prossimo](/) project, is [investing heavily in Rustls](/initiative/rustls/). It's our goal to make Rustls the most attractive option for software needing TLS support. Daniel and Jacob are currently working on Rustls under Prossimo contracts that tackle the items on our work plan. One of the most exciting priorities is the enablement of pluggable cryptographic backends. This feature will make it possible for Rustls users to choose among cryptographic backends like [Ring](https://github.com/briansmith/ring) or [SymCrypt](https://github.com/microsoft/SymCrypt). We intend for this optionality to reduce the friction for large organizations looking at moving to a memory safe option.
 
-The team is already hard at work on the next version. If you're as excited as we are about the progress and potential, please join Google, [Fly.io](http://fly.io/), and Amazon Web Services in [supporting this work](/become-a-funder/).
+The team is already hard at work on the next version. If you're as excited as we are about the progress and potential, please join Google, Fly.io, and Amazon Web Services in [supporting this work](/become-a-funder/).
 
 About Us
 --------
