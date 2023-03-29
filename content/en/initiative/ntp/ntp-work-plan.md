@@ -57,11 +57,3 @@ A third party security audit will be performed by [Radically Open Security](http
 
 Estimated timeline: 1 month  
 Cost: Funded by [NLNet Foundation](https://nlnet.nl/)
-
-**Milestone 5: Communications and Adoption Work**
-
-* Communicate about completed project
-* Advocate for adoption by Linux distributions and others shipping NTP implementations
-
-Estimated timeline: 3 months  
-Cost: $50,000
