@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2023-03-20T00:00:00Z
+date: 2023-03-29T00:00:00Z
 slug: rustls-new-features
 title: "Rustls 0.21.0 Released With Exciting New Features"
 excerpt: "We’re incredibly excited about the latest release of Rustls, a memory safe TLS implementation"
