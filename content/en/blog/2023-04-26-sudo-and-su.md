@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2023-03-15T00:00:00Z
+date: 2023-04-20T00:00:00Z
 slug: sudo-and-su
 title: "Bringing Memory Safety to sudo and su"
 excerpt: "We are reimplementing sudo and su utilities in Rust."
@@ -27,6 +27,6 @@ This work is being done by a joint team from [Ferrous Systems](https://ferrous-s
 If you'd like to support Prossimo's work to [improve](/about/)  [memory safety](/docs/memory-safety/), please consider [contributing](/sponsor/).
 
 About Us
---------------------------------------------------------------------------
+--------
 
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).
