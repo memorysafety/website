@@ -13,11 +13,8 @@ Sudo was first developed in the 1980s. Over the decades, it has become an essent
 When we're thinking about what software we want to invest in we think primarily about [four risk criteria](/about/#identifying-risk):
 
 1.  Very widely used (nearly every server and/or client)
-
 2.  On a critical boundary
-
 3.  Performing a critical function
-
 4.  Written in languages that are not memory safe (e.g. C, C++, asm)
 
 Sudo fits this risk criteria squarely. It's important that we secure our most critical software, particularly from memory safety vulnerabilities. It's hard to imagine software that's much more critical than sudo and su.
