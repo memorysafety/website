@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2023-04-20T00:00:00Z
+date: 2023-04-26T00:00:00Z
 slug: sudo-and-su
 title: "Bringing Memory Safety to sudo and su"
 excerpt: "We are reimplementing sudo and su utilities in Rust."
