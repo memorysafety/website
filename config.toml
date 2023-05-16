@@ -13,6 +13,8 @@ address_line_2 = "San Francisco, California 94104-5401"
 images = ["images/ProssimoSocialShare.png"]
 meta_description = "ISRG's Prossimo is committed to moving the Internet's security-sensitive software to memory safe code and to encouraging people to prioritize memory safety."
 social_share_twitter_square = "images/ProssimoSocialShare-Square.png"
+site_banner_text = "ISRG celebrates 10 years of helping build a brighter Internet"
+site_banner_href = "https://abetterinternet.org/tenth-anniversary/"
 
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"

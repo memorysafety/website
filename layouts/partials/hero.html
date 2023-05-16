@@ -1,6 +1,8 @@
-<div id="site-banner">
-  <a href="https://abetterinternet.org/tenth-anniversary">ISRG celebrates 10 years of making the internet safer →</a>
-</div>
+{{ if .Site.Params.site_banner_text }}
+  <div id="site-banner">
+      <a href="{{ .Site.Params.site_banner_href }}">{{ .Site.Params.site_banner_text }} →</a>
+  </div>
+{{ end }}
 <section class="slice slice-isrg bg-gradient-secondary" data-separator="rounded-left" data-separator-orientation="bottom">
   <div class="container">
     <div class="row">
