@@ -2,9 +2,10 @@
 <html lang="en">
   {{ partial "head.html" . }}
     {{ partial "header.html" . }}
+
       <section
         id="home-hero"
-        class="position-relative mb-3 pb-1 pt-6 pb-5 pt-sm-6 pt-md-6 pt-lg-6"
+        class="position-relative pb-1 pt-6 pb-5 pt-sm-6 pt-md-6 pt-lg-6"
         style="
           background-color: #dce0e9;
         "
@@ -30,6 +31,12 @@
 
         </div>
       </section>
+
+      {{ if .Site.Params.site_banner_text }}
+        <div id="site-banner">
+            <a href="{{ .Site.Params.site_banner_href }}">{{ .Site.Params.site_banner_text }} →</a>
+        </div>
+      {{ end }}
 
       <div class="container mt-5">
         <div class="row">

@@ -409,3 +409,18 @@ html[dir="rtl"] a.autoanchor {
 .code-green {
   color: rgb(96,158,76);
 }
+
+#site-banner {
+  a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    color: #14dfb4 !important;
+    font-weight: bold;
+    background-color: #082659;
+    &:hover {
+      background-color: darken(#082659, 10%);
+      text-decoration: none;
+    }
+  }
+}
