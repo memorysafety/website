@@ -2,6 +2,11 @@
 <html class="tpl-post">
   {{ partial "head.html" . }} {{ partial "header.html" . }}
   <main>
+    {{ if .Site.Params.site_banner_text }}
+      <div id="site-banner">
+          <a href="{{ .Site.Params.site_banner_href }}">{{ .Site.Params.site_banner_text }} →</a>
+      </div>
+    {{ end }}
     <div class="container-fluid pb-6">
       <div class="row">
         <div class="col-md-8 offset-md-2">
