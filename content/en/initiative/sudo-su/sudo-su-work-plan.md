@@ -9,21 +9,26 @@ image: /images/sudo-su.png
 
 ***Upcoming Milestones***
 
-**Milestone 3: Deployability**
+**Milestone 3: Deployability (First Release)**
 
 * Improve usability by implementing commonly used feature flags and configuration options (such as sudo -l, and various reasonable configuration options)
 * Support reading the doas configuration file
 * Implement visudo
 * More complete user facing documentation, including a migration guide
-* Deliverable: first public release of sudo and su aimed at single-user systems
+* First public release of sudo and su aimed at single-user systems
 
-**Milestone 4: Enterprise features**
+**Milestone 4: Enterprise features (Second Release)**
 
 * Security features for multi-user systems (e.g. NOEXEC)
-* sudoedit
 * Audit trail logging
 * Hostname matching for sudoers
 * Support for more than 16 user groups (group_file plugin)
+
+**Milestone 5 - Hardening (Third Release)**
+
+* Support for other Linux distributions than Debian/Ubuntu (i.e. Fedora-based ones)
+* SELinux and AppArmor support
+* sudoedit implementation
 
 ***Completed Milestones***
 
