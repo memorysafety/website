@@ -7,6 +7,26 @@ image: /images/sudo-su.png
 
 **Work Plan**
 
+***Upcoming Milestones***
+
+**Milestone 3: Deployability**
+
+* Improve usability by implementing commonly used feature flags and configuration options (such as sudo -l, and various reasonable configuration options)
+* Support reading the doas configuration file
+* Implement visudo
+* More complete user facing documentation, including a migration guide
+* Deliverable: first public release of sudo and su aimed at single-user systems
+
+**Milestone 4: Enterprise features**
+
+* Security features for multi-user systems (e.g. NOEXEC)
+* sudoedit
+* Audit trail logging
+* Hostname matching for sudoers
+* Support for more than 16 user groups (group_file plugin)
+
+***Completed Milestones***
+
 **Milestone 0: Preparation**
 
 * System architecture and requirements
@@ -25,24 +45,10 @@ security features
 
 **Milestone 2: Security parity**
 
-* Core sudo pipeline with full sanitation of signals, file descriptors, limits, ptrace, etc. and
+* Core sudo pipeline with full sanitation of signals, file descriptors, limits, ptrace, pty management, etc. and
 more efficient command execution
 * Add su implementation
 * Testing for full security compliance
-* SELinux support
-* AppArmor support
 * Wider configuration feature flag support
 * User facing documentation
-
-**Milestone 3: Subcommand auditing**
-
-* Support for subcommand interception
-
-**Milestone 4: Enterprise features**
-
-* LDAP support
-* Hostname matching for sudoers
-* Full audit and IO logging
-* Mail events
-* Authentication for passwd and Kerberos (without PAM)
-* Support for more than 16 user groups (group_file plugin)
+* Credential caching
