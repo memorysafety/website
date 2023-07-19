@@ -14,19 +14,19 @@ blog_posts: ["2023-04-26-sudo-and-su.md"]
 </p>
 
 <p>
-  By rewriting sudo and su in Rust we can make sure they don't suffer from any more memory safety vulnerabilities. We're going to get it done.
+  By rewriting sudo and su in Rust we can make sure they don't suffer from any more memory safety vulnerabilities. By leaving out less commonly used features we can reduce attack surface.
 </p>
 
 <h2>What We've Done</h2>
 
 <p>
-In December of 2022 we funded a joint development effort between <a href="https://tweedegolf.nl/">Tweede Golf</a> and <a href="https://ferrous-systems.com/">Ferrous Systems</a> to rewrite sudo and su in Rust.
+In December of 2022 we funded a joint development effort between <a href="https://tweedegolf.nl/">Tweede Golf</a> and <a href="https://ferrous-systems.com/">Ferrous Systems</a> to rewrite sudo and su in Rust. That work is going well and we encourage people to <a href="https://github.com/memorysafety/sudo-rs">give sudo-rs a test run today</a>.
 </p>
 
 <h2>What's Next</h2>
 
 <p>
-  Work started in December of 2022 and is planned to conclude in September of 2023. You can follow development by watching the <a href="https://github.com/memorysafety/sudo-rs">GitHub repository</a>.
+  We expect the first stable release of sudo-rs in August of 2023. You can follow development by watching the <a href="https://github.com/memorysafety/sudo-rs">GitHub repository</a>.
 </p>
 
 <h2>Links</h2>
@@ -35,4 +35,5 @@ In December of 2022 we funded a joint development effort between <a href="https:
   <li><a href="https://github.com/memorysafety/sudo-rs">GitHub Repository</a></li>
   <li><a href="/initiative/sudo-su/sudo-su-work-plan/">Work Plan</a></li>
   <li><a href="https://tweedegolf.nl/en/blog/91/reimplementing-sudo-in-rust">Tweede Golf: Re-implementing Sudo in Rust</a></li>
+  <li><a href="https://ferrous-systems.com/blog/testing-sudo-rs/">Ferrous Systems: Testing sudo-rs and improving sudo along the way</a></li>
 </ul>
