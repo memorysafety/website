@@ -24,6 +24,6 @@ A joint team from [Tweede Golf](https://tweedegolf.nl/) and [Ferrous Systems](ht
 
 The original [C-based sudo utility](https://www.sudo.ws/) has been maintained by Todd C. Miller for many years now, and we're grateful to him for taking on this huge and important task. We're also grateful that Todd has made time to offer us excellent advice on implementing sudo-rs.
 
-We'd like to thank Amazon Web Services for supporting this work and supporting the transition to memory safe software.
+Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We’d like to thank the NLnet Foundation for their funding of the audit of Sudo-rs. We'd also like to thank Amazon Web Services for supporting this work and supporting the transition to memory safe software.
 
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).
