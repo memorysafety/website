@@ -21,11 +21,11 @@ Performance should be a headline feature of Rustls. We need to develop a more co
 
 **4. Add No-Allocation / Write-Through API**
 
-Would make handshakes faster and give the caller more control over allocations.
+Would make handshakes faster and give the caller more control over allocations. [See RFC](https://github.com/rustls/rustls/pull/1420).
 
 **5. Support no_std**
 
-Enables use of rustls in more memory-constrained environments. ([Ticket](https://github.com/rustls/rustls/issues/283))
+Enables use of rustls in more memory-constrained environments. [See RFC](https://github.com/rustls/rustls/pull/1399).
 
 **6. OpenSSL API Compatibility Layer**
 
