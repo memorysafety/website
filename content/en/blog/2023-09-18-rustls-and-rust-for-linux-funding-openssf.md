@@ -6,6 +6,8 @@ title: "Advancing Rustls and Rust for Linux with OpenSSF Support"
 excerpt: "Improving functionality and scalability for security sensitive Open Source software."
 ---
 
+![Rustls and Rust for Linux funding OpenSSF](/images/OpenSSF-Blog-Post-Cover.png)
+
 Prossimo continues to advance the functionality and scalability of the Rustls TLS library and the Rust for Linux effort thanks to $530,000 in funding from the [OpenSSF’s Alpha-Omega project](https://alpha-omega.dev/). This funding will further Prossimo’s efforts to bring memory safety to critical components of the Internet and further OpenSSF’s Alpha-Omega project’s mission to protect society by improving the security of open source software. "As a memory-safe language, Rust plays a pivotal role in fortifying critical software infrastructure,” said OpenSSF Alpha-Omega co-lead, Michael Scovetta. “Alpha-Omega is proud to support Prossimo's efforts to enhance the Rustls cryptographic library and bolster Rust's integration within the Linux kernel."
 
 ##### Rustls 
