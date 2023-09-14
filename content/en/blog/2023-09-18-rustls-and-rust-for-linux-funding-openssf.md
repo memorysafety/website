@@ -1,6 +1,6 @@
 ---
 author: Sarah Gran
-date: 2023-09-13T00:00:00Z
+date: 2023-09-18T00:00:00Z
 slug: rustls-and-rust-for-linux-funding-openssf
 title: "Advancing Rustls and Rust for Linux with OpenSSF Support"
 excerpt: "Improving functionality and scalability for security sensitive Open Source software."
