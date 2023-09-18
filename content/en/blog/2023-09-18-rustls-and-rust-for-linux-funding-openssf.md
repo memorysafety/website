@@ -12,7 +12,7 @@ Prossimo continues to advance the functionality and scalability of the Rustls TL
 
 ##### Rustls 
 
-[Rustls](https://www.memorysafety.org/initiative/rustls/) is a memory safe library that implements the TLS and QUIC protocols. TLS is the most ubiquitous protocol for encrypting traffic on the Internet as well as internal networks. Since we began funding Rustls in 2020, we’ve made [continued](https://www.memorysafety.org/blog/preparing-rustls-for-wider-adoption/) [efforts](https://www.memorysafety.org/blog/rustls-new-features/) to move it toward being a more performant and memory safe alternative to OpenSSL.
+[Rustls](https://www.memorysafety.org/initiative/rustls/) is a memory safe library that implements the TLS protocol. TLS is the most ubiquitous protocol for encrypting traffic on the Internet as well as internal networks. Since we began funding Rustls in 2020, we’ve made [continued](https://www.memorysafety.org/blog/preparing-rustls-for-wider-adoption/) [efforts](https://www.memorysafety.org/blog/rustls-new-features/) to move it toward being a more performant and memory safe alternative to OpenSSL.
 
 Funding will support progress on our [work plan](https://www.memorysafety.org/initiative/rustls/rustls-work-plan/). One of the most exciting priorities is the enablement of pluggable cryptographic backends. This feature will make it possible for Rustls users to choose among cryptographic backends, bringing an important degree of diversity, flexibility and resiliency to the cryptography underlying the Internet. This optionality will also reduce friction for large organizations looking at moving to a memory safe option.
 
