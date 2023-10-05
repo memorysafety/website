@@ -1,6 +1,6 @@
 ---
 author: Benjamin Fry
-date: 2023-10-04T00:00:00Z
+date: 2023-10-05T00:00:00Z
 slug: announcing-hickory-dns
 title: "Announcing Hickory DNS"
 excerpt: "We are proud to announce that Trust-DNS has a new name!"
