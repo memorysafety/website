@@ -10,7 +10,7 @@ excerpt: "We are proud to announce that Trust-DNS has a new name!"
   <blockquote class="blockquote">
     <span class="quote"></span>
     <div class="quote-text">
-      <p class="font-italic lh-170">Benjamin Fry is the founder and maintainer of DNS software that has attracted growing industry interest due to its progress toward being one of the only open source, high performance, memory safe and DNS resolvers. We've invited Benjamin to provide his thoughts on the growth of this project and make an exciting announcement.</p>
+      <p class="font-italic lh-170">Benjamin Fry is the founder and maintainer of DNS software that has attracted growing industry interest due to its progress toward being one of the only open source, high performance, memory safe DNS resolvers. We've invited Benjamin to provide his thoughts on the growth of this project and make an exciting announcement.</p>
       <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG's Prossimo project</cite></footer>
     </div>
   </blockquote>
