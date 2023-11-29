@@ -17,6 +17,15 @@ body {
   margin-bottom: 5px;
 }
 
+.footer-text a {
+  text-decoration: underline;
+  text-decoration-color: $brand_mint;
+  text-underline-offset: 2px;
+}
+.footer-text a:hover {
+  color: $brand_mint !important;
+}
+
 .btn-large {
   font-size: 18px;
 }
