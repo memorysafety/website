@@ -1,8 +1,8 @@
 ---
-title: DNS
+title: Hickory DNS
 slug: dns-work-plan
 background: dce0e9
-image: /images/dns.png
+image: /images/blog/Hickory-DNS.png
 ---
 
 <h2>Work Plan</h2>
