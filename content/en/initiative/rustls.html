@@ -10,7 +10,7 @@ blog_posts: ["2023-03-29-rustls-new-features.md", "2021-04-20-preparing-rustls.m
 <h2>The Story</h2>
 
 <p>
-  The story of our work with <a href="https://github.com/ctz/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety vulnerabilities.
+  The story of our work with <a href="https://github.com/rustls/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety vulnerabilities.
 </p>
 
 <p>
@@ -18,7 +18,7 @@ blog_posts: ["2023-03-29-rustls-new-features.md", "2021-04-20-preparing-rustls.m
 </p>
 
 <p>
-  Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a <a href="https://github.com/ctz/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> TLS implementation written in Rust, a memory safe language. We believe Rustls represents the future of TLS implementation on the Internet.
+  Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a <a href="https://github.com/rustls/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> TLS implementation written in Rust, a memory safe language. We believe Rustls represents the future of TLS implementation on the Internet.
 </p>
 
 <h2>What We've Done</h2>
@@ -28,6 +28,7 @@ blog_posts: ["2023-03-29-rustls-new-features.md", "2021-04-20-preparing-rustls.m
 <ul>
   <li>Daniel McCarney is currently working full time on Rustls via a contract with Prossimo that started on March 1, 2023.</li>
   <li>Joe Birr-Pixton is currently working full time on Rustls via a contract with Prossimo that started on June 12, 2023.</li>
+  <li>
 </ul>
 
 <h3>Past Engagements</h3>
@@ -36,6 +37,8 @@ blog_posts: ["2023-03-29-rustls-new-features.md", "2021-04-20-preparing-rustls.m
   <li>Dirkjan Ochtman via contract with Prossimo, March 2021 through October 2021.</li>
   <li>ISRG engineer Jacob Hoffman-Andrews developed a <a href="https://github.com/rustls/rustls-ffi">C API for Rustls</a> that existing C-based projects can use to make their TLS implementation memory safe.</li>
   <li>Joe Birr-Pixton via contract with Prossimo, December 2022 through January 2023.</li>
+  <li>Ferrous Systems worked on a no-allocation API, no_std compatibility, and async APIs via contract with Prossimo, June 2023 through December 2023.</li>
+  <li>Adolfo Ochogavía improved performance benchmarking via contract with Prossimo, August 2023 through December 2023.</li>
 </ul>
 
 <h2>What's Next</h2>
@@ -48,6 +51,6 @@ blog_posts: ["2023-03-29-rustls-new-features.md", "2021-04-20-preparing-rustls.m
 
 <ul>
   <li><a href="/initiative/rustls/rustls-work-plan/">Development Priorities</a></li>
-  <li><a href="https://github.com/ctz/rustls">Rustls on GitHub</a></li>
+  <li><a href="https://github.com/rustls/rustls">Rustls on GitHub</a></li>
   <li><a href="https://github.com/rustls/rustls-ffi">C API for Rustls on GitHub</a></li>
 </ul>
