@@ -1,3 +1,5 @@
+@import "_variables";
+
 .tpl-post {
   .cs-page-wrapper {
     margin-top: 100px;
@@ -30,4 +32,34 @@
 
 .mw-240px {
   max-width: 240px;
+}
+
+
+.post-footer {
+  background-color: $brand_mint;
+  color: $brand_dark_blue;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.post-footer a {
+  text-decoration-color: #fff !important;
+  text-underline-offset: 3px;
+  // color: #fff !important;
+}
+.post-footer a:hover {
+  color: #fff !important;
+}
+
+.post-footer h6 {
+  font-size: 20px;
+  color: $brand_dark_blue;
+  line-height: 1;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+
+.post-footer p:last-child {
+  margin-bottom: 0;
 }
