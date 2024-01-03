@@ -42,7 +42,7 @@ After careful research, prototyping, and talking to people involved in benchmark
 
 You can find the code for the benchmarked scenarios in the [main rustls repository](https://github.com/rustls/rustls/tree/75edb20a1e6a894089516053348b6137a425b9b4), under ci-bench. The code for the application that coordinates benchmark runs and integrates with GitHub lives in its [own repository](https://github.com/rustls/rustls-bench-app/).
 
-Trophy case
+## Trophy case
 
 In the past months, early versions of the benchmarking system have already helped drive development of Rustls. Below are some examples:
 
