@@ -1,7 +1,6 @@
 ---
 author: Adolfo Ochagavía
-date: 2024-01-02T00:00:00Z
-note: Change date to Jan 4
+date: 2024-01-04T00:00:00Z
 slug: Rustls-Performance
 title: "Securing the Web: Rustls on track to outperform OpenSSL"
 excerpt: "A focus on performance with a strong benchmarking system makes Rustls an attractive and memory safe option for TLS."
