@@ -11,7 +11,6 @@ image: /images/blog/Hickory-DNS.png
 
 Complete improvements needed in order to deploy to Let’s Encrypt. This is important because it makes DNS safer for Let’s Encrypt but also because it will demonstrate to other potential users that the resolver can function well in a demanding environment.
 
-* <a href="https://github.com/bluejekyll/trust-dns/issues/1440">Add support for fully recursive queries</a>
 * <a href="https://github.com/bluejekyll/trust-dns/issues/1718">Add support for DNSSEC validation for recursive queries</a>
 * <a href="https://github.com/bluejekyll/trust-dns/issues/10">Add support for NSEC(3)</a>
 * <a href="https://github.com/bluejekyll/trust-dns/issues/1719">Add support for IP allow lists for inbound connections</a>
