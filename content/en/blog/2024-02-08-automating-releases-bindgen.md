@@ -1,6 +1,6 @@
 ---
 author: Tshepang Mbambo, Christian Poveda Ruiz
-date: 2024-02-07T00:00:00Z
+date: 2024-02-08T00:00:00Z
 title: "Automating Releases for Bindgen"
 excerpt: "An update about improving Bindgen from our partners at Ferrous Systems."
 slug: automating-releases-bindgen
