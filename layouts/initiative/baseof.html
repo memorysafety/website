@@ -38,9 +38,15 @@
       <div class="offset-md-2 col-md-8">
         <div id="blog" class="initiative-posts mt-1">
           <h2>From our Blog</h2>
-          {{ range .Params.blog_posts }}
-          <div>{{ range where $.Site.Pages "File.LogicalName" . }} {{ partial "blog/blog_list_item.html" .}}{{ end }}</div>
-          {{ end }}
+            {{ range .Params.blog_posts }}
+            {{ $logicalName := . }}
+            {{ $page := (index (where $.Site.RegularPages "File.LogicalName" $logicalName) 0) }}
+            {{ if $page }}
+            <div>
+                {{ partial "blog/blog_list_item.html" $page }}
+            </div>
+            {{ end }}
+            {{ end }}
         </div>
       </div>
     </div>
