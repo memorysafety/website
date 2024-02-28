@@ -3,7 +3,7 @@ author: Josh Aas
 date: 2024-02-28T00:00:00Z
 title: "Announcing River: A High Performance and Memory Safe Reverse Proxy Built on Pingora"
 excerpt: "Improving security for a critical piece of Internet infrastructure."
-slug: ntroducing-River
+slug: Introducing-River
 display_default_footer: true
 ---
 
