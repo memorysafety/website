@@ -1,0 +1,46 @@
+---
+title: River Reverse Proxy
+slug: reverse-proxy
+background: dce0e9
+image: /images/river.png
+---
+
+<h2>The Story</h2>
+
+<p>
+Just about every significantly-sized deployment on the Internet makes use of reverse proxy software, and the most commonly deployed reverse proxy software is not memory safe. This means that most deployments have millions of lines of C and C++ handling incoming traffic at the edges of their networks, a risk that needs to be addressed if we are to have greater confidence in the security of the Internet.
+</p>
+
+<p>
+In order to change this, Prossimo is investing in new reverse proxy software called River, which will offer excellent performance while reducing the chance of memory safety vulnerabilities to near zero. Some of its most compelling features:
+</p>
+
+<ul>
+  <li>Built on Cloudflare's <a href="https://github.com/cloudflare/pingora">Pingora</a> framework, which is already serving huge amounts of traffic for Cloudflare. This gives us confidence that the underlying network internals are ready for the real world.</li>
+  <li>Better connection reuse than proxies like Nginx due to a multithreading model, which greatly improves performance.</li>
+  <li>WASM-based scriptability means scripting will be performant and River will be scriptable in any language that can compile to WASM.</li>
+  <li>Simple configuration, as we’ve learned some lessons from configuring other software for the past couple of decades.</li>
+  <li>It’s written in Rust so you can deploy without worrying about memory safety issues.</li>
+</ul>
+
+<h2>What We've Done</h2>
+
+<p>
+Cloudflare has open sourced their Pingora network services framework written in Rust.
+</p>
+
+<p>
+Prior to Pingora becoming open source, and in cooperation with Cloudflare, we contracted with James Munns of <a href="https://onevariable.com/">OneVariable</a> to create an architectural plan for building the River reverse proxy on top of Pingora, which has been completed and can be seen in the <a href="https://github.com/memorysafety/river/">GitHub repository</a>.
+</p>
+
+<h2>What's Next</h2>
+
+<p>
+We plan to begin implementation work in the first half of 2024.
+</p>
+
+<h2>Links</h2>
+
+<ul>
+  <li><a href="https://github.com/memorysafety/river/">River on GitHub</a></li>
+</ul>
