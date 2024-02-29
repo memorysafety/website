@@ -17,4 +17,4 @@ Over the same period of time that we worked on pluggable cryptography, ISRG enga
 
 We're incredibly proud of the [big steps](https://www.memorysafety.org/initiative/rustls/) we've taken recently towards a safer TLS implementation for much of the Internet. We're excited about the [next phases of our work](https://github.com/rustls/rustls/blob/main/ROADMAP.md), including an OpenSSL compatibility layer. The OpenSSL compatibility layer will allow Rustls to act as a drop-in replacement for many OpenSSL users.
 
-Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank AWS, Sovereign Tech Fund, Google, Fly.io, and OpenSSF for their support of our work on Rustls.
+Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank AWS, Sovereign Tech Fund, Google, Fly.io, and Alpha-Omega for their support of our work on Rustls.
