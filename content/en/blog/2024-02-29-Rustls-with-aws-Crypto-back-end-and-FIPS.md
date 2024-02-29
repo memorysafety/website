@@ -1,7 +1,7 @@
 ---
 author: Josh Aas
 date: 2024-02-29T00:00:00Z
-title: "Rustls Now Using AWS Libcrytpo for Rust, Gains FIPS Support"
+title: "Rustls Now Using AWS Libcrypto for Rust, Gains FIPS Support"
 excerpt: "The Rustls TLS library is using aws-lc-rs for cryptography by default, with the option to enable FIPS support."
 display_default_footer: true
 slug: Rustls-with-aws-Crypto-back-end-and-FIPS
