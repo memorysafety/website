@@ -39,4 +39,6 @@ Some of the most compelling features include:
 
 The engineering work to implement is expected to begin in Q2 2024.
 
-Building a piece of software like this is no small task and we recognize the ambition it will take. We're grateful for the help we've gotten from our partners so far. If you or your organization are interested in contributing engineering hours or financial support to help us get there, please reach out to <sponsor@abetterinternet.org> to begin the conversation.
+Building a piece of software like this is no small task and we recognize the ambition it will take. We're grateful for the help we've gotten from our partners so far. &ldquo;Chainguard is proud to support and promote the use of memory safe software, and Prossimo's new reverse proxy, River, is a powerful step forward in securing critical parts of our collective Internet infrastructure,&rdquo; said Dan Lorenc, CEO of Chainguard. &ldquo;We commend the Cloudflare team for their open source contribution of the Pingora framework and ISRG's continued work to help developers everywhere build with more memory safe technologies and eliminate entire classes of these vulnerabilities.&rdquo;
+
+If you or your organization are interested in contributing engineering hours or financial support to help us get there, please reach out to sponsor@abetterinternet.org to begin the conversation.
