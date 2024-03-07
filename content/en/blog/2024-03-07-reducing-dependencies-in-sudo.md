@@ -1,6 +1,6 @@
 ---
 author: Ruben Nijveld
-date: 2024-03-06T00:00:00Z
+date: 2024-03-07T00:00:00Z
 title: "Sudo-rs dependencies: when less is better"
 excerpt: "Here’s how we reduced dependencies from 135 to 3 in sudo-rs."
 display_default_footer: true
@@ -31,7 +31,7 @@ When [sudo-rs](https://github.com/memorysafety/sudo-rs) development started, we 
 
 As we [ramped up](https://www.memorysafety.org/initiative/sudo-su/sudo-su-work-plan/) development, we wanted to quickly get to a working prototype. This allowed us to work in more detail on parts of the program, while still being able to quickly run the entire program to validate any changes we made. During this ramp-up, we added approximately 10 direct dependencies, which in turn caused some 125 indirect dependencies to be added to our project. Especially those indirect dependencies might scare you a little for a security-oriented application like sudo-rs, but that number is somewhat artificially inflated because Rust automatically includes all relevant crates for all supported platforms, including crates for platforms such as Windows, which we obviously would not require as a Unix utility.
 
-After having identified our dependencies as a potential issue, we started working on reducing our usage of them. Over the course of a few months we carefully removed almost all of our dependencies, ending up with only three crate dependencies required for the current version. Those crates are libc, glob, and log. All three of them are being maintained under the rust-lang github organization, indicating that they are very much at the core of the Rust ecosystem. 
+After having identified our dependencies as a potential issue, we started working on reducing our usage of them. Over the course of a few months we carefully removed almost all of our dependencies, ending up with only three crate dependencies required for the current version. Those crates are `libc`, `glob`, and `log`. All three of them are being maintained under the rust-lang github organization, indicating that they are very much at the core of the Rust ecosystem. 
 
 ![](/images/blog/blog-reducing-dependencies-in-sudo-chart.png)
 
@@ -43,7 +43,7 @@ Most of the time our usage of the removed crates was limited to a few places and
 
 Sudo-rs team member Marc [wrote about dependencies previously](https://tweedegolf.nl/en/blog/104/dealing-with-dependencies-in-rust) on the Tweede golf blog. His post gives a good overview of our considerations concerning which dependencies to keep and which ones to get rid of. In essence, having a lot of dependencies results in two problems. The first is the burden problem, where each added dependency requires extra effort. That manifests in tasks such as keeping up to date with dependencies, but also requires extra work for downstream users like people packaging the project for a Linux distribution.
 
-The second problem is a trust problem: each additional dependency is another team to trust and another codebase to validate. This trust problem is especially important to sudo-rs. As a setuid program meant for elevating privileges, all code that is compiled into sudo-rs has the potential to accidentally (or intentionally) give access to system resources to people who should not have that access. The setuid context additionally puts some constraints on how code is executed, and dependencies might not have accounted for that context. We could not expect any of our dependencies to take into account such a context either.
+The second problem is a trust problem: each additional dependency is another team to trust and another codebase to validate. This trust problem is especially important to sudo-rs. As a `setuid` program meant for elevating privileges, all code that is compiled into sudo-rs has the potential to accidentally (or intentionally) give access to system resources to people who should not have that access. The `setuid` context additionally puts some constraints on how code is executed, and dependencies might not have accounted for that context. We could not expect any of our dependencies to take into account such a context either.
 
 Of course there is also the other side of the coin: dependencies are not solely a bad thing. As Marc noted in his blog post, we all stand on the shoulders of giants. If we cannot rely on the wider community we might end up repeating mistakes or missing knowledge. We might have to repeat writing code that has already been battle-tested and perfected over many years and by many people. Additionally, being able to contribute back to a wider ecosystem helps everyone, and not just ourselves.
 
@@ -51,7 +51,7 @@ Of course there is also the other side of the coin: dependencies are not solely 
 
 After [announcing](https://www.memorysafety.org/blog/sudo-and-su/) the plan to rewrite sudo in Rust, one of the pieces of feedback we read online most was our overreliance on external dependencies, making it harder to validate the correctness of the code. At that time we were already working on reducing our reliance on external dependencies, and those voices confirmed that we were on the right track. While that meant looking critically at our dependencies, it did not mean removing them just for the sake of it. We constantly weighed the pros and cons of each dependency. However, in the end, a lot of the functionality in sudo-rs is of such a special case that we opted to remove all but the most essential crates.
 
-As an example of how we evaluated our dependencies, we previously used clap for command line argument parsing. We replaced it with our own argument parsing once we noticed that adopting clap was taking more code than doing it ourselves. Additionally, we saw that clap offered far more features than we needed, which in turn meant pulling in a significant number of additional dependencies. That resulted in too large of a library, too many teams to trust, and too many possibilities for bad setuid behavior for sudo purposes. In the end, we chose the potential dangers of reimplementing command line parsing over the potential issues of including clap, even though it is a great library for general-purpose command line parsing.
+As an example of how we evaluated our dependencies, we previously used `clap` for command line argument parsing. We replaced it with our own argument parsing once we noticed that adopting `clap` was taking more code than doing it ourselves. Additionally, we saw that `clap` offered far more features than we needed, which in turn meant pulling in a significant number of additional dependencies. That resulted in too large of a library, too many teams to trust, and too many possibilities for bad `setuid` behavior for sudo purposes. In the end, we chose the potential dangers of reimplementing command line parsing over the potential issues of including `clap`, even though it is a great library for general-purpose command line parsing.
 
 ## Conclusion
 
