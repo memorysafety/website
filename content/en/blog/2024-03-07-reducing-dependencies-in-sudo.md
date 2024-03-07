@@ -1,7 +1,6 @@
 ---
 author: Ruben Nijveld
 date: 2024-03-06T00:00:00Z
-actual_date: 2024-03-07T00:00:00Z
 title: "Sudo-rs dependencies: when less is better"
 excerpt: "Here’s how we reduced dependencies from 135 to 3 in sudo-rs."
 display_default_footer: true
