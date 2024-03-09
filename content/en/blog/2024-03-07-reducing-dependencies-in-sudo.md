@@ -21,7 +21,7 @@ slug: reducing-dependencies-in-sudo
 </div>
 
 <div class="card border-0 pic-quote-right mw-240px mx-auto mb-4 pt-4">
-  <img alt="Rust Logo" class="rounded mx-auto img-fluid" src="/images/blog/blog-reducing-dependencies-in-sudo-overview.png" />
+  <img alt="Reducing dependencies in sudo" class="rounded mx-auto img-fluid" src="/images/blog/blog-reducing-dependencies-in-sudo-overview.png" />
 </div>
 
 
