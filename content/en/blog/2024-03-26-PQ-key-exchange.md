@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-03-25T00:12:00Z
+date: 2024-03-26T00:12:00Z
 title: "The Rustls TLS Library Adds Post-Quantum Key Exchange Support"
 excerpt: "Protecting TLS encryption keys in a post-quantum world."
 display_default_footer: true
