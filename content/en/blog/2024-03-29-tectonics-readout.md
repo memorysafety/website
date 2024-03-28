@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-03-29T00:00:00Z
+date: 2024-03-28T00:00:00Z
 slug: tectonics-readout
 title: "A Readout from Tectonics"
 excerpt: "Challenges and solutions for moving forward with memory safety for critical Internet infrastructure."
