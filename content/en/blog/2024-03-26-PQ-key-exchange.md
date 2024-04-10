@@ -18,3 +18,5 @@ We recently learned that nearly two percent of all TLS 1.3 connections establish
 There are a few things that need to happen to prepare the Internet for a post-quantum world. Protecting TLS key exchange is just one of them. You can learn more about the state of post-quantum defense on the Internet in [this excellent blog post from Cloudflare](https://blog.cloudflare.com/pq-2024/).
 
 With the advancements made to Rustls over the last few years, we now see it as a viable, performant, and memory safe alternative to OpenSSL. We're pleased to see its adoption picking up. If your organization is interested in exploring the use of Rustls, reach out and let us know! We'll continue making our [planned improvements](https://github.com/rustls/rustls/blob/main/ROADMAP.md) to Rustls but would love adopter feedback.
+
+We'd like to thank Sovereign Tech Fund, Fly.io, Google, AWS, and Alpha-Omega for supporting the work to advance Rustls.
