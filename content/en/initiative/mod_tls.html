@@ -11,7 +11,7 @@ logo_link: "https://httpd.apache.org"
 <h2>The Story</h2>
 
 <p>
-  The <a href="https://httpd.apache.org/">Apache httpd server</a> is an incrediby popular HTTP server. Server software like httpd is security critical because
+  The <a href="https://httpd.apache.org/">Apache httpd server</a> is a popular HTTP server. Server software like httpd is security critical because
   its primary job is to handle network requests and perform complex processing. It's a difficult job to perform securely even without having to worry about
   managing memory.
 </p>
@@ -25,17 +25,29 @@ logo_link: "https://httpd.apache.org"
 <h2>What We've Done</h2>
 
 <p>
-  We contracted with Stefan Eissing to write <a href="https://github.com/apache/httpd/tree/trunk/modules/tls">mod_tls</a>, a new TLS module for Apache httpd that is intended to replace the existing mod_ssl some day. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd.
+  In November of 2020 we contracted with Stefan Eissing to write <a href="https://github.com/apache/httpd/tree/trunk/modules/tls">mod_tls</a>, a new TLS module for Apache httpd. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd.
+</p>
+
+<p>
+  The mod_tls module is available as an experimental module in httpd. If you're interested you can give it a shot today.
 </p>
 
 <h2>What's Next</h2>
 
 <p>
-  The mod_tls module is ready for wider testing. Give it a shot if you're running httpd! We hope to have it committed as an experimental module in httpd itself soon.
+  Creating mod_tls was one of Prossimo's first projects and we learned quite a bit from building it. It also resulted in some ancillary improvements to TLS support in httpd, outside of mod_tls itself. While the initiative did not gain a significant usage, lessons learned here have helped us to design and prioritize future Prossimo initiatives.
 </p>
 
 <p>
-  If we can show that mod_tls works well we hope to bring memory safety to additional httpd modules and get them included in official httpd releases.
+  ISRG does not plan to make further investments in mod_tls as we believe there are more effective investments to be made, investments that were not seen as options when we built mod_tls.
+</p>
+
+<p>
+  The Rustls TLS library has come a long way in the past few years due to ISRG's investments, and as of Q2 an OpenSSL compatibility layer is nearing an initial release. Eventually it should be possible to use Rustls with httpd's default TLS module, mod_ssl, by way of this compatibility layer. This would largely obviate the need for mod_tls.
+</p>
+
+<p>
+  Additionally, when we built mod_tls we did not have a legitimate strategy for improving memory safety in other servers/proxies that have more promising long-term market share trends. Since then the Rustls OpenSSL compatibility layer has become a viable strategy for bringing Rustls to Nginx, and Prossimo's <a href="/initiative/reverse-proxy">River</a> memory safe reverse proxy will hopefully be in a position to bring memory safety to the entire reverse proxy for many people, not just the TLS library.
 </p>
 
 <h2>Links</h2>
