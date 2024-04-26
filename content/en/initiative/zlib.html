@@ -12,6 +12,14 @@ image: /images/zlib.png
   zlib is a data compression library that has been around since 1995. It's quite useful and as a result it's widely used. Unfortunately it has a history of memory safety vulnerabilities, a common phenomenon for compression libraries written in C/C++.
 </p>
 
+<p>
+We will implement a performant version of zlib in rust. This project has two goals:
+<ul>
+    <li>provide a pure rust implementation of zlib to rust users</li>
+    <li>provide a zlib-compatible dynamic library that has compiled rust code inside</li>
+</ul>
+</p>
+
 <h2>What We've Done</h2>
 
 <p>We contracted with <a href="https://tweedegolf.nl/">Tweede Golf</a> in December of 2023 for an <a href="https://github.com/memorysafety/zlib-rs/">initial implementation</a> based on <a href="https://github.com/zlib-ng/zlib-ng">zlib-ng</a>, with a focus on maintaining excellent performance while introducing memory safety.</p>
@@ -26,4 +34,5 @@ image: /images/zlib.png
 
 <ul>
   <li><a href="https://github.com/memorysafety/zlib-rs/">GitHub Repository</a></li>
+  <li><a href="/initiative/zlib/zlib-work-plan/">Work Plan</a></li>
 </ul>
