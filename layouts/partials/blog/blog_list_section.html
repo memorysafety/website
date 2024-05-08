@@ -1,0 +1,14 @@
+{{ if isset .Params "blog_posts" }}
+<div id="blog" class="initiative-posts mt-1">
+    <h2>More from the Prossimo blog</h2>
+    {{ range .Params.blog_posts }}
+    {{ $logicalName := . }}
+    {{ $page := (index (where $.Site.RegularPages "File.LogicalName" $logicalName) 0) }}
+    {{ if $page }}
+    <div>
+    {{ partial "blog/blog_list_item.html" $page }}
+    </div>
+    {{ end }}
+    {{ end }}
+</div>
+{{ end }}

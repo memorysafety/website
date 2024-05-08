@@ -4,6 +4,7 @@ date: 2024-05-08T00:00:00Z
 slug: Fedora-Linux-for-ntp-and-sudo
 title: "Providing official Fedora Linux RPM packages for ntpd-rs and sudo-rs"
 excerpt: "Memory safe NTP and sudo are now in Fedora Linux."
+blog_posts: ["2024-03-07-reducing-dependencies-in-sudo.md", "2023-04-26-sudo-and-su.md"]
 ---
 
 <div>
@@ -60,8 +61,3 @@ While our approach to packaging Rust applications for Fedora is sometimes diffic
 (3) Via Josh Aas: "Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank the NLnet Foundation for their funding of the audit of sudo-rs. We'd also like to thank Cisco and Amazon Web Services for supporting this work and supporting the transition to memory safe software."
 
 ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).
-
-### More from the Prossimo blog: 
-
-* [Sudo-rs Dependencies: When Less is Better](https://www.memorysafety.org/blog/reducing-dependencies-in-sudo/)
-* [Bringing Memory Safety to sudo and su](https://www.memorysafety.org/blog/sudo-and-su/)
