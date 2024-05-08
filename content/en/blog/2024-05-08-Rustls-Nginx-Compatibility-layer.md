@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-05-07T00:00:00Z
+date: 2024-05-08T00:00:00Z
 slug: Rustls-Nginx-Compatibility-layer
 title: "Rustls Gains OpenSSL and Nginx Compatibility"
 excerpt: "Nginx users can easily switch from OpenSSL to Rustls for better security."
