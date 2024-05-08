@@ -17,6 +17,10 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .page-content pre + p {
+    margin-top: 1.5rem;
+  }
 }
 
 @media (min-width: 768px)
