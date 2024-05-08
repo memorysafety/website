@@ -25,7 +25,7 @@ The importance of memory safety has been expounded upon recently by a number of 
 
 Regarding Rustls, Ms. Rajan adds "The White House, Office of the National Cyber Director, commends the Prossimo team for their outstanding work in building Rustls, a FIPS compliant memory safe TLS implementation. By prioritizing integration with Nginx, the Prossimo team is actively ensuring a good developer experience when pursuing stronger cybersecurity."
 
-We're pleased to see Rustls adoption picking up. If your organization is interested in exploring the use of Rustls, reach out and let us know! We'll continue making our[  planned improvements](https://github.com/rustls/rustls/blob/main/ROADMAP.md) to Rustls but would love adopter feedback.
+We're pleased to see Rustls adoption picking up. If your organization is interested in exploring the use of Rustls, reach out and let us know! We'll continue making our [planned improvements](https://github.com/rustls/rustls/blob/main/ROADMAP.md) to Rustls but would love adopter feedback.
 
 We'd like to thank Sovereign Tech Fund, Fly.io, Google, AWS, and Alpha-Omega for supporting the work to advance Rustls.
 
