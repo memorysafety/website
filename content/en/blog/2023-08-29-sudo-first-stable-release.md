@@ -4,6 +4,7 @@ date: 2023-08-29T00:00:00Z
 slug: sudo-first-stable-release
 title: "The First Stable Release of a Memory Safe sudo Implementation"
 excerpt: "Our Rust rewrite of sudo is ready for use."
+display_default_footer: true
 ---
 
 Prossimo is pleased to announce the [first stable release](https://crates.io/crates/sudo-rs) of [sudo-rs](https://github.com/memorysafety/sudo-rs), our Rust rewrite of the critical sudo utility.
@@ -26,4 +27,3 @@ The original [C-based sudo utility](https://www.sudo.ws/) has been maintained by
 
 Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We’d like to thank the NLnet Foundation for their funding of the audit of Sudo-rs. We'd also like to thank Amazon Web Services for supporting this work and supporting the transition to memory safe software.
 
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).

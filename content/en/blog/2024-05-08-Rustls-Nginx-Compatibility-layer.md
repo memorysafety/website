@@ -4,6 +4,7 @@ date: 2024-05-08T00:00:00Z
 slug: Rustls-Nginx-Compatibility-layer
 title: "Rustls Gains OpenSSL and Nginx Compatibility"
 excerpt: "Nginx users can easily switch from OpenSSL to Rustls for better security."
+display_default_footer: true
 ---
 
 The Rustls TLS library can now be used with Nginx via an [OpenSSL compatibility layer](https://github.com/rustls/rustls-openssl-compat). This means that Nginx users can switch from OpenSSL to Rustls with minimal effort - users can simply swap in a new TLS library without needing to modify or recompile Nginx.
@@ -28,5 +29,3 @@ Regarding Rustls, Ms. Rajan adds "The White House, Office of the National Cyber 
 We're pleased to see Rustls adoption picking up. If your organization is interested in exploring the use of Rustls, reach out and let us know! We'll continue making our [planned improvements](https://github.com/rustls/rustls/blob/main/ROADMAP.md) to Rustls but would love adopter feedback.
 
 We'd like to thank Sovereign Tech Fund, Fly.io, Google, AWS, and Alpha-Omega for supporting the work to advance Rustls.
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).

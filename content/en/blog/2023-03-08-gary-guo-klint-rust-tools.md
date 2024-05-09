@@ -4,6 +4,7 @@ date: 2023-03-08T12:00:00Z
 slug: gary-guo-klint-rust-tools
 title: "Klint: Compile-time Detection of Atomic Context Violations for Kernel Rust Code"
 excerpt: "The klint tool will help facilitate adoption of Rust in the Linux kernel."
+display_default_footer: true
 ---
 
 <div class="">
@@ -417,7 +418,3 @@ While `klint` is already proven to be useful, to date it is largely a prototype 
 
 -   Integrating `klint` into CI.
 
-About Us
---------
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).

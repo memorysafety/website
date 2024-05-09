@@ -4,13 +4,14 @@ date: 2023-09-18T00:00:00Z
 slug: rustls-and-rust-for-linux-funding-openssf
 title: "Advancing Rustls and Rust for Linux with OpenSSF Support"
 excerpt: "Improving functionality and scalability for security sensitive Open Source software."
+display_default_footer: true
 ---
 
 ![Rustls and Rust for Linux funding OpenSSF](/images/OpenSSF-Blog-Post-Cover.png)
 
 Prossimo continues to advance the functionality and scalability of the Rustls TLS library and the Rust for Linux effort thanks to $530,000 in funding from the [OpenSSF’s Alpha-Omega project](https://alpha-omega.dev/). This funding will further Prossimo’s efforts to bring memory safety to critical components of the Internet and further OpenSSF’s Alpha-Omega project’s mission to protect society by improving the security of open source software. "As a memory-safe language, Rust plays a pivotal role in fortifying critical software infrastructure,” said OpenSSF Alpha-Omega co-lead, Michael Scovetta. “Alpha-Omega is proud to support Prossimo's efforts to enhance the Rustls cryptographic library and bolster Rust's integration within the Linux kernel."
 
-##### Rustls 
+##### Rustls
 
 [Rustls](https://www.memorysafety.org/initiative/rustls/) is a memory safe library that implements the TLS protocol. TLS is the most ubiquitous protocol for encrypting traffic on the Internet as well as internal networks. Since we began funding Rustls in 2020, we’ve made [continued](https://www.memorysafety.org/blog/preparing-rustls-for-wider-adoption/) [efforts](https://www.memorysafety.org/blog/rustls-new-features/) to move it toward being a more performant and memory safe alternative to OpenSSL.
 
@@ -26,4 +27,4 @@ The primary maintainer of [Rust for Linux](https://rust-for-linux.com/), Miguel 
 
 We hope to see more public and private organizations who rely on open source critical digital infrastructure to step up and support it. If you or your organization would like to come on board as a funder of Prossimo, we would be excited to begin a conversation with you at <donate@abetterinternet.org>.
 
-[Internet Security Research Group (ISRG)](https://abetterinternet.org) is the parent organization of [Prossimo](http://memorysafety.org), [Let’s Encrypt](http://letsencrypt.org), and [Divvi Up](http://divviup.org). ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider getting involved, donating, or encouraging your company to become a sponsor.
+[Internet Security Research Group (ISRG)](https://abetterinternet.org) is the parent organization of [Prossimo](http://memorysafety.org), [Let’s Encrypt](http://letsencrypt.org), and [Divvi Up](http://divviup.org).

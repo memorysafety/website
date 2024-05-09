@@ -4,6 +4,7 @@ date: 2023-04-17T00:00:00Z
 slug: NTP-and-NTS-have-arrived
 title: "Memory Safe Network Time (NTP) Has New Home, Seeks Early Adopters"
 excerpt: "Bringing more safety to a critical network-based service."
+display_default_footer: true
 ---
 
 Today we're pleased to announce that an open source [memory safe implementation of NTP](/initiative/ntp/) - [ntpd-rs](https://github.com/pendulum-project/ntpd-rs) - has a new long-term home and is looking for early adopters.
@@ -17,7 +18,3 @@ During Q1 2022 we made a plan and selected [Tweede golf](https://tweedegolf.nl/)
 During the [course of the work](/blog/memory-safe-ntp/) it was decided that Tweede golf would become the long-term maintainer of ntpd-rs as part of their [Pendulum Project](https://github.com/pendulum-project). Since their team wrote ntpd-rs and we're big fans of their approach to open source, it was an easy decision to make on our end. Their work will be supported by soliciting contracts and sponsorship for features and maintenance.
 
 If you're running NTP services you can help make your systems and the Internet as a whole safer by becoming an early adopter of ntpd-rs and providing feedback to Tweede golf. Contact Tweede golf via pendulum@tweedegolf.com if you are interested!
-
-About Us
---------
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).

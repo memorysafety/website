@@ -5,6 +5,7 @@ slug: Fedora-Linux-for-ntp-and-sudo
 title: "Providing official Fedora Linux RPM packages for ntpd-rs and sudo-rs"
 excerpt: "Memory safe NTP and sudo are now in Fedora Linux."
 blog_posts: ["2024-03-07-reducing-dependencies-in-sudo.md", "2023-04-26-sudo-and-su.md"]
+display_default_footer: true
 ---
 
 <div>
@@ -45,19 +46,4 @@ Due to the status of `sudo` as a non-removable package on Fedora Linux, sudo-rs 
 
 While our approach to packaging Rust applications for Fedora is sometimes difficult and time consuming compared to other distribution mechanisms, I think the unique benefits (especially the possibility of reliably pushing security updates to users and technical / legal review of crate dependencies) currently still outweigh the cost. I'm confident that we can continue providing high-quality, up-to-date packages for ntpd-rs and sudo-rs -- and Rust applications in general -- for our users.
 
-*(1) Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank the NLnet Foundation for their funding of the audit of sudo-rs. We'd also like to thank Cisco and Amazon Web Services for supporting this work and supporting the transition to memory safe software.*  **- Josh Aas**
-
-
-<div>
-  <blockquote class="blockquote">
-    <span class="quote"></span>
-    <div class="quote-text">
-      <p class="font-italic lh-170">(2) Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank the NLnet Foundation for their funding of the audit of sudo-rs. We'd also like to thank Cisco and Amazon Web Services for supporting this work and supporting the transition to memory safe software.</p>
-      <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG's Prossimo project</cite></footer>
-    </div>
-  </blockquote>
-</div>
-
-(3) Via Josh Aas: "Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank the NLnet Foundation for their funding of the audit of sudo-rs. We'd also like to thank Cisco and Amazon Web Services for supporting this work and supporting the transition to memory safe software."
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).
+*Prossimo is able to take on the challenging work of rewriting critical components of the Internet thanks to our community of funders from around the world. We'd like to thank the NLnet Foundation for their funding of the audit of sudo-rs. We'd also like to thank Cisco and Amazon Web Services for supporting this work and supporting the transition to memory safe software.*
