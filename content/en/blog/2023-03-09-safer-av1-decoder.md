@@ -4,6 +4,7 @@ date: 2023-03-09T00:00:00Z
 slug: safer-av1-decoder
 title: "A Safer High Performance AV1 Decoder"
 excerpt: "Memory safety for a major source of exploitable vulnerabilities."
+display_default_footer: true
 ---
 
 Prossimo is excited to announce that we are working on an [AV1 decoder](/initiative/av1/) called [rav1d](https://github.com/memorysafety/rav1d), which can be used for both video and images. Our strategy is to move the C code in the [dav1d](https://code.videolan.org/videolan/dav1d) decoder to Rust, while retaining the high performance assembly code.
@@ -21,8 +22,3 @@ When combined with a memory safe [demuxer](https://en.wikipedia.org/wiki/Demulti
 The first four milestones in the [work plan](/initiative/av1/av1-work-plan/) have been generously funded by Amazon Web Services. We are working to raise an additional $400k to complete the work.
 
 You can follow our work on this initiative [here](/initiative/av1/).
-
-About Us
---------
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://abetterinternet.org/getinvolved/), [donating](https://abetterinternet.org/donate/), or encouraging your company to [become a funder](/become-a-funder/).

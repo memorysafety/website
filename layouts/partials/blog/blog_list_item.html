@@ -1,7 +1,7 @@
 <div class="blog mb-4 pb-3">
   <div class="blog-body">
     <div class="blog-date">{{.Date.Format "January 2, 2006"}}</div>
-    <h3 class="home-h3 mt-1 mb-2"><a href="{{ .Permalink }}" class="blog-title-link">{{ .Title }}</a></h3>
+    <h3 class="home-h3 mt-1 mb-1"><a href="{{ .Permalink }}" class="blog-title-link">{{ .Title }}</a></h3>
     <p class="mb-2">{{ with .Params.excerpt }} {{ . | markdownify }} {{ else }} {{ .Summary }} {{ end }}</p>
   </div>
 </div>

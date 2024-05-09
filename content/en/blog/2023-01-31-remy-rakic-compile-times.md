@@ -4,6 +4,7 @@ date: 2023-01-31T12:00:00Z
 slug: remy-rakic-compile-times
 title: "Improving Rust compile times to enable adoption of memory safety"
 excerpt: "Guest author Rémy Rakic discusses his work to improve Rust compiler performance. "
+display_default_footer: true
 ---
 
 <div class="">
@@ -112,6 +113,3 @@ The compiler performance working group has completed many if not all of the item
 
 I'd also like to thank Felix Klock and Wesley Wiser for their ideas, time, and guidance, the other members of the working group Ryan Levick, Mark Rousskov, Jakub Beránek and Nick Nethercote for their help, talent and the great work they did, and Prossimo for giving me the opportunity to contribute to that effort.
 
-## About Us
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](/getinvolved/), [donating](/donate/), or encouraging your company to [become a funder](https://www.memorysafety.org/become-a-funder/).

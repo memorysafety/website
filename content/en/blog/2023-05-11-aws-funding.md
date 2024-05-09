@@ -4,6 +4,7 @@ date: 2023-05-11T12:00:00Z
 slug: aws-funding
 title: "AWS commits $1M to bring memory safety to critical parts of the Web"
 excerpt: "AWS commits $1M to advance four Prossimo initiatives, improving memory safety for TLS, NTP, media codec, and permissions boundaries."
+display_default_footer: true
 ---
 
 Amazon Web Services (AWS) has long supported ISRG's mission through sponsorships of projects such as Let's Encrypt. Today, we're pleased to announce that AWS has continued its commitment to Prossimo through a contribution of $1 million, funding four initiatives focused on improving [memory safety](/docs/memory-safety/): building a memory safe AV1 decoder, [rav1d](https://github.com/memorysafety/rav1d), rewriting [sudo/su](/initiative/sudo-su/), furthering our efforts with [Rustls](/initiative/rustls/), as well as building out [NTPd-rs](/initiative/ntp/).
@@ -23,5 +24,3 @@ Our goal with [Rustls](/initiative/rustls/) is to build a safer TLS library that
 [NTP](/initiative/ntp/) is how the Internet keeps track of time, but most of today's popular implementations are written in C. Our work has [produced](https://github.com/pendulum-project/ntpd-rs) a new client and server that are both ready for use. We've also added Network Time Security (NTS) to both the NTP server and client.
 
 We're grateful for the longtime commitment from AWS to helping ISRG and its projects build a more secure and privacy-respecting Web for everyone, everywhere. If you or your organization would like to come on board as a funder of Prossimo, we would be excited to begin a conversation with you at donate@abetterinternet.org.
-
-ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider [getting involved](https://www.abetterinternet.org/getinvolved/), [donating](https://www.abetterinternet.org/donate/), or encouraging your company to [become a sponsor](https://www.abetterinternet.org/sponsor/).
