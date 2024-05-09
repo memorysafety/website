@@ -1,6 +1,6 @@
 ---
 author: Fabio Valentini
-date: 2024-05-08T00:00:00Z
+date: 2024-05-09T00:00:00Z
 slug: Fedora-Linux-for-ntp-and-sudo
 title: "Providing official Fedora Linux RPM packages for ntpd-rs and sudo-rs"
 excerpt: "Memory safe NTP and sudo are now in Fedora Linux."
