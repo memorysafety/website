@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-06-12T00:00:00Z
+date: 2024-06-13T00:00:00Z
 slug: rustls-ECH-support
 title: "Encrypted Client Hello (ECH) Support for Rustls"
 excerpt: "Adding a TLS extension that allows clients to encrypt their Client Hello "
