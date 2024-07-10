@@ -50,13 +50,10 @@ body {
 }
 
 .text-primary-knockout {
-  color: $brand_mint;
-  background: $brand_dark_blue;
-  padding: 3px 5px 5px 5px;
-  border-radius: 3px;
+  color: $brand_dark_blue;
+  padding: 3px 0px 3px 0px;
   display: inline-block;
   white-space: nowrap;
-  transform: rotate(-4deg) translateY(-4px);
 }
 
 .initiative_list_item {
