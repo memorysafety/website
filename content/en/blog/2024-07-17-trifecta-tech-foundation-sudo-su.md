@@ -1,5 +1,5 @@
 ---
-author: Josh Aas, Megan Werner
+author: Josh Aas
 date: 2024-07-15T00:00:00Z
 slug: trifecta-tech-foundation-sudo-su
 title: "A new home for memory safe sudo/su"
@@ -10,7 +10,7 @@ excerpt: "Sudo-rs, an open source memory safe implementation of sudo/su, has a n
     <img alt="Trifecta Tech Foundation Logo" class="mx-auto img-fluid" src="/images/blog/logo-trifecta.png" />
 </div>
 
-Today we're pleased to announce that an open source [memory safe implementation of sudo/su](https://www.memorysafety.org/initiative/sudo-su/) -- [sudo-rs](https://github.com/trifectatechfoundation/sudo-rs) -- has a new long-term home at the [Trifecta Tech Foundation](https://trifectatech.org/).
+Today we're pleased to announce that an open source [memory safe implementation of sudo/su](https://www.memorysafety.org/initiative/sudo-su/) &mdash; [sudo-rs](https://github.com/trifectatechfoundation/sudo-rs) &mdash; has a new long-term home at the [Trifecta Tech Foundation](https://trifectatech.org/).
 
 ISRG's Prossimo project set out to develop a strategy, raise funds, and select a contractor for a memory safe sudo/su implementation in early 2022. We did this because sudo and su are critical utilities managing control of the user privilege boundary on most Linux systems. The original utilities are written in C and have a history of [memory safety vulnerabilities](https://www.memorysafety.org/docs/memory-safety/), a class of issues that critical system software should not suffer from.
 
