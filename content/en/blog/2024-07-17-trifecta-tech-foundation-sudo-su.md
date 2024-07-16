@@ -6,8 +6,8 @@ title: "A new home for memory safe sudo/su"
 excerpt: "Sudo-rs, an open source memory safe implementation of sudo/su, has a new long-term home at the Trifecta Tech Foundation."
 ---
 
-<div class="card border-1 mb-3 pic-quote-right">
-    <img alt="Trifecta Tech Foundation Logo" class="mx-auto img-fluid" src="/images/blog/Trifecta-Logo-Placeholder.png" />
+<div class="card border-0 mb-4 pic-quote-right">
+    <img alt="Trifecta Tech Foundation Logo" class="mx-auto img-fluid" src="/images/blog/logo-trifecta.png" />
 </div>
 
 Today we're pleased to announce that an open source [memory safe implementation of sudo/su](https://www.memorysafety.org/initiative/sudo-su/) -- [sudo-rs](https://github.com/trifectatechfoundation/sudo-rs) -- has a new long-term home at the [Trifecta Tech Foundation](https://trifectatech.org/).
