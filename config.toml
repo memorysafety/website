@@ -43,4 +43,5 @@ title = "Prossimo"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
+[languages.en.params]
 description = "ISRG's Prossimo is moving critical software to memory safe code."
