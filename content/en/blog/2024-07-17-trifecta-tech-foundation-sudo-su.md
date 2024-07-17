@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-07-15T00:00:00Z
+date: 2024-07-17T00:00:00Z
 slug: trifecta-tech-foundation-sudo-su
 title: "A new home for memory safe sudo/su"
 excerpt: "Sudo-rs, an open source memory safe implementation of sudo/su, has a new long-term home at the Trifecta Tech Foundation."
