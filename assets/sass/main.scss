@@ -435,3 +435,10 @@ html[dir="rtl"] a.autoanchor {
     }
   }
 }
+
+
+div[data-netlify-site-id] {
+  /* Netlify Collaborate Drawer */
+  display: none;
+  pointer-events: none;
+}
