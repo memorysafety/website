@@ -31,13 +31,13 @@ In order to change this, Prossimo is investing in new reverse proxy software cal
   <li>Prior to Pingora becoming open source, and in cooperation with Cloudflare, we contracted with James Munns of <a href="https://onevariable.com/">OneVariable</a> to create an architectural plan for building the River reverse proxy on top of Pingora, which has been completed and can be seen in the <a href="https://github.com/memorysafety/river/tree/main/docs">GitHub repository</a>.</li>
   <li>Cloudflare <a href="https://blog.cloudflare.com/pingora-open-source">open sourced Pingora</a>, their network services framework written in Rust, in February of 2024.</li>
   <li>James Munns started work on the initial implementation under contract with ISRG in March of 2024.</li>
-  <li>An early release, v0.2.1, was made available in June of 2024.</li>
+  <li>The latest release, <a href="https://github.com/memorysafety/river/releases">v0.5.0</a>, was made available on August 30, 2024. River now has load balancing support, rate limiting, configuration using KDL, support for serving static files, graceful reloads, and CIDR range based blocking.</li>
 </ul>
 
 <h2>What's Next</h2>
 
 <p>
-Development is proceeding per the <a href="https://github.com/memorysafety/river/blob/main/docs/roadmap.md">roadmap</a>. We expect the next release soon.
+Development is proceeding per the <a href="https://github.com/memorysafety/river/blob/main/docs/roadmap.md">roadmap</a>. In the next release we plan to include full support for getting and managing certificates using the ACME protocol, as well as a change from BoringSSL to Rustls as the default TLS library.
 </p>
 
 <h2>Links</h2>
