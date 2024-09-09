@@ -80,3 +80,18 @@
     grid-template-rows: repeat(13, auto); /* This number is very specific to 39 names, adjust as needed */
   }
 }
+
+.page-content figure {
+  margin-bottom: 24px;
+}
+
+.page-content figure:has(> figcaption) .highlight {
+  margin-bottom: 10px;
+}
+
+.page-content figure figcaption {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+}
