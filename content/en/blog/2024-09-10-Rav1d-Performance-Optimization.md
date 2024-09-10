@@ -1,7 +1,7 @@
 ---
 author: Stephen Crane, Khyber Sen
-date: 2024-09-10T00:00:00Z
 title: "Optimizing rav1d, an AV1 Decoder in Rust"
+date: 2024-09-10T00:00:00Z
 slug: Rav1d-Performance-Optimization
 excerpt: "[```rav1d```](https://github.com/memorysafety/rav1d) is a port of the high performance [```dav1d```](https://code.videolan.org/videolan/dav1d) AV1 decoder from C to memory safe Rust. An essential goal of this project was maintaining performance, building a memory safe decoder with competitive performance compared to the leading C implementation."
 ---
