@@ -49,19 +49,19 @@ We encountered various challenges due to the mismatch between C and safe Rust pa
 
 ### Threading
 
-```dav1d``` uses a pool of worker threads to concurrently execute tasks that do not depend on each other. However, these tasks operate on shared global and per-frame context structures and even share mutable access into the same buffers. For example, Figure 1a shows an excerpt from the root context structure that all threads must access. Each in-progress frame has a ```dav1d```FrameContext which is shared between worker threads operating on that frame. Each ```dav1d```TaskContext object is only ever used by a single thread, but in the C version each object is accessible to all other threads via the root ```dav1dContext```. Finally, the root context contains many other state fields, some of which must be mutable by the main thread but readable in worker threads.
+```dav1d``` uses a pool of worker threads to concurrently execute tasks that do not depend on each other. However, these tasks operate on shared global and per-frame context structures and even share mutable access into the same buffers. For example, Figure 1a shows an excerpt from the root context structure that all threads must access. Each in-progress frame has a ```Dav1dFrameContext``` which is shared between worker threads operating on that frame. Each ```Dav1dTaskContext``` object is only ever used by a single thread, but in the C version each object is accessible to all other threads via the root ```Dav1dContext```. Finally, the root context contains many other state fields, some of which must be mutable by the main thread but readable in worker threads.
 
 <figure>
 
 ```C++
-struct dav1dContext  {
-    dav1dFrameContext *fc;
+struct Dav1dContext  {
+    Dav1dFrameContext *fc;
     unsigned n_fc;
 
-    dav1dTaskContext *tc;
+    Dav1dTaskContext *tc;
     unsigned n_tc;
 
-    struct dav1dTileGroup *tile;
+    struct Dav1dTileGroup *tile;
     int n_tile_data_alloc;
     int n_tile_data;
     int n_tiles;
@@ -80,15 +80,15 @@ Rust requires that all data shared between threads be ```Sync```, which means th
 <figure>
 
 ```C++
-pub struct rav1dContext {
-    pub(crate) state: Mutex<rav1dState>,
-    pub(crate) fc: Box<[rav1dFrameContext]>,
-    pub(crate) tc: Box<[rav1dContextTaskThread]>,
+pub struct Rav1dContext {
+    pub(crate) state: Mutex<Rav1dState>,
+    pub(crate) fc: Box<[Rav1dFrameContext]>,
+    pub(crate) tc: Box<[Rav1dContextTaskThread]>,
 
     // ...
 }
 
-pub struct rav1dState {
+pub struct Rav1dState {
     pub(crate) tiles: Vec<rav1dTileGroup>,
     pub(crate) n_tiles: c_int,
 
@@ -99,7 +99,7 @@ pub struct rav1dState {
 <figcaption> Figure 1b: Corresponding context excerpt from <code>rav1d</code></figcaption>
 </figure>
 
-As shown in Figure 1b, we had to reorganize the ```dav1d``` structures to better fit into the Rust thread safety model. We refactored mutable state into a new ```rav1dState``` structure and wrapped this in a mutex. It's also worth noting that ```tc``` no longer contains thread-local data for all threads but instead only the thread handle and ```Sync``` metadata for thread coordination. All thread-local data from ```dav1dTaskContext``` is now managed by each worker thread independently so it does not need to be ```Sync```.
+As shown in Figure 1b, we had to reorganize the ```dav1d``` structures to better fit into the Rust thread safety model. We refactored mutable state into a new ```Rav1dState``` structure and wrapped this in a mutex. It's also worth noting that ```tc``` no longer contains thread-local data for all threads but instead only the thread handle and ```Sync``` metadata for thread coordination. All thread-local data from ```Dav1dTaskContext``` is now managed by each worker thread independently so it does not need to be ```Sync```.
 
 Adding extra locks handles the case where only a single thread needs to mutate a particular field or structure. ```dav1d```, in many cases, relies on concurrent but non-overlapping access to a single buffer. One thread must read or write from a range of the buffer while another thread accesses a different, disjoint range of the same buffer. This pattern, while free of data races in practice, does not map cleanly into safe Rust idioms. In safe Rust, one would generally first partition a buffer into disjoint slices then distribute these disjoint slices to different threads for processing. That pattern requires knowing the precise partitioning of each data buffer ahead of time in order to properly distribute these slices to task threads. In the case of AV1, this buffer partitioning would be extremely complicated as the partitioning is not static or even contiguous. Crates exist for storing N-dimensional arrays to allow for partitioning and chunking these buffers, such as [ndarray](https://crates.io/crates/ndarray), but we would need to understand the precise access patterns of all tasks for all buffers in order to properly partition these buffers. This would have required a fundamental re-architecting of the ```rav1d``` task scheduling.
 
@@ -108,7 +108,7 @@ Instead, we implemented another approach that more closely fits the model used i
 <figure>
 
 ```C++
-struct dav1dFrameContext_frame_thread  {
+struct Dav1dFrameContext_frame_thread  {
     // ...
 
     // indexed using t->by * f->b4_stride + t->bx
@@ -126,7 +126,7 @@ struct dav1dFrameContext_frame_thread  {
 <figure>
 
 ```C++
-pub struct rav1dFrameContextFrameThread {
+pub struct Rav1dFrameContextFrameThread {
     // ...
 
     // Indexed using `t.b.y * f.b4_stride + t.b.x`.
@@ -152,16 +152,16 @@ Pointers into the same structure or recursively between structures is a common p
 
 We generally refactored buffer cursor pointers into integer indices. However, this was not always straightforward -- some buffer pointers could temporarily go out of bounds before the beginning of the buffer because a positive offset would later be added or the pointer would not be dereferenced at all. We refactored these cases to ensure that offsets stayed non-negative by moving index calculations. Even for simpler cases, changing pointers to indices required that we carefully track and document which buffer each index was referencing and ensure that every use of the index had access to the corresponding buffer.
 
-We had to disentangle the ```dav1d``` context structures by removing pointers from child structures to their containers and then passing additional structure references as function parameters instead. For example, we added ```rav1dContext``` and ```rav1dFrameData``` reference parameters to ```decode_tile_sbrow```, because we had to remove these pointers from the task context structure.
+We had to disentangle the ```dav1d``` context structures by removing pointers from child structures to their containers and then passing additional structure references as function parameters instead. For example, we added ```Rav1dContext``` and ```Rav1dFrameData``` reference parameters to ```decode_tile_sbrow```, because we had to remove these pointers from the task context structure.
 
 <figure>
 
 ```C++
 // Original C function
-int dav1d_decode_tile_sbrow(dav1dTaskContext *const t) {
-  const dav1dFrameContext *const f = t->f;
-  dav1dTileState *const ts = t->ts;
-  const dav1dContext *const c = f->c;
+int dav1d_decode_tile_sbrow(Dav1dTaskContext *const t) {
+  const Dav1dFrameContext *const f = t->f;
+  Dav1dTileState *const ts = t->ts;
+  const Dav1dContext *const c = f->c;
   // ...
 }
 ```
@@ -169,9 +169,9 @@ int dav1d_decode_tile_sbrow(dav1dTaskContext *const t) {
 ```Rust
 // Safe Rust version
 pub(crate) fn rav1d_decode_tile_sbrow(
-    c: &rav1dContext,
-    t: &mut rav1dTaskContext,
-    f: &rav1dFrameData,
+    c: &Rav1dContext,
+    t: &mut Rav1dTaskContext,
+    f: &Rav1dFrameData,
 ) -> Result<(), ()> {
     let ts = &f.ts[t.ts];
 }
