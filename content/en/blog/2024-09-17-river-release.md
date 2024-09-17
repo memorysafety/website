@@ -1,8 +1,8 @@
 ---
 author: Josh Aas
 date: 2024-09-17T00:00:00Z
-slug: river-release
 title: "River Reverse Proxy Making Great Progress"
+slug: river-release
 excerpt: "Memory safe River now supports load balancing, rate limiting, graceful reloads, and more."
 display_default_footer: false
 ---
