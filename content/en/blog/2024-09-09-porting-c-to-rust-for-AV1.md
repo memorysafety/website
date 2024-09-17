@@ -89,7 +89,7 @@ pub struct Rav1dContext {
 }
 
 pub struct Rav1dState {
-    pub(crate) tiles: Vec<rav1dTileGroup>,
+    pub(crate) tiles: Vec<Rav1dTileGroup>,
     pub(crate) n_tiles: c_int,
 
     // ...
