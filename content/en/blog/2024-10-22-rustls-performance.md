@@ -19,7 +19,7 @@ It comes with a C API and [FIPS support](https://www.memorysafety.org/blog/rustl
 
 ## Handshake Performance
 
-The first metric we'll look at is the number of handshakes that can be completed per second on the same hardware with the same resource constraints. These tests connect one client to one server over a memory buffer, and then measure the time elapsed in client and server processing -- therefore, they give an upper bound on performance given no network latency or system call overhead.
+The first metric we'll look at is the number of handshakes that can be completed per second on the same hardware with the same resource constraints. These tests connect one client to one server over a memory buffer, and then measure the time elapsed in client and server processing &mdash; therefore, they give an upper bound on performance given no network latency or system call overhead.
 
 ![](/images/blog/blog-2024-10-22-chart1.png)
 
@@ -41,7 +41,7 @@ Tests were performed using Debian Linux on a bare-metal Intel Xeon E-2386G CPU w
 
 ## Try Rustls!
 
-Rustls is ready for production use today and we encourage folks to try it out. In addition to memory safety and great performance, it offers:
+Rustls is ready for production use today and we encourage folks to [try it out](https://github.com/rustls/rustls). In addition to memory safety and great performance, it offers:
 
 * C and Rust APIs
 * FIPS Support
