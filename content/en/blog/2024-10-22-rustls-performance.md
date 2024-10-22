@@ -1,7 +1,7 @@
 ---
 author: Josh Aas, Joe Birr-Pixton, and Daniel McCarney
 date: 2024-10-22T00:00:00Z
-title: "Rustls Performance"
+title: "Rustls Outperforms OpenSSL and BoringSSL"
 slug: rustls-performance-outperforms
 excerpt: "Memory Safe Rustls Outperforms OpenSSL and BoringSSL."
 display_default_footer: false
