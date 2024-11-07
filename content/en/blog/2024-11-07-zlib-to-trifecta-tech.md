@@ -1,8 +1,8 @@
 ---
 author: Josh Aas
 date: 2024-11-07T00:00:00Z
-title: "A new home for memory safe Zlib"
 slug: zlib-to-trifecta-tech
+title: "A new home for memory safe Zlib"
 excerpt: "Zlib-rs, an open source memory safe implementation of zlib, has a new long-term home at the Trifecta Tech Foundation."
 display_default_footer: true
 ---
