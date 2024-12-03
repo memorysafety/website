@@ -1,6 +1,6 @@
 ---
 author: Josh Aas
-date: 2024-12-01T00:00:00Z
+date: 2024-12-03T00:00:00Z
 slug: Rustls-adoption-grows
 title: "Security-Sensitive Industries Move to Memory Safety"
 excerpt: "Growing adoption of memory safe and high performance TLS."
