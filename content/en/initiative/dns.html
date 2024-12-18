@@ -16,18 +16,30 @@ DNS is as critical as Internet infrastructure gets. DNS translates domain names 
 While there are many DNS implementations out there, including some memory safe ones, there are no open source, high performance, memory safe, fully recursive DNS resolvers. Until that exists, many DNS operators will continue to deploy DNS software written in languages that are not memory safe, putting critical Internet infrastructure at risk.
 </p>
 <p>
-ISRG's Let's Encrypt certificate authority would be amongst the first to deploy it. Making many recursive requests per second, Let’s Encrypt can help prove Hickory’s performance at scale. Meanwhile, Hickory will harden a critical part of the Let’s Encrypt infrastructure stack thanks to its use of a memory safe language.
+We are investing in a DNS implementation called <a href="https://github.com/hickory-dns/hickory-dns">Hickory DNS</a>, started in 2015 by <a href="https://github.com/bluejekyll">Benjamin Fry</a>. Our goal is to make Hickory the most secure high performance resolver out there.
+</p>
+
+<h2>What We've Done</h2>
+
+* During 2023 Prossimo provided support for <a href="https://www.memorysafety.org/blog/announcing-hickory-dns/">rebranding to Hickory DNS</a>.
+* During 2024 ISRG staff member David Cook made numerous improvements, particularly targeting the needs of ISRG's <a href="https://letsencrypt.org/">Let's Encrypt</a> certificate authority.
+* In November of 2024 a third party security audit was completed and issues found were remediated.
+* In December of 2024 Ferrous Systems completed a contract in which they made huge improvements to DNSSEC and NSEC3 support for the recursive resolver.
+
+<p>
+We'd also like to note that while we have been making our investments, the broader Hickory DNS community has grown rapidly. We're excited to see all of the new contributors and the great work they are doing!
 </p>
 
 <h2>What's Next</h2>
 
 <p>
-<a href="https://github.com/hickory-dns">Hickory</a> is one of the most promising memory safe DNS resolvers out there. It’s an open-source project started in 2015 by <a href="https://github.com/bluejekyll">Benjamin Fry</a> as an exploration of a memory safe DNS implementation in the Rust programming language. Hickory is now ready for use in production, though we will be making <a href="/initiative/dns/dns-work-plan/">additional investments</a> in features, security, and performance. Our goal is for Hickory to be one of the most attractive resolvers for many use cases.
+Our current goal is to get Hickory ready for deployment at Let's Encrypt. Making many thousands of recursive requests per second, Let’s Encrypt can help prove Hickory’s performance at scale. Meanwhile, Hickory will harden a critical part of the Let’s Encrypt infrastructure stack thanks to its use of a memory safe language. We are hard at work on the relevant issues.
 </p>
 
 <h2>Links</h2>
 
 <ul>
-  <li><a href="/initiative/dns/dns-work-plan/">Work Plan</a></li>
-  <li><a href="https://github.com/hickory-dns">Hickory on GitHub</a></li>
+  <li><a href="https://github.com/hickory-dns">Hickory DNS on GitHub</a></li>
+  <li><a href="https://ferrous-systems.com/blog/hickory-dns-client/">Ferrous Systems: Security in hickory-dns</a>
+  <li><a href="https://discord.gg/89nxE4n">Hickory DNS on Discord</a>
 </ul>
