@@ -5,7 +5,7 @@
   publish = "public"
 
 [build.environment]
-  HUGO_VERSION = "0.121.2"
+  HUGO_VERSION = "0.130.0"
   HUGO_ENABLEGITINFO = "true"
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
