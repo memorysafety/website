@@ -1,6 +1,6 @@
 ---
 author: "David Cook"
-date: 2025-02-10T00:00:00Z
+date: 2025-02-11T00:00:00Z
 slug: "hickory-update-2025"
 title: "Hickory DNS is Moving Toward Production Readiness"
 excerpt: "A high performance, memory safe, and open source recursive DNS resolver now has improved DNSSEC support, NSEC3 support, and new features."
