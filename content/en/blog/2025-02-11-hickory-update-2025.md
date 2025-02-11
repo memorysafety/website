@@ -1,6 +1,7 @@
 ---
 author: "David Cook"
 date: 2025-02-11T00:00:00Z
+lastmod: 2025-02-11
 slug: "hickory-update-2025"
 title: "Hickory DNS is Moving Toward Production Readiness"
 excerpt: "A high performance, memory safe, and open source recursive DNS resolver now has improved DNSSEC support, NSEC3 support, and new features."
@@ -56,6 +57,6 @@ In the coming year, our work will continue along the same themes. We are moving 
 
 If you are interested in trying out Hickory DNS as a memory safe alternative, the authoritative name server and stub resolver implementations have deployment experience already in various applications. [Version 0.25](https://github.com/hickory-dns/hickory-dns/issues/2206) will include the above improvements, and 0.25 alpha prereleases are available for testing now. If you are interested in using the recursive resolver, stay tuned for further improvements in the coming year, and keep an eye on the above tracking issue.
 
-Benjamin Fry is the creator of Hickory and has been a great partner along this journey. We'd like to thank the Sovereign Tech Agency for their financial support of Prossimo to fund improvements to Hickory DNS and craig newmark philanthropies for ongoing support to improve memory safety in critical infrastructure.
+Benjamin Fry is the creator of Hickory and has been a great partner along this journey. We'd like to thank the Sovereign Tech Agency for their financial support of Prossimo to fund improvements to Hickory DNS and Craig Newmark Philanthropies for ongoing support to improve memory safety in critical infrastructure.
 
 If you're interested in updates on Hickory and our memory safety work in general, subscribe to the mailing list below.

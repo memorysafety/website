@@ -1,6 +1,7 @@
 ---
 author: Sarah Gran
 date: 2024-03-12T00:12:00Z
+lastmod: 2025-02-11
 title: "White House, Craig Newmark Support Memory Safe Software"
 excerpt: "Growing attention on the solvability of memory safety."
 display_default_footer: true
@@ -8,7 +9,7 @@ slug: growing-support
 ---
 
 <div class="card border-0 pic-quote-right mw-240px mx-auto mb-4">
-  <img alt="Logos for craig newmark philanthrophies and the White House" class="rounded mx-auto img-fluid" src="/images/blog/blog-white-house-craig-newmark-philanthropies.png" />
+  <img alt="Logos for Craig Newmark Philanthrophies and the White House" class="rounded mx-auto img-fluid" src="/images/blog/blog-white-house-craig-newmark-philanthropies.png" />
 </div>
 
 Initial signs point to 2024 being a big year for memory safety and we aim to continue Prossimo's work to accelerate the momentum.
@@ -23,7 +24,7 @@ Last month, the White House's Office of the National Cyber Director (ONCD) issue
 
 The positive industry response to the report is encouraging as well. "Memory safety vulnerabilities pose a significant security risk to software systems and are a root cause of many of the most damaging cyberattacks. To address this, we need to adopt memory safe programming languages for new applications and rewrite code using modern memory safe languages with secure development practices from the start. We're pleased to see the ONCD raise this issue because the integrity of the global software supply chain is critical for national and international security," said John Delmare, Global Cloud and Security Application Lead, Accenture.
 
-We also received a vote of confidence from one of cybersecurity's most influential philanthropists: Craig Newmark. [Craig newmark philanthropies](https://craignewmarkphilanthropies.org/) renewed a grant for $100,000 to support Prossimo's efforts toward better memory safety in critical open source software. Since its founding, 100% of Prossimo's funding has come from contributions, and support from industry leaders like Craig Newmark continues to sustain our momentum across a wide range of initiatives:
+We also received a vote of confidence from one of cybersecurity's most influential philanthropists: Craig Newmark. [Craig Newmark Philanthropies](https://craignewmarkphilanthropies.org/) renewed a grant for $100,000 to support Prossimo's efforts toward better memory safety in critical open source software. Since its founding, 100% of Prossimo's funding has come from contributions, and support from industry leaders like Craig Newmark continues to sustain our momentum across a wide range of initiatives:
 
 **Sudo/su**: A trimmed down, [memory safe version of Sudo/su](https://www.memorysafety.org/initiative/sudo-su/) is ready for use in [Fedora](https://bodhi.fedoraproject.org/updates/?search=sudo-rs-0.2.2) and [Debian](https://packages.debian.org/sid/sudo-rs#:~:text=sudo%2Drs%20is%20a%20safety,vulnerabilities%20related%20to%20memory%20management.).
 
