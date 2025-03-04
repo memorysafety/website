@@ -23,7 +23,7 @@
 
   ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/
 [context.deploy-preview]
-  command = "hugo -b $DEPLOY_PRIME_URL"
+  command = "hugo -b $DEPLOY_PRIME_URL --buildFuture"
 
 
 [[redirects]]
