@@ -23,6 +23,19 @@
   }
 }
 
+.tpl-post table {
+  width: 100%;
+  margin-bottom: 20px;
+
+  th {
+    vertical-align: bottom;
+  }
+
+  td {
+    vertical-align: top;
+  }
+}
+
 @media (min-width: 768px)
 {
     .pic-quote-right
