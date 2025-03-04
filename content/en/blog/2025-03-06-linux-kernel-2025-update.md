@@ -1,6 +1,6 @@
 ---
 author: "Josh Aas"
-date: 2025-03-06T00:00:00Z
+date: 2025-03-03T00:00:00Z
 slug: "linux-kernel-2025-update"
 title: "An Update on Memory Safety in the Linux Kernel"
 excerpt: "Rust drivers are on the way via growing interest and community."
