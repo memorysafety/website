@@ -170,7 +170,7 @@ By participating in the Contest, Entrant agrees to Sponsor’s use of Entrant’
 
 ### Representations and warranties
 
-By submitting an Entry, each Entrant represents and warrants that: (i) Entrant has all rights necessary to submit their Entry and grant Sponsor the license described in these Official Rules; (ii) Entrant will make any intellectual property assignment necessary to contribute their Entry to the relevant open-source repository or repositories; and (3) their Entry does not infringe upon any third party's intellectual property rights.
+By submitting an Entry, each Entrant represents and warrants that: (a) Entrant has all rights necessary to submit their Entry and grant Sponsor the license described in these Official Rules; (b) Entrant will make any intellectual property assignment necessary to contribute their Entry to the relevant open-source repository or repositories; and (c) their Entry does not infringe upon any third party's intellectual property rights.
 
 ### Ownership and license
 
