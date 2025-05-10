@@ -186,7 +186,7 @@ Any valuation of the Prize stated herein is based on available information provi
 
 If a Prize exceeds $600 USD in ARV, Winner may be required to complete additional paperwork and to provide Sponsor with their social security number and may be issued a tax form. Winner is advised to seek independent tax counsel regarding the implications of accepting the Prize.
 
-## 17. RELEASE OF LIABILITY AND INDEMNIFICATION, AND LIMITATION ON LIABILITY
+## 17. RELEASE OF LIABILITY AND INDEMNIFICATION
 
 By entering the Contest, each Entrant represents and agrees (and agrees to confirm in writing) to release and hold harmless Sponsor and their parents, subsidiaries, affiliates, divisions, advertising and promotional agencies, wholesalers and retailers, suppliers and each of the foregoing entities’ employees, officers, directors, and agents (collectively the “Released Parties”), from and against any and all claims, actions and/or liability for any injuries or death, loss, or damage of any kind arising from or in connection with participation in and/or entry into the Contest or acceptance or use of any Prize or participation in any Contest-related travel or other activity and for any claims based on publicity rights, defamation, invasion of privacy, and merchandise delivery. However, only if required by law in Entrant’s jurisdiction, this release, hold harmless and indemnification commitment does not apply to cases of bodily injury or loss of life or to the extent that any death or personal injury is caused by the negligence of Sponsor or other third party, where liability to the injured party cannot be excluded by law.
 
