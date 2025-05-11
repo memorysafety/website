@@ -100,7 +100,7 @@ Benchmarking example using all available threads:
     * `hyperfine ".\target\release\dav1d -q -i $env:TEMP\Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null"`
 
 Benchmarking example using single thread:
-  * hyperfine "target/release/dav1d -q -i /tmp/Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null --threads 1"
+  * `hyperfine "target/release/dav1d -q -i /tmp/Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null --threads 1"`
 
 ### Code Criteria
 
