@@ -95,9 +95,9 @@ Entrants must test their entries on an idle, non-virtualized machine using the [
 Benchmarking example using all available threads:
 
   * Linux
-    * hyperfine "target/release/dav1d -q -i /tmp/Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null"
+    * `hyperfine "target/release/dav1d -q -i /tmp/Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null"`
   * Windows
-    * hyperfine ".\target\release\dav1d -q -i $env:TEMP\Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null"
+    * `hyperfine ".\target\release\dav1d -q -i $env:TEMP\Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null"`
 
 Benchmarking example using single thread:
   * hyperfine "target/release/dav1d -q -i /tmp/Chimera-AV1-8bit-1920x1080-6736kbps.ivf -o /dev/null --threads 1"
