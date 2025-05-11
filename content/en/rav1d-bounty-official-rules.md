@@ -1,11 +1,6 @@
 ---
-build:
-  list: never
-  publishResources: false
-  render: never
 title: rav1d AV1 Decoder $20,000 Performance Bounty Contest Official Rules
 slug: rav1d-bounty-official-rules
-draft: true
 background: dce0e9
 ---
 
