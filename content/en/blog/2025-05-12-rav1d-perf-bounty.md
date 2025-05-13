@@ -25,4 +25,6 @@ The [official rules are here](/rav1d-bounty-official-rules), but to summarize:
 
 At the end of the day, we reserve the right to award the money to the person(s) or team(s) that we deem to have helped us reach or exceed performance parity in the best possible way.
 
+If we update the rules we'll post a note here and on the official rules page.
+
 Good luck! Have fun!
