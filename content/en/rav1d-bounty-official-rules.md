@@ -44,7 +44,7 @@ In the event of a conflict between these Official Rules and any instructions or 
 
 ## 6. HOW TO ENTER
 
-Once someone has contributed to the merging of an eligible Solution into the rav1d project, the Rust compiler, or the Rust standard library, they may enter the contest by emailing [hello@memorysafety.org](mailto:hello@memorysafety.org).
+Once someone has contributed to the merging of an eligible solution (per Section 8, "WINNING CRITERIA") into the rav1d project, the Rust compiler, or the Rust standard library, they may enter the contest by emailing [hello@memorysafety.org](mailto:hello@memorysafety.org).
 
 All Entry emails must be in English, and each Entry must include the following documentation:
 
@@ -54,7 +54,7 @@ All Entry emails must be in English, and each Entry must include the following d
   * Information about your test environment: CPU model (e.g. Ryzen 7700X, M2 Pro), memory configuration, Rust version (plus patches if relevant), and operating system; and
   * Benchmark results demonstrating performance improvements.
 
-You are welcome to contact Sponsors by filing an issue on the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution and would like information about whether or not it aligns with Contest requirements.
+Potential entrants are welcome to contact us by filing an issue on the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution and would like information about whether or not it aligns with Contest requirements.
 
 If an Entrant repeatedly submits low-effort or spam entries, Sponsor may, in its sole discretion, disqualify Entrant and disregard any future Entries by that Entrant.
 
