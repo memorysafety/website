@@ -11,9 +11,9 @@ In past years, the [Rustls](https://github.com/rustls/rustls/) project has been 
 What is Rustls?
 ---------------
 
-Rustls is a memory safe TLS implementation with a focus on performance. It is production ready and used in a wide range of applications. You can read more about its history on[  Wikipedia](https://en.wikipedia.org/wiki/Rustls).
+Rustls is a memory safe TLS implementation with a focus on performance. It is production ready and used in a wide range of applications. You can read more about its history on [Wikipedia](https://en.wikipedia.org/wiki/Rustls).
 
-It comes with a C API and[  FIPS support](https://www.memorysafety.org/blog/rustls-with-aws-crypto-back-end-and-fips/) so that we can bring both memory safety and performance to a broad range of existing programs. This is important because OpenSSL and its derivatives, widely used across the Internet, have a long history of memory safety vulnerabilities with more being found this year. It's time for the Internet to move away from C-based TLS.
+It comes with a C API and [FIPS support](https://www.memorysafety.org/blog/rustls-with-aws-crypto-back-end-and-fips/) so that we can bring both memory safety and performance to a broad range of existing programs. This is important because OpenSSL and its derivatives, widely used across the Internet, have a long history of memory safety vulnerabilities with more being found this year. It's time for the Internet to move away from C-based TLS.
 
 On the server
 -------------
@@ -31,7 +31,7 @@ Resumption mechanisms
 
 TLS supports two different resumption strategies:
 
--   Stateful resumption stores resumption state on the server in some kind of map (or database). The  key into this map is sent across the wire. Because the key is relatively compact, this uses less bandwidth and therefore slightly reduces latency. On the other hand, it is harder to scale efficiently when multiple servers are serving the same potentially resuming clients.
+-   Stateful resumption stores resumption state on the server in some kind of map (or database). The key into this map is sent across the wire. Because the key is relatively compact, this uses less bandwidth and therefore slightly reduces latency. On the other hand, it is harder to scale efficiently when multiple servers are serving the same potentially resuming clients.
 
 -   Stateless resumption sends encrypted resumption state to the client. This is easy to horizontally scale because there is no server-side state, but the resumption state is a good deal larger, with an associated increase in bandwidth used (and the associated latency impact).
 
