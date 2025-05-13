@@ -54,7 +54,7 @@ All Entry emails must be in English, and each Entry must include the following d
   * Information about your test environment: CPU model (e.g. Ryzen 7700X, M2 Pro), memory configuration, Rust version (plus patches if relevant), and operating system; and
   * Benchmark results demonstrating performance improvements.
 
-Potential entrants are welcome to contact us by filing an issue on the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution and would like information about whether or not it aligns with Contest requirements.
+Potential Entrants are welcome to contact us by filing an issue in the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution and would like feedback about whether or not it aligns with Contest requirements.
 
 If an Entrant repeatedly submits low-effort or spam entries, Sponsor may, in its sole discretion, disqualify Entrant and disregard any future Entries by that Entrant.
 
@@ -64,11 +64,11 @@ Sponsor shall not be liable for any problems that occur during the Entry process
 
 ## 7. SELECTION OF PRIZE WINNER(S)
 
-A panel of engineers and advisors, selected by Sponsor at Sponsor’s sole discretion (the “Panel”), will monitor performance of the main branch of rav1d compared to dav1d v1.5.1. If and when the Panel has determined that rav1d's Rust code has reached performance parity with dav1d's C code, the contest will continue for 30 days to allow additional in-progress performance improvements to merge and then will end.
+A panel of engineers and advisors, selected by Sponsor at Sponsor’s sole discretion (the “Panel”), will monitor performance of the main branch of rav1d compared to dav1d v1.5.1. If and when the Panel has determined that rav1d's Rust code has reached performance parity with dav1d's C code, the Contest will continue for 30 days to allow additional in-progress performance improvements to merge and then may end.
 
-Alternatively, if the contest ends (per Section 3) prior to the achievement of performance parity between the rav1d main branch and dav1d v1.5.1, a portion of the total available prize pool commensurate with progress towards parity will be awarded for performance improvements made. For example - if a 5% performance gap at the start of the contest is reduced to a 2% performance cap, 60% of the total prize pool will be available to be awarded.
+Alternatively, if the Contest ends (per Section 3) prior to the achievement of performance parity between the rav1d main branch and dav1d v1.5.1, a portion of the total available prize pool commensurate with progress towards parity will be awarded for performance improvements made at the panel's discretion. For example - if a 5% performance gap at the start of the Contest is reduced to a 2% performance cap, 60% of the total prize pool may be available to be awarded.
 
-Upon the contest's end, the Panel will identify up to 10 eligible Entrants that the Panel believes contributed most significantly to the performance gains and allocate the Prize proportionally to the Entrants based on the significance of each contribution. For example - if the total performance gain at the end of the Contest is 6%, and one contributor is deemed to be responsible for 5% while another is deemed to be responsible for 1%, the former may be allocated $16,667 and the latter may be allocated $3,333.
+Upon the Contest's end, the Panel will identify up to 10 eligible Entrants that the Panel believes contributed most significantly to the performance gains and allocate the Prize proportionally to the Entrants based on the significance of each contribution. For example - if the total performance gain at the end of the Contest is 6%, and one contributor is deemed to be responsible for 5% while another is deemed to be responsible for 1%, the former may be allocated $16,667 and the latter may be allocated $3,333.
 
 ## 8. WINNING CRITERIA
 
@@ -76,7 +76,7 @@ The prize winner(s) (“Winner(s)”), if any, will be selected based on the fol
 
 ### Performance Criteria
 
-Solutions must significantly improve the performance of the rav1d main branch per the below benchmarking methodology, for both single and multithreaded operation, on Ubuntu Linux 24.04 (x86_64 and aarch64), macOS 15 or higher (Apple Silicon), and Windows 11 24H2 or higher (x86_64). We do not care about performance improvements for other architectures, but other architectures should not regress significantly. You must compile dav1d with the same version of clang/LLVM used by the Rust toolchain (available via rustc --version --verbose) used to compile rav1d. An Entry’s performance impact will be measured on Sponsor hardware, including but not limited to Apple M2 and AMD Ryzen 9xxx CPUs.
+Solutions must significantly improve the performance of the rav1d main branch per the below benchmarking methodology, for both single and multithreaded operation, on Ubuntu Linux 24.04 (x86_64 and aarch64), macOS 15 or higher (Apple Silicon), and Microsoft Windows 11 24H2 or higher (x86_64). We do not care about performance improvements for other architectures, but other architectures should not regress significantly. You must compile dav1d with the same version of clang/LLVM used by the Rust toolchain (available via rustc --version --verbose) used to compile rav1d. An Entry’s performance impact will be measured on Sponsor hardware, including but not limited to Apple M2 and AMD Ryzen 9xxx CPUs.
 
 Entrants must test their entries on an idle, non-virtualized machine using the [hyperfine](https://github.com/sharkdp/hyperfine) command line tool. On Linux hosts, you can also use [perf](https://perfwiki.github.io/main/) to obtain measurements from your CPU’s performance counters. You can see how we do so as part of our continuous integration setup for rav1d [here](https://github.com/memorysafety/rav1d/blob/main/.github/workflows/build-and-benchmark-x86.yml). In any case, you must test on the following input files:
 
