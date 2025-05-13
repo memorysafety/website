@@ -1,6 +1,6 @@
 ---
 author: "Dirkjan Ochtman"
-date: 2025-05-14T00:00:00Z
+date: 2025-05-13T00:00:00Z
 slug: "rustls-server-perf"
 title: "Rustls Server-Side Performance"
 excerpt: "Current versions of Rustls show competitive performance when processing many connections at the same time on a server."
