@@ -64,11 +64,11 @@ Sponsor shall not be liable for any problems that occur during the Entry process
 
 ## 7. SELECTION OF PRIZE WINNER(S)
 
-A panel of engineers and advisors, selected by Sponsor at Sponsor’s sole discretion (the “Panel”), will monitor performance of the main branch of rav1d compared to dav1d v1.5.1. Thirty days after the Panel has determined that rav1d's Rust code has reached performance parity with dav1d's C code, the contest will end.
+A panel of engineers and advisors, selected by Sponsor at Sponsor’s sole discretion (the “Panel”), will monitor performance of the main branch of rav1d compared to dav1d v1.5.1. If and when the Panel has determined that rav1d's Rust code has reached performance parity with dav1d's C code, the contest will continue for 30 days to allow additional in-progress performance improvements to merge and then will end.
 
-If the contest ends (per Section 3) prior to the achievement of performance parity between the rav1d main branch and dav1d v1.5.1, a portion of the total available prize pool commensurate with progress towards parity will be awarded for performance improvements made. For example - if a 5% performance gap at the start of the contest is reduced to a 2% performance cap, 60% of the total prize pool will be available to be awarded.
+Alternatively, if the contest ends (per Section 3) prior to the achievement of performance parity between the rav1d main branch and dav1d v1.5.1, a portion of the total available prize pool commensurate with progress towards parity will be awarded for performance improvements made. For example - if a 5% performance gap at the start of the contest is reduced to a 2% performance cap, 60% of the total prize pool will be available to be awarded.
 
-The Panel will identify up to 10 eligible Entrants that the Panel believes contributed most significantly to the performance gains and allocate the Prize proportionally to the Entrants based on the significance of each contribution. For example - if the total performance gain at the end of the Contest is 6%, and one contributor is deemed to be responsible for 5% while another is deemed to be responsible for 1%, the former may be allocated $16,667 and the latter may be allocated $3,333.
+Upon the contest's end, the Panel will identify up to 10 eligible Entrants that the Panel believes contributed most significantly to the performance gains and allocate the Prize proportionally to the Entrants based on the significance of each contribution. For example - if the total performance gain at the end of the Contest is 6%, and one contributor is deemed to be responsible for 5% while another is deemed to be responsible for 1%, the former may be allocated $16,667 and the latter may be allocated $3,333.
 
 ## 8. WINNING CRITERIA
 
