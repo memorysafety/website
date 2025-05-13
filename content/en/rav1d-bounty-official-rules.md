@@ -105,7 +105,7 @@ The dav1d and rav1d decoders share some low-level assembly. Solutions must not i
 
 Solutions must not add unacceptable usage of Rust’s unsafe keyword, in which acceptability is judged by us (you are welcome to ask at any time by sending an email to [hello@memorysafety.org](mailto:hello@memorysafety.org)) and/or the maintainers of the relevant project which may eventually need to merge the code. Fewer instances of the “unsafe” keyword are generally better, provided that it does not come at an unacceptable cost in terms of architecture and maintainability.
 
-Solutions must be in either rav1d itself, the Rust compiler, or the Rust standard library. You must not introduce code into rav1d in a language other than Rust. Binary rewriting (e.g. post-link time optimization) and changes to build processes are not in-scope as potential solutions.
+Solutions must be in either rav1d itself, the Rust compiler (inclusive of llvm), or the Rust standard library. You must not introduce code into rav1d in a language other than Rust. Binary rewriting (e.g. post-link time optimization) and changes to build processes are not in-scope as potential solutions.
 
 Solutions cannot include backporting changes from versions of dav1d after v1.5.1.
 
