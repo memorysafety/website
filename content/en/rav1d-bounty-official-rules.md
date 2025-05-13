@@ -10,9 +10,11 @@ NO PURCHASE OR PAYMENT OF ANY KIND IS NECESSARY TO ENTER OR WIN. A PURCHASE WILL
 
 Welcome to the rav1d AV1 Decoder $20,000 Performance Bounty Contest (the “Contest”). No purchase is necessary to enter or win, and no deposit, entry fee, payment, or proof of purchase is necessary to participate in this Contest.
 
-ISRG’s [Prossimo](https://www.memorysafety.org/) project (which promotes the development of memory-safe code for the Internet’s security-sensitive software infrastructure) and partners built an AV1 decoder in Rust called [rav1d](https://github.com/memorysafety/rav1d). It’s based on the [dav1d](https://code.videolan.org/videolan/dav1d) decoder, which is written in C. The problem: rav1d is about 5% slower than dav1d. To increase rav1d’s adoption, rav1d’s speed and performance must be at least equal to that of the latest release of dav1d.
+ISRG’s [Prossimo](https://www.memorysafety.org/) project (which promotes the development of memory-safe code for the Internet’s security-sensitive software infrastructure) and partners built an AV1 decoder largely written in Rust called [rav1d](https://github.com/memorysafety/rav1d). It’s based on the [dav1d](https://code.videolan.org/videolan/dav1d) decoder, which is largely written in C. Both decoders have some optimized routines written in assembly code, and these assembly code routines are the same for both decoders. The rav1d decoder differs from dav1d in that dav1d's C code has been rewritten in Rust.
 
-We wrote a [blog post](https://www.memorysafety.org/blog/rav1d-performance-optimization/) that describes our experience optimizing rav1d up to this point. We made all of the optimizations we could find and now we’re not sure what to do next. That’s why ISRG is offering a prize pool of US$20,000 to the first person or team that can close the performance gap and get the solution merged into rav1d, the Rust compiler, or the Rust standard library per existing standards and processes (i.e. the solution is acceptable to the maintainers of the relevant code bases).
+The problem: rav1d is about 5% slower than dav1d. To increase rav1d’s adoption, rav1d’s speed and performance must be at least equal to that of the latest release of dav1d. We want to learn why the rav1d Rust code is slower than the equivalent C code in dav1d, and figure out how to make it as fast or faster.
+
+We wrote a [blog post](https://www.memorysafety.org/blog/rav1d-performance-optimization/) that describes our experience optimizing rav1d up to this point. We made all of the optimizations we could find and now we’re not sure what to do next. That’s why ISRG is offering a prize pool of US$20,000 to be divided between people and teams that can close the performance gap and get their solutions merged into rav1d, the Rust compiler, or the Rust standard library per existing standards and processes (i.e. solutions are acceptable to the maintainers of the relevant code bases).
 
 ## 2. SPONSOR
 
@@ -20,7 +22,7 @@ The sponsor of this Contest is Internet Security Research Group (“ISRG”, “
 
 ## 3. CONTEST PERIOD
 
-The Contest begins on Monday May 12, 2025, at 12:00:01 a.m. Pacific Time (“PT”) (the “Start Date”) and ends on 31 December 2025, at 11:59:59 p.m. PT (the “End Date”) or as soon as the Sponsor determines, in its sole discretion, that the Contest’s objective has been achieved. The Contest Start Time and End Time will be determined solely by the Sponsor’s internal clock, which shall be the official timekeeping device for the Contest. Sponsor is not responsible for any discrepancies between the official timekeeping device and any other clocks or timekeeping systems, including those of individuals or teams of individuals who participate in the Contest (each an “Entrant”). The period from the Start Date to the End Date is the “Contest Period.” 
+The Contest begins on Wednesday May 13, 2025, at 12:00:01 a.m. Pacific Time (“PT”) (the “Start Date”) and ends on 31 December 2025, at 11:59:59 p.m. PT (the “End Date”) or as soon as the Sponsor determines, in its sole discretion, that the Contest’s objective has been achieved. The Contest Start Time and End Time will be determined solely by the Sponsor’s internal clock, which shall be the official timekeeping device for the Contest. Sponsor is not responsible for any discrepancies between the official timekeeping device and any other clocks or timekeeping systems, including those of individuals or teams of individuals who participate in the Contest (each an “Entrant”). The period from the Start Date to the End Date is the “Contest Period.”
 
 Sponsor reserves the right to terminate or extend the Contest at its discretion, by posting such termination or extension on the website [memorysafety.org](http://memorysafety.org).
 
@@ -42,29 +44,29 @@ In the event of a conflict between these Official Rules and any instructions or 
 
 ## 6. HOW TO ENTER
 
-Entrants must submit their solutions by filing a GitHub issue or pull request on the [rav1d repository](https://github.com/memorysafety/rav1d), or by emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) (each, an “Entry”). All Entry materials must be in English, and each Entry must include the following documentation:
+Once someone has contributed to the merging of an eligible Solution into the rav1d project, the Rust compiler, or the Rust standard library, they may enter the contest by emailing [hello@memorysafety.org](mailto:hello@memorysafety.org).
 
-  * A subject prefix of “Perf Bounty Entry:” for GitHub issues, pull requests, and emails;
-  * A detailed explanation of the solution;
-  * A link to a GitHub pull request, or links to multiple GitHub pull requests, containing the source code changes against the relevant code repositories. The pull requests may be in private repositories. If the pull requests are in private repositories, access must be granted to Contest organizers and judges upon request;
+All Entry emails must be in English, and each Entry must include the following documentation:
+
+  * A subject prefix of “Perf Bounty Entry:”;
+  * A detailed explanation of your contribution to a merged solution;
+  * Links to any relevant GitHub pull request;
   * Information about your test environment: CPU model (e.g. Ryzen 7700X, M2 Pro), memory configuration, Rust version (plus patches if relevant), and operating system; and
   * Benchmark results demonstrating performance improvements.
 
-Please contact us as early as possible by filing an issue on the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution. We want to ensure your approach aligns with the Contest requirements so you do not invest significant time in an Entry that may not be eligible for consideration.
+You are welcome to contact Sponsors by filing an issue on the rav1d repository or emailing [hello@memorysafety.org](mailto:hello@memorysafety.org) if you are working on a promising solution and would like information about whether or not it aligns with Contest requirements.
 
-Entrants may submit multiple Entries. However, if an Entrant repeatedly submits low-effort or spam entries, Sponsor may, in its sole discretion, disqualify Entrant and disregard any future Entries by that Entrant.
+If an Entrant repeatedly submits low-effort or spam entries, Sponsor may, in its sole discretion, disqualify Entrant and disregard any future Entries by that Entrant.
 
 All Entry materials must contain only content that the Entrant owns or has permission to use from the copyright/trademark owner. Entries including copyrighted materials without appropriate licensing or permissions will be disqualified. If permissible copyrighted materials are used, the Entrant must provide attribution and license information. Entries that fail to include required permissions information as specified in these Official Rules will be disqualified.
 
 Sponsor shall not be liable for any problems that occur during the Entry process, including without limitation, late, incomplete, delayed, undelivered, or misdirected Entries, and shall not have any obligation to advise any Entrant of an incomplete, invalid, or undeliverable Entry. Sponsor shall likewise not be required to acknowledge an Entry once submitted. No illegible, incomplete, or non-compliant Entries will be accepted. Entries that are incomplete or do not adhere to these Official Rules and the specifications stated herein may be disqualified in Sponsor’s sole discretion. Entries received after the Contest End Date will not be eligible to enter or win. 
 
-## 7. SELECTION OF PRIZE WINNER
+## 7. SELECTION OF PRIZE WINNER(S)
 
-A panel of engineers and advisors, selected by Sponsor in Sponsor’s sole discretion (the “Panel”), will review all eligible Entries within sixty (60) days of receipt. If the Panel deems an Entry to be a potential winning Entry, the Panel will notify Entrant that they will consider that Entry for award of the Prize if the Entrant can get the Entry merged into the relevant projects such that, upon merge, the Entry still meets the Winning Criteria (defined in Section 8 below) in a fashion superior to other Entries.
+A panel of engineers and advisors, selected by Sponsor at Sponsor’s sole discretion (the “Panel”), will monitor performance of the main branch of rav1d compared to dav1d v1.5.1. Thirty days after the Panel has determined that rav1d's Rust code has reached performance parity with dav1d's C code, the contest will end.
 
-If multiple viable but incompatible solutions exist—where each independently meets the performance objective but cannot be integrated—Sponsor reserves the right to award the Prize to the Entrant whose Entry is deemed superior, considering factors such as performance, maintainability, and fitness for purpose.
-
-If multiple Entries contribute to achieving the performance goal, Sponsor may, in its sole discretion, allocate the Prize proportionally to the submitting Entrants based on the significance of each contribution.
+The Panel will identify up to 10 eligible Entrants that the Panel believes contributed most significantly to the performance gains and allocate the Prize proportionally to the Entrants based on the significance of each contribution. For example - if the total performance gain at the end of the Contest is 6%, and one contributor is deemed to be responsible for 5% while another is deemed to be responsible for 1%, the former may be allocated $16,667 and the latter may be allocated $3,333.
 
 ## 8. WINNING CRITERIA
 
@@ -72,7 +74,7 @@ The prize winner(s) (“Winner(s)”), if any, will be selected based on the fol
 
 ### Performance Criteria
 
-The solution must bring rav1d main branch performance at least to parity with dav1d v1.5.1 per the below benchmarking methodology, for both single and multithreaded operation, on Ubuntu Linux 24.04 (x86_64 and aarch64), macOS 15 or higher (Apple Silicon), and Windows 11 24H2 or higher (x86_64). We do not care about performance improvements for other architectures, but other architectures should not regress significantly. You must compile dav1d with the same version of clang/LLVM used by the Rust toolchain (available via rustc --version --verbose) used to compile rav1d. An Entry’s performance impact will be measured on Sponsor hardware, including but not limited to Apple M2 and AMD Ryzen 9xxx CPUs.
+Solutions must significantly improve the performance of the rav1d main branch per the below benchmarking methodology, for both single and multithreaded operation, on Ubuntu Linux 24.04 (x86_64 and aarch64), macOS 15 or higher (Apple Silicon), and Windows 11 24H2 or higher (x86_64). We do not care about performance improvements for other architectures, but other architectures should not regress significantly. You must compile dav1d with the same version of clang/LLVM used by the Rust toolchain (available via rustc --version --verbose) used to compile rav1d. An Entry’s performance impact will be measured on Sponsor hardware, including but not limited to Apple M2 and AMD Ryzen 9xxx CPUs.
 
 Entrants must test their entries on an idle, non-virtualized machine using the [hyperfine](https://github.com/sharkdp/hyperfine) command line tool. On Linux hosts, you can also use [perf](https://perfwiki.github.io/main/) to obtain measurements from your CPU’s performance counters. You can see how we do so as part of our continuous integration setup for rav1d [here](https://github.com/memorysafety/rav1d/blob/main/.github/workflows/build-and-benchmark-x86.yml). In any case, you must test on the following input files:
 
@@ -97,17 +99,19 @@ Benchmarking example using single thread:
 
 ### Code Criteria
 
-The dav1d and rav1d decoders share some low-level assembly. The solution must not involve modifying the assembly code that rav1d imports from dav1d. We need to reach parity between dav1d’s C code and rav1d’s Rust code while continuing to use the same exact assembly optimizations as dav1d.
+Solutions must improve the performance of rav1d's Rust code as compared to dav1d's C code.
 
-The solution must not add unacceptable usage of Rust’s unsafe keyword, in which acceptability is judged by us (you are welcome to ask at any time by sending an email to [hello@memorysafety.org](mailto:hello@memorysafety.org)) and/or the maintainers of the relevant project which may eventually need to merge the code. Fewer instances of the “unsafe” keyword are generally better, provided that it does not come at an unacceptable cost in terms of architecture and maintainability.
+The dav1d and rav1d decoders share some low-level assembly. Solutions must not involve modifying the assembly code that rav1d imports from dav1d. We need to reach parity between dav1d’s C code and rav1d’s Rust code while continuing to use the same exact assembly optimizations as dav1d.
 
-The solution must be in either rav1d itself, the Rust compiler, or the Rust standard library. You must not introduce code into rav1d in a language other than Rust. Binary rewriting (e.g. post-link time optimization) and changes to build processes are not in-scope as a potential solution.
+Solutions must not add unacceptable usage of Rust’s unsafe keyword, in which acceptability is judged by us (you are welcome to ask at any time by sending an email to [hello@memorysafety.org](mailto:hello@memorysafety.org)) and/or the maintainers of the relevant project which may eventually need to merge the code. Fewer instances of the “unsafe” keyword are generally better, provided that it does not come at an unacceptable cost in terms of architecture and maintainability.
 
-The solution cannot include backporting changes from versions of dav1d after v1.5.1.
+Solutions must be in either rav1d itself, the Rust compiler, or the Rust standard library. You must not introduce code into rav1d in a language other than Rust. Binary rewriting (e.g. post-link time optimization) and changes to build processes are not in-scope as potential solutions.
+
+Solutions cannot include backporting changes from versions of dav1d after v1.5.1.
 
 ### Merge criteria:
 
-Entrants must work with relevant project maintainers to merge their entry into the relevant projects. Entrants may ask for assistance with this process from the rav1d project, though assistance cannot be guaranteed. An Entry must be merged into the rav1d project, the Rust standard library, and/or the Rust compiler, per those projects’ existing standards and processes.
+Entrants must work with relevant project maintainers to merge their entry into the relevant projects. Entrants may ask for assistance with this process from the rav1d project, though assistance cannot be guaranteed. An Entry must be merged into the rav1d project, the Rust standard library, and/or the Rust compiler, per those projects’ existing standards and processes at the time of a merge attempt.
 
 ## 9. CONSENT TO COMMUNICATIONS
 
@@ -119,13 +123,13 @@ The total available prize pool is US$20,000, which Sponsor will distribute to th
 
 Prize is non-transferable. Entrants may not designate another individual or entity as the recipient of the Prize. If a Winner is unable or unwilling to accept the Prize, the Sponsor may, in its sole discretion, award it to another Entrant or choose not to award it at all.
 
-## 11. NOTIFICATION TO PRIZE WINNER
+## 11. NOTIFICATION TO PRIZE WINNER(S)
 
 At the conclusion of the Contest, Sponsor will publish the identity of the Winner(s) in a blog post on [memorysafety.org](memorysafety.org). Sponsor will make at least one attempt to contact a Winner via email (the “Notification”). If the Notification is returned as undeliverable, rejected, or no response is received within three (3) days, the Winner may be disqualified, and Sponsor may—but is not obligated to—select a runner-up Winner based on the criteria stated in the “Selection of Prize Winners” section. 
 
-Winner may be required to sign and return an affidavit of eligibility (which affirms that they have complied with these Official Rules), a signed copy of these Official Rules, a liability release, and, where legal, a publicity release, each of which, if issued, must be completed, signed, and returned within fourteen (14) days from date of issuance, or a Prize may be forfeited. 
+Winner(s) may be required to sign and return an affidavit of eligibility (which affirms that they have complied with these Official Rules), a signed copy of these Official Rules, a liability release, and, where legal, a publicity release, each of which, if issued, must be completed, signed, and returned within fourteen (14) days from date of issuance, or a Prize may be forfeited.
 
-Sponsor is not responsible for any change of email address, mailing address, and/or telephone number of any Entrant, nor is Sponsor responsible for any inability of a potential Winner to accept or use any portion of the Prize for any reason. 
+Sponsor is not responsible for any change of email address, mailing address, and/or telephone number of any Entrant, nor is Sponsor responsible for any inability of a potential Winner(s) to accept or use any portion of the Prize for any reason. 
 
 ## 12. OTHER CONDITIONS
 
