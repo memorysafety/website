@@ -1,6 +1,6 @@
 ---
 author: "Josh Aas"
-date: 2025-05-12T00:00:00Z
+date: 2025-05-13T00:00:00Z
 slug: "rav1d-perf-bounty"
 title: "$20,000 rav1d AV1 Decoder Performance Bounty"
 excerpt: "Help us close a performance gap."
