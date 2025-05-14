@@ -16,7 +16,7 @@ After racking our brains for options, we decided to offer a bounty pool of $20,0
 
 The [official rules are here](/rav1d-bounty-official-rules), but to summarize:
 
-1. The contest is open to individuals or teams of individuals who are legal residents or citizens of the United States, United Kingdom, European Union, Canada, New Zealand, or Australia.
+1. The contest is open to individuals or teams of individuals who are legal residents or citizens of the United States, United Kingdom, European Union, European Economic Area, Switzerland, Canada, New Zealand, or Australia.
 2. The rules provide instructions for benchmarking performance improvements.
 3. You work on improving performance. Your improvements can be in rav1d, the Rust compiler, or the Rust standard library.
 4. The dav1d and rav1d decoders share the exact same low-level assembly code optimizations—you cannot modify this assembly. You must improve the Rust code (or the Rust compiler), which is what differs between dav1d and rav1d. You may not introduce code into rav1d in a language other than Rust. We encourage you to ask questions early on in issues or by [emailing us](mailto:hello@memorysafety.org) so as to avoid investing heavily in something that might not be eligible!
@@ -28,3 +28,5 @@ At the end of the day, we reserve the right to award the money to the person(s) 
 If we update the rules we'll post a note here and on the official rules page.
 
 Good luck! Have fun!
+
+**2025.05.14 Notice:** European Economic Area and Switzerland added to the list of places in which legal residents or citizens are eligible.

@@ -4,6 +4,8 @@ slug: rav1d-bounty-official-rules
 background: dce0e9
 ---
 
+**2025.05.14 Notice:** Updated Section 4, European Economic Area and Switzerland added to the list of places in which legal residents or citizens are eligible.
+
 NO PURCHASE OR PAYMENT OF ANY KIND IS NECESSARY TO ENTER OR WIN. A PURCHASE WILL NOT INCREASE YOUR CHANCES OF WINNING. THE CONTEST IS VOID WHERE PROHIBITED OR RESTRICTED BY LAW. THESE RULES AND APPLICABLE LAW GOVERN ALL ASPECTS OF CONTEST PARTICIPATION AND PRIZE AWARDS. DO NOT ENTER IF YOU ARE NOT ELIGIBLE UNDER THESE RULES OR YOU ARE LOCATED IN A JURISDICTION IN WHICH THIS CONTEST IS PROHIBITED.
 
 ## 1. THE CONTEST
@@ -28,7 +30,7 @@ Sponsor reserves the right to terminate or extend the Contest at its discretion,
 
 ## 4. ELIGIBILITY
 
-The Contest is open to individuals or teams of individuals who are: (1) legal residents or citizens of the United States, United Kingdom, European Union, Canada, New Zealand, or Australia; (2) at least the legal age of majority in their jurisdiction of residence or older at the time of entry; (3) not listed as a Specially Designated National (“SDN”) by the United States Treasury Department’s Office of Foreign Assets Control; and (4) not located in the following jurisdictions: Cuba, Iran, North Korea, Russia, Syria, and the following areas of Ukraine: Donetsk, Luhansk, and Crimea. 
+The Contest is open to individuals or teams of individuals who are: (1) legal residents or citizens of the United States, United Kingdom, European Union, European Economic Area, Switzerland, Canada, New Zealand, or Australia; (2) at least the legal age of majority in their jurisdiction of residence or older at the time of entry; (3) not listed as a Specially Designated National (“SDN”) by the United States Treasury Department’s Office of Foreign Assets Control; and (4) not located in the following jurisdictions: Cuba, Iran, North Korea, Russia, Syria, and the following areas of Ukraine: Donetsk, Luhansk, and Crimea. 
 
 Employees, officers, directors, agents, and representatives of Sponsor and its parent companies, subsidiaries, affiliates, advertising/promotion/fulfillment agencies, anyone else connected with the production and distribution of this Contest and their immediate families (spouse, parent, child, sibling, and their respective spouses, regardless of where they reside) and those living in their same household, whether or not related, are not eligible to enter or win the Contest.
 
