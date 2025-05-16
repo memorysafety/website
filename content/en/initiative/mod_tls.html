@@ -4,32 +4,24 @@ slug: mod_tls
 background: dce0e9
 funders: ["Google"]
 image: /images/httpd.svg
-blog_posts: ["2021-02-02-memory-safe-tls-apache.md"]
+blog_posts: ["2022-03-01-memory-safe-httpd.md", "2021-02-02-memory-safe-tls-apache.md"]
 logo_link: "https://httpd.apache.org"
 ---
 
 <h2>The Story</h2>
 
 <p>
-  The <a href="https://httpd.apache.org/">Apache httpd server</a> is a popular HTTP server. Server software like httpd is security critical because
-  its primary job is to handle network requests and perform complex processing. It's a difficult job to perform securely even without having to worry about
-  managing memory.
+  The <a href="https://httpd.apache.org/">Apache httpd server</a> is a popular HTTP server. Server software like httpd is security critical because its primary job is to handle network requests and perform complex processing. It's a difficult job to perform securely even without having to worry about managing memory.
 </p>
 
 <p>
-  Unfortunately, Apache httpd is written in C, so manual memory management is a major concern. Like almost every other HTTP server written in C, it has a long
-  history of memory safety vulnerabilities. The Internet is not going to provide the level of security that we need until the most popular HTTP servers are
-  written in memory safe code.
+  Unfortunately, Apache httpd is written in C, so manual memory management is a major concern. Like almost every other HTTP server written in C, it has a long history of memory safety vulnerabilities. The Internet is not going to provide the level of security that we need until the most popular HTTP servers are written in memory safe code.
 </p>
 
 <h2>What We've Done</h2>
 
 <p>
   In November of 2020 we contracted with Stefan Eissing to write <a href="https://github.com/icing/mod_tls">mod_tls</a>, a new TLS module for Apache httpd. The mod_tls module uses the largely memory safe <a href="/initiative/rustls">Rustls TLS library</a> instead of OpenSSL, bringing a much greater degree of security to a critical component of httpd.
-</p>
-
-<p>
-  The mod_tls module is available as an experimental module in httpd. If you're interested you can give it a shot today.
 </p>
 
 <h2>What's Next</h2>
@@ -39,15 +31,15 @@ logo_link: "https://httpd.apache.org"
 </p>
 
 <p>
-  ISRG does not plan to make further investments in mod_tls as we believe there are more effective investments to be made, investments that were not seen as options when we built mod_tls.
-</p>
-
-<p>
   The Rustls TLS library has come a long way in the past few years due to ISRG's investments, and as of Q2 an OpenSSL compatibility layer is nearing an initial release. Eventually it should be possible to use Rustls with httpd's default TLS module, mod_ssl, by way of this compatibility layer. This would largely obviate the need for mod_tls.
 </p>
 
 <p>
-  Additionally, when we built mod_tls we did not have a legitimate strategy for improving memory safety in other servers/proxies that have more promising long-term market share trends. Since then the Rustls OpenSSL compatibility layer has become a viable strategy for bringing Rustls to Nginx, and Prossimo's <a href="/initiative/reverse-proxy">River</a> memory safe reverse proxy will hopefully be in a position to bring memory safety to the entire reverse proxy for many people, not just the TLS library.
+  Additionally, when we built mod_tls we did not have a legitimate strategy for improving memory safety in other servers/proxies that have more promising long-term market share trends. Since then the Rustls OpenSSL compatibility layer has become a viable strategy for bringing Rustls to Nginx, it should soon be an option for <a href="https://www.haproxy.org/">HAProxy</a>, and Prossimo's <a href="/initiative/reverse-proxy">River</a> memory safe reverse proxy will hopefully be in a position to bring memory safety to the entire reverse proxy for many people, not just the TLS library.
+</p>
+
+<p>
+  As such, ISRG does not plan to make further investments in mod_tls as we believe there are more effective investments to be made.
 </p>
 
 <h2>Links</h2>
