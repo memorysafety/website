@@ -14,26 +14,29 @@ blog_posts: ["2024-11-07-zlib-to-trifecta-tech.md"]
 </p>
 
 <p>
-We will implement a performant version of zlib in rust. This project has two goals:
-<ul>
-    <li>provide a pure rust implementation of zlib to rust users</li>
-    <li>provide a zlib-compatible dynamic library that has compiled rust code inside</li>
-</ul>
+  We would like to see a high performance implementation of zlib in Rust. We'd like it to have both a Rust API and a C API that's compatible with the C version of zlib so that existing C/C++ programs can use a safer version of zlib.
 </p>
 
 <h2>What We've Done</h2>
 
-<p>We contracted with <a href="https://tweedegolf.nl/">Tweede Golf</a> in December of 2023 for an <a href="https://github.com/memorysafety/zlib-rs/">initial implementation</a> based on <a href="https://github.com/zlib-ng/zlib-ng">zlib-ng</a>, with a focus on maintaining excellent performance while introducing memory safety.</p>
+<p>
+  We contracted with <a href="https://tweedegolf.nl/">Tweede golf</a> in December of 2023 for an <a href="https://github.com/memorysafety/zlib-rs/">initial implementation</a> based on <a href="https://github.com/zlib-ng/zlib-ng">zlib-ng</a>, with a focus on maintaining excellent performance while introducing memory safety.
+</p>
+
+<p>
+  Tweede golf did a great job with the initial implemenation of zlib-rs under contract with ISRG, then they really ran with it and turned it into a more mature piece of software. It made a lot of sense to <a href="https://www.memorysafety.org/blog/zlib-to-trifecta-tech/">turn the project over</a> to their associated <a href="https://trifectatech.org/">Trifecta Tech Foundation</a> in November of 2024.
+</p>
 
 <h2>What's Next</h2>
 
 <p>
-  We're currently seeking funding to complete work necessary to make the initial implementation ready for production.
+  Prossimo's involvement with zlib-rs is largely complete, but we will continue to support Trifecta Tech Foundation's efforts by helping with audits and keeping an eye out for funding.
 </p>
 
 <h2>Links</h2>
 
 <ul>
-  <li><a href="https://github.com/memorysafety/zlib-rs/">GitHub Repository</a></li>
-  <li><a href="/initiative/zlib/zlib-work-plan/">Work Plan</a></li>
+  <li><a href="https://github.com/trifectatechfoundation/zlib-rs">GitHub Repository</a></li>
+  <li><a href="https://trifectatech.org/blog/simd-in-zlib-rs-part-1-autovectorization-and-target-features/">SIMD in zlib-rs (part 1): Autovectorization and target features</a></li>
+  <li><a href="https://trifectatech.org/blog/zlib-rs-is-faster-than-c/">zlib-rs is faster than C</a></li>
 </ul>
