@@ -10,30 +10,38 @@ blog_posts: ["2024-06-24-ntpd-rs-deployment.md","2024-06-12-ntpd-rs-deployment.m
 <h2>The Story</h2>
 
 <p>
-  Keeping track of time is critical for servers and clients on the Internet. NTP is how the Internet keeps track of time. Since NTP implementations are so critical and they're on the network, it's important that they be secure.
+  Keeping track of time is critical for servers and clients on the Internet. <a href="https://en.wikipedia.org/wiki/Network_Time_Protocol">NTP</a> is how the Internet keeps track of time. Since NTP implementations are so critical and they're on the network, it's important that they be secure.
 </p>
 
 <p>
-  The most popular NTP implementations today are written in C and thus not memory safe. We're aiming to fix that.
+  The most popular NTP implementations today are written in C and are not memory safe. We're aiming to fix that.
 </p>
 
 <h2>What We've Done</h2>
 
 <p>
-Work on the client, server, and <a href="https://www.internetsociety.org/blog/2020/08/everything-you-need-to-know-about-network-time-security/">NTS</a> support is complete and ready for production deployment.
+  During 2022 Prossimo contracted <a href="https://tweedegolf.nl/en">Tweede golf</a> to implement NTP in Rust. The new implementation was called <a href="https://github.com/pendulum-project/ntpd-rs">ntpd-rs</a>.
 </p>
 
 <p>
-The work was done by <a href="https://tweedegolf.nl/">Tweede golf</a> under contract with ISRG's Prossimo project.
+  Work on the client, server, and <a href="https://www.internetsociety.org/blog/2020/08/everything-you-need-to-know-about-network-time-security/">NTS</a> support is complete and ready for production deployment.
 </p>
 
 <p>
-A third party security audit performed by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> was <a href="https://tweedegolf.nl/en/blog/94/report-ntp-security-audit">completed</a>.
+  A third party security audit performed by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> was <a href="https://tweedegolf.nl/en/blog/94/report-ntp-security-audit">completed</a>.
+</p>
+
+<p>
+  In April of 2023 Tweede golf's associated <a href="https://trifectatech.org/">Trifecta Tech Foundation</a> became the new home for ntpd-rs. We thank them for all of their great work!
+</p>
+
+<p>
+  Today ntpd-rs is a mature implementation and we encourage anyone interested to try it out. It's currently deployed in a number of places, including at the <a href="https://letsencrypt.org/">Let's Encrypt</a> certificate authority.
 </p>
 
 <h2>What's Next</h2>
 
-<p>Prossimo's work here is done. Tweede Golf's <a href="https://tweedegolf.nl/en/pendulum">Project Pendulum</a> is the new home for ntpd-rs, we thank them for all of their great work!</p>
+<p>Prossimo's work here is complete.</p>
 
 <h2>Packages</h2>
 
