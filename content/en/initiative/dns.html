@@ -10,32 +10,33 @@ image: /images/blog/Hickory-DNS.png
 <h2>The Story</h2>
 
 <p>
-DNS is as critical as Internet infrastructure gets. DNS translates domain names into IP addresses, so just about every client and server depends on making frequent DNS lookups. DNS implementations need to be secure.
+  DNS is as critical as Internet infrastructure gets. DNS translates domain names into IP addresses, so just about every client and server depends on making frequent DNS lookups. DNS implementations need to be secure.
 </p>
 <p>
-While there are many DNS implementations out there, including some memory safe ones, there are no open source, high performance, memory safe, fully recursive DNS resolvers. Until that exists, many DNS operators will continue to deploy DNS software written in languages that are not memory safe, putting critical Internet infrastructure at risk.
+  While there are many DNS implementations out there, including some memory safe ones, there are no open source, high performance, memory safe, fully recursive DNS resolvers. Until that exists, many DNS operators will continue to deploy DNS software written in languages that are not memory safe, putting critical Internet infrastructure at risk.
 </p>
 <p>
-We are investing in a DNS implementation called <a href="https://github.com/hickory-dns/hickory-dns">Hickory DNS</a>, started in 2015 by <a href="https://github.com/bluejekyll">Benjamin Fry</a>. Our goal is to make Hickory the most secure high performance resolver out there.
+  We are investing in a DNS implementation called <a href="https://github.com/hickory-dns/hickory-dns">Hickory DNS</a>, started in 2015 by <a href="https://github.com/bluejekyll">Benjamin Fry</a>. Our goal is to make Hickory the most secure high performance resolver out there.
 </p>
 
 <h2>What We've Done</h2>
 
 <ul>
   <li>During 2023 Prossimo provided support for <a href="https://www.memorysafety.org/blog/announcing-hickory-dns/">rebranding to Hickory DNS</a>.</li>
-  <li>During 2024 ISRG staff member David Cook made numerous improvements, particularly targeting the needs of ISRG's <a href="https://letsencrypt.org/">Let's Encrypt</a> certificate authority.</li>
   <li>In November of 2024 a third party security audit was completed and issues found were remediated.</li>
   <li>In December of 2024 Ferrous Systems completed a contract in which they made huge improvements to DNSSEC and NSEC3 support for the recursive resolver.</li>
+  <li>In January of 2025 Dirkjan Ochtman was given a contract to work on improving Hickory DNS part time during the first half of the year, with a focus on preparing it for use at Let's Encrypt.</li>
+  <li>ISRG staff developer David Cook made numerous improvements during 2024 and 2025, particularly targeting the needs of ISRG's <a href="https://letsencrypt.org/">Let's Encrypt</a> certificate authority.</li>
 </ul>
 
 <p>
-We'd also like to note that while we have been making our investments, the broader Hickory DNS community has grown rapidly. We're excited to see all of the new contributors and the great work they are doing!
+  We'd also note that while we have been making our investments, the Hickory DNS community has grown rapidly. We're excited to see all of the new contributors and the great work they are doing!
 </p>
 
 <h2>What's Next</h2>
 
 <p>
-Our current goal is to get Hickory ready for deployment at Let's Encrypt. Making many thousands of recursive requests per second, Let’s Encrypt can help prove Hickory’s performance at scale. Meanwhile, Hickory will harden a critical part of the Let’s Encrypt infrastructure stack thanks to its use of a memory safe language. We are hard at work on the relevant issues.
+  Our current goal is to get Hickory ready for deployment at Let's Encrypt. Making many thousands of recursive requests per second, Let’s Encrypt can help prove Hickory’s performance at scale. Meanwhile, Hickory will harden a critical part of the Let’s Encrypt infrastructure stack thanks to its use of a memory safe language. We are hard at work on the <a href="https://github.com/hickory-dns/hickory-dns/issues/2725">relevant issues</a>.
 </p>
 
 <h2>Links</h2>
