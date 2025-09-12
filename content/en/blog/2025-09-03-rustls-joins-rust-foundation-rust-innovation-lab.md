@@ -18,4 +18,4 @@ In our opinion, Rustls is now both the fastest and the safest TLS library out th
 
 With features and performance in a good place, the priorities for Rustls are responsiveness to the needs of potential adopters and stable support for long-term maintenance. The Rust Innovation Lab will help Rustls pursue those priorities and more. We couldn't be happier to see it!
 
-We'd like to thank Joe Birr-Pixton, the creator of Rustls, for our years of great collaboration. We'd also like to thank the organizations who supported our vision and investment: the Sovereign Tech Agency, Google, [Fly.io](http://fly.io), AWS, and Alpha-Omega.
+We'd like to thank Joe Birr-Pixton, the creator of Rustls, for our years of great collaboration. We'd also like to thank the organizations who supported our vision and investment: the Sovereign Tech Agency, Google, [Fly.io](http://fly.io), AWS, Alpha-Omega, and craig newmark philanthropies.
