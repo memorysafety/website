@@ -442,3 +442,36 @@ div[data-netlify-site-id] {
   display: none;
   pointer-events: none;
 }
+
+.blog-excerpt-item {
+  margin-bottom: 20px;
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  .excerpt {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.blog-excerpt-item + .blog-excerpt-item {
+  margin-top: 2.5rem;
+}
+
+.blog-excerpt-item h2 {
+  margin-bottom: 0.5rem;
+}
+
+.blog-excerpt-item a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.blog-excerpt-item time {
+  display: block;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
