@@ -30,15 +30,12 @@
       {{ $spec = printf "x%d" $maxHeight }}
     {{ else if $maxWidth }}
       {{ $spec = printf "%dx" $maxWidth }}
-    {{ end }}
-    {{ if ne $spec "" }}
-      {{ $img := $res.Resize $spec }}
-      <img class="is-not-svg is-optimized{{ $extraClass }}"{{ $idAttr }} src="{{ $img.RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
     {{ else }}
-      <img class="is-not-svg is-not-optimized{{ $extraClass }}"{{ $idAttr }} src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+      {{ $spec = printf "%dx%d" $res.Width $res.Height }}
     {{ end }}
+    {{ $img := $res.Resize (printf "%s webp" $spec) }}
+    <img class="is-not-svg is-optimized{{ $extraClass }}"{{ $idAttr }} src="{{ $img.RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
   {{ else }}
     <img class="is-not-svg is-not-optimized{{ $extraClass }}"{{ $idAttr }} src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
   {{ end }}
 {{ end }}
-
