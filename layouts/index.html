@@ -17,7 +17,7 @@
                 <h1 class="display-5 mb-0">
                   <span class="text-primary-knockout">Memory Safety</span>
                 </h1>
-                <h3>for the Internet's most critical infrastructure</h3>
+                <h2>for the Internet's most critical infrastructure</h2>
               </div>
             </div>
             <div class="col-md-6 offset-md-1 align-self-center d-flex align-items-center justify-content-md-end justify-content-lg-end justify-content-center text-md-end text-center " >
@@ -63,45 +63,27 @@
               <div id="funders-home" class="mb-6">
                 <h2 class="home-eyebrow"><a href="/become-a-funder">Funders</a></h2>
                 <div class="funder-logos">
-                  <div class="funder">
-                    <img src="/images/sponsors/small/google-logo.png" alt="Google" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/aws-logo.png" alt="Amazon Web Services" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/flyio-logo.png" alt="Fly.io" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/futurewei-logo.png" alt="Futurewei" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/cisco-logo.png" alt="Cisco" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/acton-family-giving-logo.png" alt="Acton Family Giving" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/sovereign-tech-agency-logo.png" alt="Sovereign Tech Agency" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/alpha-omega-logo.png" alt="Alpha-Omega" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/CNP-Logo.svg" alt="Craig Newmark Philanthrophies" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/chainguard-logo.svg" alt="Chainguard" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/cloudflare-logo.png" alt="Cloudflare" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/shopify-logo.png" alt="Shopify" />
-                  </div>
-                  <div class="funder">
-                    <img src="/images/sponsors/small/icann-logo.png" alt="ICANN" />
-                  </div>
+                  {{/* Build a repeatable list of funders */}}
+                  {{ $funders := slice
+                    (dict "src" "images/sponsors/small/google-logo.png" "alt" "Google")
+                    (dict "src" "images/sponsors/small/aws-logo.png" "alt" "Amazon Web Services")
+                    (dict "src" "images/sponsors/small/flyio-logo.png" "alt" "Fly.io")
+                    (dict "src" "images/sponsors/small/futurewei-logo.png" "alt" "Futurewei")
+                    (dict "src" "images/sponsors/small/cisco-logo.png" "alt" "Cisco")
+                    (dict "src" "images/sponsors/small/acton-family-giving-logo.png" "alt" "Acton Family Giving")
+                    (dict "src" "images/sponsors/small/sovereign-tech-agency-logo.png" "alt" "Sovereign Tech Agency")
+                    (dict "src" "images/sponsors/small/alpha-omega-logo.png" "alt" "Alpha-Omega")
+                    (dict "src" "images/sponsors/small/CNP-Logo.svg" "alt" "Craig Newmark Philanthrophies")
+                    (dict "src" "images/sponsors/small/chainguard-logo.svg" "alt" "Chainguard")
+                    (dict "src" "images/sponsors/small/cloudflare-logo.png" "alt" "Cloudflare")
+                    (dict "src" "images/sponsors/small/shopify-logo.png" "alt" "Shopify")
+                    (dict "src" "images/sponsors/small/icann-logo.png" "alt" "ICANN")
+                  }}
+                  {{ range $funders }}
+                    <div class="funder">
+                      {{ partial "optimized_image.html" (dict "src" .src "alt" .alt "maxHeight" 88) }}
+                    </div>
+                  {{ end }}
                 </div>
               </div>
               <div id="blog">

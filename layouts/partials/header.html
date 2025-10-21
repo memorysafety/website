@@ -15,11 +15,12 @@
           href="/"
           class="navbar-brand order-lg-1 me-lg-5 me-0 pr-lg-2"
         >
-          <img
-            src="/images/Prossimo Brand Assets/Prossimo Horizontal Full Color.svg"
-            alt="Prossimo Logo"
-            width="130"
-          />
+          {{ partial "optimized_image.html" (dict
+            "src" "images/Prossimo Brand Assets/Prossimo Horizontal Full Color.svg"
+            "alt" "Prossimo Logo"
+            "maxWidth" 260
+            "class" "navbar-logo"
+          ) }}
         </a>
         <div class="d-flex align-items-center order-lg-3">
           <a
@@ -34,6 +35,7 @@
             data-bs-toggle="collapse"
             data-bs-target="#prossimoNavbar"
             aria-expanded="false"
+            aria-label="Toggle navigation menu"
           >
             <span class="navbar-toggler-icon"></span>
           </button>

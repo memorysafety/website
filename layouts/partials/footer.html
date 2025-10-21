@@ -4,7 +4,13 @@
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-6 order-lg-1 order-1 mb-lg-0 mb-4">
             <a class="d-inline-block mb-4" href="https://abetterinternet.org" target="_blank">
-              <img src="/images/Prossimo Brand Assets/ISRG-Logo-White.png" id="footer-logo" alt="Prossimo logo">
+              {{ partial "optimized_image.html" (dict
+                "src" "images/Prossimo Brand Assets/ISRG-Logo-White.png"
+                "alt" "Prossimo logo"
+                "maxHeight" 110
+                "id" "footer-logo"
+                "class" "footer-logo-img"
+              ) }}
             </a>
             <p class="mb-sm-4 mb-3 pb-lg-3 fs-xs text-light opacity-60">{{ .Site.Params.address_line_1}}<br />{{ .Site.Params.address_line_2}}</p>
             <p class="mb-sm-4 mb-3 pb-lg-3 fs-xs text-light opacity-60">

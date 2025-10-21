@@ -17,7 +17,13 @@
       {{ if .logo_link }}
       <a class="logo-link-anchor" href="{{.logo_link}}" target="_blank">
         {{end}}
-        <img class="logo-image" src="{{.image}}" alt="Logo for {{.title}}" />
+        {{ $logoSrc := strings.TrimPrefix "/" .image }}
+        {{ partial "optimized_image.html" (dict
+          "src" $logoSrc
+          "alt" (printf "Logo for %s" .title)
+          "maxHeight" 240
+          "class" "logo-image"
+        ) }}
         {{ if .logo_link }}
       </a>
       {{end}}
