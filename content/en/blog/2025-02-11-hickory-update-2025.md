@@ -8,7 +8,7 @@ excerpt: "A high performance, memory safe, and open source recursive DNS resolve
 
 
 <div class="card border-0 pic-quote-right">
-    <img alt="Hickory DNS logo" class="mx-auto img-fluid" src="/images/blog/blog-2025-02-11-Hickory-DNS.png" />
+    {{< optimized-image src="images/blog/blog-2025-02-11-Hickory-DNS.png" alt="Hickory DNS logo" class="mx-auto img-fluid" maxWidth="520" >}}
 </div>
 
 The Domain Name System (DNS) is a foundational part of the Internet. It stores data associated with domain names, like web server addresses and mail server addresses. Almost all network connections are preceded by a DNS lookup. The most popular DNS server implementations are written in C, and as a result, they have been affected by a series of memory safety vulnerabilities. These vulnerabilities can put DNS infrastructure at risk, as well as any system that depends on DNS.

@@ -10,11 +10,18 @@ body {
   color: $primary_color !important;
 }
 
+.navbar-logo {
+  width: 130px;
+}
+
 #footer-logo {
   max-width: 300px;
-  // width: 100%;
-  max-height: 55px;
+  height: 55px;
   margin-bottom: 5px;
+}
+
+.footer-logo-img {
+  height: 55px;
 }
 
 .footer-text a {

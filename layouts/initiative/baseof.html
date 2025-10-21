@@ -19,7 +19,12 @@
           {{ if .Params.logo_link }}
           <a href="{{.Params.logo_link}}" target="_blank">
             {{end}}
-            <img src="{{ .Params.image }}" alt="{{ .Params.title }} logo" />
+            {{ $initiativeLogo := strings.TrimPrefix "/" .Params.image }}
+            {{ partial "optimized_image.html" (dict
+              "src" $initiativeLogo
+              "alt" (printf "%s logo" .Params.title)
+              "maxHeight" 400
+            ) }}
 
             {{ if .Params.logo_link }}
           </a>
@@ -50,7 +55,12 @@
           <div class="funder-logos">
             {{ range .Params.funders }}
             <div class="funder">
-              <img src="/images/sponsors/small/{{ lower . }}-logo.png" alt="{{ . }}" />
+              {{ $funderLogo := printf "images/sponsors/small/%s-logo.png" (lower .) }}
+              {{ partial "optimized_image.html" (dict
+                "src" $funderLogo
+                "alt" .
+                "maxHeight" 120
+              ) }}
             </div>
             {{ end }}
           </div>

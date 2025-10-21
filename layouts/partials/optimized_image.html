@@ -12,12 +12,16 @@
 {{ $alt := .alt }}
 {{ $maxHeight := .maxHeight }}
 {{ $maxWidth := .maxWidth }}
+{{ $extraClass := "" }}
+{{ with .class }}{{ $extraClass = printf " %s" . }}{{ end }}
+{{ $idAttr := "" }}
+{{ with .id }}{{ $idAttr = printf ` id="%s"` . }}{{ end }}
 
 {{ $ext := lower (path.Ext $src) }}
 {{ $isSVG := eq $ext ".svg" }}
 
 {{ if $isSVG }}
-  <img class="is-svg is-not-optimized" src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+  <img class="is-svg is-not-optimized{{ $extraClass }}"{{ $idAttr }} src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
 {{ else }}
   {{ $res := resources.Get $src }}
   {{ if $res }}
@@ -29,13 +33,12 @@
     {{ end }}
     {{ if ne $spec "" }}
       {{ $img := $res.Resize $spec }}
-      <img class="is-not-svg is-optimized" src="{{ $img.RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+      <img class="is-not-svg is-optimized{{ $extraClass }}"{{ $idAttr }} src="{{ $img.RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
     {{ else }}
-      <img class="is-not-svg is-not-optimized" src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+      <img class="is-not-svg is-not-optimized{{ $extraClass }}"{{ $idAttr }} src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
     {{ end }}
   {{ else }}
-    <img class="is-not-svg is-not-optimized" src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
+    <img class="is-not-svg is-not-optimized{{ $extraClass }}"{{ $idAttr }} src="/{{ $src }}" alt="{{ $alt }}" loading="lazy" decoding="async" />
   {{ end }}
 {{ end }}
-
 
