@@ -72,3 +72,50 @@
 .tpl-initiative .initiative-hero {
   margin-bottom: 35px !important;
 }
+
+.contact-page {
+  margin-top: 2.5rem;
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-card {
+    padding: 0.6rem 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .contact-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: $primary_color;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: $primary_color !important;
+    text-decoration: none;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba($brand_mint, 0.12);
+    border: 1px solid rgba($brand_mint, 0.35);
+    box-shadow: none;
+    margin: 0 auto;
+
+    &:hover {
+      background: rgba($brand_mint, 0.22);
+      border-color: $brand_mint;
+    }
+  }
+}
