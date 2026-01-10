@@ -10,15 +10,15 @@ blog_posts: ["2025-10-01-rustls-error-handling.md", "2025-09-03-rustls-joins-rus
 <h2>The Story</h2>
 
 <p>
-  The story of our work with <a href="https://github.com/rustls/rustls">Rustls</a> begins with another piece of software, OpenSSL. OpenSSL is a ubiquitous TLS library, used in a large percentage of all devices connected to the Internet. Unfortunately, it's written in C and has a long history of memory safety vulnerabilities.
+    Most devices on the Internet use the TLS protocol to protect their data in transit. Unfortunately, most TLS implementations are written in C and have a long history of memory safety vulnerabilities.
 </p>
 
 <p>
-  It's important for the security of the Internet that we move away from TLS libraries that aren't memory safe. It's highly unlikely that we can get the OpenSSL project to move away from C so we need to work on a memory safe alternative and get the Internet's critical software infrastructure to make the switch.
+    It's important for the security of the Internet that we move away from TLS libraries that aren't memory safe. Since 2021 we've invested heavily in a memory safe implementation of TLS called <a href="https://github.com/rustls/rustls">Rustls</a>. Today, not only is Rustls memory safe, it's fully featured while <a href="https://www.memorysafety.org/blog/rustls-server-perf/">significantly faster and more efficient</a> than most other TLS implementations.
 </p>
 
 <p>
-  Fortunately, there is an excellent alternative to OpenSSL for many use cases. Rustls is a <a href="https://github.com/rustls/rustls/blob/main/audit/TLS-01-report.pdf">high-quality</a> and <a href="https://www.memorysafety.org/blog/rustls-server-perf/">high performance</a> TLS implementation written in Rust, a memory safe language.
+    While Rustls is popular in the Rust community, we work hard to make sure it is easy to use from existing C and C++ programs. In addition to the native Rust API, Rustls has a <a href="https://github.com/rustls/rustls-ffi">C API</a> and an <a href="https://github.com/rustls/rustls-openssl-compat">OpenSSL compatibility layer</a>. For some projects, Rustls can act as a drop-in replacement for OpenSSL.
 </p>
 
 <h2>What We've Done</h2>
@@ -35,17 +35,14 @@ blog_posts: ["2025-10-01-rustls-error-handling.md", "2025-09-03-rustls-joins-rus
 </ul>
 
 <p>
-  With this investment, Rustls is now full featured and likely the most <a href="https://www.memorysafety.org/blog/rustls-server-perf/">high performance TLS library out there</a>. In addition to Rust and C APIs, Rustls has an <a href="https://github.com/rustls/rustls-openssl-compat">OpenSSL compatibility layer</a> that is improving rapidly.
-</p>
-
-<p>
-  The Rustls community has also grown quite a bit over the past few years and it's great to see the work happening outside of our investments!
+  The Rustls community has grown quite a bit over the past few years and it's great to see the work happening outside of our investments!
 </p>
 
 <h2>What's Next</h2>
 
 <ul>
-  <li>Joe Birr-Pixton is currently working on Rustls via a contract with Prossimo, March 2025 through December 2025. Additional performance improvements and better OpenSSL compatibility are priorities.</li>
+  <li>Joe Birr-Pixton is currently working full time on Rustls via a contract with Prossimo, March 2025 through March 2026. An optimized and stable API, additional performance improvements, and better OpenSSL compatibility are priorities.</li>
+  <li>Dirkjan Ochtman is currently working on Rustls part-time via a contract with Prossimo, March 2025 through March 2026, with the same priorities as Joe.</li>
 </ul>
 
 <h2>Links</h2>
