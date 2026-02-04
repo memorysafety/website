@@ -30,3 +30,5 @@ If we update the rules we'll post a note here and on the official rules page.
 Good luck! Have fun!
 
 **2025.05.14 Notice:** European Economic Area and Switzerland added to the list of places in which legal residents or citizens are eligible.
+
+**2025.12.31 Notice:** This program has concluded.
