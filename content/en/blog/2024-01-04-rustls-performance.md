@@ -27,7 +27,7 @@ The topic of benchmarking in a continuous integration setup is challenging. Rust
 
 It would be very useful to have automated and accurate feedback on a PR's performance impact compared to the main branch. It should be automated, to ensure it is always used, and it should be accurate, to ensure it is actionable (i.e. too much noise would train reviewers to ignore the information). The [approach used by rustc](https://github.com/rust-lang/rust/pull/112849#issuecomment-1661062264) [the Rust compiler] is a good example to follow, though its development required a daunting amount of work.
 
-After careful research, prototyping, and talking to people involved in benchmarking the Rust compiler, we arrived at a design with the  following setup:
+After careful research, prototyping, and talking to people involved in benchmarking the Rust compiler, we arrived at a design with the following setup:
 
 1.  Hardware: the benchmarks run on a bare-metal server at [OVHcloud](https://www.ovhcloud.com/en/), configured in a way that reduces variability of the results.
 

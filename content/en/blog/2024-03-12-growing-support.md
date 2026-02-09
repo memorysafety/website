@@ -33,4 +33,4 @@ We also received a vote of confidence from one of cybersecurity's most influenti
 
 **AV1**: Media decoders are some of the most prolific sources of memory safety vulnerabilities (see the recent [WebP vulnerability](https://blog.cloudflare.com/uncovering-the-hidden-webp-vulnerability-cve-2023-4863/)). We're working to create a suite of media decoders and compression libraries that are safer without sacrificing performance, which is critical for adoption. We're currently developing a safer [AV1 decoder](https://www.memorysafety.org/initiative/av1/) and we're seeing strong interest in adoption from major companies.
 
-We're excited by the growing community invested in building a memory safe future. If you or your organization is interested in [helping us get there](https://www.memorysafety.org/become-a-funder/), please reach out at <sponsor@abetterinternet.org>
+We're excited by the growing community invested in building a memory safe future. If you or your organization is interested in [helping us get there](https://www.memorysafety.org/become-a-funder/), please reach out at <sponsor@abetterinternet.org>.

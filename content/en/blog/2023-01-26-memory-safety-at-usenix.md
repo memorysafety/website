@@ -13,7 +13,7 @@ I had the pleasure of discussing the state of memory safety at this year's USENI
 
 -   We don't need to rewrite everything at once. Pick the most security-critical modules and start there. It can be relatively easy to replace an unsafe module with a safe one.
 
--   Maintainers don't necessarily need to learn another language. For example: many Rust-based modules, for example, come with C APIs so you can integrate them easily without needing to know Rust.
+-   Maintainers don't necessarily need to learn another language. For example, many Rust-based modules come with C APIs so you can integrate them easily without needing to know Rust.
 
 -   Help stakeholders understand that we don't have to live with the constant stream of memory safety vulnerabilities that come out of code that is not memory safe. It will take some work, but we have the knowledge and tools to make memory safety vulnerabilities a rarity.
 

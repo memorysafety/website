@@ -30,7 +30,7 @@ Additionally, this approach allows us to ship updates for security vulnerabiliti
 
 ## Packaging ntpd-rs and sudo-rs
 
-I was initially approached by Josh Aas from Prossimo in January 2023 because there was interest in providing official Fedora Linux RPM packages for [ntpd-rs](https://www.memorysafety.org/initiative/sudo-su/). At this point, our tools did not yet support building projects like ntpd-rs (i.e. projects that were organized as multiple crates within a "cargo workspace"). Over the following months, I worked on both updating our tools to support this use case and on packaging and getting packages for crate dependencies through peer review.
+I was initially approached by Josh Aas from Prossimo in January 2023 because there was interest in providing official Fedora Linux RPM packages for [ntpd-rs](https://www.memorysafety.org/initiative/ntp/). At this point, our tools did not yet support building projects like ntpd-rs (i.e. projects that were organized as multiple crates within a "cargo workspace"). Over the following months, I worked on both updating our tools to support this use case and on packaging and getting packages for crate dependencies through peer review.
 
 While I was able to finish the tooling support relatively quickly (I [released](https://pagure.io/fedora-rust/rust2rpm/raw/8ca9320/f/NEWS) official support for building "workspace" projects in February 2023), getting packages for crate dependencies reviewed and/or updated to the versions that were needed by ntpd-rs took longer than expected. One of the final blockers was resolved with the 0.17.0 release of `ring` in October 2023 (and the accompanying release of `rustls`), as this version finally included support for all CPU architectures that are supported by Fedora Linux.
 
