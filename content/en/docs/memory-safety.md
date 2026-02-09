@@ -29,7 +29,7 @@ Imagine we delete a to do list and then later request the first item of that lis
 
 Extremely. A [recent study] found that 60-70% of vulnerabilities in iOS and macOS are memory safety vulnerabilities. [Microsoft estimates] that 70% of all vulnerabilities in their products over the last decade have been memory safety issues. [Google estimated] that 90% of Android vulnerabilities are memory safety issues. [An analysis of 0-days] that were discovered being exploited in the wild found that more than 80% of the exploited vulnerabilities were memory safety issues [^1].
 
-The [Slammer worm] from 2003 was a buffer overflow (out-of-bounds write). So was [WannaCry] (out-of-bounds write). The [Trident exploit] against iPhones used three different memory safety vulnerabilities (two use-after-frees and an out-of-bounds read). [HeartBleed] was a memory safety problem (out-of-bounds read). [Stagefright] on Android too (out-of-bounds writes). The [Ghost] vulnerability in glibc? You betcha (out-of-bounds write).
+The [Slammer worm] from 2003 was a buffer overflow (out-of-bounds write). So was [WannaCry] (out-of-bounds write). The [Trident exploit] against iPhones used three different memory safety vulnerabilities (two use-after-frees and an out-of-bounds read). [Heartbleed] was a memory safety problem (out-of-bounds read). [Stagefright] on Android too (out-of-bounds writes). The [Ghost] vulnerability in glibc? You betcha (out-of-bounds write).
 
 These vulnerabilities and exploits, and many others, are made possible because C and C++ are not memory safe. Organizations which write large amounts of C and C++ inevitably produce large numbers of vulnerabilities that can be directly attributed to a lack of memory safety. These vulnerabilities are exploited, to the peril of [hospitals], [human rights dissidents], and [health policy experts]. Using C and C++ is [bad for society], [bad for your reputation], and it's [bad for your customers].
 
@@ -98,7 +98,7 @@ This explanation is, with permission, based on Alex Gaynor's blog post [Introduc
 [Slammer worm]: https://en.wikipedia.org/wiki/SQL_Slammer
 [WannaCry]: https://www.fireeye.com/blog/threat-research/2017/05/smb-exploited-wannacry-use-of-eternalblue.html
 [Trident exploit]: https://blog.lookout.com/trident-pegasus-technical-details
-[HeartBleed]: https://tonyarcieri.com/would-rust-have-prevented-heartbleed-another-look
+[Heartbleed]: https://tonyarcieri.com/would-rust-have-prevented-heartbleed-another-look
 [Stagefright]: https://googleprojectzero.blogspot.com/2015/09/stagefrightened.html
 [Ghost]: https://blog.qualys.com/laws-of-vulnerabilities/2015/01/27/the-ghost-vulnerability
 [recent study]: https://langui.sh/2019/07/23/apple-memory-safety/

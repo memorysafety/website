@@ -13,7 +13,7 @@ excerpt: "NTP is critical to the Internet’s functioning and we’ve collaborat
         <blockquote class="blockquote">
             <span class="quote"></span>
             <div class="quote-text">
-                <p class="font-italic lh-170">Folkert and the team at <a href="https://tweedegolf.nl/en" target="_blank" rel="noopener noreferer">Tweede golf</a> are helping us to build a memory safe NTP implementation. We asked them to share their experience in this blog post. Thank you for your partnership and contributions, Tweede golf team!</p>
+                <p class="font-italic lh-170">Folkert and the team at <a href="https://tweedegolf.nl/en" target="_blank" rel="noopener noreferrer">Tweede golf</a> are helping us to build a memory safe NTP implementation. We asked them to share their experience in this blog post. Thank you for your partnership and contributions, Tweede golf team!</p>
                 <footer class="blockquote-footer"><cite title="Source Title">Josh Aas, Head of ISRG’s Prossimo project</cite></footer>
             </div>
         </blockquote>

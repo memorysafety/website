@@ -21,7 +21,7 @@ The [official rules are here](/rav1d-bounty-official-rules), but to summarize:
 3. You work on improving performance. Your improvements can be in rav1d, the Rust compiler, or the Rust standard library.
 4. The dav1d and rav1d decoders share the exact same low-level assembly code optimizations—you cannot modify this assembly. You must improve the Rust code (or the Rust compiler), which is what differs between dav1d and rav1d. You may not introduce code into rav1d in a language other than Rust. We encourage you to ask questions early on in issues or by [emailing us](mailto:hello@memorysafety.org) so as to avoid investing heavily in something that might not be eligible!
 5. Get your performance improvements merged into the relevant project per the project's standard contribution process and under its open source license(s), then email us per the instructions in the [official rules](/rav1d-bounty-official-rules) to enter and potentially be rewarded for your contribution.
-7. When the contest ends (likely either because we met our goal or time has run out) we will, at our discretion, divide the bounty proportionally between the largest contributors to performance gains.
+6. When the contest ends (likely either because we met our goal or time has run out) we will, at our discretion, divide the bounty proportionally between the largest contributors to performance gains.
 
 At the end of the day, we reserve the right to award the money to the person(s) or team(s) that we deem to have helped us reach or exceed performance parity in the best possible way.
 
