@@ -35,7 +35,7 @@ The network time protocol synchronizes time between devices connected to a netwo
 
 NTP is one of the oldest Internet protocols, and although it is less known than HTTP or DNS for example, the Internet and its billions of devices depend on it every day.
 
-The clocks in our devices are reasonably accurate, but can drift meaningfully in the space of hours. The real time is kept with atomic clocks. Many technology companies and foundations provide NTP servers that make this time available to the internet.
+The clocks in our devices are reasonably accurate, but can drift meaningfully in the space of hours. The real time is kept with atomic clocks. Many technology companies and foundations provide NTP servers that make this time available to the Internet.
 
 ![A diagram showing the relationships between the various levels of NTP servers (Wikipedia)](/images/blog/Blog-2022-10-11-relationship-various-levels-ntp.png)
 
@@ -69,7 +69,7 @@ Using Rust for our implementation means that the client we build is memory safe.
 
 Another benefit of Rust is that we can use its standard library and package ecosystem, so our NTP implementation is much smaller (hence easier to validate) than the alternatives. This small size also makes it easier to play around with extensions to the NTP specification (e.g. in the development of the next version of NTP, NTPv5).
 
-A nice side-effect of our effort is that more people are now familiar with how NTP works, and hopefully our implementation is more accessible. It's a bit of a niche thing to get into, but as we noted above accurate time is crucial for a lot of modern internet infrastructure.
+A nice side-effect of our effort is that more people are now familiar with how NTP works, and hopefully our implementation is more accessible. It's a bit of a niche thing to get into, but as we noted above accurate time is crucial for a lot of modern Internet infrastructure.
 
 ## Our experiences
 

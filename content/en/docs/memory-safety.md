@@ -43,7 +43,7 @@ Worse, these bugs can be incredibly difficult for developers to track down. Memo
 
 Finally, there is performance. In decades past, one could rely on CPUs getting significantly faster every year or two. This is no longer the case. Instead, CPUs now come with more cores. To take advantage of additional cores, developers are tasked with writing multi-threaded code.
 
-Unfortunately, multi-threading exacerbates the problems associated with a lack of memory safety, As a result, efforts to take advantage of multi-core CPUs are often intractable in C and C++. For example - Mozilla had multiple failed attempts to introduce multi-threading into Firefox's C++ CSS subsystem before finally (successfully) rewriting the system in multi-threaded Rust.
+Unfortunately, multi-threading exacerbates the problems associated with a lack of memory safety. As a result, efforts to take advantage of multi-core CPUs are often intractable in C and C++. For example - Mozilla had multiple failed attempts to introduce multi-threading into Firefox's C++ CSS subsystem before finally (successfully) rewriting the system in multi-threaded Rust.
 
 ## What's the right path forward?
 
@@ -65,7 +65,7 @@ Some practices which can lower the risk of using an unsafe language are:
 
 These practices meaningfully lower the risk of using an unsafe language, and if we've failed to convince you to change languages, and you are going to continue to write C and C++, adopting these is an imperative. Unfortunately, they are also woefully insufficient.
 
-The people who are the forefront of developing modern C++ idioms, fuzzers, sanitizers, exploit mitigations, and privilege separation techniques are browser and operating system developers — precisely the groups we highlighted at the start with statistics about the prevalence of memory safety problems. Despite these teams' investment in these techniques, their use of unsafe languages weighs them down. At pwn2own, a large hacking competition, in 2019 [over half of vulnerabilities exploited] in these products were due to a lack of memory safety, and with one exception, [every successful attack exploited] at least one memory safety vulnerability.
+The people who are at the forefront of developing modern C++ idioms, fuzzers, sanitizers, exploit mitigations, and privilege separation techniques are browser and operating system developers — precisely the groups we highlighted at the start with statistics about the prevalence of memory safety problems. Despite these teams' investment in these techniques, their use of unsafe languages weighs them down. At pwn2own, a large hacking competition, in 2019 [over half of vulnerabilities exploited] in these products were due to a lack of memory safety, and with one exception, [every successful attack exploited] at least one memory safety vulnerability.
 
 ## Is dropping C and C++ really practical?
 
