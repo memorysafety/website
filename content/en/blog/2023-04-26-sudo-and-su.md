@@ -22,4 +22,4 @@ The program `sudo` fits all four of those risk criteria. It's important that we 
 
 This work is being done by a joint team from [Ferrous Systems](https://ferrous-systems.com/) and [Tweede Golf](https://tweedegolf.nl/) with generous support from Amazon Web Services. The work plan is viewable [here](/initiative/sudo-su/sudo-su-work-plan/). The GitHub repository is [here](https://github.com/memorysafety/sudo-rs).
 
-If you'd like to support Prossimo's work to [improve](/about/)  [memory safety](/docs/memory-safety/), please consider [contributing](/sponsor/).
+If you'd like to support Prossimo's work to [improve](/about/) [memory safety](/docs/memory-safety/), please consider [contributing](/sponsor/).
