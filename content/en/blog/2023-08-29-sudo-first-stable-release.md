@@ -9,7 +9,7 @@ display_default_footer: true
 
 Prossimo is pleased to announce the [first stable release](https://crates.io/crates/sudo-rs) of [sudo-rs](https://github.com/memorysafety/sudo-rs), our Rust rewrite of the critical sudo utility.
 
-The sudo utility is one of the most common ways for engineers to cross the privacy boundary between user and administrative accounts in the ubiquitous Linux operating system. As such, its security is of the utmost importance.
+The sudo utility is one of the most common ways for engineers to cross the privilege boundary between user and administrative accounts in the ubiquitous Linux operating system. As such, its security is of the utmost importance.
 
 The [sudo-rs project](https://www.memorysafety.org/initiative/sudo-su/) improves on the security of the original sudo by:
 

@@ -39,8 +39,8 @@ Add support for Network Time Security (NTS) to both the server and client.
 
 * NTS client
   * NTS-KE client
-  * NNTS Extension fields
-  * NNTS Cookie management
+  * NTS Extension fields
+  * NTS Cookie management
 * NTS Server
   * Master key management library
   * NTS-KE server

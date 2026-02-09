@@ -21,4 +21,4 @@ In 2023, Prossimo will continue to make headway on improving memory safety in cr
 
 I'd like to thank Yael Grauer for organizing this panel, and my fellow panelists, Amira Dhalla and Alex Gaynor for the energizing conversation. Thank you to the USENIX Enigma conference and its organizers for giving us the opportunity to discuss and get the word out about this important topic. Finally, thanks to our funders who have supported our memory safety efforts: Acton Family Giving, AWS, Cisco, Futurewei, Fly.io, and Google.
 
-If you're interested in learning more about memory safety, check out this [new report](https://advocacy.consumerreports.org/research/report-future-of-memory-safety/)from Consumer Reports.
+If you're interested in learning more about memory safety, check out this [new report](https://advocacy.consumerreports.org/research/report-future-of-memory-safety/) from Consumer Reports.
