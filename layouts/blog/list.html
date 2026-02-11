@@ -1,5 +1,8 @@
 {{ define "main" }}
 <div>
+  <div class="text-end mb-3">
+    {{ partial "rss-feed-link.html" . }}
+  </div>
   {{ $posts := where .Site.RegularPages "Type" "in" (slice "blog") }} {{ range $posts }}
   <div class="initiative_list_item__blogLanding">
     {{ .Date.Format $.Site.Params.time_format_default }}
@@ -9,8 +12,6 @@
     <a href="{{ .Permalink }}">{{ i18n "read_more" }}</a><br />
     <br />
   </div>
-  {{ end }} {{ with .Site.Home.OutputFormats.Get "RSS" -}}
-  <p>{{ i18n "subscribe_rss" . | safeHTML }}</p>
   {{ end }}
 </div>
 {{ end }}
