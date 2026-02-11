@@ -25,4 +25,7 @@
   <link rel="stylesheet" media="screen" href="/createx-theme/css/theme.min.css" />
   {{ $style := resources.Get "/sass/main.scss" | css.Sass | resources.Minify | resources.Fingerprint }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}?v={{ now}}" />
+  {{ with site.Home.OutputFormats.Get "RSS" -}}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .RelPermalink }}">
+  {{- end }}
 </head>
