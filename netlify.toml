@@ -27,6 +27,12 @@
   command = "hugo -b $DEPLOY_PRIME_URL --buildFuture"
 
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Content-Security-Policy = "frame-ancestors 'none'"
+
 [[redirects]]
   from = "https://memorysafety.dev/*"
   to = "https://www.memorysafety.org/:splat"
