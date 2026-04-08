@@ -108,3 +108,56 @@
   text-align: center;
   margin-bottom: 10px;
 }
+
+// Trophy table — ranked comparison tables with gold/silver/bronze columns.
+// Usage in markdown posts:
+//   <div class="trophy-table-wrap">
+//   <table class="trophy-table"> ... </table>
+//   </div>
+// Expects columns in order: label | first | second | third
+.tpl-post {
+  .trophy-table-wrap {
+    overflow-x: auto;
+    margin: 0 0 24px;
+  }
+
+  .trophy-table {
+    width: 100%;
+    margin-bottom: 0; // wrapper handles spacing, override .tpl-post table default
+    border-collapse: collapse;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    th,
+    td {
+      border: 1px solid #a8b3c1;
+      padding: 12px 16px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    thead th {
+      background-color: #dbe4f0;
+      color: $brand_dark_blue;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    tbody th {
+      background-color: #ffffff;
+      color: $brand_dark_blue;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    tbody td:nth-child(2) { background-color: #e8c547; } // gold
+    tbody td:nth-child(3) { background-color: #c8c8c8; } // silver
+    tbody td:nth-child(4) { background-color: #d08b4a; } // bronze
+  }
+}
