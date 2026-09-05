@@ -41,13 +41,13 @@ Rustls-ffi has nothing specific to Apache in it, but it was developed in coordin
 
 On the Apache side, I did two things:
 
-1.  I developed [mod_tls](https://github.com/abetterinternet/mod_tls) around Rustls, via rustls-ffi, as a memory safe alternative to the existing TLS module [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html), which uses OpenSSL and compatible libraries. Apache modules are dynamically loadable extensions, so people can choose what they need.
+1.  I developed [mod_tls](https://github.com/icing/mod_tls) around Rustls, via rustls-ffi, as a memory safe alternative to the existing TLS module [mod_ssl](https://httpd.apache.org/docs/2.4/mod/mod_ssl.html), which uses OpenSSL and compatible libraries. Apache modules are dynamically loadable extensions, so people can choose what they need.
 
 2.  I enhanced Apache's internal infrastructure to allow not just one, but several, TLS modules to be loaded in the same server instance.
 
 The second point means you can phase in mod_tls alongside mod_ssl in your installations. Rustls only supports TLS 1.2 and higher because earlier TLS versions are not considered to be secure. However, some people still need to support older versions of TLS for legacy systems. If you want to use mod_tls for TLS 1.2 and higher while still supporting older versions of the protocol with mod_ssl, you can do that today.
 
-The mod_tls documentation offers a [feature table](https://github.com/abetterinternet/mod_tls#comparison-with-mod_ssl) comparing it to mod_ssl, letting people determine if they can make the complete switch or which parts of the server they may migrate to the memory safe implementation. [Possible scenarios](https://github.com/abetterinternet/mod_tls#peace-and-harmony) are described in the documentation. Client certificate support is not available yet, but we are hoping to add it in the future.
+The mod_tls documentation offers a [feature table](https://github.com/icing/mod_tls#comparison-with-mod_ssl) comparing it to mod_ssl, letting people determine if they can make the complete switch or which parts of the server they may migrate to the memory safe implementation. [Possible scenarios](https://github.com/icing/mod_tls#peace-and-harmony) are described in the documentation. Client certificate support is not available yet, but we are hoping to add it in the future.
 
 The Cost
 --------

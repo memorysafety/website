@@ -230,6 +230,6 @@ Inlining was a small source of differences between our Rust implementation and t
 
 After applying the optimization techniques discussed here (and more), we have reduced performance overhead from a peak of about 11% when we started optimizing the safe Rust implementation in earnest to under 6% now on x86_64. We believe there is still room for further improvement, both in how the compiler optimizes Rust and in our implementation details. This will necessarily be a process of small, incremental improvements, as our profiling now indicates that the remaining overhead is spread roughly evenly across the largest, most complex functions in ```rav1d```.
 
-[^1]: http://download.opencontent.netflix.com.s3.amazonaws.com/AV1/Chimera/Old/Chimera-AV1-8bit-1920x1080-6736kbps.ivf
+[^1]: https://s3.amazonaws.com/download.opencontent.netflix.com/AV1/Chimera/Old/Chimera-AV1-8bit-1920x1080-6736kbps.ivf
 
 *We'd like to thank Amazon Web Services, Sovereign Tech Fund, and Alpha-Omega for supporting the development of this work. If you want to learn more about ```rav1d``` or start using it, check it out on [GitHub.](https://github.com/memorysafety/rav1d/)*

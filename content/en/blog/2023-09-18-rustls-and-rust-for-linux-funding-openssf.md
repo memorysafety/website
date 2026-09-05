@@ -27,4 +27,4 @@ The primary maintainer of [Rust for Linux](https://rust-for-linux.com/), Miguel 
 
 We hope to see more public and private organizations who rely on open source critical digital infrastructure to step up and support it. If you or your organization would like to come on board as a funder of Prossimo, we would be excited to begin a conversation with you at <donate@abetterinternet.org>.
 
-[Internet Security Research Group (ISRG)](https://abetterinternet.org) is the parent organization of [Prossimo](http://memorysafety.org), [Let’s Encrypt](http://letsencrypt.org), and [Divvi Up](http://divviup.org).
+[Internet Security Research Group (ISRG)](https://abetterinternet.org) is the parent organization of [Prossimo](https://memorysafety.org), [Let’s Encrypt](https://letsencrypt.org), and [Divvi Up](https://divviup.org).
