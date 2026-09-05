@@ -97,7 +97,7 @@ This explanation is, with permission, based on Alex Gaynor's blog post [Introduc
 
 [Slammer worm]: https://en.wikipedia.org/wiki/SQL_Slammer
 [WannaCry]: https://www.fireeye.com/blog/threat-research/2017/05/smb-exploited-wannacry-use-of-eternalblue.html
-[Trident exploit]: https://blog.lookout.com/trident-pegasus-technical-details
+[Trident exploit]: https://www.lookout.com/threat-intelligence/article/trident-pegasus-technical-details
 [Heartbleed]: https://tonyarcieri.com/would-rust-have-prevented-heartbleed-another-look
 [Stagefright]: https://googleprojectzero.blogspot.com/2015/09/stagefrightened.html
 [Ghost]: https://blog.qualys.com/laws-of-vulnerabilities/2015/01/27/the-ghost-vulnerability
