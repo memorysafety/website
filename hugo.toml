@@ -1,9 +1,13 @@
 baseURL = "https://www.memorysafety.org/"
-languageCode = "en-us"
+locale = "en-US"
 
 contentDir = "content/en"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
+
+# Tags and categories are not used on this site. Disabling them also stops Hugo
+# from generating /categories/ and /tags/ pages that have no template.
+disableKinds = ["taxonomy", "term"]
 
 [params]
 copyrighthtml = "Internet Security Research Group"
@@ -40,8 +44,13 @@ noclasses = false
 [languages]
 [languages.en]
 title = "Prossimo"
-languageName ="English"
+label = "English"
 # Weight used for sorting.
 weight = 1
 [languages.en.params]
 description = "ISRG's Prossimo is moving critical software to memory safe code."
+
+[security]
+# Hugo 0.162+ refuses HTML content files by default. Several pages on this site
+# (about, contact, sponsor, and the initiative pages) are hand-written HTML.
+allowContent = ['^text/markdown$', '^text/html$']
