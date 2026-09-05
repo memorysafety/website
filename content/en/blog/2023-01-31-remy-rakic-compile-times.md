@@ -53,7 +53,7 @@ I worked with Prossimo on the following priorities:
 
 - Improve support for persistent, cached and distributed builds
 
-We start by looking for what's slow. Looking at this holistically, from the crate-compile level, might provide new insights, especially since we've rarely done this before. I gathered the 1000 most popular crates from [crates.io](http://crates.io/), and [gathered data](https://github.com/lqd/rustc-benchmarking-data/tree/main/results) for complete cargo builds including dependencies. I also gathered rustc self-profiling data for a higher-level view and profiled for sources of high memory usage. All of this was done in check, debug, and release modes, with varying degrees of parallelism.
+We start by looking for what's slow. Looking at this holistically, from the crate-compile level, might provide new insights, especially since we've rarely done this before. I gathered the 1000 most popular crates from [crates.io](https://crates.io/), and [gathered data](https://github.com/lqd/rustc-benchmarking-data/tree/main/results) for complete cargo builds including dependencies. I also gathered rustc self-profiling data for a higher-level view and profiled for sources of high memory usage. All of this was done in check, debug, and release modes, with varying degrees of parallelism.
 
 From this high level view, we could see a few promising ways to move forward:
 
