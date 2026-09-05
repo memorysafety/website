@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html class="tpl-post">
   {{ partial "head.html" . }} {{ partial "header.html" . }}
-  <main>
-    {{ if .Site.Params.site_banner_enabled }}
-      {{ if .Site.Params.site_banner_text }}
-        <div id="site-banner">
-            <a href="{{ .Site.Params.site_banner_href }}">{{ .Site.Params.site_banner_text }} →</a>
-        </div>
-      {{ end }}
+  {{ if .Site.Params.site_banner_enabled }}
+    {{ if .Site.Params.site_banner_text }}
+      <div id="site-banner">
+          <a href="{{ .Site.Params.site_banner_href }}">{{ .Site.Params.site_banner_text }} →</a>
+      </div>
     {{ end }}
-    <div class="container-fluid pb-6">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          {{ partial "hero.html" . }}
-          <div class="page-content">{{ block "main" . }}</div>
-          {{ end }}
+  {{ end }}
+  <div class="container-fluid pb-6">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        {{ partial "hero.html" . }}
+        <div class="page-content">
+          {{ block "main" . }}{{ end }}
           {{ partial "blog/blog_list_section.html" . }}
           {{ if eq .Params.display_default_footer true }}
-  <div class="post-footer">
-    <h6><span>Support Our Work</span></h6>
-    <p>
-      ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider
-      <a href="https://www.abetterinternet.org/getinvolved/">getting involved</a>, <a href="https://www.abetterinternet.org/donate/">donating</a>, or encouraging your company to <a href="https://www.abetterinternet.org/sponsor/">become a sponsor</a>.
-    </p>
-  </div>
-{{ end }}
+          <div class="post-footer">
+            <h6><span>Support Our Work</span></h6>
+            <p>
+              ISRG is a 501(c)(3) nonprofit organization that is 100% supported through the generosity of those who share our vision for ubiquitous, open Internet security. If you'd like to support our work, please consider
+              <a href="https://www.abetterinternet.org/getinvolved/">getting involved</a>, <a href="https://www.abetterinternet.org/donate/">donating</a>, or encouraging your company to <a href="https://www.abetterinternet.org/sponsor/">become a sponsor</a>.
+            </p>
+          </div>
+          {{ end }}
         </div>
       </div>
     </div>
-  </main>
+  </div>
   {{ partial "footer.html" . }}
 </html>
