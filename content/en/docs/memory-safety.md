@@ -9,21 +9,21 @@ Memory safe languages include Rust, Go, C#, Java, Swift, Python, and JavaScript.
 
 ## Types of Memory Safety Bugs
 
-To begin understanding memory safety bugs, we'll consider the example of an application that maintains to do lists for many users. We'll look at a couple of the most common types of memory safety errors that can occur in programs that are not memory safe.
+To begin understanding memory safety bugs, we'll consider the example of an application that maintains to-do lists for many users. We'll look at a couple of the most common types of memory safety errors that can occur in programs that are not memory safe.
 
 ### Out of Bounds Reads and Writes
 
-If we have a to do list with ten items, and we ask for the eleventh item, what should happen? Clearly we should receive an error of some sort. We should also get an error if we ask for the negative first item. 
+If we have a to-do list with ten items, and we ask for the eleventh item, what should happen? Clearly we should receive an error of some sort. We should also get an error if we ask for the negative first item.
 
 Under these circumstances, a language that is not memory safe may allow a programmer to read whatever memory contents happen to exist before or after the valid contents of the list. This is called an out of bounds read. The memory before the first item of a list might be the last item of someone else's list. The memory after the last item of a list might be the first item of someone else's list. Accessing this memory would be a severe security vulnerability! Programmers can prevent out of bounds reads by diligently checking the index of the item they're asking for against the length of the list, but programmers make mistakes. It's better to use a memory safe language that protects you and your users from the class of bugs by default.
 
-In a memory safe language we will get an error at compile time or a crash at run time. Crashing the program may seem severe, but it's better than letting users steal each others' data!
+In a memory safe language we will get an error at compile time or a crash at run time. Crashing the program may seem severe, but it's better than letting users steal each other's data!
 
-A closely related vulnerability is an out-of-bounds write. In this case imagine we tried to change the eleventh or negative first item in our to do list. Now we are changing someone else's to do list!
+A closely related vulnerability is an out-of-bounds write. In this case imagine we tried to change the eleventh or negative first item in our to-do list. Now we are changing someone else's to-do list!
 
 ### Use After Free
 
-Imagine we delete a to do list and then later request the first item of that list. Clearly we should receive an error, as we shouldn't be able to get items from a deleted list. Languages that are not memory safe allow programs to fetch memory that they've said they are done with, and that may now be used for something else. The location in memory may now contain someone else's to do list! This is called a use-after-free vulnerability.
+Imagine we delete a to-do list and then later request the first item of that list. Clearly we should receive an error, as we shouldn't be able to get items from a deleted list. Languages that are not memory safe allow programs to fetch memory that they've said they are done with, and that may now be used for something else. The location in memory may now contain someone else's to-do list! This is called a use-after-free vulnerability.
 
 ## How common are memory safety vulnerabilities?
 

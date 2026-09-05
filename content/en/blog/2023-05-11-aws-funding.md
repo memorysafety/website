@@ -7,7 +7,7 @@ excerpt: "AWS commits $1M to advance four Prossimo initiatives, improving memory
 display_default_footer: true
 ---
 
-Amazon Web Services (AWS) has long supported ISRG's mission through sponsorships of projects such as Let's Encrypt. Today, we're pleased to announce that AWS has continued its commitment to Prossimo through a contribution of $1 million, funding four initiatives focused on improving [memory safety](/docs/memory-safety/): building a memory safe AV1 decoder, [rav1d](https://github.com/memorysafety/rav1d), rewriting [sudo/su](/initiative/sudo-su/), furthering our efforts with [Rustls](/initiative/rustls/), as well as building out [NTPd-rs](/initiative/ntp/).
+Amazon Web Services (AWS) has long supported ISRG's mission through sponsorships of projects such as Let's Encrypt. Today, we're pleased to announce that AWS has continued its commitment to Prossimo through a contribution of $1 million, funding four initiatives focused on improving [memory safety](/docs/memory-safety/): building a memory safe AV1 decoder, [rav1d](https://github.com/memorysafety/rav1d), rewriting [sudo/su](/initiative/sudo-su/), furthering our efforts with [Rustls](/initiative/rustls/), as well as building out [ntpd-rs](/initiative/ntp/).
 
 "At AWS, security is job zero and we are constantly looking for ways to help us and our customers operate more securely. With this funding, we're furthering ISRG's mission to build a more memory safe internet through the creation of new solutions for securing critical software tools. Investing in open source communities is essential to their long-term sustainability so they can continue to help tackle complex problems like memory safety." remarked David Nalley, Head of Open Source Strategy and Marketing at AWS.
 

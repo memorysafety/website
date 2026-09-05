@@ -7,8 +7,6 @@ slug: Rustls-Performance
 display_default_footer: true
 ---
 
-## Securing the Web: Rustls on track to outperform OpenSSL
-
 Prossimo is funding the development of [Rustls](https://github.com/rustls/rustls), a high-quality TLS implementation written in Rust, with the aim of replacing less safe alternatives such as OpenSSL. This article goes into recent developments in performance tracking for Rustls and provides a performance comparison between Rustls 0.22.0 and OpenSSL 3.2.0 - the latest releases of both projects at the time of writing.
 
 Our investment in benchmarking has helped confirm that Rustls is competitive with OpenSSL. In some scenarios Rustls is already faster, or less resource intensive. In other cases the benchmarking has highlighted areas we can target for improvements. Tight integration with the development process has already paid dividends in identifying regressions and helping inform architectural choices.

@@ -68,7 +68,7 @@ The testing discussed here was done in March of 2026.
 </table>
 </div>
 
-Since the last tests in July of 2025, neither BoringSSL or OpenSSL significantly improved or regressed in any test. Rustls got a bit faster in a few tests, likely because of improvements to the underlying cryptography via updates to [aws-lc-rs](https://github.com/aws/aws-lc-rs).
+Since the last tests in July of 2025, neither BoringSSL nor OpenSSL significantly improved or regressed in any test. Rustls got a bit faster in a few tests, likely because of improvements to the underlying cryptography via updates to [aws-lc-rs](https://github.com/aws/aws-lc-rs).
 
 The results on the whole are roughly what we'd expect. OpenSSL is [known](https://www.feistyduck.com/newsletter/issue_132_openssl_performance_still_under_scrutiny) to have serious performance issues, BoringSSL avoids most of those, and Rustls takes performance a step further.
 
