@@ -54,3 +54,28 @@ description = "ISRG's Prossimo is moving critical software to memory safe code."
 # Hugo 0.162+ refuses HTML content files by default. Several pages on this site
 # (about, contact, sponsor, and the initiative pages) are hand-written HTML.
 allowContent = ['^text/markdown$', '^text/html$']
+
+# Site banner messages with dates; see "Site banner" in README.md.
+[[params.site_banner_schedule]]
+id = "giving-tuesday"
+start = "2026-12-01T00:00:00-06:00"
+end = "2026-12-02T00:00:00-06:00"
+text = "It’s Giving Tuesday! As a nonprofit, we rely on our generous community of donors."
+label = "Donate Today"
+href = "https://www.abetterinternet.org/donate/"
+
+[[params.site_banner_schedule]]
+id = "monthly"
+start = "2026-12-02T00:00:00-06:00"
+end = "2026-12-26T00:00:00-06:00"
+text = "As we look toward 2027, consider a gift that keeps on giving. Internet security!"
+label = "Donate monthly"
+href = "https://www.abetterinternet.org/donate/"
+
+[[params.site_banner_schedule]]
+id = "year-end"
+start = "2026-12-26T00:00:00-06:00"
+end = "2027-01-01T00:00:00-06:00"
+text = "ISRG protects billions of people online, every day. Join us by making a donation before December 31 to finish the year strong."
+label = "Donate Today"
+href = "https://www.abetterinternet.org/donate/"
