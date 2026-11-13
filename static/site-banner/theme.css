@@ -1,0 +1,7 @@
+.site-banner {
+  --site-banner-bg: #082659;
+  --site-banner-text: #ffffff;
+  --site-banner-button: #14dfb4;
+  --site-banner-button-text: #082659;
+  --site-banner-gutter: 16px;
+}
